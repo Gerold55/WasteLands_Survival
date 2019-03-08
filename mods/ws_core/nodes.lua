@@ -30,11 +30,25 @@ minetest.register_node("ws_core:stone_with_coal", {
 	drop = 'ws_core:coal',
 })
 
-minetest.register_node("ws_core:stone_with_coal_dense", {
-	description = "Dense Coal Ore",
-	tiles = {"ws_stone.png^ws_coal_ore.png"},
+minetest.register_node("ws_core:stone_with_gold", {
+	description = "Gold Ore",
+	tiles = {"ws_stone.png^ws_mineral_gold.png"},
 	groups = {cracky = 3},
-	drop = 'ws_core:coal 3',
+	drop = 'ws_core:gold',
+})
+
+minetest.register_node("ws_core:stone_with_iron", {
+	description = "Iron Ore",
+	tiles = {"ws_stone.png^ws_mineral_iron.png"},
+	groups = {cracky = 3},
+	drop = 'ws_core:iron',
+})
+
+minetest.register_node("ws_core:stone_with_copper", {
+	description = "Copper Ore",
+	tiles = {"ws_stone.png^ws_mineral_copper.png"},
+	groups = {cracky = 3},
+	drop = 'ws_core:iron',
 })
 
 minetest.register_node("ws_core:stone", {
@@ -83,7 +97,7 @@ minetest.register_node("ws_core:water_source", {
 	drawtype = "liquid",
 	tiles = {
 		{
-			name = "ws_water_source.png",
+			name = "ws_toxic_water_source_animated.png",
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
@@ -93,7 +107,7 @@ minetest.register_node("ws_core:water_source", {
 			},
 		},
 		{
-			name = "ws_water_source.png",
+			name = "ws_toxic_water_source_animated.png",
 			backface_culling = true,
 			animation = {
 				type = "vertical_frames",
@@ -125,10 +139,10 @@ minetest.register_node("ws_core:water_source", {
 minetest.register_node("ws_core:water_flowing", {
 	description = "Flowing Water",
 	drawtype = "flowingliquid",
-	tiles = {"ws_core_water.png"},
+	tiles = {"ws_toxic_water_flowing_animated.png"},
 	special_tiles = {
 		{
-			name = "ws_water_flowing.png",
+			name = "ws_toxic_water_flowing_animated.png",
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
@@ -138,7 +152,7 @@ minetest.register_node("ws_core:water_flowing", {
 			},
 		},
 		{
-			name = "ws_water_flowing.png",
+			name = "ws_toxic_water_flowing_animated.png",
 			backface_culling = true,
 			animation = {
 				type = "vertical_frames",

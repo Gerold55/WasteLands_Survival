@@ -52,7 +52,7 @@ function ws_core.register_mgv6_ores()
 		ore_type        = "blob",
 		ore             = "ws_core:sandy_dirt",
 		wherein         = {"ws_core:stone"},
-		clust_scarcity  = 16 * 16 * 16,
+		clust_scarcity  = 64 * 64 * 64,
 		clust_size      = 5,
 		y_max           = 30,
 		y_min           = -31,
@@ -95,7 +95,7 @@ function ws_core.register_mgv6_ores()
 		wherein         = {"ws_core:stone"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
-		y_max           = 31000,
+		y_max           = -2,
 		y_min           = -31,
 		noise_threshold = 0.0,
 		noise_params    = {
@@ -114,7 +114,7 @@ function ws_core.register_mgv6_ores()
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_coal",
 		wherein        = "ws_core:stone",
-		clust_scarcity = 8 * 8 * 8,
+		clust_scarcity = 5 * 5 * 5,
 		clust_num_ores = 9,
 		clust_size     = 3,
 		y_max          = 31000,
@@ -350,30 +350,6 @@ function ws_core.register_mgv6_ores()
 		clust_num_ores = 4,
 		clust_size     = 3,
 		y_max          = -256,
-		y_min          = -31000,
-	})
-
-	-- Mese block
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "ws_core:mese",
-		wherein        = "ws_core:stone",
-		clust_scarcity = 36 * 36 * 36,
-		clust_num_ores = 3,
-		clust_size     = 2,
-		y_max          = 31000,
-		y_min          = 1025,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "ws_core:mese",
-		wherein        = "ws_core:stone",
-		clust_scarcity = 36 * 36 * 36,
-		clust_num_ores = 3,
-		clust_size     = 2,
-		y_max          = -1024,
 		y_min          = -31000,
 	})
 end
@@ -770,17 +746,17 @@ function ws_core.register_biomes(upper_limit)
 		depth_filler = 2,
 		node_riverbed = "ws_core:sandy_dirt",
 		depth_riverbed = 4,
-		y_max = 31000,
-		y_min = -31,
+		y_max = 300,
+		y_min = -40,
 		heat_point = 50,
 		humidity_point = 35,
 	})
 
 	minetest.register_biome({
 		name = "dirtland_dunes",
-		node_top = "ws_core:sandy_dirt",
+		node_top = "ws_core:dirt_dry",
 		depth_top = 1,
-		node_filler = "ws_core:sandy_dirt",
+		node_filler = "ws_core:dirt_dry",
 		depth_filler = 2,
 		node_riverbed = "ws_core:sandy_dirt",
 		depth_riverbed = 4,
@@ -799,8 +775,8 @@ function ws_core.register_biomes(upper_limit)
 		depth_filler = 2,
 		node_riverbed = "ws_core:sandy_dirt",
 		depth_riverbed = 2,
-		y_max = 3,
-		y_min = -112,
+		y_max = -600,
+		y_min = -500,
 		heat_point = 50,
 		humidity_point = 35,
 	})
@@ -816,7 +792,7 @@ function ws_core.register_biomes(upper_limit)
 		node_stone = "ws_core:sandstone",
 		node_riverbed = "ws_core:sandy_dirt",
 		depth_riverbed = 6,
-		y_max = upper_limit,
+		y_max = 300,
 		y_min = 4,
 		heat_point = 92,
 		humidity_point = 16,
@@ -832,8 +808,8 @@ function ws_core.register_biomes(upper_limit)
 		node_riverbed = "ws_core:sandy_dirt",
 		depth_riverbed = 10,
 		vertical_blend = 1,
-		y_max = 3,
-		y_min = -112,
+		y_max = -600,
+		y_min = -500,
 		heat_point = 92,
 		humidity_point = 16,
 	})
