@@ -1,0 +1,60 @@
+
+stairs.register_stair_and_slab(
+	"mossycobble",
+	"ws_core:mossycobble",
+	{cracky = 3},
+	{"ws_mossycobble.png"},
+	"Mossy Cobblestone Stair",
+	"Mossy Cobblestone Slab",
+	true
+)
+
+stairs.register_stair_and_slab(
+	"stonebrick",
+	"default:stonebrick",
+	{cracky = 2},
+	{"default_stone_brick.png"},
+	"Stone Brick Stair",
+	"Stone Brick Slab",
+	false
+)
+
+stairs.register_stair_and_slab(
+	"sandstone",
+	"default:sandstone",
+	{crumbly = 1, cracky = 3},
+	{"default_sandstone.png"},
+	"Sandstone Stair",
+	"Sandstone Slab",
+	true
+)
+
+stairs.register_stair_and_slab(
+	"sandstonebrick",
+	"default:sandstonebrick",
+	{cracky = 2},
+	{"default_sandstone_brick.png"},
+	"Sandstone Brick Stair",
+	"Sandstone Brick Slab",
+	false
+)
+
+stairs.register_stair_and_slab(
+	"sandstone_block",
+	"default:sandstone_block",
+	{cracky = 2},
+	{"default_sandstone_block.png"},
+	"Sandstone Block Stair",
+	"Sandstone Block Slab",
+	true
+)
+
+stairs.register_stair_and_slab(
+	"brick",
+	"default:brick",
+	{cracky = 3},
+	{"default_brick.png"},
+	"Brick Stair",
+	"Brick Slab",
+	false
+)

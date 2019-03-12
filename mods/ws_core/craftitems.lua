@@ -175,5 +175,5 @@ minetest.register_craftitem("ws_core:coal", {
 
 minetest.register_craftitem("ws_core:iron_lump", {
 	description = "Iron Lump",
-	inventory_image = "ws_core_iron_lump.png",
+	inventory_image = "ws_iron_lump.png",
 })

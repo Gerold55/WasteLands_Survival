@@ -167,7 +167,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description,
 	end
 	local new_groups = table.copy(groups)
 	new_groups.slab = 1
-	minetest.register_node(":ws_core:slab_" .. subname, {
+	minetest.register_node(":stairs:slab_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
 		tiles = slab_images,
@@ -187,7 +187,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description,
 			local creative_enabled = (creative and creative.is_enabled_for
 					and creative.is_enabled_for(player_name))
 
-			if under and under.name:find("^ws_core:slab_") then
+			if under and under.name:find("^stairs:slab_") then
 				-- place slab using under node orientation
 				local dir = minetest.dir_to_facedir(vector.subtract(
 					pointed_thing.above, pointed_thing.under), true)
@@ -216,15 +216,15 @@ function stairs.register_slab(subname, recipeitem, groups, images, description,
 
 	-- for replace ABM
 	if replace then
-		minetest.register_node(":ws_core:slab_" .. subname .. "upside_down", {
-			replace_name = "ws_core:slab_".. subname,
+		minetest.register_node(":stairs:slab_" .. subname .. "upside_down", {
+			replace_name = "stairs:slab_".. subname,
 			groups = {slabs_replace = 1},
 		})
 	end
 
 	if recipeitem then
 		minetest.register_craft({
-			output = 'ws_core:slab_' .. subname .. ' 6',
+			output = 'stairs:slab_' .. subname .. ' 6',
 			recipe = {
 				{recipeitem, recipeitem, recipeitem},
 			},
@@ -234,8 +234,8 @@ function stairs.register_slab(subname, recipeitem, groups, images, description,
 		minetest.register_craft({
 			output = recipeitem,
 			recipe = {
-				{'ws_core:slab_' .. subname},
-				{'ws_core:slab_' .. subname},
+				{'stairs:slab_' .. subname},
+				{'stairs:slab_' .. subname},
 			},
 		})
 
@@ -248,7 +248,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description,
 		if baseburntime > 0 then
 			minetest.register_craft({
 				type = "fuel",
-				recipe = 'ws_core:slab_' .. subname,
+				recipe = 'stairs:slab_' .. subname,
 				burntime = math.floor(baseburntime * 0.5),
 			})
 		end
@@ -257,7 +257,7 @@ end
 
 
 -- Optionally replace old "upside_down" nodes with new param2 versions.
--- Disabled by ws_core.
+-- Disabled by default.
 
 if replace then
 	minetest.register_abm({
@@ -280,9 +280,9 @@ end
 
 
 -- Register inner stair
--- Node will be called ws_core:stair_inner_<subname>
+-- Node will be called stairs:stair_inner_<subname>
 
-function ws_core.register_stair_inner(subname, recipeitem, groups, images,
+function stairs.register_stair_inner(subname, recipeitem, groups, images,
 		description, sounds, worldaligntex)
 	-- Set backface culling and world-aligned textures
 	local stair_images = {}
@@ -307,7 +307,7 @@ function ws_core.register_stair_inner(subname, recipeitem, groups, images,
 	end
 	local new_groups = table.copy(groups)
 	new_groups.stair = 1
-	minetest.register_node(":ws_core:stair_inner_" .. subname, {
+	minetest.register_node(":stairs:stair_inner_" .. subname, {
 		description = "Inner " .. description,
 		drawtype = "nodebox",
 		tiles = stair_images,
@@ -335,7 +335,7 @@ function ws_core.register_stair_inner(subname, recipeitem, groups, images,
 
 	if recipeitem then
 		minetest.register_craft({
-			output = 'ws_core:stair_inner_' .. subname .. ' 7',
+			output = 'stairs:stair_inner_' .. subname .. ' 7',
 			recipe = {
 				{"", recipeitem, ""},
 				{recipeitem, "", recipeitem},
@@ -352,7 +352,7 @@ function ws_core.register_stair_inner(subname, recipeitem, groups, images,
 		if baseburntime > 0 then
 			minetest.register_craft({
 				type = "fuel",
-				recipe = 'ws_core:stair_inner_' .. subname,
+				recipe = 'stairs:stair_inner_' .. subname,
 				burntime = math.floor(baseburntime * 0.875),
 			})
 		end
@@ -361,9 +361,9 @@ end
 
 
 -- Register outer stair
--- Node will be called ws_core:stair_outer_<subname>
+-- Node will be called stairs:stair_outer_<subname>
 
-function ws_core.register_stair_outer(subname, recipeitem, groups, images,
+function stairs.register_stair_outer(subname, recipeitem, groups, images,
 		description, sounds, worldaligntex)
 	-- Set backface culling and world-aligned textures
 	local stair_images = {}
@@ -388,7 +388,7 @@ function ws_core.register_stair_outer(subname, recipeitem, groups, images,
 	end
 	local new_groups = table.copy(groups)
 	new_groups.stair = 1
-	minetest.register_node(":ws_core:stair_outer_" .. subname, {
+	minetest.register_node(":stairs:stair_outer_" .. subname, {
 		description = "Outer " .. description,
 		drawtype = "nodebox",
 		tiles = stair_images,
@@ -415,7 +415,7 @@ function ws_core.register_stair_outer(subname, recipeitem, groups, images,
 
 	if recipeitem then
 		minetest.register_craft({
-			output = 'ws_core:stair_outer_' .. subname .. ' 6',
+			output = 'stairs:stair_outer_' .. subname .. ' 6',
 			recipe = {
 				{"", recipeitem, ""},
 				{recipeitem, recipeitem, recipeitem},
@@ -431,7 +431,7 @@ function ws_core.register_stair_outer(subname, recipeitem, groups, images,
 		if baseburntime > 0 then
 			minetest.register_craft({
 				type = "fuel",
-				recipe = 'ws_core:stair_outer_' .. subname,
+				recipe = 'stairs:stair_outer_' .. subname,
 				burntime = math.floor(baseburntime * 0.625),
 			})
 		end
@@ -440,142 +440,39 @@ end
 
 
 -- Stair/slab registration function.
--- Nodes will be called ws_core:{stair,slab}_<subname>
+-- Nodes will be called stairs:{stair,slab}_<subname>
 
-function ws_core.register_stair_and_slab(subname, recipeitem, groups, images,
+function stairs.register_stair_and_slab(subname, recipeitem, groups, images,
 		desc_stair, desc_slab, sounds, worldaligntex)
-	ws_core.register_stair(subname, recipeitem, groups, images, desc_stair,
+	stairs.register_stair(subname, recipeitem, groups, images, desc_stair,
 		sounds, worldaligntex)
-	ws_core.register_stair_inner(subname, recipeitem, groups, images, desc_stair,
+	stairs.register_stair_inner(subname, recipeitem, groups, images, desc_stair,
 		sounds, worldaligntex)
-	ws_core.register_stair_outer(subname, recipeitem, groups, images, desc_stair,
+	stairs.register_stair_outer(subname, recipeitem, groups, images, desc_stair,
 		sounds, worldaligntex)
-	ws_core.register_slab(subname, recipeitem, groups, images, desc_slab,
+	stairs.register_slab(subname, recipeitem, groups, images, desc_slab,
 		sounds, worldaligntex)
 end
 
 
--- Register ws_core ws_core and slabs
+-- Register default stairs and slabs
 
-ws_core.register_stair_and_slab(
+stairs.register_stair_and_slab(
 	"wood",
 	"ws_core:wood",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
 	{"ws_wood.png"},
-	"Wooden Stair",
-	"Wooden Slab",
+	"Oak Stair",
+	"Oak Slab",
 	false
 )
 
-
-ws_core.register_stair_and_slab(
+stairs.register_stair_and_slab(
 	"cobble",
-	"default:cobble",
+	"ws_core:cobble",
 	{cracky = 3},
-	{"default_cobble.png"},
+	{"ws_cobble.png"},
 	"Cobblestone Stair",
 	"Cobblestone Slab",
-	default.node_sound_stone_defaults(),
 	true
-)
-
-ws_core.register_stair_and_slab(
-	"mossycobble",
-	"ws_core:mossycobble",
-	{cracky = 3},
-	{"ws_mossycobble.png"},
-	"Mossy Cobblestone Stair",
-	"Mossy Cobblestone Slab",
-	true
-)
-
-ws_core.register_stair_and_slab(
-	"stonebrick",
-	"ws_core:stonebrick",
-	{cracky = 2},
-	{"ws_stone_brick.png"},
-	"Stone Brick Stair",
-	"Stone Brick Slab",
-	false
-)
-
-ws_core.register_stair_and_slab(
-	"stone_block",
-	"ws_core:stone_block",
-	{cracky = 2},
-	{"ws_stone_block.png"},
-	"Stone Block Stair",
-	"Stone Block Slab",
-	true
-)
-
-ws_core.register_stair_and_slab(
-	"sandstone",
-	"default:sandstone",
-	{crumbly = 1, cracky = 3},
-	{"default_sandstone.png"},
-	"Sandstone Stair",
-	"Sandstone Slab",
-	true
-)
-
-ws_core.register_stair_and_slab(
-	"sandstonebrick",
-	"default:sandstonebrick",
-	{cracky = 2},
-	{"default_sandstone_brick.png"},
-	"Sandstone Brick Stair",
-	"Sandstone Brick Slab",
-	false
-)
-
-ws_core.register_stair_and_slab(
-	"sandstone_block",
-	"default:sandstone_block",
-	{cracky = 2},
-	{"default_sandstone_block.png"},
-	"Sandstone Block Stair",
-	"Sandstone Block Slab",
-	true
-)
-
-ws_core.register_stair_and_slab(
-	"desert_sandstone_block",
-	"default:desert_sandstone_block",
-	{cracky = 2},
-	{"default_desert_sandstone_block.png"},
-	"Desert Sandstone Block Stair",
-	"Desert Sandstone Block Slab",
-	default.node_sound_stone_defaults(),
-	true
-)
-
-ws_core.register_stair_and_slab(
-	"obsidian",
-	"ws_core:obsidian",
-	{cracky = 1, level = 2},
-	{"ws_obsidian.png"},
-	"Obsidian Stair",
-	"Obsidian Slab",
-	true
-)
-
-ws_core.register_stair_and_slab(
-	"obsidian_block",
-	"ws_core:obsidian_block",
-	{cracky = 1, level = 2},
-	{"ws_obsidian_block.png"},
-	"Obsidian Block Stair",
-	"Obsidian Block Slab",
-	true
-)
-
-ws_core.register_stair_and_slab(
-	"brick",
-	"ws_core:brick",
-	{cracky = 3},
-	{"ws_brick.png"},
-	"Brick Stair",
-	"Brick Slab",
-	false
 )
