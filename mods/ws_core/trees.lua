@@ -173,17 +173,3 @@ minetest.register_craft({
 	recipe = "ws_core:wood",
 	burntime = 7,
 })
-
---Stairs
-
-if minetest.get_modpath("stairs") ~= nil then
-	stairs.register_stair_and_slab(
-		"dead_tree_trunk",
-		"ws_core:trunk",
-		{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-		{"dead_tree_wood.png"},
-		S("Clementine Tree Stair"),
-		S("Clementine Tree Slab"),
-		default.node_sound_wood_defaults()
-	)
-end
