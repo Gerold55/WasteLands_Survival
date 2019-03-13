@@ -92,8 +92,8 @@ minetest.register_node("ws_core:wood", {
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })
 
-minetest.register_node("ws_core:water_source", {
-	description = "Water Source",
+minetest.register_node("ws_core:water_source_toxic", {
+	description = "Toxic Water Source",
 	drawtype = "liquid",
 	tiles = {
 		{
@@ -128,16 +128,16 @@ minetest.register_node("ws_core:water_source", {
 	drop = "",
 	drowning = 1,
 	liquidtype = "source",
-	liquid_alternative_flowing = "ws_core:water_flowing",
-	liquid_alternative_source = "ws_core:water_source",
+	liquid_alternative_flowing = "ws_core:water_flowing_toxic",
+	liquid_alternative_source = "ws_core:water_source_toxic",
 	liquid_viscosity = 1,
 	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
 	groups = {water = 3, liquid = 3, cools_lava = 1},
 	sounds = ws_core.node_sound_water_ws_cores(),
 })
 
-minetest.register_node("ws_core:water_flowing", {
-	description = "Flowing Water",
+minetest.register_node("ws_core:water_flowing_toxic", {
+	description = "Flowing Toxic Water",
 	drawtype = "flowingliquid",
 	tiles = {"ws_toxic_water_flowing_animated.png"},
 	special_tiles = {
@@ -166,6 +166,95 @@ minetest.register_node("ws_core:water_flowing", {
 	paramtype = "light",
 	paramtype2 = "flowingliquid",
 	damage_per_second = 5,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	is_ground_content = false,
+	drop = "",
+	drowning = 1,
+	liquidtype = "flowing",
+	liquid_alternative_flowing = "ws_core:water_flowing_toxic",
+	liquid_alternative_source = "ws_core:water_source_toxic",
+	liquid_viscosity = 1,
+	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
+	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1,
+		cools_lava = 1},
+	sounds = ws_core.node_sound_water_ws_cores(),
+})
+
+minetest.register_node("ws_core:water_source", {
+	description = "Water Source",
+	drawtype = "liquid",
+	tiles = {
+		{
+			name = "ws_water_source_animated.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 2.0,
+			},
+		},
+		{
+			name = "ws_water_source_animated.png",
+			backface_culling = true,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 2.0,
+			},
+		},
+	},
+	alpha = 160,
+	paramtype = "light",
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	is_ground_content = false,
+	drop = "",
+	drowning = 1,
+	liquidtype = "source",
+	liquid_alternative_flowing = "ws_core:water_flowing",
+	liquid_alternative_source = "ws_core:water_source",
+	liquid_viscosity = 1,
+	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
+	groups = {water = 3, liquid = 3, cools_lava = 1},
+	sounds = ws_core.node_sound_water_ws_cores(),
+})
+
+minetest.register_node("ws_core:water_flowing", {
+	description = "Flowing Water",
+	drawtype = "flowingliquid",
+	tiles = {"ws_water_flowing_animated.png"},
+	special_tiles = {
+		{
+			name = "ws_water_flowing_animated.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 0.8,
+			},
+		},
+		{
+			name = "ws_water_flowing_animated.png",
+			backface_culling = true,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 0.8,
+			},
+		},
+	},
+	alpha = 160,
+	paramtype = "light",
+	paramtype2 = "flowingliquid",
 	walkable = false,
 	pointable = false,
 	diggable = false,
