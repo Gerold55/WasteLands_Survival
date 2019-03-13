@@ -4,8 +4,8 @@
 minetest.register_craft({
 	output = 'bucket:bucket_empty 1',
 	recipe = {
-		{'group:wood', '', 'group:wood'},
-		{'', 'group:wood', ''},
+		{'ws_core:clay', '', 'ws_core:clay'},
+		{'', 'ws_core:clay', ''},
 	}
 })
 
@@ -130,8 +130,8 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 end
 
 minetest.register_craftitem("bucket:bucket_empty", {
-	description = "Empty Wooden Bucket",
-	inventory_image = "bucket_wooden.png",
+	description = "".. core.colorize("#FFFFFF", "Empty Bucket\n")..core.colorize("#ababab", "Use empty bucket to collect toxic water."),
+	inventory_image = "ws_clay_pot.png",
 	stack_max = 99,
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)
@@ -200,11 +200,11 @@ minetest.register_craftitem("bucket:bucket_empty", {
 })
 
 bucket.register_liquid(
-	"ws_core:water_source",
-	"ws_core:water_flowing",
-	"bucket:bucket_water",
-	"bucket_wooden_water.png",
-	"Water Bucket",
+	"ws_core:water_source_toxic",
+	"ws_core:water_flowing_toxic",
+	"bucket:bucket_water_toxic",
+	"ws_clay_pot_water_toxic.png",
+	"Toxic Water Bucket (Clay)",
 	{water_bucket = 1}
 )
 
@@ -213,3 +213,13 @@ bucket.register_liquid(
 -- riverbanks and cause floods.
 -- River water source is instead made renewable by the 'force renew' option
 -- used here.
+
+bucket.register_liquid(
+	"ws_core:water_source",
+	"ws_core:water_flowing",
+	"bucket:bucket_water",
+	"ws_clay_pot_water.png",
+	"Water Bucket (Clay)",
+	{water_bucket_wooden = 1},
+	true
+)
