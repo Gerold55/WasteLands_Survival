@@ -24,7 +24,7 @@ end
 	minetest.register_decoration({
 		name = "ws_core:dead_tree",
 		deco_type = "schematic",
-		place_on = {"ws_core:dirt_dry1"},
+		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
 			offset = 0.0005,
@@ -45,7 +45,7 @@ end
 	minetest.register_decoration({
 		name = "ws_core:dead_tree1",
 		deco_type = "schematic",
-		place_on = {"ws_core:dirt_dry1"},
+		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
 			offset = 0.0005,
@@ -66,7 +66,7 @@ end
 	minetest.register_decoration({
 		name = "ws_core:dead_tree2",
 		deco_type = "schematic",
-		place_on = {"ws_core:dirt_dry1"},
+		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
 			offset = 0.0005,
@@ -87,7 +87,7 @@ end
 	minetest.register_decoration({
 		name = "ws_core:dead_tree3",
 		deco_type = "schematic",
-		place_on = {"ws_core:dirt_dry1"},
+		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
 			offset = 0.0005,
@@ -104,11 +104,31 @@ end
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
+	minetest.register_decoration({
+		name = "ws_core:dead_tree4",
+		deco_type = "schematic",
+		place_on = {"ws_core:dirt_dry"},
+		sidelen = 2,
+		noise_params = {
+			offset = 0.0005,
+			scale = 0.00004,
+			spread = {x = 250, y = 250, z = 250},
+			seed = 2,
+			octaves = 3,
+			persist = 0.66
+		},
+		biomes = {"grassland"},
+		y_min = 2,
+		y_max = 80,
+		schematic = modpath.."/schematics/dead_tree4.mts",
+		flags = "place_center_x, place_center_z,  force_placement",
+		rotation = "random",
+	})
 	
 	minetest.register_decoration({
 		name = "ws_core:dead_tree_fallen",
 		deco_type = "schematic",
-		place_on = {"ws_core:dirt_dry1"},
+		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
 			offset = 0.0005,
@@ -128,26 +148,6 @@ end
 --
 -- Nodes
 --
-
-minetest.register_node("ws_core:log", {
-	description = S("Dead Log"),
-	tiles = {
-		"ws_dead_tree_top.png",
-		"ws_dead_tree_top.png",
-		"ws_dead_tree.png"
-	},
-	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	paramtype2 = "facedir",
-	on_place = minetest.rotate_node,
-})
-
--- dead_tree wood
-minetest.register_node("ws_core:wood", {
-	description = S("Dead Wood"),
-	tiles = {"ws_wood.png"},
-	is_ground_content = false,
-	groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-})
 
 --
 -- Craftitems
