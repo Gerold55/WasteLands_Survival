@@ -27,9 +27,9 @@ end
 		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
-			offset = 0.0005,
+			offset = 0.0001,
 			scale = 0.00004,
-			spread = {x = 250, y = 250, z = 250},
+			spread = {x = 200000, y = 200000, z = 200000},
 			seed = 2,
 			octaves = 3,
 			persist = 0.66
@@ -48,9 +48,9 @@ end
 		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
-			offset = 0.0005,
+			offset = 0.0001,
 			scale = 0.00004,
-			spread = {x = 250, y = 250, z = 250},
+			spread = {x = 200000, y = 200000, z = 200000},
 			seed = 2,
 			octaves = 3,
 			persist = 0.66
@@ -69,9 +69,9 @@ end
 		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
-			offset = 0.0005,
+			offset = 0.0001,
 			scale = 0.00004,
-			spread = {x = 250, y = 250, z = 250},
+			spread = {x = 200000, y = 200000, z = 200000},
 			seed = 2,
 			octaves = 3,
 			persist = 0.66
@@ -90,9 +90,9 @@ end
 		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
-			offset = 0.0005,
+			offset = 0.0001,
 			scale = 0.00004,
-			spread = {x = 250, y = 250, z = 250},
+			spread = {x = 200000, y = 200000, z = 200000},
 			seed = 2,
 			octaves = 3,
 			persist = 0.66
@@ -110,9 +110,9 @@ end
 		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
-			offset = 0.0005,
+			offset = 0.0001,
 			scale = 0.00004,
-			spread = {x = 250, y = 250, z = 250},
+			spread = {x = 200000, y = 200000, z = 200000},
 			seed = 2,
 			octaves = 3,
 			persist = 0.66
@@ -131,9 +131,9 @@ end
 		place_on = {"ws_core:dirt_dry"},
 		sidelen = 2,
 		noise_params = {
-			offset = 0.0005,
+			offset = 0.0001,
 			scale = 0.00004,
-			spread = {x = 250, y = 250, z = 250},
+			spread = {x = 200000, y = 200000, z = 200000},
 			seed = 2,
 			octaves = 3,
 			persist = 0.66
