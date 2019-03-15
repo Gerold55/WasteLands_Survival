@@ -3,16 +3,8 @@ minetest.register_node("ws_core:dirt_dry", {
 	tiles = {"ws_dirt_dry.png",
 		{name = "ws_dirt_dry.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
-})
-
-minetest.register_node("ws_core:dirt_dry1", {
-	description = "Dry Dirt (top)",
-	tiles = {"ws_dirt_dry.png",
-		{name = "ws_dirt_dry.png",
-			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1, not_in_creative_inventory = 1},
-	drop= "ws_core:dirt_dry",
+	groups = {crumbly = 3, soil = 1},
+	sounds = ws_core.node_sound_dirt_ws_cores(),
 })
 
 minetest.register_node("ws_core:sandy_dirt", {
@@ -30,9 +22,23 @@ minetest.register_node("ws_core:stone_with_coal", {
 	drop = 'ws_core:coal',
 })
 
+minetest.register_node("ws_core:stone_with_coal_dense", {
+	description = "Coal Ore",
+	tiles = {"ws_stone.png^ws_mineral_coal_dense.png"},
+	groups = {cracky = 3},
+	drop = 'ws_core:coal',
+})
+
 minetest.register_node("ws_core:stone_with_gold", {
 	description = "Gold Ore",
 	tiles = {"ws_stone.png^ws_mineral_gold.png"},
+	groups = {cracky = 3},
+	drop = 'ws_core:gold',
+})
+
+minetest.register_node("ws_core:stone_with_gold_dense", {
+	description = "Gold Ore",
+	tiles = {"ws_stone.png^ws_mineral_gold_dense.png"},
 	groups = {cracky = 3},
 	drop = 'ws_core:gold',
 })
@@ -44,9 +50,23 @@ minetest.register_node("ws_core:stone_with_iron", {
 	drop = 'ws_core:iron',
 })
 
+minetest.register_node("ws_core:stone_with_iron_dense", {
+	description = "Iron Ore",
+	tiles = {"ws_stone.png^ws_mineral_iron_dense.png"},
+	groups = {cracky = 3},
+	drop = 'ws_core:iron',
+})
+
 minetest.register_node("ws_core:stone_with_copper", {
 	description = "Copper Ore",
 	tiles = {"ws_stone.png^ws_mineral_copper.png"},
+	groups = {cracky = 3},
+	drop = 'ws_core:iron',
+})
+
+minetest.register_node("ws_core:stone_with_copper_dense", {
+	description = "Copper Ore",
+	tiles = {"ws_stone.png^ws_mineral_copper_dense.png"},
 	groups = {cracky = 3},
 	drop = 'ws_core:iron',
 })
@@ -131,7 +151,7 @@ minetest.register_node("ws_core:water_source_toxic", {
 	liquid_alternative_flowing = "ws_core:water_flowing_toxic",
 	liquid_alternative_source = "ws_core:water_source_toxic",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
+	post_effect_color = {a = 103, r = 68, g = 117, b = 34},
 	groups = {water = 3, liquid = 3, cools_lava = 1},
 	sounds = ws_core.node_sound_water_ws_cores(),
 })
@@ -177,7 +197,7 @@ minetest.register_node("ws_core:water_flowing_toxic", {
 	liquid_alternative_flowing = "ws_core:water_flowing_toxic",
 	liquid_alternative_source = "ws_core:water_source_toxic",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
+	post_effect_color = {a = 103, r = 68, g = 117, b = 34},
 	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1,
 		cools_lava = 1},
 	sounds = ws_core.node_sound_water_ws_cores(),
@@ -221,7 +241,7 @@ minetest.register_node("ws_core:water_source", {
 	liquid_alternative_flowing = "ws_core:water_flowing",
 	liquid_alternative_source = "ws_core:water_source",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
+	post_effect_color = {a = 191, r = 37, g = 112, b = 112},
 	groups = {water = 3, liquid = 3, cools_lava = 1},
 	sounds = ws_core.node_sound_water_ws_cores(),
 })
@@ -266,8 +286,100 @@ minetest.register_node("ws_core:water_flowing", {
 	liquid_alternative_flowing = "ws_core:water_flowing",
 	liquid_alternative_source = "ws_core:water_source",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
+	post_effect_color = {a = 191, r = 37, g = 112, b = 112},
 	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1,
 		cools_lava = 1},
 	sounds = ws_core.node_sound_water_ws_cores(),
+})
+
+minetest.register_node("ws_core:oil_source", {
+	description = "Oil Source",
+	drawtype = "liquid",
+	tiles = {
+		{
+			name = "ws_oil_source_animated.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 3.0,
+			},
+		},
+		{
+			name = "ws_oil_source_animated.png",
+			backface_culling = true,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 3.0,
+			},
+		},
+	},
+	paramtype = "light",
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	is_ground_content = false,
+	drop = "",
+	drowning = 1,
+	liquidtype = "source",
+	liquid_viscosity = 7,
+	liquid_renewable = false,
+	post_effect_color = {a = 191, r = 1, g = 0, b = 3},
+	groups = {liquid = 2, igniter = 1},
+})
+
+minetest.register_node("ws_core:oil_flowing", {
+	description = "Flowing Oil",
+	drawtype = "flowingliquid",
+	tiles = {"ws_oil.png"},
+	special_tiles = {
+		{
+			name = "ws_oil_flowing_animated.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 3.3,
+			},
+		},
+		{
+			name = "ws_oil_flowing_animated.png",
+			backface_culling = true,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 3.3,
+			},
+		},
+	},
+	paramtype = "light",
+	paramtype2 = "flowingliquid",
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	is_ground_content = false,
+	drop = "",
+	drowning = 1,
+	liquidtype = "flowing",
+	liquid_viscosity = 7,
+	liquid_renewable = false,
+	post_effect_color = {a = 191, r = 1, g = 0, b = 3},
+	groups = {liquid = 2, igniter = 1,
+		not_in_creative_inventory = 1},
+})
+
+minetest.register_node("ws_core:clay", {
+	description = "Clay",
+	tiles = {"ws_clay.png",
+		{name = "ws_clay.png",
+			tileable_vertical = false}},
+	groups = {crumbly = 3},
+	drop = "ws_core:clay_lump 4",
 })

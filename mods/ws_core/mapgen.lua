@@ -7,8 +7,8 @@ minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
 minetest.register_alias("default:dirt", "ws_core:dirt")
 minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry1")
 minetest.register_alias("mapgen_sand", "ws_core:sandy_dirt")
-minetest.register_alias("mapgen_water_source", "ws_core:water_source")
-minetest.register_alias("mapgen_river_water_source", "ws_core:river_water_source")
+minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
+minetest.register_alias("mapgen_river_water_source", "ws_core:river_water_source_toxic")
 minetest.register_alias("mapgen_lava_source", "ws_core:lava_source")
 minetest.register_alias("mapgen_gravel", "ws_core:gravel")
 minetest.register_alias("mapgen_desert_stone", "ws_core:desert_stone")
@@ -142,6 +142,28 @@ function ws_core.register_mgv6_ores()
 		y_max          = 0,
 		y_min          = -31000,
 	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_coal_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 64,
+		y_min          = -31000,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_coal_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 24 * 24 * 24,
+		clust_num_ores = 27,
+		clust_size     = 6,
+		y_max          = 0,
+		y_min          = -31000,
+	})
 
 	-- Iron
 
@@ -170,6 +192,28 @@ function ws_core.register_mgv6_ores()
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_iron",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 24 * 24 * 24,
+		clust_num_ores = 27,
+		clust_size     = 6,
+		y_max          = -64,
+		y_min          = -31000,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_iron_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 7 * 7 * 7,
+		clust_num_ores = 5,
+		clust_size     = 3,
+		y_max          = 0,
+		y_min          = -31000,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_iron_dense",
 		wherein        = "ws_core:stone",
 		clust_scarcity = 24 * 24 * 24,
 		clust_num_ores = 27,
@@ -212,6 +256,28 @@ function ws_core.register_mgv6_ores()
 		y_max          = -64,
 		y_min          = -31000,
 	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_copper_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 12 * 12 * 12,
+		clust_num_ores = 4,
+		clust_size     = 3,
+		y_max          = -16,
+		y_min          = -63,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_copper_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 9 * 9 * 9,
+		clust_num_ores = 5,
+		clust_size     = 3,
+		y_max          = -64,
+		y_min          = -31000,
+	})
 
 	-- Tin
 
@@ -240,6 +306,28 @@ function ws_core.register_mgv6_ores()
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_tin",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 5,
+		clust_size     = 3,
+		y_max          = -128,
+		y_min          = -31000,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_tin_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 13 * 13 * 13,
+		clust_num_ores = 4,
+		clust_size     = 3,
+		y_max          = -32,
+		y_min          = -127,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_tin_dense",
 		wherein        = "ws_core:stone",
 		clust_scarcity = 10 * 10 * 10,
 		clust_num_ores = 5,
@@ -282,6 +370,28 @@ function ws_core.register_mgv6_ores()
 		y_max          = -256,
 		y_min          = -31000,
 	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_gold_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 15 * 15 * 15,
+		clust_num_ores = 3,
+		clust_size     = 2,
+		y_max          = -64,
+		y_min          = -255,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_gold_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 13 * 13 * 13,
+		clust_num_ores = 5,
+		clust_size     = 3,
+		y_max          = -256,
+		y_min          = -31000,
+	})
 
 	-- Mese crystal
 
@@ -317,6 +427,28 @@ function ws_core.register_mgv6_ores()
 		y_max          = -256,
 		y_min          = -31000,
 	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_mese_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 18 * 18 * 18,
+		clust_num_ores = 3,
+		clust_size     = 2,
+		y_max          = -64,
+		y_min          = -255,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_mese_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 14 * 14 * 14,
+		clust_num_ores = 5,
+		clust_size     = 3,
+		y_max          = -256,
+		y_min          = -31000,
+	})
 
 	-- Diamond
 
@@ -345,6 +477,28 @@ function ws_core.register_mgv6_ores()
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_diamond",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 15 * 15 * 15,
+		clust_num_ores = 4,
+		clust_size     = 3,
+		y_max          = -256,
+		y_min          = -31000,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_diamond_dense",
+		wherein        = "ws_core:stone",
+		clust_scarcity = 17 * 17 * 17,
+		clust_num_ores = 4,
+		clust_size     = 3,
+		y_max          = -128,
+		y_min          = -255,
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "ws_core:stone_with_diamond_dense",
 		wherein        = "ws_core:stone",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 4,
@@ -740,13 +894,13 @@ function ws_core.register_biomes(upper_limit)
 
 	minetest.register_biome({
 		name = "dirtland",
-		node_top = "ws_core:dirt_dry1",
+		node_top = "ws_core:dirt_dry",
 		depth_top = 1,
 		node_filler = "ws_core:dirt_dry",
 		depth_filler = 2,
 		node_riverbed = "ws_core:sandy_dirt",
 		depth_riverbed = 4,
-		y_max = 300,
+		y_max = 200,
 		y_min = -40,
 		heat_point = 50,
 		humidity_point = 35,
