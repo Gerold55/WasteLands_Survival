@@ -12,7 +12,7 @@ minetest.register_node("ws_core:sandy_dirt", {
 	tiles = {"ws_sandy_dirt.png",
 		{name = "ws_sandy_dirt.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
+	groups = {crumbly = 3, soil = 1},
 })
 
 minetest.register_node("ws_core:stone_with_coal", {
@@ -110,6 +110,52 @@ minetest.register_node("ws_core:wood", {
 	tiles = {"ws_wood.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
+})
+
+minetest.register_node("ws_core:lantern_floor", {
+	description = "Lantern",
+	tiles = {
+		"lantern_floor_top.png",
+		"lantern_bottem.png",
+		"lantern_floor_side.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	light_source = 12,
+	groups = {choppy = 2, dig_immediate=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.25, -0.5, -0.25, 0.25, -0.4375, 0.25}, -- NodeBox1
+			{-0.1875, -0.5, -0.1875, 0.1875, 0.0625, 0.1875}, -- NodeBox2
+			{-0.25, 0.0625, -0.25, 0.25, 0.125, 0.25}, -- NodeBox3
+			{-0.125, 0.125, -0.125, 0.125, 0.1875, 0.125}, -- NodeBox4
+		}
+	}
+})
+
+minetest.register_node("ws_core:lantern_ceiling", {
+description = "Lantern",
+	tiles = {
+		"lantern_ceiling_top.png",
+		"lantern_bottem.png",
+		"lantern_ceiling_side.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	light_source = 12,
+	groups = {choppy = 2, dig_immediate=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.25, -0.5, -0.25, 0.25, -0.4375, 0.25}, -- NodeBox1
+			{-0.1875, -0.5, -0.1875, 0.1875, 0.0625, 0.1875}, -- NodeBox2
+			{-0.25, 0.0625, -0.25, 0.25, 0.125, 0.25}, -- NodeBox3
+			{-0.125, 0.125, -0.125, 0.125, 0.1875, 0.125}, -- NodeBox4
+			{0, 0.1875, 0, 0.0625, 0.5, 0.0625}, -- NodeBox5
+			{-0.0625, 0.1875, -0.0625, 0, 0.5, 0}, -- NodeBox6
+		}
+	}
 })
 
 minetest.register_node("ws_core:water_source_toxic", {
@@ -326,7 +372,7 @@ minetest.register_node("ws_core:oil_source", {
 	drop = "",
 	drowning = 1,
 	liquidtype = "source",
-	liquid_viscosity = 7,
+	liquid_viscosity = 14,
 	liquid_renewable = false,
 	post_effect_color = {a = 191, r = 1, g = 0, b = 3},
 	groups = {liquid = 2, igniter = 1},
@@ -368,7 +414,7 @@ minetest.register_node("ws_core:oil_flowing", {
 	drop = "",
 	drowning = 1,
 	liquidtype = "flowing",
-	liquid_viscosity = 7,
+	liquid_viscosity = 14,
 	liquid_renewable = false,
 	post_effect_color = {a = 191, r = 1, g = 0, b = 3},
 	groups = {liquid = 2, igniter = 1,

@@ -3,7 +3,7 @@
 minetest.register_craft({
 	output = 'ws_core:wood 4',
 	recipe = {
-		{'ws_core:tree'},
+		{'ws_core:dead_tree'},
 	}
 })
 
@@ -1182,4 +1182,39 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "ws_core:sword_wood",
 	burntime = 5,
+})
+
+--tools--
+minetest.register_craft({
+	output = 'ws_core:pick_bone',
+	recipe = {
+		{'ws_core:flint', 'ws_core:flint', 'ws_core:flint'},
+		{'', 'group:stick', ''},
+		{'', 'group:stick', ''},
+	}
+})
+minetest.register_craft({
+	output = 'useful_default:axe_flint',
+	recipe = {
+		{'', 'ws_core:flint', 'ws_core:flint'},
+		{'', 'group:stick', 'ws_core:flint'},
+		{'', 'group:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:knife_flint',
+	recipe = {
+		{'', '', 'ws_core:flint'},
+		{'', '', 'ws_core:flint'},
+		{'', 'group:stick', ''},
+	}
+})
+minetest.register_craft({
+	output = 'ws_core:knife_bone',
+	recipe = {
+		{'', '', 'mobs:bone'},
+		{'', '', 'mobs:bone'},
+		{'', 'group:stick', ''},
+	}
 })

@@ -26,9 +26,9 @@ end
 function ws_core.node_sound_dirt_ws_cores(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "ws_core_dirt_footstep", gain = 0.4}
+			{name = "ws_dirt", gain = 0.4}
 	table.dug = table.dug or
-			{name = "ws_core_dirt_footstep", gain = 1.0}
+			{name = "ws_dirt", gain = 1.0}
 	table.place = table.place or
 			{name = "ws_core_place_node", gain = 1.0}
 	ws_core.node_sound_ws_cores(table)
@@ -110,7 +110,7 @@ end
 function ws_core.node_sound_water_ws_cores(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "ws_core_water_footstep", gain = 0.2}
+			{name = "ws_water", gain = 0.2}
 	ws_core.node_sound_ws_cores(table)
 	return table
 end
