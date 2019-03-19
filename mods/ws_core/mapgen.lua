@@ -603,23 +603,13 @@ function ws_core.register_ores()
 	-- Oil
 	
 	minetest.register_ore({
-		ore_type        = "scatter",
 		ore             = "ws_core:oil_source",
-		wherein         = {"ws_core:dirt_dry"},
-		clust_scarcity = 9 * 9 * 9,
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 30 * 30 * 30,
 		clust_num_ores = 5,
 		clust_size     = 3,
-		y_max          = 31000,
-		y_min          = 1025,
-		noise_threshold = 0.0,
-		noise_params    = {
-			offset  = 0.5,
-			scale   = 0.2,
-			spread  = {x = 5, y = 5, z = 5},
-			seed    = 2316,
-			octaves = 1,
-			persist = 0.0
-		},
+		y_max          = -4,
+		y_min          = -31000,
 	})
 
 	-- Coal
@@ -661,7 +651,7 @@ function ws_core.register_ores()
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_coal_dense",
 		wherein        = "ws_core:stone",
-		clust_scarcity = 8 * 8 * 8,
+		clust_scarcity = 12 * 12 * 12,
 		clust_num_ores = 8,
 		clust_size     = 3,
 		y_max          = 64,
