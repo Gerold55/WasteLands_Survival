@@ -129,9 +129,79 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 	end
 end
 
+minetest.register_craftitem("bucket:bucket_clay_empty", {
+	description = "".. core.colorize("#FFFFFF", "Empty Clay Bucket\n")..core.colorize("#ababab", "Use empty bucket to collect toxic water."),
+	inventory_image = "ws_clay_pot.png",
+	stack_max = 99,
+	liquids_pointable = true,
+	on_use = function(itemstack, user, pointed_thing)
+		if pointed_thing.type == "object" then
+			pointed_thing.ref:punch(user, 1.0, { full_punch_interval=1.0 }, nil)
+			return user:get_wielded_item()
+		elseif pointed_thing.type ~= "node" then
+			-- do nothing if it's neither object nor node
+			return
+		end
+		-- Check if pointing to a liquid source
+		local node = minetest.get_node(pointed_thing.under)
+		local liquiddef = bucket.liquids[node.name]
+		local item_count = user:get_wielded_item():get_count()
+
+		if liquiddef ~= nil
+		and liquiddef.itemname ~= nil
+		and node.name == liquiddef.source then
+			if check_protection(pointed_thing.under,
+					user:get_player_name(),
+					"take ".. node.name) then
+				return
+			end
+
+			-- default set to return filled bucket
+			local giving_back = liquiddef.itemname
+
+			-- check if holding more than 1 empty bucket
+			if item_count > 1 then
+
+				-- if space in inventory add filled bucked, otherwise drop as item
+				local inv = user:get_inventory()
+				if inv:room_for_item("main", {name=liquiddef.itemname}) then
+					inv:add_item("main", liquiddef.itemname)
+				else
+					local pos = user:get_pos()
+					pos.y = math.floor(pos.y + 0.5)
+					minetest.add_item(pos, liquiddef.itemname)
+				end
+
+				-- set to return empty buckets minus 1
+				giving_back = "bucket:bucket_clay_empty "..tostring(item_count-1)
+
+			end
+
+			-- force_renew requires a source neighbour
+			local source_neighbor = false
+			if liquiddef.force_renew then
+				source_neighbor =
+					minetest.find_node_near(pointed_thing.under, 1, liquiddef.source)
+			end
+			if not (source_neighbor and liquiddef.force_renew) then
+				minetest.add_node(pointed_thing.under, {name = "air"})
+			end
+
+			return ItemStack(giving_back)
+		else
+			-- non-liquid nodes will have their on_punch triggered
+			local node_def = minetest.registered_nodes[node.name]
+			if node_def then
+				node_def.on_punch(pointed_thing.under, node, user, pointed_thing)
+			end
+			return user:get_wielded_item()
+		end
+	end,
+})
+
 minetest.register_craftitem("bucket:bucket_empty", {
 	description = "".. core.colorize("#FFFFFF", "Empty Bucket\n")..core.colorize("#ababab", "Use empty bucket to collect toxic water."),
-	inventory_image = "ws_clay_pot.png",
+	inventory_image = "ws_bucket.png",
 	stack_max = 99,
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)
@@ -202,10 +272,20 @@ minetest.register_craftitem("bucket:bucket_empty", {
 bucket.register_liquid(
 	"ws_core:water_source_toxic",
 	"ws_core:water_flowing_toxic",
-	"bucket:bucket_water_toxic",
+	"bucket:bucket_clay_water_toxic",
 	"ws_clay_pot_water_toxic.png",
 	"Toxic Water Bucket (Clay)",
 	{water_bucket = 1}
+)
+
+bucket.register_liquid(
+	"ws_core:water_source",
+	"ws_core:water_flowing",
+	"bucket:bucket_clay_water",
+	"ws_clay_pot_water.png",
+	"Water Bucket (Clay)",
+	{water_bucket = 1},
+	true
 )
 
 -- River water source is 'liquid_renewable = false' to avoid horizontal spread
@@ -215,11 +295,28 @@ bucket.register_liquid(
 -- used here.
 
 bucket.register_liquid(
+	"ws_core:water_source_toxic",
+	"ws_core:water_flowing_toxic",
+	"bucket:bucket_water_toxic",
+	"ws_bucket_toxic_water.png",
+	"Toxic Water Bucket",
+	{water_bucket = 1}
+)
+
+bucket.register_liquid(
 	"ws_core:water_source",
 	"ws_core:water_flowing",
 	"bucket:bucket_water",
-	"ws_clay_pot_water.png",
-	"Water Bucket (Clay)",
-	{water_bucket_wooden = 1},
-	true
+	"ws_bucket_water.png",
+	"Water Bucket",
+	{water_bucket = 1}
+)
+
+bucket.register_liquid(
+	"ws_core:oil_source",
+	"ws_core:oil_flowing",
+	"bucket:bucket_oil",
+	"ws_bucket_oil.png",
+	"Oil Bucket",
+	{oil_bucket = 1}
 )
