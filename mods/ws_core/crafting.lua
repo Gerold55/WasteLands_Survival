@@ -192,6 +192,14 @@ minetest.register_craft({
 
 -- Axes
 -- Recipes face left to match appearence in textures and inventory
+minetest.register_craft({
+	output = 'ws_core:hatchet_flint',
+	recipe = {
+	{'','ws_core:flint', 'ws_core:flint'},
+	{'', 'ws_core:flint', 'ws_core:flint'},
+	{'', 'ws_core:stick', ''},
+	}
+})
 
 minetest.register_craft({
 	output = 'ws_core:axe_wood',
