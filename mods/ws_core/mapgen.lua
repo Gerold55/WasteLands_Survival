@@ -577,27 +577,27 @@ function ws_core.register_ores()
 	-- These before scatter ores to avoid other ores in blobs.
 
 	-- Gravel
-
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "ws_core:gravel",
 		wherein         = {"ws_core:stone"},
-		clust_scarcity  = 16 * 16 * 16,
-		clust_size      = 5,
-		y_max           = 31000,
-		y_min           = -31000,
-		noise_threshold = 0.0,
-		noise_params    = {
-			offset = 0.5,
-			scale = 0.2,
-			spread = {x = 5, y = 5, z = 5},
-			seed = 766,
-			octaves = 1,
-			persist = 0.0
-		},
-		biomes = {"dirtland", "desert"}
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 9,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = 1025,
 	})
-
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:gravel",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 64,
+		y_min          = -127,
+	})
 	-- Scatter ores
 	
 	-- Oil

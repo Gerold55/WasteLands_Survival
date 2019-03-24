@@ -7,6 +7,15 @@ minetest.register_node("ws_core:dirt_dry", {
 	sounds = ws_core.node_sound_dirt_ws_cores(),
 })
 
+minetest.register_node("ws_core:gravel", {
+	description = "Gravel",
+	tiles = {"ws_gravel.png",
+		{name = "ws_gravel.png",
+			tileable_vertical = false}},
+	groups = {crumbly = 3, soil = 1},
+	sounds = ws_core.node_sound_dirt_ws_cores(),
+})
+
 minetest.register_node("ws_core:sandy_dirt", {
 	description = "Sandy Dirt",
 	tiles = {"ws_sandy_dirt.png",
