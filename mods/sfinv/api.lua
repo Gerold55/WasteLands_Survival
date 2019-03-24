@@ -37,8 +37,8 @@ function sfinv.get_nav_fs(player, context, nav, current_idx)
 end
 
 local theme_inv = [[
-		list[current_player;main;0,4.7;8,1;]
-		list[current_player;main;0,5.85;8,3;8]
+		list[current_player;main;4.8,6.9;8,1;]
+		list[current_player;main;4.8,3.6;8,3;8]
 	]]
 
 function sfinv.make_formspec(player, context, content, show_inv, size)
