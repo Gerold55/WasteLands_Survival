@@ -476,3 +476,23 @@ stairs.register_stair_and_slab(
 	"Cobblestone Slab",
 	true
 )
+
+stairs.register_stair_and_slab(
+	"thatch",
+	"buildings:thatch",
+	{cracky = 3},
+	{"ws_thatch.png"},
+	"Thatch Stair",
+	"Thatch Slab",
+	true
+)
+
+stairs.register_stair_and_slab(
+	"rammed_earth",
+	"buildings:rammed_earth",
+	{cracky = 3},
+	{"ws_rammed_earth.png"},
+	"Rammed Earth Stair",
+	"Rammed Earth Slab",
+	true
+)
