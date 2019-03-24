@@ -1,5 +1,11 @@
 -- mods/ws_core/craftitems.lua
 
+minetest.register_craftitem("ws_core:stick", {
+	description = "Stick",
+	inventory_image = "ws_stick.png",
+	groups = {stick = 1, flammable = 2},
+})
+
 local lpp = 14 -- Lines per book's page
 local function book_on_use(itemstack, user)
 	local player_name = user:get_player_name()

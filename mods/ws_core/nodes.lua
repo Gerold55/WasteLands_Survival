@@ -26,7 +26,7 @@ minetest.register_node("ws_core:stone_with_coal_dense", {
 	description = "Coal Ore",
 	tiles = {"ws_stone.png^ws_mineral_coal_dense.png"},
 	groups = {cracky = 3},
-	drop = 'ws_core:coal',
+	drop = 'ws_core:coal 3',
 })
 
 minetest.register_node("ws_core:stone_with_gold", {
@@ -40,7 +40,7 @@ minetest.register_node("ws_core:stone_with_gold_dense", {
 	description = "Gold Ore",
 	tiles = {"ws_stone.png^ws_mineral_gold_dense.png"},
 	groups = {cracky = 3},
-	drop = 'ws_core:gold',
+	drop = 'ws_core:gold 3',
 })
 
 minetest.register_node("ws_core:stone_with_iron", {
@@ -54,21 +54,21 @@ minetest.register_node("ws_core:stone_with_iron_dense", {
 	description = "Iron Ore",
 	tiles = {"ws_stone.png^ws_mineral_iron_dense.png"},
 	groups = {cracky = 3},
-	drop = 'ws_core:iron',
+	drop = 'ws_core:iron 3',
 })
 
 minetest.register_node("ws_core:stone_with_copper", {
 	description = "Copper Ore",
 	tiles = {"ws_stone.png^ws_mineral_copper.png"},
 	groups = {cracky = 3},
-	drop = 'ws_core:iron',
+	drop = 'ws_core:copper_lump',
 })
 
 minetest.register_node("ws_core:stone_with_copper_dense", {
 	description = "Copper Ore",
 	tiles = {"ws_stone.png^ws_mineral_copper_dense.png"},
 	groups = {cracky = 3},
-	drop = 'ws_core:iron',
+	drop = 'ws_core:copper_lump 3',
 })
 
 minetest.register_node("ws_core:stone", {
@@ -436,4 +436,24 @@ minetest.register_node("ws_core:clay", {
 			tileable_vertical = false}},
 	groups = {crumbly = 3},
 	drop = "ws_core:clay_lump 4",
+})
+
+minetest.register_node("ws_core:dry_shrub", {
+	description = "Dry Shrub",
+	drawtype = "plantlike",
+	waving = 1,
+	tiles = {"ws_dry_shrub.png"},
+	inventory_image = "ws_dry_shrub.png",
+	wield_image = "ws_dry_shrub.png",
+	paramtype = "light",
+	paramtype2 = "meshoptions",
+	place_param2 = 4,
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 3, attached_node = 1},
+	selection_box = {
+		type = "fixed",
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
+	},
 })

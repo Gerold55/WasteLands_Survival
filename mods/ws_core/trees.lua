@@ -34,7 +34,7 @@ end
 			octaves = 3,
 			persist = 0.66
 		},
-		biomes = {"grassland"},
+		biomes = {"dirtland"},
 		y_min = 2,
 		y_max = 80,
 		schematic = modpath.."/schematics/dead_tree.mts",
@@ -147,7 +147,6 @@ end
 		rotation = "random",
 	})
 	
-	
 	minetest.register_decoration({
 		name = "ws_core:tree",
 		deco_type = "schematic",
@@ -170,7 +169,7 @@ end
 	})
 	
 	minetest.register_decoration({
-		name = "ws_core:tree1s",
+		name = "ws_core:tree1",
 		deco_type = "schematic",
 		place_on = {"ws_core:dirt"},
 		sidelen = 2,
