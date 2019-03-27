@@ -36,6 +36,10 @@ minetest.register_alias("mapgen_sandstonebrick", "ws_core:sandstonebrick")
 minetest.register_alias("mapgen_stair_sandstone_block", "stairs:stair_sandstone_block")
 
 
+minetest.register_on_joinplayer(function(player)
+    player:set_sky("#C4A883", "plain", {"default_cloud.png"}, true) 
+end)
+
 --
 -- Register ores
 --

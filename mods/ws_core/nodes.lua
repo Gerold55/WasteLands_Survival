@@ -468,6 +468,7 @@ minetest.register_node("ws_core:dry_shrub", {
 	paramtype = "light",
 	paramtype2 = "meshoptions",
 	place_param2 = 4,
+	drop = "ws_core:stick",
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
