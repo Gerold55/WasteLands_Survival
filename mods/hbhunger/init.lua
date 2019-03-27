@@ -31,7 +31,6 @@ hbhunger.EXHAUST_PLACE = 1 -- exhaustion increased this value after placed
 hbhunger.EXHAUST_MOVE = 0.3 -- exhaustion increased this value if player movement detected
 hbhunger.EXHAUST_LVL = 160 -- at what exhaustion player satiation gets lowerd
 
-
 --load custom settings
 local set = io.open(minetest.get_modpath("hbhunger").."/hbhunger.conf", "r")
 if set then 
