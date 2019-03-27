@@ -5,9 +5,9 @@ sfinv.register_page("sfinv:crafting", {
 	get = function(self, player, context)
 		return sfinv.make_formspec(player, context, [[
 				listcolors[#00000069;#5A5A5A;#141318;#30434C;#FFF]
-				list[current_player;craft;6.5,0.8;2,2;]
+				list[current_player;craft;6.5,0.5;3,3;]
 				list[current_player;craftpreview;11,1.5;1,1;]
-				image[9,1.5;1,1;gui_furnace_arrow_bg.png^[transformR270]
+				image[9.5,1.5;1,1;gui_furnace_arrow_bg.png]
 				listring[current_player;main]
 				listring[current_player;craft]
 				list[current_player;main;4.8,6.9;8,1;]
