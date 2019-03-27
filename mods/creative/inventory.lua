@@ -114,7 +114,7 @@ function creative.register_tab(name, title, items)
 					listring[]
 					list[current_player;craft;6.5,0.8;2,2;]
 					list[current_player;craftpreview;11,1.5;1,1;]
-					image[9,1.5;1,1;gui_furnace_arrow_bg.png^[transformR270]
+					image[9,1.3;1.5,1.5;gui_furnace_arrow_bg.png]
 					image_button[0.2,7;1,0.8;creative_prev_icon.png;creative_prev;]
 					image_button[2.8,7;1,0.8;creative_next_icon.png;creative_next;]
 					image_button[2.4,6;0.8,0.8;creative_search_icon.png;creative_search;]
