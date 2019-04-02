@@ -1,4 +1,5 @@
 hudbars
+mobs
 intllib?
 default?
 flowers?
@@ -22,7 +23,6 @@ jkfarming?
 jkwine?
 kpgmobs?
 mobfcooking?
-mobs?
 moretrees?
 mtfoods?
 mush45?
