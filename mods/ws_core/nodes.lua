@@ -485,3 +485,12 @@ minetest.register_node("ws_core:dry_shrub", {
 		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
 	},
 })
+
+--temporary fix for missing node - this needs to be redefined
+minetest.register_node("ws_core:mossycobble", {
+    description = "Sandy Dirt",
+    tiles = {"ws_sandy_dirt.png",
+        {name = "ws_sandy_dirt.png",
+            tileable_vertical = false}},
+    groups = {crumbly = 3, soil = 1},
+})
