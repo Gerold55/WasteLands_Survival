@@ -14,6 +14,13 @@ minetest.register_node("ws_core:gravel", {
 			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
+    drop = {
+        max_items = 1,
+        items = {
+            {items = {'ws_core:flint'}, rarity = 19},
+            {items = {'ws_core:gravel'}}
+        }
+    }
 })
 
 minetest.register_node("ws_core:sandy_dirt", {
