@@ -82,10 +82,10 @@ thirsty.time_next_tick = thirsty.config.tick_time
 
 dofile(minetest.get_modpath('thirsty')..'/hud.lua')
 dofile(minetest.get_modpath('thirsty')..'/functions.lua')
-
+--[[ temporary disable for dev server
 minetest.register_on_joinplayer(thirsty.on_joinplayer)
 minetest.register_on_dieplayer(thirsty.on_dieplayer)
 minetest.register_globalstep(thirsty.main_loop)
-
+--]]
 dofile(minetest.get_modpath('thirsty')..'/components.lua')
 
