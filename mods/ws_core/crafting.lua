@@ -1226,3 +1226,7 @@ minetest.register_craft({
 		{'', 'group:stick', ''},
 	}
 })
+
+minetest.register_craftitem("ws_core:flint", {
+    description = "Flint",
+inventory_image = "ws_flint.png"
