@@ -150,15 +150,6 @@ if damage_enabled then
         thirst.set_player_hud_def(name, thirst.get_player_thirst(name))
     end)
 
-    minetest.register_chatcommand("set_thirst", {
-        params = "",
-        func = function(name, params)
-            amount = tonumber(params)
-            thirst.set_player_thirst(name, amount)
-            minetest.chat_send_all("Current thirst data:\n" .. dump(thirst.players))
-        end
-    })
-
     -- Reset player thirst on die.
     minetest.register_on_respawnplayer(function(player)
 
