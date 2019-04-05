@@ -4,20 +4,13 @@ local damage_enabled = minetest.settings:get_bool("enable_damage")
 
 if damage_enabled then
 
-    -- Position of thirst HUD
-    local hud_position = {x = 0.5, y = 1}
-
-    -- Offset of thirst HUD
-    local hud_offset = {x = -197, y = -90}
+    hb.register_hudbar("thirst", 0xFFFFFF, "Thirst", { icon = "thirst_hud_icon.png", bgicon = "thirst_hud_bg.png",  bar = "" }, 20, 30, false)
 
     -- Maximum thirst value, and default for new players.
     local max_thirst = 20
 
     -- Global table for the API.
     thirst = {}
-
-    -- Used to store HUD indexes for each player.
-    thirst.hud = {}
 
     -- Every x seconds, the player thirst is decreased by 1 if they're in water.
     thirst.water_quench_rate = 2
@@ -30,28 +23,6 @@ if damage_enabled then
 
     -- Every x seconds, thirst data is saved.
     thirst.data_storage_rate = 10
-
-    -- Default thirst HUD def
-    thirst.hud_def = {
-        hud_elem_type = "statbar",
-        position = hud_position,
-        text = "thirst_hud_icon.png",
-        scale = {x = 1, y = 1},
-        offset = hud_offset,
-        number = 20,
-    }
-
-    -- Gets HUD definition with <amount> thirst, or full thirst if no amount specified.
-    thirst.get_hud_def = function(amount)
-
-        amount = amount or 20
-
-        def = thirst.hud_def
-
-        def.number = amount
-
-        return def
-    end
 
     -- Returns the thirst a player has, or nil if the player does not exist.
     thirst.get_player_thirst = function(name)
@@ -77,23 +48,6 @@ if damage_enabled then
         return nil
     end
 
-    -- Sets a player's HUD to a certain thirst level
-    thirst.set_player_hud_def = function(name, amount)
-
-        local player = minetest.get_player_by_name(name)
-
-        local idx = thirst.hud[name]
-
-        if idx then
-
-            player:hud_change(idx, "number", amount)
-
-        else
-
-            thirst.hud[name] = player:hud_add(thirst.get_hud_def(amount))
-        end
-    end
-
     -- Sets player thirst to a value.
     thirst.set_player_thirst = function(name, amount)
 
@@ -113,7 +67,7 @@ if damage_enabled then
 
             meta:set_int("thirst", amount)
 
-            thirst.set_player_hud_def(name, amount)
+            hb.change_hudbar(player, "thirst", amount, max_thirst, "thirst_hud_icon.png", "thirst_hud_bg.png",  "", "Thirst", 0xFFFF)
         end
     end
 
@@ -147,17 +101,8 @@ if damage_enabled then
 
         local name = player:get_player_name()
 
-        thirst.set_player_hud_def(name, thirst.get_player_thirst(name))
+        hb.init_hudbar(player, "thirst", thirst.get_player_thirst(name), max_thirst, false)
     end)
-
-    minetest.register_chatcommand("set_thirst", {
-        params = "",
-        func = function(name, params)
-            amount = tonumber(params)
-            thirst.set_player_thirst(name, amount)
-            minetest.chat_send_all("Current thirst data:\n" .. dump(thirst.players))
-        end
-    })
 
     -- Reset player thirst on die.
     minetest.register_on_respawnplayer(function(player)
