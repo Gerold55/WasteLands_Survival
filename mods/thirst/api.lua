@@ -6,11 +6,14 @@ if damage_enabled then
 
     hb.register_hudbar("thirst", 0xFFFFFF, "Thirst", { icon = "thirst_hud_icon.png", bgicon = "thirst_hud_bg.png",  bar = "" }, 20, 30, false)
 
-    -- Maximum thirst value, and default for new players.
-    local max_thirst = 20
-
-    -- Global table for the API.
+    -- Global table, which contains the API
     thirst = {}
+
+    -- Maximum thirst value, and default for new players.
+    thirst.max_thirst = 20
+
+    -- Local var for easier use, don't ask me why
+    max_thirst = 20
 
     -- Every x seconds, the player thirst is decreased by 1 if they're in water.
     thirst.water_quench_rate = 2
@@ -33,16 +36,16 @@ if damage_enabled then
 
             local meta = player:get_meta()
 
-            local thirst = meta:get_int("thirst")
+            local pthirst = meta:get("thirst")
 
-            if not thirst then
+            if not pthirst then
 
                 meta:set_int("thirst", max_thirst)
 
-                thirst = max_thirst
+                pthirst = max_thirst
             end
 
-            return thirst
+            return tonumber(pthirst)
         end
 
         return nil
