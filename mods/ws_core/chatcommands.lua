@@ -9,6 +9,6 @@ minetest.register_chatcommand("heal", {
     inv = player:get_inventory()
     player:set_hp(20)
 		player:set_breath(11)
-		return true, "you have been healed"
+		return true, "You have been healed!"
 	end,
 })
