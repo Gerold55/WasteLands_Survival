@@ -408,26 +408,6 @@ minetest.register_abm({
 -- Moss growth on cobble near water
 --
 
-minetest.register_abm({
-	label = "Moss growth",
-	nodenames = {"ws_core:cobble", "stairs:slab_cobble", "stairs:stair_cobble", "walls:cobble"},
-	neighbors = {"group:water"},
-	interval = 16,
-	chance = 200,
-	catch_up = false,
-	action = function(pos, node)
-		if node.name == "ws_core:cobble" then
-			minetest.set_node(pos, {name = "ws_core:mossycobble"})
-		elseif node.name == "stairs:slab_cobble" then
-			minetest.set_node(pos, {name = "stairs:slab_mossycobble", param2 = node.param2})
-		elseif node.name == "stairs:stair_cobble" then
-			minetest.set_node(pos, {name = "stairs:stair_mossycobble", param2 = node.param2})
-		elseif node.name == "walls:cobble" then
-			minetest.set_node(pos, {name = "walls:mossycobble", param2 = node.param2})
-		end
-	end
-})
-
 
 --
 -- Coral death near air
