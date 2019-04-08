@@ -1,6 +1,6 @@
 
 minetest.register_chatcommand("heal", {
-	description = "sets maxumum HP, thirst, breath and hunger vales",
+	description = "sets maximum HP, thirst, breath and hunger values",
 	privs = {fly = true},
 	func = function(name)
     local player = minetest.get_player_by_name(name)
@@ -9,6 +9,6 @@ minetest.register_chatcommand("heal", {
     inv = player:get_inventory()
     player:set_hp(20)
 		player:set_breath(11)
-		return true, "you have beed healed"
+		return true, "you have been healed"
 	end,
 })
