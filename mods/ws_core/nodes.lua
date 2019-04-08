@@ -12,7 +12,7 @@ minetest.register_node("ws_core:gravel", {
 	tiles = {"ws_gravel.png",
 		{name = "ws_gravel.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1},
+	groups = {crumbly = 3, falling_node = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
     drop = {
         max_items = 1,
