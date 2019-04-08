@@ -105,6 +105,14 @@ minetest.register_on_respawnplayer(function(player)
 	hbhunger.exhaustion[name] = 0
 end)
 
+function hbhunger.heal(player)
+	-- reset hunger (and save)
+	local name = player:get_player_name()
+	hbhunger.hunger[name] = 30
+	hbhunger.set_hunger_raw(player)
+	hbhunger.exhaustion[name] = 0
+end
+
 local main_timer = 0
 local timer = 0
 local timer2 = 0
