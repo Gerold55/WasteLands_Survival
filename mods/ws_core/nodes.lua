@@ -63,14 +63,14 @@ minetest.register_node("ws_core:stone_with_iron", {
 	description = "Iron Ore",
 	tiles = {"ws_stone.png^ws_mineral_iron.png"},
 	groups = {cracky = 3},
-	drop = 'ws_core:iron',
+	drop = 'ws_core:iron_lump',
 })
 
 minetest.register_node("ws_core:stone_with_iron_dense", {
 	description = "Iron Ore",
 	tiles = {"ws_stone.png^ws_mineral_iron_dense.png"},
 	groups = {cracky = 3},
-	drop = 'ws_core:iron 3',
+	drop = 'ws_core:iron_lump 3',
 })
 
 minetest.register_node("ws_core:stone_with_copper", {
