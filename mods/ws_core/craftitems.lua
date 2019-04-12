@@ -188,3 +188,8 @@ minetest.register_craftitem("ws_core:clay_lump", {
 	description = "Clay Lump",
 	inventory_image = "ws_clay_lump.png",
 })
+
+minetest.register_craftitem("ws_core:gold_lump", {
+	description = "Gold Lump",
+	inventory_image = "ws_gold_lump.png",
+})
