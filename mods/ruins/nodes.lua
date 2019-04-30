@@ -147,7 +147,7 @@ minetest.register_node('ruins:brick_burnt', {
 	paramtype2 = 'facedir',
 })
 
-minetest.register_node("ws_core:block", {
+minetest.register_node("ruins:block", {
 	description = "Block",
 	tiles = {"ws_burnt_stone.png",
 		{name = "ws_burnt_stone.png",
