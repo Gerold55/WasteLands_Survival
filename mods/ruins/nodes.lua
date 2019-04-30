@@ -138,3 +138,19 @@ minetest.register_node('ruins:concrete', {
 	paramtype = 'light',
 	paramtype2 = 'facedir',
 })
+
+minetest.register_node('ruins:brick_burnt', {
+	description = 'Burnt Brick',
+	tiles = {name='ws_brick_ruin.png'},
+	groups = {cracky=3},
+	paramtype = 'light',
+	paramtype2 = 'facedir',
+})
+
+minetest.register_node("ws_core:block", {
+	description = "Block",
+	tiles = {"ws_burnt_stone.png",
+		{name = "ws_burnt_stone.png",
+			tileable_vertical = false}},
+	groups = {crumbly = 3},
+})
