@@ -1,0 +1,3 @@
+[submodule "mods/factory"]
+	path = mods/factory
+	url = https://github.com/theFox6/factory
