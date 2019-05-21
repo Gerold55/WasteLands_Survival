@@ -102,10 +102,10 @@ local function update_meta(meta)
 			"list[context;output;3,1;1,1;]"..
 			"list[context;src;0,4.5;8,3;]"..
 			"list[context;dst;4,0;4,3;]"..
-			ws_core.gui_bg..
-			ws_core.gui_bg_img..
-			ws_core.gui_slots..
-			ws_core.get_hotbar_bg(0,8) ..
+			default.gui_bg..
+			default.gui_bg_img..
+			default.gui_slots..
+			default.get_hotbar_bg(0,8) ..
 			"list[current_player;main;0,8;8,4;]" ..
 			"listring[current_player;main]"..
 			"listring[context;src]" ..
@@ -120,7 +120,7 @@ local function update_meta(meta)
 	end
 
 	local description, name = get_item_info(output)
-	local infotext = S("'%s' Autocrafter (%s)"):format(description, name)
+	local infotext = S("'@1' Autocrafter (@2)",description, name)
 
 	meta:set_string("infotext", infotext)
 	return true
@@ -152,6 +152,7 @@ minetest.register_node("factory:autocrafter", {
 		autocrafterCache[minetest.hash_node_position(pos)] = nil
 	end,
 	allow_metadata_inventory_put = function(pos, listname, index, stack)
+	  -- args: pos, listname, index, stack, player
 		local inv = minetest.get_meta(pos):get_inventory()
 		if listname == "recipe" then
 			stack:set_count(1)

@@ -3,53 +3,53 @@ local S = factory.S
 minetest.register_craft({
 	output = "factory:small_steel_gear 4",
 	recipe = {
-		{"ws_core:steel_ingot", "", "ws_core:steel_ingot"},
-		{"", "ws_core:steel_ingot", ""},
-		{"ws_core:steel_ingot", "", "ws_core:steel_ingot"}
+		{"default:steel_ingot", "", "default:steel_ingot"},
+		{"", "default:steel_ingot", ""},
+		{"default:steel_ingot", "", "default:steel_ingot"}
 	}
 })
 
 minetest.register_craft({
 	output = "factory:small_gold_gear 4",
 	recipe = {
-		{"ws_core:gold_ingot", "", "ws_core:gold_ingot"},
+		{"default:gold_ingot", "", "default:gold_ingot"},
 		{"", "factory:small_steel_gear", ""},
-		{"ws_core:gold_ingot", "", "ws_core:gold_ingot"}
+		{"default:gold_ingot", "", "default:gold_ingot"}
 	}
 })
 
 minetest.register_craft({
 	output = "factory:small_diamond_gear 4",
 	recipe = {
-		{"ws_core:diamond", "", "ws_core:diamond"},
+		{"default:diamond", "", "default:diamond"},
 		{"", "factory:small_gold_gear", ""},
-		{"ws_core:diamond", "", "ws_core:diamond"}
+		{"default:diamond", "", "default:diamond"}
 	}
 })
 
 minetest.register_craft({
 	output = "factory:scanner_chip",
 	recipe = {
-		{"ws_core:steel_ingot", "factory:copper_wire", "ws_core:mese_crystal"},
+		{"default:steel_ingot", "factory:copper_wire", "default:mese_crystal"},
 		{"", "factory:tree_sap", ""},
-		{"ws_core:mese_crystal", "", "ws_core:steel_ingot"}
+		{"default:mese_crystal", "", "default:steel_ingot"}
 	}
 })
 
 minetest.register_craft({
 	output = "factory:storage_tank",
 	recipe = {
-		{"ws_core:glass", 	"ws_core:steel_ingot", 		"ws_core:glass"},
-		{"ws_core:glass", 	"", 						"ws_core:glass"},
-		{"ws_core:glass", 	"ws_core:steel_ingot", 		"ws_core:glass"}
+		{"default:glass", 	"default:steel_ingot", 		"default:glass"},
+		{"default:glass", 	"", 						"default:glass"},
+		{"default:glass", 	"default:steel_ingot", 		"default:glass"}
 	}
 })
 
 minetest.register_craft({
 	output = "factory:sapling_fertilizer",
 	recipe = {
-		{"ws_core:dirt", 	"ws_core:dirt"},
-		{"ws_core:dirt",	"ws_core:dirt"},
+		{"default:dirt", 	"default:dirt"},
+		{"default:dirt",	"default:dirt"},
 	}
 })
 
@@ -75,23 +75,23 @@ factory.register_recipe_type("ind_squeezer", {
 
 factory.register_recipe("ind_squeezer",{
 	output = "factory:tree_sap",
-	input = {"ws_core:tree"}
+	input = {"default:tree"}
 })
 
 factory.register_recipe("ind_squeezer",{
 	output = "factory:tree_sap",
-	input = {"ws_core:jungletree"}
+	input = {"default:jungletree"}
 })
 
 factory.register_recipe("ind_squeezer",{
 	output = "factory:compressed_clay",
-	input = {"ws_core:clay_lump"}
+	input = {"default:clay_lump"}
 })
 
 
 factory.register_recipe("ind_squeezer",{
-	output = "ws_core:sandstone",
-	input = {"ws_core:sand"}
+	output = "default:sandstone",
+	input = {"default:sand"}
 })
 
 minetest.register_craft({
@@ -109,12 +109,12 @@ factory.register_recipe_type("wire_drawer", {
 
 factory.register_recipe("wire_drawer",{
 	output = "factory:steel_wire 2",
-	input = {"ws_core:steel_ingot"}
+	input = {"default:steel_ingot"}
 })
 
 factory.register_recipe("wire_drawer",{
 	output = "factory:copper_wire 2",
-	input = {"ws_core:copper_ingot"}
+	input = {"default:copper_ingot"}
 })
 
 factory.register_recipe("wire_drawer",{

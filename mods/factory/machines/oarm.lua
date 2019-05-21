@@ -4,7 +4,7 @@ local count_index = factory.count_index
 
 function oarm_handle (a, b, target, stack, obj)
 	--throws anything that is already in the inventory (more than one stack) out
-	if target.name:find("default:chest") then
+	if factory.has_main_inv(target) then
 		local meta = minetest.env:get_meta(b)
 		local inv = meta:get_inventory()
 		local inv_index = count_index(inv:get_list("main"))
@@ -15,23 +15,6 @@ function oarm_handle (a, b, target, stack, obj)
 			obj:moveto(vector.add(pos,dir_right), false)
 		else
 			if not insert(inv,"main", stack, obj) then
-				local pos = vector.subtract(b, a)
-				local dir_right = {x = a.z, y = a.y + 0.25, z = -a.x}
-				obj:moveto(vector.add(pos,dir_right), false)
-			end
-		end
-	end
-	if target.name == "factory:swapper" then
-		local meta = minetest.env:get_meta(b)
-		local inv = meta:get_inventory()
-		local inv_index = count_index(inv:get_list("input"))
-
-		if inv_index[stack:get_name()]~=nil and inv_index[stack:get_name()]>=99 then
-			local pos = vector.subtract(b, a)
-			local dir_right = {x = a.z, y = a.y + 0.25, z = -a.x}
-			obj:moveto(vector.add(pos,dir_right), false)
-		else
-			if not insert(inv,"input", stack, obj) then
 				local pos = vector.subtract(b, a)
 				local dir_right = {x = a.z, y = a.y + 0.25, z = -a.x}
 				obj:moveto(vector.add(pos,dir_right), false)
@@ -83,7 +66,7 @@ minetest.register_node("factory:overflowarm",{
 	tiles = {"factory_steel_noise.png"},
 	paramtype = "light",
 	description = S("Overflowing Pneumatic Mover"),
-	groups = {cracky=3},
+	groups = {cracky=3, factory_mover=1},
 	paramtype2 = "facedir",
 	legacy_facedir_simple = true,
 	node_box = {

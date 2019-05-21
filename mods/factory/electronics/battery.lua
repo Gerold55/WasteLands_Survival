@@ -68,8 +68,8 @@ minetest.register_lbm({
 minetest.register_craft({
   output = "factory:battery_pack",
   recipe = {
-    {"ws_core:steel_ingot", "factory:battery_item", "ws_core:steel_ingot"},
+    {"default:steel_ingot", "factory:battery_item", "default:steel_ingot"},
     {"factory:battery_item", "factory:battery_item", "factory:battery_item"},
-    {"ws_core:steel_ingot", "factory:battery_item", "ws_core:steel_ingot"},
+    {"default:steel_ingot", "factory:battery_item", "default:steel_ingot"},
   },
 })

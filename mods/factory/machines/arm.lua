@@ -4,7 +4,7 @@ minetest.register_node("factory:arm",{
 	tiles = {"factory_steel_noise.png"},
 	paramtype = "light",
 	description = S("Pneumatic Mover"),
-	groups = {cracky=3},
+	groups = {cracky=3, factory_mover=1},
 	paramtype2 = "facedir",
 	legacy_facedir_simple = true,
 	node_box = {
@@ -45,7 +45,7 @@ minetest.register_abm({
 				local target = minetest.get_node(b)
 				local stack = ItemStack(obj:get_luaentity().itemstring)
 
-				if target.name == "ws_core:barrel" or target.name == "ws_core:barrel_locked" then
+				if factory.has_main_inv(target) then
 					local meta = minetest.env:get_meta(b)
 					local inv = meta:get_inventory()
 					if not insert(inv,"main", stack, obj) then

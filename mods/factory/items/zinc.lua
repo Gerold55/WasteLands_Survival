@@ -36,9 +36,10 @@ if not minetest.get_modpath("technic_worldgen") then
 
 	minetest.register_node( ":technic:mineral_zinc", {
 		description = S("Zinc Ore"),
-		tiles = { "ws_stone.png^technic_mineral_zinc.png" },
+		tiles = { "default_stone.png^technic_mineral_zinc.png" },
 		is_ground_content = true,
 		groups = {cracky=3},
+		sounds = default.node_sound_stone_defaults(),
 		drop = "technic:zinc_lump",
 	})
 
@@ -47,6 +48,7 @@ if not minetest.get_modpath("technic_worldgen") then
 		tiles = { "technic_zinc_block.png" },
 		is_ground_content = true,
 		groups = {cracky=1, level=2},
+		sounds = default.node_sound_stone_defaults()
 	})
 
 	local zinc_params = {
@@ -62,7 +64,7 @@ if not minetest.get_modpath("technic_worldgen") then
 	minetest.register_ore({
 		ore_type = "scatter",
 		ore = "technic:mineral_zinc",
-		wherein = "ws_core:stone",
+		wherein = "default:stone",
 		clust_scarcity = 8*8*8,
 		clust_num_ores = 5,
 		clust_size = 7,
@@ -75,7 +77,7 @@ if not minetest.get_modpath("technic_worldgen") then
 	minetest.register_ore({
 		ore_type = "scatter",
 		ore = "technic:mineral_zinc",
-		wherein = "ws_core:stone",
+		wherein = "default:stone",
 		clust_scarcity = 6*6*6,
 		clust_num_ores = 4,
 		clust_size = 3,
@@ -87,6 +89,10 @@ if not minetest.get_modpath("technic_worldgen") then
 	})
 end
 
+minetest.register_alias("factory:zinc_lump",  "technic:zinc_lump")
+minetest.register_alias("factory:zinc_ingot", "technic:zinc_ingot")
+minetest.register_alias("factory:zinc_block", "technic:zinc_block")
+
 if minetest.get_modpath("moreblocks") and not minetest.get_modpath("extranodes") then
 	stairsplus:register_all("technic", "zinc_block", "technic:zinc_block", {
 		description=S("Zinc Block"),
@@ -94,7 +100,3 @@ if minetest.get_modpath("moreblocks") and not minetest.get_modpath("extranodes")
 		tiles={"technic_zinc_block.png"},
 	})
 end
-
-minetest.register_alias("technic:zinc_lump", "factory:zinc_lump")
-minetest.register_alias("technic:zinc_ingot", "factory:zinc_ingot")
-minetest.register_alias("technic:zinc_block", "factory:zinc_block")

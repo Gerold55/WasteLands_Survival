@@ -3,17 +3,11 @@ local insert = factory.insert_object_item
 
 function qarm_handle (a, b, target, stack, minv, obj)
 	local found = false
-	if target.name:find("default:chest") then
+	if factory.has_main_inv(target) then
 		local meta = minetest.env:get_meta(b)
 		local inv = meta:get_inventory()
 
 		if insert(inv,"main", stack, obj) then found = true end
-	end
-	if target.name == "factory:swapper" then
-		local meta = minetest.env:get_meta(b)
-		local inv = meta:get_inventory()
-
-		if insert(inv,"input", stack, obj) then found = true end
 	end
 	if factory.has_fuel_input(target) then
 		local meta = minetest.env:get_meta(b)
@@ -55,7 +49,7 @@ minetest.register_node("factory:queuedarm",{
 	tiles = {"factory_steel_noise.png"},
 	paramtype = "light",
 	description = S("Queued Pneumatic Mover"),
-	groups = {cracky=3},
+	groups = {cracky=3, factory_mover=1},
 	paramtype2 = "facedir",
 	legacy_facedir_simple = true,
 	node_box = {

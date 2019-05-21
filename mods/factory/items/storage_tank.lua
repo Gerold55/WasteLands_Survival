@@ -149,8 +149,8 @@ function factory.register_storage_tank(name, increment, tiles, plaintile, light,
 end
 
 factory.register_storage_tank("water", 4,
-	{{name="ws_water_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0}}},
-	"ws_water.png", 0, "bucket:bucket_water", "bucket:bucket_empty")
+	{{name="default_water_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0}}},
+	"default_water.png", 0, "bucket:bucket_water", "bucket:bucket_empty")
 factory.register_storage_tank("lava", 8,
-	{{name="ws_lava_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}},
-	"ws_lava.png", 13, "bucket:bucket_lava", "bucket:bucket_empty")
+	{{name="default_lava_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}},
+	"default_lava.png", 13, "bucket:bucket_lava", "bucket:bucket_empty")

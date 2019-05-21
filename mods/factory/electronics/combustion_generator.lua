@@ -48,6 +48,7 @@ minetest.register_node("factory:combustion_generator", {
 		return true
 	end,
 	allow_metadata_inventory_put = function(_, listname, _, stack)
+	  -- args: pos, listname, index, stack, player
 		if listname == "src" then
 			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
 				return stack:get_count()
@@ -125,8 +126,8 @@ minetest.register_abm({
 minetest.register_craft({
 	output = "factory:combustion_generator",
 	recipe = {
-		{"ws_core:steel_ingot", "factory:copper_wire", "ws_core:steel_ingot"},
+		{"default:steel_ingot", "factory:copper_wire", "default:steel_ingot"},
 		{"bucket:bucket_water", "factory:small_steel_gear", "factory:battery_item"},
-		{"ws_core:steel_ingot", "ws_core:furnace", "ws_core:steel_ingot"},
+		{"default:steel_ingot", "default:furnace", "default:steel_ingot"},
 	},
 })

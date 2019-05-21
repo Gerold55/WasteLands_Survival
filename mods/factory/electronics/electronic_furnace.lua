@@ -62,6 +62,7 @@ minetest.register_node("factory:electronic_furnace", {
 		return true
 	end,
 	allow_metadata_inventory_put = function(_, listname, _, stack)
+	  -- args: pos, listname, index, stack, player
 		if listname == "src" then
 			return stack:get_count()
 		elseif listname == "dst" then
@@ -134,8 +135,8 @@ minetest.register_abm({
 minetest.register_craft({
 	output = "factory:electronic_furnace",
 	recipe = {
-		{"ws_core:steel_ingot", "ws_core:furnace", "ws_core:steel_ingot"},
-		{"ws_core:steel_ingot", "factory:steel_wire", "factory:battery_item"},
-		{"ws_core:steel_ingot", "factory:battery_item", "ws_core:steel_ingot"},
+		{"default:steel_ingot", "default:furnace", "default:steel_ingot"},
+		{"default:steel_ingot", "factory:steel_wire", "factory:battery_item"},
+		{"default:steel_ingot", "factory:battery_item", "default:steel_ingot"},
 	},
 })
