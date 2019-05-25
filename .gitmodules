@@ -1,3 +1,6 @@
 [submodule "mods/factory"]
 	path = mods/factory
 	url = https://github.com/theFox6/factory
+[submodule "mods/weather"]
+	path = mods/weather
+	url = https://github.com/theFox6/minetest_mod_weather
