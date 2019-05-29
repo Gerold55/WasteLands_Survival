@@ -8,5 +8,5 @@ weather_mod.register_downfall("ws_weather:acidrain",{
 	size=25,
 	texture="ws_weather_acidrain.png",
 	enable_lightning=true,
-	damage_player={amount = 1, chance = .8, steps = 80},
+	damage_player={amount = 1, chance = .8, time = 60},
 })
