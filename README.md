@@ -1,3 +1,4 @@
+# WasteLands Survival
 ========================================================================
 CORE DESIGN PRINCIPLES
 ------------------------------------------------------------------------
@@ -30,3 +31,15 @@ CORE DESIGN PRINCIPLES
 
 ........................................................................
 ========================================================================
+
+## downloading
+Make sure that you add the "--recursive" option to clone:
+```
+git clone --recursive https://github.com/Gerold55/WasteLands_Survival.git
+```
+else the submodule folders will be empty.
+
+To pull all changes in the repo including changes in the submodules use:
+```
+git pull --recurse-submodules
+```
