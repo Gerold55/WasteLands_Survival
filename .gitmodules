@@ -4,3 +4,6 @@
 [submodule "mods/weather"]
 	path = mods/weather
 	url = https://github.com/theFox6/minetest_mod_weather
+[submodule "mods/modutil"]
+	path = mods/modutil
+	url = https://github.com/theFox6/modutil.git
