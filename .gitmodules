@@ -7,3 +7,6 @@
 [submodule "mods/modutil"]
 	path = mods/modutil
 	url = https://github.com/theFox6/modutil.git
+[submodule "mods/journal_modpack"]
+	path = mods/journal_modpack
+	url = https://github.com/theFox6/journal.git
