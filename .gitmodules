@@ -7,3 +7,9 @@
 [submodule "mods/modutil"]
 	path = mods/modutil
 	url = https://github.com/theFox6/modutil.git
+[submodule "mods/neverenoughitems"]
+	path = mods/neverenoughitems
+	url = https://gitlab.com/trinium-mods/neverenoughitems
+[submodule "mods/trinium_api"]
+	path = mods/trinium_api
+	url = https://gitlab.com/trinium-mods/trinium-api
