@@ -35,7 +35,7 @@ journal.triggers.register_on_join({
 
 --entry when dying, somebody else continues the journal
 journal.triggers.register_on_die(function(data)
-	journal.add_entry(data.playerName,"ws_story:survivor","Today I found this old journal"..
+	journal.add_entry(data.playerName,"ws_story:survivor","Today I found this old journal. "..
 		"Poor bastard who left this behind... I guess I'll just write a bit about my own life into this. "..
 		"Today even my last rations came to an end, will I be the next victim of these wastelands?", true)
 end)
@@ -47,8 +47,11 @@ journal.triggers.register_on_dig({
 		return not journal.playerdata_getKey(player,"ws_story:treepunch")
 	end,
 	call = function(data)
-		journal.add_entry(data.playerName,"ws_story:survivor","Ouch, just hitting wood won't do."..
-			"I guess I need a hatchet or an axe.",true)
-		journal.playerdata_setKey(data.playerName,"ws_story:treepunch",true)
+		print("wood dug")
+		if minetest.get_item_group(data.tool, "hatchet") == 0 and minetest.get_item_group(data.tool, "axe") == 0 then
+			journal.add_entry(data.playerName,"ws_story:survivor","Ouch, just hitting wood won't do."..
+				"I guess I need a hatchet or an axe.",true)
+			journal.playerdata_setKey(data.playerName,"ws_story:treepunch",true)
+		end
 	end
 })
