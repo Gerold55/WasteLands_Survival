@@ -10,3 +10,9 @@
 [submodule "mods/journal_modpack"]
 	path = mods/journal_modpack
 	url = https://github.com/theFox6/journal.git
+[submodule "mods/neverenoughitems"]
+	path = mods/neverenoughitems
+	url = https://gitlab.com/trinium-mods/neverenoughitems
+[submodule "mods/trinium_api"]
+	path = mods/trinium_api
+	url = https://gitlab.com/trinium-mods/trinium-api
