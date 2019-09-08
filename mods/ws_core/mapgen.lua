@@ -621,6 +621,18 @@ function ws_core.register_ores()
 		y_max          = 64,
 		y_min          = -127,
 	})
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:gravel",
+		wherein         = {"ws_core:dirt_dry"},
+		clust_scarcity = 15 * 15 * 15,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 64,
+		y_min          = -127,
+	})
+	
 	-- Scatter ores
 	
 	-- Oil
@@ -632,6 +644,28 @@ function ws_core.register_ores()
 		clust_num_ores = 5,
 		clust_size     = 3,
 		y_max          = -4,
+		y_min          = -31000,
+	})
+	
+	-- Oil
+	
+	minetest.register_ore({
+		ore             = "ws_core:bone",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 60 * 60 * 60,
+		clust_num_ores = 2,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	minetest.register_ore({
+		ore             = "ws_core:bone",
+		wherein         = {"ws_core:dirt_dry"},
+		clust_scarcity = 25 * 25 * 25,
+		clust_num_ores = 2,
+		clust_size     = 3,
+		y_max          = 31000,
 		y_min          = -31000,
 	})
 
@@ -1276,6 +1310,25 @@ function ws_core.register_mgv6_decorations()
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})
+	
+	minetest.register_decoration({
+		name = "ws_core:dry_shrub",
+		deco_type = "simple",
+		place_on = {"ws_core:dirt_dry"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.035,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		y_max = 30,
+		y_min = 1,
+		decoration = "ws_core:dry_shrub",
+		param2 = 4,
+	})
 end
 
 function ws_core.register_decorations()
@@ -1296,6 +1349,27 @@ function ws_core.register_decorations()
 			persist = 0.6
 		},
 		biomes = {"desert"},
+		y_max = 31000,
+		y_min = 2,
+		decoration = "ws_core:dry_shrub",
+		param2 = 4,
+	})
+	
+	minetest.register_decoration({
+		name = "ws_core:dry_shrub",
+		deco_type = "simple",
+		place_on = {"ws_core:dirt_dry",
+			"ws_core:dirt_dry"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.02,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		biomes = {"dirtland"},
 		y_max = 31000,
 		y_min = 2,
 		decoration = "ws_core:dry_shrub",

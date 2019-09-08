@@ -40,8 +40,23 @@ minetest.register_node("ws_core:gravel", {
     drop = {
         max_items = 1,
         items = {
-            {items = {'ws_core:flint'}, rarity = 19},
+            {items = {'ws_core:flint'}, rarity = 15},
             {items = {'ws_core:gravel'}}
+        }
+    }
+})
+
+minetest.register_node("ws_core:bone", {
+	description = "Bone",
+	tiles = {"ws_bone.png",
+		{name = "ws_bone.png",
+			tileable_vertical = false}},
+	groups = {cracky = 1},
+	sounds = ws_core.node_sound_dirt_ws_cores(),
+    drop = {
+        max_items = 1,
+        items = {
+            {items = {'ws_core:bone'}}
         }
     }
 })
