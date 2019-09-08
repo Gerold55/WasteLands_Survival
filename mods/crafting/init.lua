@@ -32,3 +32,12 @@ end
 api.recipes.add_implementor("crafting_table", "crafting:crafting_table")
 api.recipes.add_implementor("furnace", "factory:ind_furnace")
 api.recipes.add_implementor("furnace", "factory:electronic_furnace")
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "crafting:crafting_table",
+	recipe = {
+		"ws_core:wood", "ws_core:wood",
+		"ws_core:wood", "ws_core:wood"
+	},
+})
