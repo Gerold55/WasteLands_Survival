@@ -18,7 +18,7 @@ minetest.register_alias("mapgen_snowblock", "ws_core:snowblock")
 minetest.register_alias("mapgen_snow", "ws_core:snow")
 minetest.register_alias("mapgen_ice", "ws_core:ice")
 minetest.register_alias("mapgen_sandstone", "ws_core:sandstone")
-minetest.register_alias("mapgen_jungletree", "ws_core:dead_tree")
+minetest.register_alias("mapgen_jungletree", "ws_core:dead_jungletree")
 minetest.register_alias("mapgen_jungleleaves", "air")
 
 -- Flora
@@ -78,6 +78,25 @@ function ws_core.register_mgv6_ores()
 		ore             = "ws_core:gravel",
 		wherein         = {"ws_core:stone"},
 		clust_scarcity  = 16 * 16 * 16,
+		clust_size      = 5,
+		y_max           = 31000,
+		y_min           = -31000,
+		noise_threshold = 0.0,
+		noise_params    = {
+			offset = 0.5,
+			scale = 0.2,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 766,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:gravel",
+		wherein         = {"ws_core:dirt_dry"},
+		clust_scarcity  = 5 * 5 * 5,
 		clust_size      = 5,
 		y_max           = 31000,
 		y_min           = -31000,
@@ -1103,6 +1122,53 @@ function ws_core.register_biomes(upper_limit)
 		y_min = -500,
 		heat_point = 50,
 		humidity_point = 35,
+	})
+	
+	-- Forest
+	
+	minetest.register_biome({
+		name = "forest",
+		node_top = "ws_core:dry_dirt_forest",
+		depth_top = 1,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 2,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		y_max = 200,
+		y_min = -40,
+		heat_point = 50,
+		humidity_point = 35,
+	})
+
+	minetest.register_biome({
+		name = "forest_dunes",
+		node_top = "ws_core:sandy_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:sandy_dirt",
+		depth_filler = 2,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		vertical_blend = 1,
+		y_max = 5,
+		y_min = 4,
+		heat_point = 50,
+		humidity_point = 35,
+	})
+	
+	-- StoneLands
+	
+	minetest.register_biome({
+		name = "stonelands",
+		node_top = "ws_core:stone",
+		depth_top = 1,
+		node_filler = "ws_core:stone",
+		depth_filler = 2,
+		node_riverbed = "ws_core:stone",
+		depth_riverbed = 4,
+		y_max = 31000,
+		y_min = 1000,
+		heat_point = 150,
+		humidity_point = 50,
 	})
 
 	-- Desert
