@@ -14,12 +14,13 @@ minetest.register_node("ws_core:dirt_dry", {
     }
 })
 
-minetest.register_node("ws_core:dirt_dry_forest", {
-	description = "Dry Forest Dirt",
-	tiles = {"ws_dirt_dry_forest.png",
-		{name = "ws_dirt_dry_forest.png",
+minetest.register_node("ws_core:dirt_forest_litter", {
+	description = "Dirt with Dry Forest Litter",
+	tiles = {"ws_forest_litter.png",
+		"ws_dirt_dry.png",
+		{name = "ws_dirt_dry.png^ws_forest_litter_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1},
+	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
 	drop = {
         max_items = 1,
@@ -48,17 +49,13 @@ minetest.register_node("ws_core:gravel", {
 
 minetest.register_node("ws_core:bone", {
 	description = "Bone",
-	tiles = {"ws_bone.png",
-		{name = "ws_bone.png",
-			tileable_vertical = false}},
-	groups = {cracky = 1},
+	tiles = {"ws_bone_top.png", "ws_bone_top.png",
+		"ws_bone.png"},
+	paramtype2 = "facedir",
+	is_ground_content = false,
+	groups = {choppy = 2, cracky = 2, flammable = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
-    drop = {
-        max_items = 1,
-        items = {
-            {items = {'ws_core:bone'}}
-        }
-    }
+	on_place = minetest.rotate_node
 })
 
 minetest.register_node("ws_core:sandy_dirt", {
