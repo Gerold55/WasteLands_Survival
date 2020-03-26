@@ -5,7 +5,7 @@
 minetest.register_alias("mapgen_stone", "ws_core:stone")
 minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
 minetest.register_alias("default:dirt", "ws_core:dirt")
-minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry1")
+minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry")
 minetest.register_alias("mapgen_sand", "ws_core:sandy_dirt")
 minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
 minetest.register_alias("mapgen_river_water_source", "ws_core:river_water_source_toxic")
@@ -18,13 +18,17 @@ minetest.register_alias("mapgen_snowblock", "ws_core:snowblock")
 minetest.register_alias("mapgen_snow", "ws_core:snow")
 minetest.register_alias("mapgen_ice", "ws_core:ice")
 minetest.register_alias("mapgen_sandstone", "ws_core:sandstone")
-minetest.register_alias("mapgen_jungletree", "ws_core:dead_jungletree")
+minetest.register_alias("mapgen_jungletree", "ws_core:dead_tree")
 minetest.register_alias("mapgen_jungleleaves", "air")
+minetest.register_alias("mapgen_junglegrass", "air")
+minetest.register_alias("mapgen_pine_tree", "ws_core:dead_tree")
+minetest.register_alias("mapgen_pine_needles", "air")
 
 -- Flora
 
 minetest.register_alias("mapgen_tree", "ws_core:dead_tree")
-minetest.register_alias("mapgen_apple", "ws_core:air")
+minetest.register_alias("mapgen_leaves", "air")
+minetest.register_alias("mapgen_apple", "air")
 
 -- Dungeons
 
@@ -96,7 +100,7 @@ function ws_core.register_mgv6_ores()
 		ore_type        = "blob",
 		ore             = "ws_core:gravel",
 		wherein         = {"ws_core:dirt_dry"},
-		clust_scarcity  = 5 * 5 * 5,
+		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_max           = 31000,
 		y_min           = -31000,
@@ -1189,22 +1193,6 @@ function ws_core.register_biomes(upper_limit)
 		humidity_point = 35,
 	})
 	
-	-- StoneLands
-	
-	minetest.register_biome({
-		name = "stonelands",
-		node_top = "ws_core:stone",
-		depth_top = 1,
-		node_filler = "ws_core:stone",
-		depth_filler = 2,
-		node_riverbed = "ws_core:stone",
-		depth_riverbed = 4,
-		y_max = 31000,
-		y_min = 1000,
-		heat_point = 150,
-		humidity_point = 50,
-	})
-
 	-- Desert
 
 	minetest.register_biome({
@@ -1237,6 +1225,38 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 92,
 		humidity_point = 16,
 	})
+		-- ClayLands
+	
+	minetest.register_biome({
+		name = "claylands",
+		node_top = "ws_core:clay_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:clay_dirt",
+		depth_filler = 2,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		y_max = 31000,
+		y_min = 1,
+		heat_point = 50,
+		humidity_point = 40,
+	})
+	
+	minetest.register_biome({
+		name = "clay_ocean",
+		node_top = "ws_core:clay_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:clay_dirt",
+		depth_filler = 2,
+		node_stone = "ws_core:stone",
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 10,
+		vertical_blend = 1,
+		y_max = -600,
+		y_min = -500,
+		heat_point = 50,
+		humidity_point = 40,
+	})
+	
 end
 
 -- Biomes for floatlands
@@ -1293,7 +1313,6 @@ function ws_core.register_mgv6_decorations()
 	-- Dry shrubs
 
 	minetest.register_decoration({
-		name = "ws_core:dry_shrub",
 		deco_type = "simple",
 		place_on = {"ws_core:sandy_dirt"},
 		sidelen = 16,
@@ -1312,7 +1331,6 @@ function ws_core.register_mgv6_decorations()
 	})
 	
 	minetest.register_decoration({
-		name = "ws_core:dry_shrub",
 		deco_type = "simple",
 		place_on = {"ws_core:dirt_dry"},
 		sidelen = 16,
@@ -1335,7 +1353,6 @@ function ws_core.register_decorations()
 	-- Dry shrub
 
 	minetest.register_decoration({
-		name = "ws_core:dry_shrub",
 		deco_type = "simple",
 		place_on = {"ws_core:sandy_dirt",
 			"ws_core:sandy_dirt"},
@@ -1356,7 +1373,6 @@ function ws_core.register_decorations()
 	})
 	
 	minetest.register_decoration({
-		name = "ws_core:dry_shrub",
 		deco_type = "simple",
 		place_on = {"ws_core:dirt_dry",
 			"ws_core:dirt_dry"},
@@ -1371,7 +1387,7 @@ function ws_core.register_decorations()
 		},
 		biomes = {"dirtland"},
 		y_max = 31000,
-		y_min = 2,
+		y_min = 0,
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})
