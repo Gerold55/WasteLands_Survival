@@ -8,6 +8,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	type = "shapeless",
+	output = "ws_core:wood",
+	recipe = {
+		"ws_core:stick", "ws_core:stick",
+		"ws_core:stick", "ws_core:stick"
+	},
+})
+
+minetest.register_craft({
 	output = 'ws_core:junglewood 4',
 	recipe = {
 		{'ws_core:jungletree'},
@@ -83,9 +92,34 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'ws_core:pick_wood',
+	output = 'ws_core:bone_shards 9',
 	recipe = {
-		{'group:wood', 'group:wood', 'group:wood'},
+		{'ws_core:bone'},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:bone',
+	recipe = {
+		{'ws_core:bone_shards', 'ws_core:bone_shards', 'ws_core:bone_shards'},
+		{'ws_core:bone_shards', 'ws_core:bone_shards', 'ws_core:bone_shards'},
+		{'ws_core:bone_shards', 'ws_core:bone_shards', 'ws_core:bone_shards'},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:pick_bone',
+	recipe = {
+		{'ws_core:bone_shards', 'ws_core:bone_shards', 'ws_core:bone_shards'},
+		{'', 'group:stick', ''},
+		{'', 'group:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:pick_flint',
+	recipe = {
+		{'ws_core:flint', 'ws_core:flint', 'ws_core:flint'},
 		{'', 'group:stick', ''},
 		{'', 'group:stick', ''},
 	}
@@ -137,9 +171,18 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'ws_core:shovel_wood',
+	output = 'ws_core:shovel_flint',
 	recipe = {
-		{'group:wood'},
+		{'ws_core:flint'},
+		{'group:stick'},
+		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:shovel_bone',
+	recipe = {
+		{'ws_core:bone_shards'},
 		{'group:stick'},
 		{'group:stick'},
 	}
@@ -196,17 +239,35 @@ minetest.register_craft({
 	output = 'ws_core:hatchet_flint',
 	recipe = {
 	{'','ws_core:flint', 'ws_core:flint'},
-	{'', 'ws_core:flint', 'ws_core:flint'},
+	{'', 'ws_core:stick', 'ws_core:flint'},
 	{'', 'ws_core:stick', ''},
 	}
 })
 
 minetest.register_craft({
-	output = 'ws_core:axe_wood',
+	output = 'ws_core:hatchet_flint',
 	recipe = {
-		{'group:wood', 'group:wood'},
-		{'group:wood', 'group:stick'},
-		{'', 'group:stick'},
+	{'ws_core:flint','ws_core:flint', ''},
+	{'ws_core:flint', 'ws_core:stick', ''},
+	{'', 'ws_core:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:hatchet_bone',
+	recipe = {
+	{'ws_core:bone_shards','ws_core:bone_shards', ''},
+	{'ws_core:bone_shards', 'ws_core:stick', ''},
+	{'', 'ws_core:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:hatchet_bone',
+	recipe = {
+	{'','ws_core:bone_shards', 'ws_core:bone_shards'},
+	{'', 'ws_core:stick', 'ws_core:bone_shards'},
+	{'', 'ws_core:stick', ''},
 	}
 })
 
@@ -238,29 +299,11 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'ws_core:axe_mese',
-	recipe = {
-		{'ws_core:mese_crystal', 'ws_core:mese_crystal'},
-		{'ws_core:mese_crystal', 'group:stick'},
-		{'', 'group:stick'},
-	}
-})
-
-minetest.register_craft({
 	output = 'ws_core:axe_diamond',
 	recipe = {
 		{'ws_core:diamond', 'ws_core:diamond'},
 		{'ws_core:diamond', 'group:stick'},
 		{'', 'group:stick'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:sword_wood',
-	recipe = {
-		{'group:wood'},
-		{'group:wood'},
-		{'group:stick'},
 	}
 })
 
@@ -292,15 +335,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'ws_core:sword_mese',
-	recipe = {
-		{'ws_core:mese_crystal'},
-		{'ws_core:mese_crystal'},
-		{'group:stick'},
-	}
-})
-
-minetest.register_craft({
 	output = 'ws_core:sword_diamond',
 	recipe = {
 		{'ws_core:diamond'},
@@ -323,21 +357,6 @@ minetest.register_craft({
 		{'group:wood', '', 'group:wood'},
 		{'group:wood', 'group:wood', 'group:wood'},
 	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:chest_locked',
-	recipe = {
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'group:wood', 'ws_core:steel_ingot', 'group:wood'},
-		{'group:wood', 'group:wood', 'group:wood'},
-	}
-})
-
-minetest.register_craft( {
-	type = "shapeless",
-	output = "ws_core:chest_locked",
-	recipe = {"ws_core:chest", "ws_core:steel_ingot"},
 })
 
 minetest.register_craft({
@@ -503,70 +522,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "ws_core:desert_sandstone",
-	recipe = {
-		{"ws_core:desert_sand", "ws_core:desert_sand"},
-		{"ws_core:desert_sand", "ws_core:desert_sand"},
-	}
-})
-
-minetest.register_craft({
-	output = "ws_core:desert_sand 4",
-	recipe = {
-		{"ws_core:desert_sandstone"},
-	}
-})
-
-minetest.register_craft({
-	output = "ws_core:desert_sandstone_brick 4",
-	recipe = {
-		{"ws_core:desert_sandstone", "ws_core:desert_sandstone"},
-		{"ws_core:desert_sandstone", "ws_core:desert_sandstone"},
-	}
-})
-
-minetest.register_craft({
-	output = "ws_core:desert_sandstone_block 9",
-	recipe = {
-		{"ws_core:desert_sandstone", "ws_core:desert_sandstone", "ws_core:desert_sandstone"},
-		{"ws_core:desert_sandstone", "ws_core:desert_sandstone", "ws_core:desert_sandstone"},
-		{"ws_core:desert_sandstone", "ws_core:desert_sandstone", "ws_core:desert_sandstone"},
-	}
-})
-
-minetest.register_craft({
-	output = "ws_core:silver_sandstone",
-	recipe = {
-		{"ws_core:silver_sand", "ws_core:silver_sand"},
-		{"ws_core:silver_sand", "ws_core:silver_sand"},
-	}
-})
-
-minetest.register_craft({
-	output = "ws_core:silver_sand 4",
-	recipe = {
-		{"ws_core:silver_sandstone"},
-	}
-})
-
-minetest.register_craft({
-	output = "ws_core:silver_sandstone_brick 4",
-	recipe = {
-		{"ws_core:silver_sandstone", "ws_core:silver_sandstone"},
-		{"ws_core:silver_sandstone", "ws_core:silver_sandstone"},
-	}
-})
-
-minetest.register_craft({
-	output = "ws_core:silver_sandstone_block 9",
-	recipe = {
-		{"ws_core:silver_sandstone", "ws_core:silver_sandstone", "ws_core:silver_sandstone"},
-		{"ws_core:silver_sandstone", "ws_core:silver_sandstone", "ws_core:silver_sandstone"},
-		{"ws_core:silver_sandstone", "ws_core:silver_sandstone", "ws_core:silver_sandstone"},
-	}
-})
-
-minetest.register_craft({
 	output = 'ws_core:clay',
 	recipe = {
 		{'ws_core:clay_lump', 'ws_core:clay_lump'},
@@ -689,39 +644,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'ws_core:obsidian_shard 9',
-	recipe = {
-		{'ws_core:obsidian'}
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:obsidian',
-	recipe = {
-		{'ws_core:obsidian_shard', 'ws_core:obsidian_shard', 'ws_core:obsidian_shard'},
-		{'ws_core:obsidian_shard', 'ws_core:obsidian_shard', 'ws_core:obsidian_shard'},
-		{'ws_core:obsidian_shard', 'ws_core:obsidian_shard', 'ws_core:obsidian_shard'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:obsidianbrick 4',
-	recipe = {
-		{'ws_core:obsidian', 'ws_core:obsidian'},
-		{'ws_core:obsidian', 'ws_core:obsidian'}
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:obsidian_block 9',
-	recipe = {
-		{'ws_core:obsidian', 'ws_core:obsidian', 'ws_core:obsidian'},
-		{'ws_core:obsidian', 'ws_core:obsidian', 'ws_core:obsidian'},
-		{'ws_core:obsidian', 'ws_core:obsidian', 'ws_core:obsidian'},
-	}
-})
-
-minetest.register_craft({
 	output = 'ws_core:stonebrick 4',
 	recipe = {
 		{'ws_core:stone', 'ws_core:stone'},
@@ -735,23 +657,6 @@ minetest.register_craft({
 		{'ws_core:stone', 'ws_core:stone', 'ws_core:stone'},
 		{'ws_core:stone', 'ws_core:stone', 'ws_core:stone'},
 		{'ws_core:stone', 'ws_core:stone', 'ws_core:stone'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:desert_stonebrick 4',
-	recipe = {
-		{'ws_core:desert_stone', 'ws_core:desert_stone'},
-		{'ws_core:desert_stone', 'ws_core:desert_stone'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:desert_stone_block 9',
-	recipe = {
-		{'ws_core:desert_stone', 'ws_core:desert_stone', 'ws_core:desert_stone'},
-		{'ws_core:desert_stone', 'ws_core:desert_stone', 'ws_core:desert_stone'},
-		{'ws_core:desert_stone', 'ws_core:desert_stone', 'ws_core:desert_stone'},
 	}
 })
 
@@ -803,12 +708,6 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "cooking",
-	output = "ws_core:obsidian_glass",
-	recipe = "ws_core:obsidian_shard",
-})
-
-minetest.register_craft({
-	type = "cooking",
 	output = "ws_core:stone",
 	recipe = "ws_core:cobble",
 })
@@ -817,12 +716,6 @@ minetest.register_craft({
 	type = "cooking",
 	output = "ws_core:stone",
 	recipe = "ws_core:mossycobble",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "ws_core:desert_stone",
-	recipe = "ws_core:desert_cobble",
 })
 
 minetest.register_craft({
@@ -1037,12 +930,6 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "ws_core:junglegrass",
-	burntime = 3,
-})
-
-minetest.register_craft({
-	type = "fuel",
 	recipe = "group:leaves",
 	burntime = 4,
 })
@@ -1091,13 +978,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "ws_core:chest",
-	burntime = 30,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:chest_locked",
+	recipe = "ws_core:barrel",
 	burntime = 30,
 })
 
@@ -1119,23 +1000,6 @@ minetest.register_craft({
 	burntime = 2,
 })
 
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:dry_grass_1",
-	burntime = 2,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:fern_1",
-	burntime = 2,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:marram_grass_1",
-	burntime = 2,
-})
 
 minetest.register_craft({
 	type = "fuel",
@@ -1157,59 +1021,12 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "ws_core:dry_shrub",
-	burntime = 2,
-})
-
-minetest.register_craft({
-	type = "fuel",
 	recipe = "group:stick",
 	burntime = 1,
 })
 
 
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:pick_wood",
-	burntime = 6,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:shovel_wood",
-	burntime = 4,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:axe_wood",
-	burntime = 6,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:sword_wood",
-	burntime = 5,
-})
-
 --tools--
-minetest.register_craft({
-	output = 'ws_core:pick_bone',
-	recipe = {
-		{'ws_core:flint', 'ws_core:flint', 'ws_core:flint'},
-		{'', 'group:stick', ''},
-		{'', 'group:stick', ''},
-	}
-})
-minetest.register_craft({
-	output = 'useful_default:axe_flint',
-	recipe = {
-		{'', 'ws_core:flint', 'ws_core:flint'},
-		{'', 'group:stick', 'ws_core:flint'},
-		{'', 'group:stick', ''},
-	}
-})
-
 minetest.register_craft({
 	output = 'ws_core:knife_flint',
 	recipe = {
@@ -1218,17 +1035,25 @@ minetest.register_craft({
 		{'', 'group:stick', ''},
 	}
 })
+
 minetest.register_craft({
 	output = 'ws_core:knife_bone',
 	recipe = {
-		{'', '', 'mobs:bone'},
-		{'', '', 'mobs:bone'},
+		{'', '', 'ws_core:bone_shards'},
+		{'', '', 'ws_core:bone_shards'},
 		{'', 'group:stick', ''},
 	}
 })
 
-minetest.register_craftitem("ws_core:flint", {
-    description = "Flint",
-inventory_image = "ws_flint.png"
+minetest.register_craftitem('ws_core:flint', {
+    description = 'Flint',
+	inventory_image = 'ws_flint.png'
 })
 		
+minetest.register_craft({
+	output = 'ws_core:flint 4',
+	recipe = {
+		{'ws_core:gravel', 'ws_core:gravel'},
+		{'ws_core:gravel', 'ws_core:gravel'},
+	}
+})

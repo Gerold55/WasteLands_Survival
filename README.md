@@ -33,11 +33,17 @@ CORE DESIGN PRINCIPLES
 ========================================================================
 
 ## downloading
-Make sure that you add the "--recursive" option to clone:
+When cloning first add "--recursive" option to clone including all submodules:
 ```
 git clone --recursive https://github.com/Gerold55/WasteLands_Survival.git
 ```
 else the submodule folders will be empty.
+
+If one of the submodule folders is empty use:
+```
+git submodule update --init
+```
+This will clone all missing submodules.
 
 To pull all changes in the repo including changes in the submodules use:
 ```

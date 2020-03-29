@@ -5,7 +5,7 @@
 minetest.register_alias("mapgen_stone", "ws_core:stone")
 minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
 minetest.register_alias("default:dirt", "ws_core:dirt")
-minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry1")
+minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry")
 minetest.register_alias("mapgen_sand", "ws_core:sandy_dirt")
 minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
 minetest.register_alias("mapgen_river_water_source", "ws_core:river_water_source_toxic")
@@ -20,11 +20,15 @@ minetest.register_alias("mapgen_ice", "ws_core:ice")
 minetest.register_alias("mapgen_sandstone", "ws_core:sandstone")
 minetest.register_alias("mapgen_jungletree", "ws_core:dead_tree")
 minetest.register_alias("mapgen_jungleleaves", "air")
+minetest.register_alias("mapgen_junglegrass", "air")
+minetest.register_alias("mapgen_pine_tree", "ws_core:dead_tree")
+minetest.register_alias("mapgen_pine_needles", "air")
 
 -- Flora
 
 minetest.register_alias("mapgen_tree", "ws_core:dead_tree")
-minetest.register_alias("mapgen_apple", "ws_core:air")
+minetest.register_alias("mapgen_leaves", "air")
+minetest.register_alias("mapgen_apple", "air")
 
 -- Dungeons
 
@@ -77,6 +81,25 @@ function ws_core.register_mgv6_ores()
 		ore_type        = "blob",
 		ore             = "ws_core:gravel",
 		wherein         = {"ws_core:stone"},
+		clust_scarcity  = 16 * 16 * 16,
+		clust_size      = 5,
+		y_max           = 31000,
+		y_min           = -31000,
+		noise_threshold = 0.0,
+		noise_params    = {
+			offset = 0.5,
+			scale = 0.2,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 766,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:gravel",
+		wherein         = {"ws_core:dirt_dry"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_max           = 31000,
@@ -602,6 +625,18 @@ function ws_core.register_ores()
 		y_max          = 64,
 		y_min          = -127,
 	})
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:gravel",
+		wherein         = {"ws_core:dirt_dry"},
+		clust_scarcity = 15 * 15 * 15,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 64,
+		y_min          = -127,
+	})
+	
 	-- Scatter ores
 	
 	-- Oil
@@ -613,6 +648,28 @@ function ws_core.register_ores()
 		clust_num_ores = 5,
 		clust_size     = 3,
 		y_max          = -4,
+		y_min          = -31000,
+	})
+	
+	-- Oil
+	
+	minetest.register_ore({
+		ore             = "ws_core:bone",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 60 * 60 * 60,
+		clust_num_ores = 2,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	minetest.register_ore({
+		ore             = "ws_core:bone",
+		wherein         = {"ws_core:dirt_dry"},
+		clust_scarcity = 25 * 25 * 25,
+		clust_num_ores = 2,
+		clust_size     = 3,
+		y_max          = 31000,
 		y_min          = -31000,
 	})
 
@@ -1104,7 +1161,38 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 50,
 		humidity_point = 35,
 	})
+	
+	-- Forest
+	
+	minetest.register_biome({
+		name = "forest",
+		node_top = "ws_core:dry_dirt_forest",
+		depth_top = 1,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 2,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		y_max = 200,
+		y_min = -40,
+		heat_point = 50,
+		humidity_point = 35,
+	})
 
+	minetest.register_biome({
+		name = "forest_dunes",
+		node_top = "ws_core:sandy_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:sandy_dirt",
+		depth_filler = 2,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		vertical_blend = 1,
+		y_max = 5,
+		y_min = 4,
+		heat_point = 50,
+		humidity_point = 35,
+	})
+	
 	-- Desert
 
 	minetest.register_biome({
@@ -1137,6 +1225,38 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 92,
 		humidity_point = 16,
 	})
+		-- ClayLands
+	
+	minetest.register_biome({
+		name = "claylands",
+		node_top = "ws_core:clay_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:clay_dirt",
+		depth_filler = 2,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		y_max = 31000,
+		y_min = 1,
+		heat_point = 50,
+		humidity_point = 40,
+	})
+	
+	minetest.register_biome({
+		name = "clay_ocean",
+		node_top = "ws_core:clay_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:clay_dirt",
+		depth_filler = 2,
+		node_stone = "ws_core:stone",
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 10,
+		vertical_blend = 1,
+		y_max = -600,
+		y_min = -500,
+		heat_point = 50,
+		humidity_point = 40,
+	})
+	
 end
 
 -- Biomes for floatlands
@@ -1193,9 +1313,26 @@ function ws_core.register_mgv6_decorations()
 	-- Dry shrubs
 
 	minetest.register_decoration({
-		name = "ws_core:dry_shrub",
 		deco_type = "simple",
 		place_on = {"ws_core:sandy_dirt"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.035,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		y_max = 30,
+		y_min = 1,
+		decoration = "ws_core:dry_shrub",
+		param2 = 4,
+	})
+	
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"ws_core:dirt_dry"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -1216,7 +1353,6 @@ function ws_core.register_decorations()
 	-- Dry shrub
 
 	minetest.register_decoration({
-		name = "ws_core:dry_shrub",
 		deco_type = "simple",
 		place_on = {"ws_core:sandy_dirt",
 			"ws_core:sandy_dirt"},
@@ -1232,6 +1368,26 @@ function ws_core.register_decorations()
 		biomes = {"desert"},
 		y_max = 31000,
 		y_min = 2,
+		decoration = "ws_core:dry_shrub",
+		param2 = 4,
+	})
+	
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"ws_core:dirt_dry",
+			"ws_core:dirt_dry"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.02,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		biomes = {"dirtland"},
+		y_max = 31000,
+		y_min = 0,
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})

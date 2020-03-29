@@ -30,7 +30,7 @@ minetest.register_tool("ws_core:knife_flint", {
 
 minetest.register_tool("ws_core:hatchet_flint", {
 	description = "Flint Hatchet",
-	inventory_image = "ws_knife_flint.png",
+	inventory_image = "ws_hatchet_flint.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
 		max_drop_level=0,
@@ -57,16 +57,17 @@ minetest.register_tool("ws_core:pick_bone", {
 	sound = {breaks = "default_tool_breaks"},
 })
 
-minetest.register_tool("ws_core:axe_wood", {
-	description = "Flint Axe",
-	inventory_image = "ws_hatchet_flint.png",
+minetest.register_tool("ws_core:hatchet_bone", {
+	description = "Bone Hatchet",
+	inventory_image = "ws_hatchet_bone.png",
 	tool_capabilities = {
-		full_punch_interval = 1.1,
+		full_punch_interval = 1.0,
 		max_drop_level=0,
 		groupcaps={
-			choppy={times={[1]=6.0, [2]=2.50, [3]=1.45}, uses=15, maxlevel=1},
+			choppy = {times={[2]=3.00, [3]=1.60}, uses=10, maxlevel=1},
 		},
 		damage_groups = {fleshy=2},
 	},
+	groups = {hatchet = 1},
 	sound = {breaks = "default_tool_breaks"},
 })
