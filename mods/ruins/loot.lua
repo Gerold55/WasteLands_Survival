@@ -11,7 +11,7 @@ local loot = {
 	{name="ws_core:knife_flint",mid=.15,var=1},
 }
 
-function load_barrel(pos, node)
+local function load_barrel(pos, node)
 	local meta = minetest.env:get_meta(pos)
 	local inv = meta:get_inventory()
 	--inv:set_size('main', 8*4)
