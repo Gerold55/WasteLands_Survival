@@ -644,10 +644,10 @@ function ws_core.register_ores()
 	minetest.register_ore({
 		ore             = "ws_core:oil_source",
 		wherein         = {"ws_core:stone"},
-		clust_scarcity = 30 * 30 * 30,
+		clust_scarcity = 20 * 20 * 20,
 		clust_num_ores = 5,
 		clust_size     = 3,
-		y_max          = -4,
+		y_max          = 4,
 		y_min          = -31000,
 	})
 	
@@ -1347,6 +1347,24 @@ function ws_core.register_mgv6_decorations()
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})
+	
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"ws_core:clay_dirt"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.035,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		y_max = 30,
+		y_min = 1,
+		decoration = "ws_core:gorse",
+		param2 = 4,
+	})
 end
 
 function ws_core.register_decorations()
@@ -1389,6 +1407,26 @@ function ws_core.register_decorations()
 		y_max = 31000,
 		y_min = 0,
 		decoration = "ws_core:dry_shrub",
+		param2 = 4,
+	})
+	
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"ws_core:clay_dirt",
+			"ws_core:clay_dirt"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.02,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		biomes = {"claylands"},
+		y_max = 31000,
+		y_min = 0,
+		decoration = "ws_core:gorse",
 		param2 = 4,
 	})
 end

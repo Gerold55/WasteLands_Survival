@@ -1031,8 +1031,8 @@ minetest.register_craft({
 	output = 'ws_core:knife_flint',
 	recipe = {
 		{'', '', 'ws_core:flint'},
-		{'', '', 'ws_core:flint'},
 		{'', 'group:stick', ''},
+		{'', '', ''},
 	}
 })
 

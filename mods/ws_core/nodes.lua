@@ -19,7 +19,7 @@ minetest.register_node("ws_core:clay_dirt", {
 	tiles = {"ws_clay_dirt.png",
 		{name = "ws_clay_dirt.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1},
+	groups = {crumbly = 3, soil = 1, flammable = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
 	drop = {
         max_items = 1,
@@ -169,8 +169,21 @@ minetest.register_node("ws_core:dead_tree", {
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	on_place = minetest.rotate_node,
+	on_rightclick = function (pos, node, player, itemstack, pointed_thing)
+    if itemstack:get_name() == 'ws_core:knife_flint' then
+        minetest.set_node(pos, {name = "ws_core:log_stripped"})
+        player:get_inventory():add_item("main", "ws_core:bark")
+        player:get_inventory():add_item("main", "ws_core:bug_" .. math.random(1, 10))
+    end
+end,
+})
 
-	on_place = minetest.rotate_node
+minetest.register_node("ws_core:log_stripped", {
+	description = "Stripped Log",
+	tiles = {"ws_cobble.png"},
+	is_ground_content = false,
+	groups = {cracky = 3, wood = 1},
 })
 
 minetest.register_node("ws_core:wood", {
@@ -526,6 +539,27 @@ minetest.register_node("ws_core:dry_shrub", {
 	tiles = {"ws_dry_shrub.png"},
 	inventory_image = "ws_dry_shrub.png",
 	wield_image = "ws_dry_shrub.png",
+	paramtype = "light",
+	paramtype2 = "meshoptions",
+	place_param2 = 4,
+	drop = "ws_core:stick",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 3, attached_node = 1},
+	selection_box = {
+		type = "fixed",
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
+	},
+})
+
+minetest.register_node("ws_core:gorse", {
+	description = "Gorse",
+	drawtype = "plantlike",
+	waving = 1,
+	tiles = {"flowers_gorse.png"},
+	inventory_image = "flowers_gorse.png",
+	wield_image = "flowers_gorse.png",
 	paramtype = "light",
 	paramtype2 = "meshoptions",
 	place_param2 = 4,
