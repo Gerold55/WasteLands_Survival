@@ -2,10 +2,10 @@
 -- See README.txt for licensing and other information.
 
 minetest.register_craft({
-	output = 'bucket:bucket_empty 1',
+	output = 'bucket:bucket_unfired_empty 1',
 	recipe = {
-		{'ws_core:clay', '', 'ws_core:clay'},
-		{'', 'ws_core:clay', ''},
+		{'ws_core:clay_lump', '', 'ws_core:clay_lump'},
+		{'', 'ws_core:clay_lump', ''},
 	}
 })
 
@@ -25,10 +25,17 @@ if minetest.registered_items["ethereal:bowl"] then
 	})
 end
 
+minetest.register_craftitem("bucket:bucket_unfired_empty", {
+	description = "".. core.colorize("#FFFFFF", "Unfired Clay Bucket\n")..core.colorize("#ababab", "An unfired bucket which when cooked will hold water."),
+	inventory_image = "ws_clay_pot_unfired.png",
+	groups = {coal = 1, flammable = 1}
+})
+
 minetest.register_craft({
-	type = "fuel",
-	recipe = "bucket:bucket_empty",
-	burntime = 22,
+	type = "cooking",
+	cooktime = 15,
+	output = "bucket:bucket_clay_empty",
+	recipe = "bucket:bucket_unfired_empty"
 })
 
 
@@ -199,7 +206,7 @@ minetest.register_craftitem("bucket:bucket_clay_empty", {
 	end,
 })
 
-minetest.register_craftitem("bucket:bucket_empty", {
+minetest.register_craftitem("bucket:bucket_fired_empty", {
 	description = "".. core.colorize("#FFFFFF", "Empty Bucket\n")..core.colorize("#ababab", "Use empty bucket to collect toxic water."),
 	inventory_image = "ws_bucket.png",
 	stack_max = 99,
