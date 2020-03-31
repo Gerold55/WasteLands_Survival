@@ -1,5 +1,5 @@
 - [x] copper pipes
-- [ ] rusty, muddy pipes
+- [x] rusty, muddy pipes
 - [ ] hull pipes
 
 - [ ] support structures
