@@ -2,14 +2,14 @@
 
 **Scripting:**
 
-Krzysztof Jeszke (Flamore), SuchTea, archfan7411
+Flamore, SuchTea, archfan7411
 
 **Textures:**
 
-Krzysztof Jeszke (Flamore), StarNinjas
+Flamore, StarNinjas
 
 **Models:**
 
 **Bugfixes:**
 
-Krzysztof Jeszke (Flamore), archfan7411,
+Flamore, archfan7411,
