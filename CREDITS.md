@@ -2,14 +2,14 @@
 
 **Scripting:**
 
-Flamore, SuchTea, archfan7411
+Flamore, SuchTea, archfan7411, theFox
 
 **Textures:**
 
 Flamore, StarNinjas
 
-**Models:**
-
+**Models/Animations:**
+Toby109tt/RatMix
 **Bugfixes:**
 
 Flamore, archfan7411,
