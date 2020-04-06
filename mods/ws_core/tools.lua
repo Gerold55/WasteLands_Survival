@@ -15,17 +15,26 @@ minetest.register_item(":", {
 })
 
 minetest.register_tool("ws_core:knife_flint", {
-	description = "Flint Knife",
-	inventory_image = "ws_knife_flint.png",
-	tool_capabilities = {
-		full_punch_interval = 1.2,
-		max_drop_level=0,
-		groupcaps={
-			cracky = {times={[2]=4.0, [3]=1.25}, uses=15, maxlevel=1},
-		},
-		damage_groups = {fleshy=2},
-	},
-	sound = {breaks = "default_tool_breaks"},
+    description = "Flint Knife",
+    inventory_image = "ws_knife_flint.png",
+    tool_capabilities = {
+        full_punch_interval = 1.2,
+        max_drop_level=0,
+        groupcaps={
+            cracky = {times={[2]=4.0, [3]=1.25}, uses=15, maxlevel=1},
+        },
+        damage_groups = {fleshy=2},
+    },
+    sound = {breaks = "default_tool_breaks"},
+   on_place = function(itemstack, placer, pointed_thing)
+        if minetest.get_node(pointed_thing.under).name == "ws_core:dead_tree" then
+            minetest.set_node(pointed_thing.under, {name = "ws_core:log_stripped_oak"})
+            placer:get_inventory():add_item("main", "ws_core:bark")
+            placer:get_inventory():add_item("main", "food:bug_" .. math.random(1, 2))
+        end
+
+        return itemstack
+    end,
 })
 
 minetest.register_tool("ws_core:hatchet_flint", {

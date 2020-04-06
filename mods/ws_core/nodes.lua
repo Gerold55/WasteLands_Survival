@@ -164,24 +164,23 @@ minetest.register_node("ws_core:cobble", {
 })
 
 minetest.register_node("ws_core:dead_tree", {
-	description = "Dead Log",
-	tiles = {"ws_dead_tree_top.png", "ws_dead_tree_top.png", "ws_dead_tree.png"},
-	paramtype2 = "facedir",
-	is_ground_content = false,
-	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	on_place = minetest.rotate_node,
-	on_rightclick = function (pos, node, player, itemstack, pointed_thing)
-    if itemstack:get_name() == 'ws_core:knife_flint' then
-        minetest.set_node(pos, {name = "ws_core:log_stripped"})
-        player:get_inventory():add_item("main", "ws_core:bark")
-        player:get_inventory():add_item("main", "food:bug_" .. math.random(1, 2))
-    end
-end,
+    description = "Dead Log",
+    tiles = {"ws_dead_tree_top.png", "ws_dead_tree_top.png", "ws_dead_tree.png"},
+    paramtype2 = "facedir",
+    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+    on_place = minetest.rotate_node
 })
 
-minetest.register_node("ws_core:log_stripped", {
-	description = "Stripped Log",
-	tiles = {"ws_cobble.png"},
+minetest.register_node("ws_core:log_stripped_oak", {
+	description = "Oak Stripped Log",
+	tiles = {"ws_dry_oak_log_stripped.png"},
+	is_ground_content = false,
+	groups = {choppy = 3, wood = 1},
+})
+
+minetest.register_node("ws_core:log_stripped_balsa", {
+	description = "Balsa Stripped Log",
+	tiles = {"ws_balsa_log_stripped.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, wood = 1},
 })
@@ -200,6 +199,15 @@ minetest.register_node("ws_core:wood_planks_oak", {
 	paramtype2 = "facedir",
 	place_param2 = 0,
 	tiles = {"ws_oak_planks.png"},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
+})
+
+minetest.register_node("ws_core:wood_planks_balsa", {
+	description = "Balsa Wood Planks",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"ws_balsa_planks.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })

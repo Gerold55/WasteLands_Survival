@@ -193,3 +193,9 @@ minetest.register_craftitem("ws_core:gold_lump", {
 	description = "Gold Lump",
 	inventory_image = "ws_gold_lump.png",
 })
+
+minetest.register_craftitem("ws_core:bark", {
+	description = "Bark",
+	inventory_image = "ws_bark.png",
+	groups = {flammable = 2},
+})
