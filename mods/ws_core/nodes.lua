@@ -171,16 +171,31 @@ minetest.register_node("ws_core:dead_tree", {
     on_place = minetest.rotate_node
 })
 
-minetest.register_node("ws_core:log_stripped_oak", {
+minetest.register_node("ws_core:oak_log", {
+    description = "Oak Log",
+    tiles = {"ws_oak_log_top.png", "ws_oak_log_top.png", "ws_oak_log.png"},
+    paramtype2 = "facedir",
+    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+    on_place = minetest.rotate_node
+})
+
+minetest.register_node("ws_core:oak_log_stripped", {
 	description = "Oak Stripped Log",
-	tiles = {"ws_dry_oak_log_stripped.png"},
+	tiles = {"ws_oak_log_stripped_top.png", "ws_oak_log_stripped_top.png", "ws_oak_log_stripped.png"},
+	is_ground_content = false,
+	groups = {choppy = 3, wood = 1},
+})
+
+minetest.register_node("ws_core:oak_log_stripped_dry", {
+	description = "Dry Oak Stripped Log",
+	tiles = {"ws_oak_log_stripped_top.png", "ws_oak_log_stripped_top.png", "ws_oak_log_stripped_dry.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, wood = 1},
 })
 
 minetest.register_node("ws_core:log_stripped_balsa", {
 	description = "Balsa Stripped Log",
-	tiles = {"ws_balsa_log_stripped.png"},
+	tiles = {"ws_balsa_log_stripped_top.png", "ws_balsa_log_stripped_top.png", "ws_balsa_log_stripped.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, wood = 1},
 })
@@ -189,12 +204,12 @@ minetest.register_node("ws_core:wood_planks", {
 	description = "Wooden Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"ws_wood.png"},
+	tiles = {"ws_oak_planks_dry.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1, not_in_creative_inventory = 1},
 })
 
-minetest.register_node("ws_core:wood_planks_oak", {
+minetest.register_node("ws_core:oak_planks", {
 	description = "Oak Wood Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
@@ -203,13 +218,13 @@ minetest.register_node("ws_core:wood_planks_oak", {
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })
 
-minetest.register_node("ws_core:wood_planks_balsa", {
+minetest.register_node("ws_core:wood_balsa", {
 	description = "Balsa Wood Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
 	tiles = {"ws_balsa_planks.png"},
 	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
+	groups = {choppy = 1, oddly_breakable_by_hand = 1, flammable = 2, wood = 1},
 })
 
 minetest.register_on_dignode(function(pos, oldnode, digger)
