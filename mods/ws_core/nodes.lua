@@ -179,6 +179,14 @@ minetest.register_node("ws_core:oak_log", {
     on_place = minetest.rotate_node
 })
 
+minetest.register_node("ws_core:balsa_log", {
+    description = "Balsa Log",
+    tiles = {"ws_balsa_log_top.png", "ws_balsa_log_top.png", "ws_balsa_log.png"},
+    paramtype2 = "facedir",
+    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+    on_place = minetest.rotate_node
+})
+
 minetest.register_node("ws_core:oak_log_stripped", {
 	description = "Oak Stripped Log",
 	tiles = {"ws_oak_log_stripped_top.png", "ws_oak_log_stripped_top.png", "ws_oak_log_stripped.png"},
@@ -218,7 +226,7 @@ minetest.register_node("ws_core:oak_planks", {
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })
 
-minetest.register_node("ws_core:wood_balsa", {
+minetest.register_node("ws_core:balsa_planks", {
 	description = "Balsa Wood Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
