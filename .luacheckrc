@@ -37,6 +37,15 @@ read_globals = {
 	"unified_inventory",
 }
 
+globals = {
+	--this should really be renamed to trinium_api
+	"api",
+	--other mods
+	"betterinv",
+	"journal",
+	"weather_mod",
+}
+
 allow_defined_top = true
 
 exclude_files = {"mods/modutil/LuaVenusCompiler/testout/"}
