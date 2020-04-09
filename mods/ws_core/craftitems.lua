@@ -174,7 +174,7 @@ end)
 
 
 minetest.register_craftitem("ws_core:coal", {
-	description = "".. core.colorize("#FFFFFF", "Coal\n")..core.colorize("#ababab", "Coal is found mainly in underground deposits and widely used as fuel."),
+	description = "".. minetest.colorize("#FFFFFF", "Coal\n")..minetest.colorize("#ababab", "Coal is found mainly in underground deposits and widely used as fuel."),
 	inventory_image = "ws_coal.png",
 	groups = {coal = 1, flammable = 1}
 })
