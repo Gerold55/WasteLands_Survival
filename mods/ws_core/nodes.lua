@@ -68,12 +68,6 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 
 -Liquids
 
-
-"ws_core:bone"
-
-"ws_core:lantern_floor"
-"ws_core:lantern_ceiling"
-
 "ws_core:water_source_toxic"
 "ws_core:water_flowing_toxic"
 "ws_core:water_source"
@@ -83,6 +77,9 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 
 -Misc
 
+"ws_core:bone"
+"ws_core:lantern_floor"
+"ws_core:lantern_ceiling"
 "ws_core:stalactites"
 
 
@@ -712,10 +709,12 @@ minetest.register_node("ws_core:oil_flowing", {
 
 minetest.register_node("ws_core:bone", {
 	description = "Bone",
-	tiles = {"ws_bone.png",
+	tiles = {"ws_bone_top.png","ws_bone_top.png",
 		{name = "ws_bone.png",
 			tileable_vertical = false}},
+	paramtype2 = "facedir",
 	groups = {cracky = 1},
+	on_place = minetest.rotate_node,
 	sounds = ws_core.node_sound_dirt_ws_cores(),
 	drop = {
 		max_items = 1,

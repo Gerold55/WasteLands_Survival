@@ -179,6 +179,11 @@ minetest.register_craftitem('ws_core:flint', {
 	inventory_image = 'ws_flint.png'
 })
 
+minetest.register_craftitem('ws_core:bone_shard', {
+    description = 'Bone Shard',
+	inventory_image = 'ws_bone_shard.png'
+})
+
 minetest.register_craftitem("ws_core:coal", {
 	description = "".. minetest.colorize("#FFFFFF", "Coal\n")..minetest.colorize("#ababab", "Coal is found mainly in underground deposits and widely used as fuel."),
 	inventory_image = "ws_coal.png",
