@@ -26,6 +26,7 @@ read_globals = {
 	-- mod checks
 	"cmi",
 	"default",
+	"farming",
 	"intllib",
 	"invisibility",
 	"lightning",

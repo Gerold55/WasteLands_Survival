@@ -338,7 +338,7 @@ if minetest.get_modpath("ethereal") then
    hbhunger.register_food("ethereal:hearty_stew", 6, "ethereal:bowl", 3)
    hbhunger.register_food("ethereal:hearty_stew_cooked", 10, "ethereal:bowl")
    if minetest.get_modpath("bucket") then
-  	hbhunger.register_food("ethereal:bucket_cactus", 2, "bucket:bucket_empty")
+     hbhunger.register_food("ethereal:bucket_cactus", 2, "bucket:bucket_empty")
    end
    hbhunger.register_food("ethereal:fish_raw", 2)
    hbhunger.register_food("ethereal:fish_cooked", 5)
@@ -385,7 +385,7 @@ if minetest.get_modpath("kpgmobs") ~= nil then
 	hbhunger.register_food("kpgmobs:rat_cooked", 5)
 	hbhunger.register_food("kpgmobs:med_cooked", 4)
   	if minetest.get_modpath("bucket") then
-	   hbhunger.register_food("kpgmobs:bucket_milk", 4, "bucket:bucket_empty")
+		hbhunger.register_food("kpgmobs:bucket_milk", 4, "bucket:bucket_empty")
 	end
 end
 
