@@ -6,6 +6,8 @@ minetest.register_craftitem("ws_core:stick", {
 	groups = {stick = 1, flammable = 2},
 })
 
+
+-- TODO: curently no book item defined
 local lpp = 14 -- Lines per book's page
 local function book_on_use(itemstack, user)
 	local player_name = user:get_player_name()
@@ -172,6 +174,10 @@ minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv
 	craft_inv:set_stack("craft", index, original)
 end)
 
+minetest.register_craftitem('ws_core:flint', {
+    description = 'Flint',
+	inventory_image = 'ws_flint.png'
+})
 
 minetest.register_craftitem("ws_core:coal", {
 	description = "".. minetest.colorize("#FFFFFF", "Coal\n")..minetest.colorize("#ababab", "Coal is found mainly in underground deposits and widely used as fuel."),

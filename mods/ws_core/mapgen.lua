@@ -6,6 +6,15 @@ local mg_name = minetest.get_mapgen_setting("mg_name")
 -- Aliases for map generators
 --
 
+--[[
+Defunct aliases - the nodes they point to aren't defined.
+
+minetest.register_alias("mapgen_snowblock", "ws_core:snowblock")
+minetest.register_alias("mapgen_snow", "ws_core:snow")
+minetest.register_alias("mapgen_lava_source", "ws_core:lava_source")
+minetest.register_alias("mapgen_sandstone", "ws_core:sandstone")
+--]]
+
 minetest.register_alias("mapgen_stone", "ws_core:stone")
 minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
 minetest.register_alias("default:dirt", "ws_core:dirt")
@@ -13,15 +22,11 @@ minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry")
 minetest.register_alias("mapgen_sand", "ws_core:sandy_dirt")
 minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
 minetest.register_alias("mapgen_river_water_source", "ws_core:river_water_source_toxic")
-minetest.register_alias("mapgen_lava_source", "ws_core:lava_source")
 minetest.register_alias("mapgen_gravel", "ws_core:gravel")
 minetest.register_alias("mapgen_desert_stone", "ws_core:desert_stone")
 minetest.register_alias("mapgen_desert_sand", "ws_core:sandy_dirt")
 minetest.register_alias("mapgen_dirt_with_snow", "ws_core:dirt_dry")
-minetest.register_alias("mapgen_snowblock", "ws_core:snowblock")
-minetest.register_alias("mapgen_snow", "ws_core:snow")
 minetest.register_alias("mapgen_ice", "ws_core:ice")
-minetest.register_alias("mapgen_sandstone", "ws_core:sandstone")
 minetest.register_alias("mapgen_jungletree", "ws_core:log_dead")
 minetest.register_alias("mapgen_jungleleaves", "air")
 minetest.register_alias("mapgen_junglegrass", "air")
@@ -1109,6 +1114,7 @@ function ws_core.register_biomes(upper_limit)
 
 	-- Desert
 
+-- TODO ws_core:sandstone isn't defined
 	minetest.register_biome({
 		name = "desert",
 		node_top = "ws_core:sandy_dirt",
