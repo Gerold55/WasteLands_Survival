@@ -284,7 +284,7 @@ minetest.register_node("ws_core:stone_with_copper_dense", {
 
 minetest.register_node("ws_core:log_dead", {
 	description = "Dead Log",
-	tiles = {"ws_dead_tree_top.png", "ws_dead_tree_top.png", "ws_dead_tree.png"},
+	tiles = {"ws_log_dead_top.png", "ws_log_dead_top.png", "ws_log_dead.png"},
 	paramtype2 = "facedir",
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	on_place = minetest.rotate_node
@@ -292,7 +292,7 @@ minetest.register_node("ws_core:log_dead", {
 
 minetest.register_node("ws_core:log_dead_stripped", {
 	description = "Stripped Dead Log",
-	tiles = {"ws_oak_log_stripped_top.png", "ws_oak_log_stripped_top.png", "ws_oak_log_stripped_dry.png"},
+	tiles = {"ws_log_dead_stripped_top.png", "ws_log_dead_stripped_top.png", "ws_log_dead_stripped.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, wood = 1},
 })
@@ -301,14 +301,14 @@ minetest.register_node("ws_core:planks_dead", {
 	description = "Dead Wood Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"ws_oak_planks_dry.png"},
+	tiles = {"ws_planks_dead.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })
 
 minetest.register_node("ws_core:log_oak", {
 	description = "Oak Log",
-	tiles = {"ws_oak_log_top.png", "ws_oak_log_top.png", "ws_oak_log.png"},
+	tiles = {"ws_log_oak_top.png", "ws_log_oak_top.png", "ws_log_oak.png"},
 	paramtype2 = "facedir",
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	on_place = minetest.rotate_node
@@ -316,7 +316,7 @@ minetest.register_node("ws_core:log_oak", {
 
 minetest.register_node("ws_core:log_oak_stripped", {
 	description = "Stripped Oak Log",
-	tiles = {"ws_oak_log_stripped_top.png", "ws_oak_log_stripped_top.png", "ws_oak_log_stripped.png"},
+	tiles = {"ws_log_oak_stripped_top.png", "ws_log_oak_stripped_top.png", "ws_log_oak_stripped.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, wood = 1},
 })
@@ -325,14 +325,14 @@ minetest.register_node("ws_core:planks_oak", {
 	description = "Oak Wood Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"ws_oak_planks.png"},
+	tiles = {"ws_planks_oak.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })
 
 minetest.register_node("ws_core:log_balsa", {
 	description = "Balsa Log",
-	tiles = {"ws_balsa_log_top.png", "ws_balsa_log_top.png", "ws_balsa_log.png"},
+	tiles = {"ws_log_balsa_top.png", "ws_log_balsa_top.png", "ws_log_balsa.png"},
 	paramtype2 = "facedir",
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	on_place = minetest.rotate_node
@@ -340,7 +340,7 @@ minetest.register_node("ws_core:log_balsa", {
 
 minetest.register_node("ws_core:log_balsa_stripped", {
 	description = "Stripped Balsa Log",
-	tiles = {"ws_balsa_log_stripped_top.png", "ws_balsa_log_stripped_top.png", "ws_balsa_log_stripped.png"},
+	tiles = {"ws_log_balsa_stripped_top.png", "ws_log_balsa_stripped_top.png", "ws_log_balsa_stripped.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, wood = 1},
 })
@@ -349,7 +349,7 @@ minetest.register_node("ws_core:planks_balsa", {
 	description = "Balsa Wood Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"ws_balsa_planks.png"},
+	tiles = {"ws_planks_balsa.png"},
 	is_ground_content = false,
 	groups = {choppy = 1, oddly_breakable_by_hand = 1, flammable = 2, wood = 1},
 })
@@ -359,7 +359,7 @@ minetest.register_node("ws_core:planks_structure", {
 	description = "Structural Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"ws_wood.png"},
+	tiles = {"ws_planks_structure.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })

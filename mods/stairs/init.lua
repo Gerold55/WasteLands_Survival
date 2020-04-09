@@ -459,9 +459,9 @@ end
 
 stairs.register_stair_and_slab(
 	"wood",
-	"ws_core:wood",
+	"ws_core:planks_oak",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	{"ws_wood.png"},
+	{"ws_planks_oak.png"},
 	"Oak Stair",
 	"Oak Slab",
 	false
