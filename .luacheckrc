@@ -30,6 +30,7 @@ read_globals = {
 	"invisibility",
 	"lightning",
 	"lucky_block",
+	"mobs",
 	"sfinv_buttons",
 	"stairsplus",
 	"tnt",
