@@ -22,15 +22,15 @@ minetest.register_alias("mapgen_snowblock", "ws_core:snowblock")
 minetest.register_alias("mapgen_snow", "ws_core:snow")
 minetest.register_alias("mapgen_ice", "ws_core:ice")
 minetest.register_alias("mapgen_sandstone", "ws_core:sandstone")
-minetest.register_alias("mapgen_jungletree", "ws_core:dead_tree")
+minetest.register_alias("mapgen_jungletree", "ws_core:log_dead")
 minetest.register_alias("mapgen_jungleleaves", "air")
 minetest.register_alias("mapgen_junglegrass", "air")
-minetest.register_alias("mapgen_pine_tree", "ws_core:dead_tree")
+minetest.register_alias("mapgen_pine_tree", "ws_core:log_dead")
 minetest.register_alias("mapgen_pine_needles", "air")
 
 -- Flora
 
-minetest.register_alias("mapgen_tree", "ws_core:dead_tree")
+minetest.register_alias("mapgen_tree", "ws_core:log_dead")
 minetest.register_alias("mapgen_leaves", "air")
 minetest.register_alias("mapgen_apple", "air")
 
@@ -45,7 +45,7 @@ minetest.register_alias("mapgen_stair_sandstone_block", "stairs:stair_sandstone_
 
 
 minetest.register_on_joinplayer(function(player)
-    player:set_sky("#C4A883", "plain", {"default_cloud.png"}, true) 
+    player:set_sky("#C4A883", "plain", {"default_cloud.png"}, true)
 end)
 
 --
@@ -78,7 +78,7 @@ function ws_core.register_mgv6_ores()
 			persist = 0.0
 		},
 	})
-	
+
 	-- Gravel
 
 	minetest.register_ore({
@@ -99,7 +99,7 @@ function ws_core.register_mgv6_ores()
 			persist = 0.0
 		},
 	})
-	
+
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "ws_core:gravel",
@@ -120,7 +120,7 @@ function ws_core.register_mgv6_ores()
 	})
 
 	-- Scatter ores
-	
+
 	--dry dirt
 	minetest.register_ore({
 		ore_type        = "blob",
@@ -140,9 +140,9 @@ function ws_core.register_mgv6_ores()
 			persist = 0.0
 		},
 	})
-	
+
 	--more dirt
-	
+
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "ws_core:dirt_coarse",
@@ -161,7 +161,7 @@ function ws_core.register_mgv6_ores()
 			persist = 0.0
 		},
 	})
-	
+
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "ws_core:dirt_rocky",
@@ -215,7 +215,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = 0,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_coal_dense",
@@ -226,7 +226,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = 64,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_coal_dense",
@@ -272,7 +272,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = -64,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_iron_dense",
@@ -283,7 +283,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = 0,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_iron_dense",
@@ -329,7 +329,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = -64,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_copper_dense",
@@ -340,7 +340,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = -16,
 		y_min          = -63,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_copper_dense",
@@ -386,7 +386,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = -128,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_tin_dense",
@@ -397,7 +397,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = -32,
 		y_min          = -127,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_tin_dense",
@@ -443,7 +443,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = -256,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_gold_dense",
@@ -454,7 +454,7 @@ function ws_core.register_mgv6_ores()
 		y_max          = -64,
 		y_min          = -255,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_gold_dense",
@@ -478,7 +478,7 @@ function ws_core.register_ores()
 
 	-- Blob ore.
 	-- These before scatter ores to avoid other ores in blobs.
-	
+
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "ws_core:dirt_coarse",
@@ -497,7 +497,7 @@ function ws_core.register_ores()
 			persist = 0.0
 		},
 	})
-	
+
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "ws_core:dirt_rocky",
@@ -528,7 +528,7 @@ function ws_core.register_ores()
 		y_max          = 31000,
 		y_min          = 1025,
 	})
-	
+
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "ws_core:gravel",
@@ -539,7 +539,7 @@ function ws_core.register_ores()
 		y_max          = 64,
 		y_min          = -127,
 	})
-	
+
 	minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "ws_core:gravel",
@@ -550,11 +550,11 @@ function ws_core.register_ores()
 		y_max          = 64,
 		y_min          = -127,
 	})
-	
+
 	-- Scatter ores
-	
+
 	-- Oil
-	
+
 	minetest.register_ore({
 		ore             = "ws_core:oil_source",
 		wherein         = {"ws_core:stone"},
@@ -564,9 +564,9 @@ function ws_core.register_ores()
 		y_max          = 4,
 		y_min          = -31000,
 	})
-	
+
 	-- Oil
-	
+
 	minetest.register_ore({
 		ore             = "ws_core:bone",
 		wherein         = {"ws_core:stone"},
@@ -576,7 +576,7 @@ function ws_core.register_ores()
 		y_max          = 31000,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore             = "ws_core:bone",
 		wherein         = {"ws_core:dirt_dry"},
@@ -621,7 +621,7 @@ function ws_core.register_ores()
 		y_max          = -128,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_coal_dense",
@@ -632,7 +632,7 @@ function ws_core.register_ores()
 		y_max          = 64,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_coal_dense",
@@ -678,7 +678,7 @@ function ws_core.register_ores()
 		y_max          = -128,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_tin_dense",
@@ -689,7 +689,7 @@ function ws_core.register_ores()
 		y_max          = -32,
 		y_min          = -127,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_tin_dense",
@@ -735,7 +735,7 @@ function ws_core.register_ores()
 		y_max          = -128,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_copper_dense",
@@ -746,7 +746,7 @@ function ws_core.register_ores()
 		y_max          = -16,
 		y_min          = -63,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_copper_dense",
@@ -792,7 +792,7 @@ function ws_core.register_ores()
 		y_max          = -256,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_iron_dense",
@@ -803,7 +803,7 @@ function ws_core.register_ores()
 		y_max          = 0,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_iron_dense",
@@ -849,7 +849,7 @@ function ws_core.register_ores()
 		y_max          = -512,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_gold_dense",
@@ -860,7 +860,7 @@ function ws_core.register_ores()
 		y_max          = -64,
 		y_min          = -255,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_gold_dense",
@@ -906,7 +906,7 @@ function ws_core.register_ores()
 		y_max          = -1024,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_mese_dense",
@@ -917,7 +917,7 @@ function ws_core.register_ores()
 		y_max          = -64,
 		y_min          = -255,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_mese_dense",
@@ -963,7 +963,7 @@ function ws_core.register_ores()
 		y_max          = -2048,
 		y_min          = -31000,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_diamond_dense",
@@ -974,7 +974,7 @@ function ws_core.register_ores()
 		y_max          = -128,
 		y_min          = -255,
 	})
-	
+
 	minetest.register_ore({
 		ore_type       = "scatter",
 		ore            = "ws_core:stone_with_diamond_dense",
@@ -1075,9 +1075,9 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 50,
 		humidity_point = 35,
 	})
-	
+
 	-- Forest
-	
+
 	minetest.register_biome({
 		name = "forest",
 		node_top = "ws_core:dry_dirt_forest",
@@ -1106,7 +1106,7 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 50,
 		humidity_point = 35,
 	})
-	
+
 	-- Desert
 
 	minetest.register_biome({
@@ -1139,9 +1139,9 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 92,
 		humidity_point = 16,
 	})
-	
+
 		-- ClayLands
-	
+
 	minetest.register_biome({
 		name = "claylands",
 		node_top = "ws_core:clay_dirt",
@@ -1155,7 +1155,7 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 50,
 		humidity_point = 40,
 	})
-	
+
 	minetest.register_biome({
 		name = "clay_ocean",
 		node_top = "ws_core:clay_dirt",
@@ -1171,7 +1171,7 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 50,
 		humidity_point = 40,
 	})
-	
+
 end
 
 -- Biomes for floatlands
@@ -1248,7 +1248,7 @@ minetest.register_decoration({
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
-	
+
 	-- Dry shrubs
 
 	minetest.register_decoration({
@@ -1268,7 +1268,7 @@ minetest.register_decoration({
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})
-	
+
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:dirt_dry"},
@@ -1286,7 +1286,7 @@ minetest.register_decoration({
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})
-	
+
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:clay_dirt"},
@@ -1334,7 +1334,7 @@ function ws_core.register_decorations()
 		spawn_by = "ws_core:toxic_water_source",
 		num_spawn_by = 1,
 	})
-	
+
 	minetest.register_decoration({
 		deco_type = "schematic",
 		place_on = {"ws_core:sandy_dirt"},
@@ -1359,7 +1359,7 @@ function ws_core.register_decorations()
 		spawn_by = "ws_core:toxic_water_source",
 		num_spawn_by = 1,
 	})
-	
+
 	minetest.register_decoration({
 		deco_type = "schematic",
 		place_on = {"ws_core:clay_dirt"},
@@ -1384,7 +1384,7 @@ function ws_core.register_decorations()
 		spawn_by = "ws_core:toxic_water_source",
 		num_spawn_by = 1,
 	})
-	
+
 
 	-- Dry shrub
 
@@ -1407,7 +1407,7 @@ function ws_core.register_decorations()
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})
-	
+
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:dirt_dry",
@@ -1427,7 +1427,7 @@ function ws_core.register_decorations()
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})
-	
+
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:clay_dirt",
@@ -1447,7 +1447,7 @@ function ws_core.register_decorations()
 		decoration = "ws_core:gorse",
 		param2 = 4,
 	})
-	
+
 	--stalactites
 	minetest.register_decoration({
 		deco_type = "simple",
@@ -1469,7 +1469,7 @@ function ws_core.register_decorations()
 		flags = "all_ceilings",
 		param2 = 4,
 	})
-	
+
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:stone",
@@ -1490,7 +1490,7 @@ function ws_core.register_decorations()
 		flags = "all_ceilings",
 		param2 = 4,
 	})
-	
+
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:stone",
@@ -1512,7 +1512,7 @@ function ws_core.register_decorations()
 		param2 = 4,
 	})
 end
-		
+
 --
 -- Detect mapgen, flags and parameters to select functions
 --
