@@ -2,7 +2,7 @@ minetest.register_abm({
   label = "Spread Gorse",
   nodenames = {"ws_core:gorse"},
   neighbors = {"ws_core:clay_dirt"},
-  interval = 1,
+  interval = 10,
   chance = 12,
   catch_up = false,
   action = function(pos)

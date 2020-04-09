@@ -9,7 +9,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "ws_core:wood",
+	output = "ws_core:oak_planks",
 	recipe = {
 		"ws_core:stick", "ws_core:stick",
 		"ws_core:stick", "ws_core:stick"
@@ -17,51 +17,16 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'ws_core:junglewood 4',
+	output = 'ws_core:balsa_planks 4',
 	recipe = {
-		{'ws_core:jungletree'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:pine_wood 4',
-	recipe = {
-		{'ws_core:pine_tree'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:acacia_wood 4',
-	recipe = {
-		{'ws_core:acacia_tree'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:aspen_wood 4',
-	recipe = {
-		{'ws_core:aspen_tree'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:wood',
-	recipe = {
-		{'ws_core:bush_stem'},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:acacia_wood',
-	recipe = {
-		{'ws_core:acacia_bush_stem'},
+		{'ws_core:balsa_log'},
 	}
 })
 
 minetest.register_craft({
 	output = 'ws_core:stick 4',
 	recipe = {
-		{'group:wood'},
+		{'ws_core:oak_planks'},
 	}
 })
 

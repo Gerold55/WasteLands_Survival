@@ -6,12 +6,12 @@ local loot = {
 	{name="ws_core:pick_bone",mid=.2,var=1},
 	--on average 8 wood min 0 max 16
 	--25% chance to get 0 wood
-	{name="ws_core:wood",mid=8,var=16},
+	{name="ws_core:wood_planks",mid=8,var=16},
 	{name="ws_core:hatchet_flint",mid=.15,var=1},
 	{name="ws_core:knife_flint",mid=.15,var=1},
 }
 
-local function load_barrel(pos, node)
+function load_barrel(pos, node)
 	local meta = minetest.env:get_meta(pos)
 	local inv = meta:get_inventory()
 	--inv:set_size('main', 8*4)
