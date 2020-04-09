@@ -4,11 +4,11 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 		if minetest.get_item_group(oldnode.name, "tree") ~= 0 or minetest.get_item_group(oldnode.name, "wood") ~= 0 then
 			local wield = digger:get_wielded_item():get_name()
 			if minetest.get_item_group(wield, "hatchet") == 0 and minetest.get_item_group(wield, "axe") == 0 then
-	            digger:get_inventory():remove_item('main', oldnode)
-			digger:set_hp(digger:get_hp() -2, "Dug wood without hatchet or axe")
-	            minetest.set_node(pos, oldnode)
-	        end
-	    end
+				digger:get_inventory():remove_item('main', oldnode)
+				digger:set_hp(digger:get_hp() -2, "Dug wood without hatchet or axe")
+				minetest.set_node(pos, oldnode)
+			end
+		end
 		return
 	end
 )
@@ -99,12 +99,12 @@ minetest.register_node("ws_core:dirt_dry", {
 	groups = {crumbly = 3, soil = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
 	drop = {
-        max_items = 1,
-        items = {
-            {items = {'ws_core:bone'}, rarity = 13},
-            {items = {'ws_core:dirt_dry'}}
-        }
-    }
+		max_items = 1,
+		items = {
+			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:dirt_dry'}}
+		}
+	}
 })
 
 minetest.register_node("ws_core:dirt_coarse", {
@@ -133,12 +133,12 @@ minetest.register_node("ws_core:dirt_dry_forest", {
 	groups = {crumbly = 3, soil = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
 	drop = {
-        max_items = 1,
-        items = {
-            {items = {'ws_core:bone'}, rarity = 13},
-            {items = {'ws_core:dirt_dry'}}
-        }
-    }
+		max_items = 1,
+		items = {
+			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:dirt_dry'}}
+		}
+	}
 })
 
 minetest.register_node("ws_core:clay", {
@@ -158,12 +158,12 @@ minetest.register_node("ws_core:clay_dirt", {
 	groups = {crumbly = 3, soil = 1, flammable = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
 	drop = {
-        max_items = 1,
-        items = {
-            {items = {'ws_core:bone'}, rarity = 13},
-            {items = {'ws_core:clay_dirt'}}
-        }
-    }
+		max_items = 1,
+		items = {
+			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:clay_dirt'}}
+		}
+	}
 })
 
 minetest.register_node("ws_core:sandy_dirt", {
@@ -181,13 +181,13 @@ minetest.register_node("ws_core:gravel", {
 			tileable_vertical = false}},
 	groups = {crumbly = 3, falling_node = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
-    drop = {
-        max_items = 1,
-        items = {
-            {items = {'ws_core:flint'}, rarity = 15},
-            {items = {'ws_core:gravel'}}
-        }
-    }
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {'ws_core:flint'}, rarity = 15},
+			{items = {'ws_core:gravel'}}
+		}
+	}
 })
 
 -- ======
@@ -281,11 +281,11 @@ minetest.register_node("ws_core:stone_with_copper_dense", {
 -- =====
 
 minetest.register_node("ws_core:dead_tree", {
-    description = "Dead Log",
-    tiles = {"ws_dead_tree_top.png", "ws_dead_tree_top.png", "ws_dead_tree.png"},
-    paramtype2 = "facedir",
-    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-    on_place = minetest.rotate_node
+	description = "Dead Log",
+	tiles = {"ws_dead_tree_top.png", "ws_dead_tree_top.png", "ws_dead_tree.png"},
+	paramtype2 = "facedir",
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	on_place = minetest.rotate_node
 })
 
 minetest.register_node("ws_core:oak_log_stripped_dry", {
@@ -305,11 +305,11 @@ minetest.register_node("ws_core:wood_planks", {
 })
 
 minetest.register_node("ws_core:oak_log", {
-    description = "Oak Log",
-    tiles = {"ws_oak_log_top.png", "ws_oak_log_top.png", "ws_oak_log.png"},
-    paramtype2 = "facedir",
-    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-    on_place = minetest.rotate_node
+	description = "Oak Log",
+	tiles = {"ws_oak_log_top.png", "ws_oak_log_top.png", "ws_oak_log.png"},
+	paramtype2 = "facedir",
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	on_place = minetest.rotate_node
 })
 
 minetest.register_node("ws_core:oak_log_stripped", {
@@ -329,11 +329,11 @@ minetest.register_node("ws_core:oak_planks", {
 })
 
 minetest.register_node("ws_core:balsa_log", {
-    description = "Balsa Log",
-    tiles = {"ws_balsa_log_top.png", "ws_balsa_log_top.png", "ws_balsa_log.png"},
-    paramtype2 = "facedir",
-    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-    on_place = minetest.rotate_node
+	description = "Balsa Log",
+	tiles = {"ws_balsa_log_top.png", "ws_balsa_log_top.png", "ws_balsa_log.png"},
+	paramtype2 = "facedir",
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	on_place = minetest.rotate_node
 })
 
 minetest.register_node("ws_core:log_stripped_balsa", {
@@ -705,12 +705,12 @@ minetest.register_node("ws_core:bone", {
 			tileable_vertical = false}},
 	groups = {cracky = 1},
 	sounds = ws_core.node_sound_dirt_ws_cores(),
-    drop = {
-        max_items = 1,
-        items = {
-            {items = {'ws_core:bone'}}
-        }
-    }
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {'ws_core:bone'}}
+		}
+	}
 })
 
 minetest.register_node("ws_core:lantern_floor", {
@@ -779,9 +779,9 @@ minetest.register_node("ws_core:stalactites", {
 -- TODO
 --temporary fix for missing node - this needs to be redefined
 minetest.register_node("ws_core:mossycobble", {
-    description = "Sandy Dirt",
-    tiles = {"ws_sandy_dirt.png",
-        {name = "ws_sandy_dirt.png",
-            tileable_vertical = false}},
-    groups = {crumbly = 3, soil = 1},
+	description = "Sandy Dirt",
+	tiles = {"ws_sandy_dirt.png",
+		{name = "ws_sandy_dirt.png",
+			tileable_vertical = false}},
+	groups = {crumbly = 3, soil = 1},
 })
