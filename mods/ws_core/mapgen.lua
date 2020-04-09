@@ -1,3 +1,7 @@
+local modname = "ws_core"
+local modpath = minetest.get_modpath(modname)
+local mg_name = minetest.get_mapgen_setting("mg_name")
+
 --
 -- Aliases for map generators
 --
@@ -1240,7 +1244,7 @@ minetest.register_decoration({
 		biomes = {"dirtland"},
 		y_min = 2,
 		y_max = 80,
-		schematic = modpath.."/schematics/dead_tree.mts",
+		schematic = "/schematics/dead_tree.mts",
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
