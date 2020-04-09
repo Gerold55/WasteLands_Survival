@@ -356,7 +356,7 @@ minetest.register_node("ws_core:planks_balsa", {
 
 -- special planks, only obtainabe from spawned structures
 minetest.register_node("ws_core:planks_structure", {
-	description = "Structural Planks",
+	description = "Old Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
 	tiles = {"ws_planks_structure.png"},

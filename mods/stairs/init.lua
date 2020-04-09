@@ -459,11 +459,12 @@ end
 
 stairs.register_stair_and_slab(
 	"wood",
-	"ws_core:planks_oak",
+	"ws_core:planks_structure",
 	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	{"ws_planks_oak.png"},
-	"Oak Stair",
-	"Oak Slab",
+	{"ws_planks_structure.png"},
+	-- Might need a better descriptor then "Old"
+	"Old Wood Stair",
+	"Old Wood Slab",
 	false
 )
 
