@@ -384,7 +384,7 @@ if minetest.get_modpath("kpgmobs") ~= nil then
 	hbhunger.register_food("kpgmobs:meat", 6)
 	hbhunger.register_food("kpgmobs:rat_cooked", 5)
 	hbhunger.register_food("kpgmobs:med_cooked", 4)
-  	if minetest.get_modpath("bucket") then
+	if minetest.get_modpath("bucket") then
 		hbhunger.register_food("kpgmobs:bucket_milk", 4, "bucket:bucket_empty")
 	end
 end

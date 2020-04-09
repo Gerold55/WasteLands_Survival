@@ -3,6 +3,8 @@ max_line_length = false
 ignore = {
 	--setting a read-only field of a global variable
 	"122",
+	--unused globals
+	"131",
 	--setting and acessing undefined fields of global variables
 	"14.",
 	--unused variables and arguments
@@ -50,4 +52,9 @@ globals = {
 
 allow_defined_top = true
 
-exclude_files = {"mods/modutil/LuaVenusCompiler/testout/"}
+exclude_files = {
+	-- bad syntax is tested here
+	"mods/modutil/LuaVenusCompiler/testout/",
+	-- there is horrible stuff in there, don't use it
+	"mods/ws_core/legacy.lua"
+}
