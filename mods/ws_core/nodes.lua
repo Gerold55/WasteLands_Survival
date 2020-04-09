@@ -58,6 +58,8 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 "ws_core:log_balsa_stripped"
 "ws_core:planks_balsa"
 
+"ws_core:planks_structure"
+
 -Plants
 
 "ws_core:gorse"
@@ -350,6 +352,16 @@ minetest.register_node("ws_core:planks_balsa", {
 	tiles = {"ws_balsa_planks.png"},
 	is_ground_content = false,
 	groups = {choppy = 1, oddly_breakable_by_hand = 1, flammable = 2, wood = 1},
+})
+
+-- special planks, only obtainabe from spawned structures
+minetest.register_node("ws_core:planks_structure", {
+	description = "Structural Planks",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"ws_wood.png"},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })
 
 -- ======
