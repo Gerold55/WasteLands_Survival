@@ -1534,8 +1534,6 @@ minetest.clear_registered_biomes()
 minetest.clear_registered_ores()
 minetest.clear_registered_decorations()
 
-local mg_name = minetest.get_mapgen_setting("mg_name")
-
 if mg_name == "v6" then
 	ws_core.register_mgv6_ores()
 	ws_core.register_mgv6_decorations()
