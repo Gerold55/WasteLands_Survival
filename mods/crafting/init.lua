@@ -37,7 +37,7 @@ minetest.register_craft({
 	type = "shapeless",
 	output = "crafting:crafting_table",
 	recipe = {
-		"ws_core:wood", "ws_core:wood",
-		"ws_core:wood", "ws_core:wood"
+		"ws_core:planks_dead", "ws_core:planks_dead",
+		"ws_core:planks_dead", "ws_core:planks_dead"
 	},
 })

@@ -41,7 +41,7 @@ end
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
-	
+
 	minetest.register_decoration({
 		name = "ws_core:dead_tree1",
 		deco_type = "schematic",
@@ -62,7 +62,7 @@ end
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
-	
+
 	minetest.register_decoration({
 		name = "ws_core:dead_tree2",
 		deco_type = "schematic",
@@ -83,7 +83,7 @@ end
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
-	
+
 	minetest.register_decoration({
 		name = "ws_core:dead_tree3",
 		deco_type = "schematic",
@@ -104,7 +104,7 @@ end
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
-	
+
 	minetest.register_decoration({
 		name = "ws_core:dead_tree4",
 		deco_type = "schematic",
@@ -125,7 +125,7 @@ end
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
-	
+
 	minetest.register_decoration({
 		name = "ws_core:dead_tree_fallen",
 		deco_type = "schematic",
@@ -146,7 +146,7 @@ end
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
-	
+
 	minetest.register_decoration({
 		name = "ws_core:tree",
 		deco_type = "schematic",
@@ -167,7 +167,7 @@ end
 		flags = "place_center_x, place_center_z,  force_placement",
 		rotation = "random",
 	})
-	
+
 	minetest.register_decoration({
 		name = "ws_core:tree1",
 		deco_type = "schematic",
@@ -202,17 +202,17 @@ end
 
 minetest.register_craft({
 	output = "ws_core:wood 4",
-	recipe = {{"ws_core:trunk"}}
+	recipe = {{"ws_core:log_dead"}}
 })
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "ws_core:trunk",
+	recipe = "ws_core:log_dead",
 	burntime = 30,
 })
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "ws_core:wood",
+	recipe = "ws_core:planks_dead",
 	burntime = 7,
 })

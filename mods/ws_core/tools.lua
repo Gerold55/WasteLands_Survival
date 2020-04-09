@@ -27,8 +27,8 @@ minetest.register_tool("ws_core:knife_flint", {
     },
     sound = {breaks = "default_tool_breaks"},
    on_place = function(itemstack, placer, pointed_thing)
-        if minetest.get_node(pointed_thing.under).name == "ws_core:dead_tree" then
-            minetest.set_node(pointed_thing.under, {name = "ws_core:oak_log_stripped_dry"})
+        if minetest.get_node(pointed_thing.under).name == "ws_core:log_dead" then
+            minetest.set_node(pointed_thing.under, {name = "ws_core:log_dead_stripped"})
             placer:get_inventory():add_item("main", "ws_core:bark")
             placer:get_inventory():add_item("main", "food:bug_" .. math.random(1, 2))
         end

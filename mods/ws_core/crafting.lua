@@ -1,15 +1,15 @@
 -- mods/ws_core/crafting.lua
 
 minetest.register_craft({
-	output = 'ws_core:wood 4',
+	output = 'ws_core:planks_dead 4',
 	recipe = {
-		{'ws_core:dead_tree'},
+		{'ws_core:log_dead'},
 	}
 })
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "ws_core:oak_planks",
+	output = "ws_core:planks_oak",
 	recipe = {
 		"ws_core:stick", "ws_core:stick",
 		"ws_core:stick", "ws_core:stick"
@@ -17,16 +17,16 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'ws_core:balsa_planks 4',
+	output = 'ws_core:planks_balsa 4',
 	recipe = {
-		{'ws_core:balsa_log'},
+		{'ws_core:log_balsa'},
 	}
 })
 
 minetest.register_craft({
 	output = 'ws_core:stick 4',
 	recipe = {
-		{'ws_core:oak_planks'},
+		{'ws_core:planks_oak'},
 	}
 })
 
@@ -768,7 +768,7 @@ minetest.register_craft({
 })
 
 
--- Support use of group:wood, includes ws_core:wood which has the same burn time
+-- Support use of group:wood, includes ws_core:planks_dead which has the same burn time
 minetest.register_craft({
 	type = "fuel",
 	recipe = "group:wood",
@@ -1014,7 +1014,7 @@ minetest.register_craftitem('ws_core:flint', {
     description = 'Flint',
 	inventory_image = 'ws_flint.png'
 })
-		
+
 minetest.register_craft({
 	output = 'ws_core:flint 4',
 	recipe = {
