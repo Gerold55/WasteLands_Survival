@@ -133,7 +133,7 @@ end
 --
 -- Lavacooling
 --
-
+-- TODO: currently no lava implemented
 ws_core.cool_lava = function(pos, node)
 	if node.name == "ws_core:lava_source" then
 		minetest.set_node(pos, {name = "ws_core:obsidian"})
@@ -182,6 +182,7 @@ end
 
 -- Wrapping the functions in ABM action is necessary to make overriding them possible
 
+-- TODO: no cactus node curently defined
 function ws_core.grow_cactus(pos, node)
 	if node.param2 >= 4 then
 		return
@@ -345,7 +346,6 @@ minetest.register_abm({
 		"air",
 		"group:grass",
 		"group:dry_grass",
-		"ws_core:snow",
 	},
 	interval = 6,
 	chance = 50,
@@ -368,11 +368,9 @@ minetest.register_abm({
 
 		-- Else, any seeding nodes on top?
 		local name = minetest.get_node(above).name
-		-- Snow check is cheapest, so comes first
-		if name == "ws_core:snow" then
-			minetest.set_node(pos, {name = "ws_core:dirt_with_snow"})
+
 		-- Most likely case first
-		elseif minetest.get_item_group(name, "grass") ~= 0 then
+		if minetest.get_item_group(name, "grass") ~= 0 then
 			minetest.set_node(pos, {name = "ws_core:dirt_with_grass"})
 		elseif minetest.get_item_group(name, "dry_grass") ~= 0 then
 			minetest.set_node(pos, {name = "ws_core:dirt_with_dry_grass"})
@@ -448,6 +446,7 @@ function ws_core.can_interact_with_node(player, pos)
 
 	-- Is player wielding the right key?
 	local item = player:get_wielded_item()
+	-- TODO: currently no key item is defined
 	if item:get_name() == "ws_core:key" then
 		local key_meta = item:get_meta()
 
