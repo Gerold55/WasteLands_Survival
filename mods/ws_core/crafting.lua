@@ -79,14 +79,14 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'ws_core:bone',
 	recipe = {
-		{'ws_core:bone_shards', 'ws_core:bone_shards', 'ws_core:bone_shards'},
-		{'ws_core:bone_shards', 'ws_core:bone_shards', 'ws_core:bone_shards'},
-		{'ws_core:bone_shards', 'ws_core:bone_shards', 'ws_core:bone_shards'},
+		{'ws_core:bone_shard', 'ws_core:bone_shard', 'ws_core:bone_shard'},
+		{'ws_core:bone_shard', 'ws_core:bone_shard', 'ws_core:bone_shard'},
+		{'ws_core:bone_shard', 'ws_core:bone_shard', 'ws_core:bone_shard'},
 	}
 })
 
 minetest.register_craft({
-	output = 'ws_core:bone_shards 9',
+	output = 'ws_core:bone_shard 9',
 	recipe = {{'ws_core:bone'},}
 })
 
@@ -144,7 +144,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'ws_core:pick_bone',
 	recipe = {
-		{'ws_core:bone_shards', 'ws_core:bone_shards', 'ws_core:bone_shards'},
+		{'ws_core:bone_shard', 'ws_core:bone_shard', 'ws_core:bone_shard'},
 		{'', 'group:stick', ''},
 		{'', 'group:stick', ''},
 	}
@@ -171,8 +171,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'ws_core:hatchet_bone',
 	recipe = {
-	{'ws_core:bone_shards','ws_core:bone_shards', ''},
-	{'ws_core:bone_shards', 'ws_core:stick', ''},
+	{'ws_core:bone_shard','ws_core:bone_shard', ''},
+	{'ws_core:bone_shard', 'ws_core:stick', ''},
 	{'', 'ws_core:stick', ''},
 	}
 })
@@ -180,8 +180,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'ws_core:hatchet_bone',
 	recipe = {
-	{'','ws_core:bone_shards', 'ws_core:bone_shards'},
-	{'', 'ws_core:stick', 'ws_core:bone_shards'},
+	{'','ws_core:bone_shard', 'ws_core:bone_shard'},
+	{'', 'ws_core:stick', 'ws_core:bone_shard'},
 	{'', 'ws_core:stick', ''},
 	}
 })
