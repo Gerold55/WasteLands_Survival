@@ -1067,20 +1067,6 @@ function ws_core.register_biomes(upper_limit)
 		humidity_point = 35,
 	})
 
-	minetest.register_biome({
-		name = "dirtland_ocean",
-		node_top = "ws_core:sandy_dirt",
-		depth_top = 1,
-		node_filler = "ws_core:sandy_dirt",
-		depth_filler = 2,
-		node_riverbed = "ws_core:sandy_dirt",
-		depth_riverbed = 2,
-		y_max = -600,
-		y_min = -500,
-		heat_point = 50,
-		humidity_point = 35,
-	})
-
 	-- Forest
 
 	minetest.register_biome({
@@ -1130,21 +1116,6 @@ function ws_core.register_biomes(upper_limit)
 		humidity_point = 16,
 	})
 
-	minetest.register_biome({
-		name = "desert_ocean",
-		node_top = "ws_core:sandy_dirt",
-		depth_top = 3,
-		node_filler = "ws_core:sandy_dirt",
-		depth_filler = 3,
-		node_stone = "ws_core:sandstone",
-		node_riverbed = "ws_core:sandy_dirt",
-		depth_riverbed = 10,
-		vertical_blend = 1,
-		y_max = -600,
-		y_min = -500,
-		heat_point = 92,
-		humidity_point = 16,
-	})
 
 		-- ClayLands
 
@@ -1161,23 +1132,6 @@ function ws_core.register_biomes(upper_limit)
 		heat_point = 50,
 		humidity_point = 40,
 	})
-
-	minetest.register_biome({
-		name = "clay_ocean",
-		node_top = "ws_core:clay_dirt",
-		depth_top = 3,
-		node_filler = "ws_core:clay_dirt",
-		depth_filler = 3,
-		node_stone = "ws_core:stone",
-		node_riverbed = "ws_core:sandy_dirt",
-		depth_riverbed = 10,
-		vertical_blend = 1,
-		y_max = -600,
-		y_min = -500,
-		heat_point = 50,
-		humidity_point = 40,
-	})
-
 end
 
 -- Biomes for floatlands
@@ -1314,7 +1268,7 @@ end
 
 function ws_core.register_decorations()
 
---papyrus
+	--papyrus
 
 	minetest.register_decoration({
 		deco_type = "simple",
