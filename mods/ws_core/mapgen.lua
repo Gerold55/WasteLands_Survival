@@ -1114,7 +1114,7 @@ function ws_core.register_biomes(upper_limit)
 
 	-- Desert
 
--- TODO ws_core:sandstone isn't defined
+	-- TODO ws_core:sandstone isn't defined
 	minetest.register_biome({
 		name = "desert",
 		node_top = "ws_core:sandy_dirt",
@@ -1232,9 +1232,9 @@ end
 
 function ws_core.register_mgv6_decorations()
 
---papyrus
+	--papyrus
 
-minetest.register_decoration({
+	minetest.register_decoration({
 		name = "ws_core:dry_papyrus",
 		deco_type = "schematic",
 		place_on = {"ws_core:dirt_dry"},
@@ -1317,8 +1317,8 @@ function ws_core.register_decorations()
 --papyrus
 
 	minetest.register_decoration({
-		deco_type = "schematic",
-		place_on = {"ws_core:dirt_dry"},
+		deco_type = "simple",
+		place_on = {"ws_core:dirt_dry", "ws_core:sandy_dirt", "ws_core:clay_dirt"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.3,
@@ -1328,67 +1328,14 @@ function ws_core.register_decorations()
 			octaves = 3,
 			persist = 0.7
 		},
-		biomes = {"dirtland"},
+		biomes = {"dirtland", "desert", "claylands"},
 		y_max = 1,
 		y_min = 1,
+		spawn_by = "ws_core:water_source_toxic",
+		num_spawn_by = 1,
 		decoration = "ws_core:dry_papyrus",
-		schematic = modpath.."/schematics/papyrus.mts",
-		flags = "place_center_x, place_center_z,  force_placement",
-		rotation = "random",
 		height = 2,
 		height_max = 4,
-		spawn_by = "ws_core:toxic_water_source",
-		num_spawn_by = 1,
-	})
-
-	minetest.register_decoration({
-		deco_type = "schematic",
-		place_on = {"ws_core:sandy_dirt"},
-		sidelen = 16,
-		noise_params = {
-			offset = -0.3,
-			scale = 0.7,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 354,
-			octaves = 3,
-			persist = 0.7
-		},
-		biomes = {"desert"},
-		y_max = 1,
-		y_min = 1,
-		decoration = "ws_core:dry_papyrus",
-		schematic = modpath.."/schematics/papyrus.mts",
-		flags = "place_center_x, place_center_z,  force_placement",
-		rotation = "random",
-		height = 2,
-		height_max = 4,
-		spawn_by = "ws_core:toxic_water_source",
-		num_spawn_by = 1,
-	})
-
-	minetest.register_decoration({
-		deco_type = "schematic",
-		place_on = {"ws_core:clay_dirt"},
-		sidelen = 16,
-		noise_params = {
-			offset = -0.3,
-			scale = 0.7,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 354,
-			octaves = 3,
-			persist = 0.7
-		},
-		biomes = {"claylands"},
-		y_max = 1,
-		y_min = 1,
-		decoration = "ws_core:dry_papyrus",
-		schematic = modpath.."/schematics/papyrus.mts",
-		flags = "place_center_x, place_center_z,  force_placement",
-		rotation = "random",
-		height = 2,
-		height_max = 4,
-		spawn_by = "ws_core:toxic_water_source",
-		num_spawn_by = 1,
 	})
 
 
