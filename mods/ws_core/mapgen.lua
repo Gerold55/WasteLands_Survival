@@ -1052,26 +1052,11 @@ function ws_core.register_biomes(upper_limit)
 		humidity_point = 35,
 	})
 
-	minetest.register_biome({
-		name = "dirtland_dunes",
-		node_top = "ws_core:dirt_dry",
-		depth_top = 3,
-		node_filler = "ws_core:dirt_dry",
-		depth_filler = 3,
-		node_riverbed = "ws_core:sandy_dirt",
-		depth_riverbed = 4,
-		vertical_blend = 1,
-		y_max = 5,
-		y_min = 4,
-		heat_point = 50,
-		humidity_point = 35,
-	})
-
 	-- Forest
 
 	minetest.register_biome({
 		name = "forest",
-		node_top = "ws_core:dry_dirt_forest",
+		node_top = "ws_core:dirt_dry_forest",
 		depth_top = 1,
 		node_filler = "ws_core:dirt_dry",
 		depth_filler = 4,
@@ -1107,7 +1092,7 @@ function ws_core.register_biomes(upper_limit)
 		depth_top = 3,
 		node_filler = "ws_core:sandy_dirt",
 		depth_filler = 3,
-		node_stone = "ws_core:sandstone",
+		node_stone = "ws_core:stone",
 		node_riverbed = "ws_core:sandy_dirt",
 		depth_riverbed = 6,
 		y_max = 300,
