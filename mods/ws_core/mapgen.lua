@@ -2,57 +2,56 @@ local modname = "ws_core"
 local modpath = minetest.get_modpath(modname)
 local mg_name = minetest.get_mapgen_setting("mg_name")
 
---
--- Aliases for map generators
---
-
---[[
-Defunct aliases - the nodes they point to aren't defined.
-
-minetest.register_alias("mapgen_snowblock", "ws_core:snowblock")
-minetest.register_alias("mapgen_snow", "ws_core:snow")
-minetest.register_alias("mapgen_lava_source", "ws_core:lava_source")
-minetest.register_alias("mapgen_sandstone", "ws_core:sandstone")
---]]
-
-minetest.register_alias("mapgen_stone", "ws_core:stone")
-minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
-minetest.register_alias("default:dirt", "ws_core:dirt")
-minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry")
-minetest.register_alias("mapgen_sand", "ws_core:sandy_dirt")
-minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
-minetest.register_alias("mapgen_river_water_source", "ws_core:river_water_source_toxic")
-minetest.register_alias("mapgen_gravel", "ws_core:gravel")
-minetest.register_alias("mapgen_desert_stone", "ws_core:desert_stone")
-minetest.register_alias("mapgen_desert_sand", "ws_core:sandy_dirt")
-minetest.register_alias("mapgen_dirt_with_snow", "ws_core:dirt_dry")
-minetest.register_alias("mapgen_ice", "ws_core:ice")
-minetest.register_alias("mapgen_jungletree", "ws_core:log_dead")
-minetest.register_alias("mapgen_jungleleaves", "air")
-minetest.register_alias("mapgen_junglegrass", "air")
-minetest.register_alias("mapgen_pine_tree", "ws_core:log_dead")
-minetest.register_alias("mapgen_pine_needles", "air")
-
--- Flora
-
-minetest.register_alias("mapgen_tree", "ws_core:log_dead")
-minetest.register_alias("mapgen_leaves", "air")
-minetest.register_alias("mapgen_apple", "air")
-
--- Dungeons
-
-minetest.register_alias("mapgen_cobble", "ws_core:cobble")
-minetest.register_alias("mapgen_stair_cobble", "stairs:stair_cobble")
-minetest.register_alias("mapgen_mossycobble", "ws_core:mossycobble")
-minetest.register_alias("mapgen_stair_desert_stone", "stairs:stair_desert_stone")
-minetest.register_alias("mapgen_sandstonebrick", "ws_core:sandstonebrick")
-minetest.register_alias("mapgen_stair_sandstone_block", "stairs:stair_sandstone_block")
-
-
 minetest.register_on_joinplayer(function(player)
     player:set_sky("#C4A883", "plain", {"default_cloud.png"}, true)
 end)
 
+--
+-- Aliases for map generators
+--
+
+-- for mapgen aliases for which we don't have an apropriate substitute
+local filler = "air"
+
+-- TODO: many of these aliases should be updated once more nodes are defined
+if mg_name == "v6" then
+	-- Terrain
+	minetest.register_alias("mapgen_stone", "ws_core:stone")
+	minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
+	minetest.register_alias("mapgen_lava_source", "ws_core:oil_source")
+	minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
+	minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry")
+	minetest.register_alias("mapgen_sand", "ws_core:sandy_dirt")
+	minetest.register_alias("mapgen_gravel", "ws_core:gravel")
+	minetest.register_alias("mapgen_desert_stone", "ws_core:stone")
+	minetest.register_alias("mapgen_desert_sand", "ws_core:sandy_dirt")
+	minetest.register_alias("mapgen_dirt_with_snow", "ws_core:clay_dirt")
+	minetest.register_alias("mapgen_snowblock", "ws_core:clay_dirt")
+	minetest.register_alias("mapgen_snow", filler)
+	minetest.register_alias("mapgen_ice", filler)
+	-- Flora
+	minetest.register_alias("mapgen_tree", "ws_core:log_dead")
+	minetest.register_alias("mapgen_leaves", filler)
+	minetest.register_alias("mapgen_apple", filler)
+	minetest.register_alias("mapgen_jungletree", "ws_core:log_oak")
+	minetest.register_alias("mapgen_jungleleaves", filler)
+	minetest.register_alias("mapgen_junglegrass", filler)
+	minetest.register_alias("mapgen_pine_tree", "ws_core:log_balsa")
+	minetest.register_alias("mapgen_pine_needles", filler)
+	-- Dungeons
+	minetest.register_alias("mapgen_cobble", "ws_core:cobble")
+	minetest.register_alias("mapgen_stair_cobble", "stairs:stair_cobble")
+	minetest.register_alias("mapgen_mossycobble", "ws_core:cobble")
+	minetest.register_alias("mapgen_stair_desert_stone", "stairs:stair_cobble")
+else
+	-- Essential
+	minetest.register_alias("mapgen_stone", "ws_core:stone")
+	minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
+	-- minetest.register_alias("mapgen_river_water_source", filler)
+	-- Fallback
+	minetest.register_alias("mapgen_lava_source", "ws_core:oil_source")
+	minetest.register_alias("mapgen_cobble", "ws_core:cobble")
+end
 --
 -- Register ores
 --
