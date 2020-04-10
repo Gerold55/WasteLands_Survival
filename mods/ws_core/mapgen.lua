@@ -649,7 +649,7 @@ end
 
 -- All mapgens except mgv6
 
-function ws_core.register_biomes(upper_limit)
+function ws_core.register_biomes()
 
 	-- Grassland
 
@@ -911,22 +911,6 @@ function ws_core.register_decorations()
 	})
 end
 
---
--- Detect mapgen, flags and parameters to select functions
---
-
--- Get setting or ws_core
-local mgv7_spflags = minetest.get_mapgen_setting("mgv7_spflags") or
-	"mountains, ridges, nofloatlands, caverns"
-local captures_float = string.match(mgv7_spflags, "floatlands")
-local captures_nofloat = string.match(mgv7_spflags, "nofloatlands")
-
--- Get setting or ws_core
--- Make global for mods to use to register floatland biomes
-ws_core.mgv7_floatland_level =
-	minetest.get_mapgen_setting("mgv7_floatland_level") or 1280
-ws_core.mgv7_shadow_limit =
-	minetest.get_mapgen_setting("mgv7_shadow_limit") or 1024
 
 minetest.clear_registered_biomes()
 minetest.clear_registered_ores()
@@ -935,17 +919,6 @@ minetest.clear_registered_decorations()
 if mg_name == "v6" then
 	ws_core.register_mgv6_ores()
 	ws_core.register_mgv6_decorations()
--- Need to check for 'nofloatlands' because that contains
--- 'floatlands' which makes the second condition true.
-elseif mg_name == "v7" and
-		captures_float == "floatlands" and
-		captures_nofloat ~= "nofloatlands" then
-	-- Mgv7 with floatlands and floatland biomes
-	ws_core.register_biomes(ws_core.mgv7_shadow_limit - 1)
-	ws_core.register_floatland_biomes(
-		ws_core.mgv7_floatland_level, ws_core.mgv7_shadow_limit)
-	ws_core.register_ores()
-	ws_core.register_decorations()
 else
 	ws_core.register_biomes(31000)
 	ws_core.register_ores()
