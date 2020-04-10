@@ -21,7 +21,7 @@ if mg_name == "v6" then
 	minetest.register_alias("mapgen_lava_source", "ws_core:oil_source")
 	minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
 	minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry")
-	minetest.register_alias("mapgen_sand", "ws_core:sandy_dirt")
+	minetest.register_alias("mapgen_sand", "ws_core:clay_dirt")
 	minetest.register_alias("mapgen_gravel", "ws_core:gravel")
 	minetest.register_alias("mapgen_desert_stone", "ws_core:stone")
 	minetest.register_alias("mapgen_desert_sand", "ws_core:sandy_dirt")
@@ -918,9 +918,9 @@ minetest.clear_registered_decorations()
 
 if mg_name == "v6" then
 	ws_core.register_mgv6_ores()
-	ws_core.register_mgv6_decorations()
 else
-	ws_core.register_biomes(31000)
+	ws_core.register_biomes()
 	ws_core.register_ores()
-	ws_core.register_decorations()
 end
+
+ws_core.register_decorations()
