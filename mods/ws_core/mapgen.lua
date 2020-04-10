@@ -1209,8 +1209,7 @@ end
 
 function ws_core.register_decorations()
 
-	--papyrus
-
+	-- Papyrus
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:dirt_dry", "ws_core:sandy_dirt", "ws_core:clay_dirt"},
@@ -1233,13 +1232,10 @@ function ws_core.register_decorations()
 		height_max = 4,
 	})
 
-
 	-- Dry shrub
-
 	minetest.register_decoration({
 		deco_type = "simple",
-		place_on = {"ws_core:sandy_dirt",
-			"ws_core:sandy_dirt"},
+		place_on = {"ws_core:dirt_dry", "ws_core:sandy_dirt"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
@@ -1249,33 +1245,14 @@ function ws_core.register_decorations()
 			octaves = 3,
 			persist = 0.6
 		},
-		biomes = {"desert"},
-		y_max = 31000,
-		y_min = 2,
-		decoration = "ws_core:dry_shrub",
-		param2 = 4,
-	})
-
-	minetest.register_decoration({
-		deco_type = "simple",
-		place_on = {"ws_core:dirt_dry",
-			"ws_core:dirt_dry"},
-		sidelen = 16,
-		noise_params = {
-			offset = 0,
-			scale = 0.02,
-			spread = {x = 200, y = 200, z = 200},
-			seed = 329,
-			octaves = 3,
-			persist = 0.6
-		},
-		biomes = {"dirtland"},
+		biomes = {"dirtland", "desert"},
 		y_max = 31000,
 		y_min = 0,
 		decoration = "ws_core:dry_shrub",
 		param2 = 4,
 	})
 
+	-- Gorse
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:clay_dirt",
@@ -1296,7 +1273,7 @@ function ws_core.register_decorations()
 		param2 = 4,
 	})
 
-	--stalactites
+	-- Stalactites
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"ws_core:stone",
@@ -1310,49 +1287,7 @@ function ws_core.register_decorations()
 			octaves = 3,
 			persist = 0.6
 		},
-		biomes = {"dirtland"},
-		y_max = 0,
-		y_min = -31000,
-		decoration = "ws_core:stalactites",
-		flags = "all_ceilings",
-		param2 = 4,
-	})
-
-	minetest.register_decoration({
-		deco_type = "simple",
-		place_on = {"ws_core:stone",
-			"ws_core:stone"},
-		sidelen = 16,
-		noise_params = {
-			offset = 0,
-			scale = 2,
-			spread = {x = 100, y = 100, z = 100},
-			seed = 329,
-			octaves = 3,
-			persist = 0.6
-		},
-		biomes = {"claylands"},
-		y_max = 0,
-		y_min = -31000,
-		decoration = "ws_core:stalactites",
-		flags = "all_ceilings",
-		param2 = 4,
-	})
-
-	minetest.register_decoration({
-		deco_type = "simple",
-		place_on = {"ws_core:stone",
-			"ws_core:stone"},
-		sidelen = 16,
-		noise_params = {
-			offset = 0,
-			scale = 2,
-			spread = {x = 100, y = 100, z = 100},
-			seed = 329,
-			octaves = 3,
-			persist = 0.6
-		},
-		biomes = {"desert"},
+		-- biomes = {"dirtland", "desert", "claylands"},
 		y_max = 0,
 		y_min = -31000,
 		decoration = "ws_core:stalactites",
