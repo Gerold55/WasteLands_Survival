@@ -130,6 +130,26 @@ function ws_core.node_sound_snow_ws_cores(table)
 end
 
 
+local barks_to_strip = {
+	["ws_core:log_dead"] = "ws_core:log_dead_stripped",
+	["ws_core:log_oak"] = "ws_core:log_oak_stripped",
+	["ws_core:log_balsa"] = "ws_core:log_balsa_stripped",
+}
+
+-- if pointed_thing.under is a suitable block, replace it with a stripped variant
+function strip_bark(itemstack, placer, pointed_thing)
+	local node_under = minetest.get_node(pointed_thing.under)
+	if  barks_to_strip[node_under.name] ~= nil then
+		minetest.set_node(pointed_thing.under, {name = barks_to_strip[node_under.name], param2 = node_under.param2})
+		placer:get_inventory():add_item("main", "ws_core:bark")
+		placer:get_inventory():add_item("main", "food:bug_" .. math.random(1, 2))
+		itemstack:add_wear(500)
+		return itemstack
+	else
+		return minetest.item_place(itemstack, placer, pointed_thing)
+	end
+end
+
 --
 -- Lavacooling
 --
