@@ -30,13 +30,13 @@ if mg_name == "v6" then
 	minetest.register_alias("mapgen_snow", filler)
 	minetest.register_alias("mapgen_ice", filler)
 	-- Flora
-	minetest.register_alias("mapgen_tree", "ws_core:log_dead")
+	minetest.register_alias("mapgen_tree", filler)
 	minetest.register_alias("mapgen_leaves", filler)
 	minetest.register_alias("mapgen_apple", filler)
-	minetest.register_alias("mapgen_jungletree", "ws_core:log_oak")
+	minetest.register_alias("mapgen_jungletree", filler)
 	minetest.register_alias("mapgen_jungleleaves", filler)
 	minetest.register_alias("mapgen_junglegrass", filler)
-	minetest.register_alias("mapgen_pine_tree", "ws_core:log_balsa")
+	minetest.register_alias("mapgen_pine_tree", filler)
 	minetest.register_alias("mapgen_pine_needles", filler)
 	-- Dungeons
 	minetest.register_alias("mapgen_cobble", "ws_core:cobble")
