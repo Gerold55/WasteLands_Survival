@@ -25,8 +25,8 @@ if mg_name == "v6" then
 	minetest.register_alias("mapgen_gravel", "ws_core:gravel")
 	minetest.register_alias("mapgen_desert_stone", "ws_core:stone")
 	minetest.register_alias("mapgen_desert_sand", "ws_core:sandy_dirt")
-	minetest.register_alias("mapgen_dirt_with_snow", "ws_core:clay_dirt")
-	minetest.register_alias("mapgen_snowblock", "ws_core:clay_dirt")
+	minetest.register_alias("mapgen_dirt_with_snow", "ws_core:dirt_dry_forest")
+	minetest.register_alias("mapgen_snowblock", filler)
 	minetest.register_alias("mapgen_snow", filler)
 	minetest.register_alias("mapgen_ice", filler)
 	-- Flora
@@ -670,20 +670,6 @@ function ws_core.register_biomes()
 	-- Forest
 
 	minetest.register_biome({
-		name = "forest",
-		node_top = "ws_core:dirt_dry_forest",
-		depth_top = 1,
-		node_filler = "ws_core:dirt_dry",
-		depth_filler = 4,
-		node_riverbed = "ws_core:sandy_dirt",
-		depth_riverbed = 4,
-		y_max = 500,
-		y_min = -40,
-		heat_point = 50,
-		humidity_point = 35,
-	})
-
-	minetest.register_biome({
 		name = "forest_dunes",
 		node_top = "ws_core:sandy_dirt",
 		depth_top = 3,
@@ -694,13 +680,27 @@ function ws_core.register_biomes()
 		vertical_blend = 1,
 		y_max = 5,
 		y_min = 4,
-		heat_point = 50,
-		humidity_point = 35,
+		heat_point = 10,
+		humidity_point = 90,
 	})
+
+	minetest.register_biome({
+		name = "forest",
+		node_top = "ws_core:dirt_dry_forest",
+		depth_top = 1,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 4,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		y_max = 500,
+		y_min = -40,
+		heat_point = 10,
+		humidity_point = 90,
+	})
+
 
 	-- Desert
 
-	-- TODO ws_core:sandstone isn't defined
 	minetest.register_biome({
 		name = "desert",
 		node_top = "ws_core:sandy_dirt",
@@ -729,7 +729,7 @@ function ws_core.register_biomes()
 		depth_riverbed = 4,
 		y_max = 500,
 		y_min = 1,
-		heat_point = 50,
+		heat_point = 55,
 		humidity_point = 40,
 	})
 end
