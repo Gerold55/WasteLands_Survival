@@ -135,10 +135,10 @@ function hb.register_hudbar(identifier, text_color, label, textures, default_sta
 		format_string = S("%s: %d/%d")
 	end
 
-	hudtable.add_all = function(player, hudtable, start_value, start_max, start_hidden)
-		if start_value == nil then start_value = hudtable.default_start_value end
-		if start_max == nil then start_max = hudtable.default_start_max end
-		if start_hidden == nil then start_hidden = hudtable.default_start_hidden end
+	hudtable.add_all = function(player, self, start_value, start_max, start_hidden)
+		if start_value == nil then start_value = self.default_start_value end
+		if start_max == nil then start_max = self.default_start_max end
+		if start_hidden == nil then start_hidden = self.default_start_hidden end
 		local ids = {}
 		local state = {}
 		local name = player:get_player_name()
