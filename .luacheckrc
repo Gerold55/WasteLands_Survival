@@ -55,6 +55,4 @@ allow_defined_top = true
 exclude_files = {
 	-- bad syntax is tested here
 	"mods/modutil/LuaVenusCompiler/testout/",
-	-- there is horrible stuff in there, don't use it
-	"mods/ws_core/legacy.lua"
 }
