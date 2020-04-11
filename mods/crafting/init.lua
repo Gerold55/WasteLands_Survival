@@ -2,7 +2,7 @@ minetest.register_node("crafting:crafting_table", {
 	description = "WorkBench",
 	tiles = {
 		"crafting_table_top.png", "crafting_table_bottom.png", "crafting_table_side3.png",
-		"crafting_table_side2.png", "crafting_table_side3.png", "crafting_table_side.png"
+		"crafting_table_side3.png", "crafting_table_side.png", "crafting_table_side2.png"
 	},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -107,8 +107,8 @@ end
 minetest.register_node("crafting:crafting_table_progressive", {
 	description = "Progressive WorkBench",
 	tiles = {
-		"crafting_table_top.png", "crafting_table_bottom.png", "crafting_table_side3.png",
-		"crafting_table_side2.png", "crafting_table_side3.png", "crafting_table_side.png"
+		"progtable_top.png", "progtable_side3.png", "progtable_side4.png",
+		"progtable_side2.png", "progtable_side3.png", "progtable_side1.png"
 	},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -131,6 +131,21 @@ minetest.register_node("crafting:crafting_table_progressive", {
 })
 
 api.recipes.add_implementor("crafting_table_progressive", "crafting:crafting_table_progressive")
+
+local recipe = api.recipes.add("multiblock_3_3",
+	{"crafting:crafting_table", "ws_core:wood", "crafting:crafting_table",
+	"ws_core:wood", "crafting:crafting_table", "ws_core:wood",
+	"crafting:crafting_table", "ws_core:wood", "crafting:crafting_table"},
+	{"crafting:crafting_table_progressive"}, {h = 0, activator = "ws_core:knife_flint"})
+
+local removing = {
+	{x = 0, y = 0, z = -1}, {x = 0, y = 0, z = 1},
+	{x = 1, y = 0, z = 0}, {x = -1, y = 0, z = 0},
+	{x = 1, y = 0, z = 1}, {x = 1, y = 0, z = -1},
+	{x = -1, y = 0, z = 1}, {x = -1, y = 0, z = -1}
+}
+api.make_activated_multiblock(recipe, removing)
+
 api.recipes.add("crafting_table_progressive",
 		{"ws_core:wood", "ws_core:wood", [4] = "ws_core:wood", [5] = "ws_core:wood", [10] = "crafting:crafting_table"},
 		{"crafting:crafting_table_progressive"}, {width = 2, height = 2})
