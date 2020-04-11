@@ -26,6 +26,7 @@ minetest.register_tool("ws_core:knife_flint", {
 		damage_groups = {fleshy=2},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	on_place = strip_bark,
 })
 
 minetest.register_tool("ws_core:hatchet_flint", {

@@ -130,10 +130,30 @@ function ws_core.node_sound_snow_ws_cores(table)
 end
 
 
+local barks_to_strip = {
+	["ws_core:log_dead"] = "ws_core:log_dead_stripped",
+	["ws_core:log_oak"] = "ws_core:log_oak_stripped",
+	["ws_core:log_balsa"] = "ws_core:log_balsa_stripped",
+}
+
+-- if pointed_thing.under is a suitable block, replace it with a stripped variant
+function strip_bark(itemstack, placer, pointed_thing)
+	local node_under = minetest.get_node(pointed_thing.under)
+	if  barks_to_strip[node_under.name] ~= nil then
+		minetest.set_node(pointed_thing.under, {name = barks_to_strip[node_under.name], param2 = node_under.param2})
+		placer:get_inventory():add_item("main", "ws_core:bark")
+		placer:get_inventory():add_item("main", "food:bug_" .. math.random(1, 2))
+		itemstack:add_wear(500)
+		return itemstack
+	else
+		return minetest.item_place(itemstack, placer, pointed_thing)
+	end
+end
+
 --
 -- Lavacooling
 --
-
+-- TODO: currently no lava implemented
 ws_core.cool_lava = function(pos, node)
 	if node.name == "ws_core:lava_source" then
 		minetest.set_node(pos, {name = "ws_core:obsidian"})
@@ -182,6 +202,7 @@ end
 
 -- Wrapping the functions in ABM action is necessary to make overriding them possible
 
+-- TODO: no cactus node curently defined
 function ws_core.grow_cactus(pos, node)
 	if node.param2 >= 4 then
 		return
@@ -345,7 +366,6 @@ minetest.register_abm({
 		"air",
 		"group:grass",
 		"group:dry_grass",
-		"ws_core:snow",
 	},
 	interval = 6,
 	chance = 50,
@@ -368,11 +388,9 @@ minetest.register_abm({
 
 		-- Else, any seeding nodes on top?
 		local name = minetest.get_node(above).name
-		-- Snow check is cheapest, so comes first
-		if name == "ws_core:snow" then
-			minetest.set_node(pos, {name = "ws_core:dirt_with_snow"})
+
 		-- Most likely case first
-		elseif minetest.get_item_group(name, "grass") ~= 0 then
+		if minetest.get_item_group(name, "grass") ~= 0 then
 			minetest.set_node(pos, {name = "ws_core:dirt_with_grass"})
 		elseif minetest.get_item_group(name, "dry_grass") ~= 0 then
 			minetest.set_node(pos, {name = "ws_core:dirt_with_dry_grass"})
@@ -448,6 +466,7 @@ function ws_core.can_interact_with_node(player, pos)
 
 	-- Is player wielding the right key?
 	local item = player:get_wielded_item()
+	-- TODO: currently no key item is defined
 	if item:get_name() == "ws_core:key" then
 		local key_meta = item:get_meta()
 
