@@ -304,8 +304,8 @@ function ws_core.register_fence(name, def)
 		}
 	})
 
-	local fence_texture = "ws_core_fence_overlay.png^" .. def.texture ..
-			"^ws_core_fence_overlay.png^[makealpha:255,126,126"
+	local fence_texture = "ws_fence_overlay.png^" .. def.texture ..
+			"^ws_fence_overlay.png^[makealpha:255,126,126"
 	-- Allow almost everything to be overridden
 	local ws_core_fields = {
 		paramtype = "light",
