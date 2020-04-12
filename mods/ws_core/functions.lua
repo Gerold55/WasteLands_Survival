@@ -41,11 +41,16 @@ end
 
 -- Wrapping the functions in ABM action is necessary to make overriding them possible
 
+local papyrus_grows_on = {
+	["ws_core:dirt_dry"] = true,
+	["ws_core:sandy_dirt"] = true,
+	["ws_core:clay_dirt"] = true,
+}
 
 function ws_core.grow_papyrus(pos, node)
 	pos.y = pos.y - 1
 	local name = minetest.get_node(pos).name
-	if name ~= "ws_core:dirt_with_grass" and name ~= "ws_core:dirt" then
+	if not papyrus_grows_on[name] then
 		return
 	end
 	if not minetest.find_node_near(pos, 3, {"group:water"}) then
@@ -53,7 +58,7 @@ function ws_core.grow_papyrus(pos, node)
 	end
 	pos.y = pos.y + 1
 	local height = 0
-	while node.name == "ws_core:papyrus" and height < 4 do
+	while node.name == "ws_core:dry_papyrus" and height < 4 do
 		height = height + 1
 		pos.y = pos.y + 1
 		node = minetest.get_node(pos)
@@ -64,20 +69,10 @@ function ws_core.grow_papyrus(pos, node)
 	if minetest.get_node_light(pos) < 13 then
 		return
 	end
-	minetest.set_node(pos, {name = "ws_core:papyrus"})
+	minetest.set_node(pos, {name = "ws_core:dry_papyrus"})
 	return true
 end
 
-minetest.register_abm({
-	label = "Grow papyrus",
-	nodenames = {"ws_core:papyrus"},
-	neighbors = {"ws_core:dirt", "ws_core:dirt_with_grass"},
-	interval = 14,
-	chance = 71,
-	action = function(...)
-		ws_core.grow_papyrus(...)
-	end
-})
 
 
 --
