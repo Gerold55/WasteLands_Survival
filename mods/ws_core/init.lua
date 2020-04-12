@@ -31,6 +31,7 @@ local ws_core_path = minetest.get_modpath("ws_core")
 
 dofile(ws_core_path.."/abm.lua")
 dofile(ws_core_path.."/functions.lua")
+dofile(ws_core_path.."/sounds.lua")
 dofile(ws_core_path.."/nodes.lua")
 dofile(ws_core_path.."/item_entity.lua")
 dofile(ws_core_path.."/chatcommands.lua")
