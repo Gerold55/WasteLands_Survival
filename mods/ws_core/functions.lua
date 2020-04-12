@@ -19,35 +19,6 @@ function strip_bark(itemstack, placer, pointed_thing)
 end
 
 --
--- Lavacooling
---
--- TODO: currently no lava implemented
-ws_core.cool_lava = function(pos, node)
-	if node.name == "ws_core:lava_source" then
-		minetest.set_node(pos, {name = "ws_core:obsidian"})
-	else -- Lava flowing
-		minetest.set_node(pos, {name = "ws_core:stone"})
-	end
-	minetest.sound_play("ws_core_cool_lava",
-		{pos = pos, max_hear_distance = 16, gain = 0.25})
-end
-
-if minetest.settings:get_bool("enable_lavacooling") ~= false then
-	minetest.register_abm({
-		label = "Lava cooling",
-		nodenames = {"ws_core:lava_source", "ws_core:lava_flowing"},
-		neighbors = {"group:cools_lava", "group:water"},
-		interval = 2,
-		chance = 2,
-		catch_up = false,
-		action = function(...)
-			ws_core.cool_lava(...)
-		end,
-	})
-end
-
-
---
 -- Optimized helper to put all items in an inventory into a drops list
 --
 
@@ -65,36 +36,11 @@ end
 
 
 --
--- Papyrus and cactus growing
+-- Papyrus growing
 --
 
 -- Wrapping the functions in ABM action is necessary to make overriding them possible
 
--- TODO: no cactus node curently defined
-function ws_core.grow_cactus(pos, node)
-	if node.param2 >= 4 then
-		return
-	end
-	pos.y = pos.y - 1
-	if minetest.get_item_group(minetest.get_node(pos).name, "sand") == 0 then
-		return
-	end
-	pos.y = pos.y + 1
-	local height = 0
-	while node.name == "ws_core:cactus" and height < 4 do
-		height = height + 1
-		pos.y = pos.y + 1
-		node = minetest.get_node(pos)
-	end
-	if height == 4 or node.name ~= "air" then
-		return
-	end
-	if minetest.get_node_light(pos) < 13 then
-		return
-	end
-	minetest.set_node(pos, {name = "ws_core:cactus"})
-	return true
-end
 
 function ws_core.grow_papyrus(pos, node)
 	pos.y = pos.y - 1
@@ -121,17 +67,6 @@ function ws_core.grow_papyrus(pos, node)
 	minetest.set_node(pos, {name = "ws_core:papyrus"})
 	return true
 end
-
-minetest.register_abm({
-	label = "Grow cactus",
-	nodenames = {"ws_core:cactus"},
-	neighbors = {"group:sand"},
-	interval = 12,
-	chance = 83,
-	action = function(...)
-		ws_core.grow_cactus(...)
-	end
-})
 
 minetest.register_abm({
 	label = "Grow papyrus",
@@ -215,100 +150,6 @@ function ws_core.register_fence(name, def)
 	minetest.register_node(name, def)
 end
 
-
---
--- Leafdecay
---
-
--- Prevent decay of placed leaves
-
-
---
--- Convert dirt to something that fits the environment
---
-
-minetest.register_abm({
-	label = "Grass spread",
-	nodenames = {"ws_core:dirt"},
-	neighbors = {
-		"air",
-		"group:grass",
-		"group:dry_grass",
-	},
-	interval = 6,
-	chance = 50,
-	catch_up = false,
-	action = function(pos, node)
-		-- Check for darkness: night, shadow or under a light-blocking node
-		-- Returns if ignore above
-		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
-		if (minetest.get_node_light(above) or 0) < 13 then
-			return
-		end
-
-		-- Look for spreading dirt-type neighbours
-		local p2 = minetest.find_node_near(pos, 1, "group:spreading_dirt_type")
-		if p2 then
-			local n3 = minetest.get_node(p2)
-			minetest.set_node(pos, {name = n3.name})
-			return
-		end
-
-		-- Else, any seeding nodes on top?
-		local name = minetest.get_node(above).name
-
-		-- Most likely case first
-		if minetest.get_item_group(name, "grass") ~= 0 then
-			minetest.set_node(pos, {name = "ws_core:dirt_with_grass"})
-		elseif minetest.get_item_group(name, "dry_grass") ~= 0 then
-			minetest.set_node(pos, {name = "ws_core:dirt_with_dry_grass"})
-		end
-	end
-})
-
-
---
--- Grass and dry grass removed in darkness
---
-
-minetest.register_abm({
-	label = "Grass covered",
-	nodenames = {"group:spreading_dirt_type"},
-	interval = 8,
-	chance = 50,
-	catch_up = false,
-	action = function(pos, node)
-		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
-		local name = minetest.get_node(above).name
-		local nodedef = minetest.registered_nodes[name]
-		if name ~= "ignore" and nodedef and not ((nodedef.sunlight_propagates or
-				nodedef.paramtype == "light") and
-				nodedef.liquidtype == "none") then
-			minetest.set_node(pos, {name = "ws_core:dirt"})
-		end
-	end
-})
-
-
---
--- Moss growth on cobble near water
---
-
-
---
--- Coral death near air
---
-
-minetest.register_abm({
-	nodenames = {"ws_core:coral_brown", "ws_core:coral_orange"},
-	neighbors = {"air"},
-	interval = 17,
-	chance = 5,
-	catch_up = false,
-	action = function(pos, node)
-		minetest.set_node(pos, {name = "ws_core:coral_skeleton"})
-	end,
-})
 
 
 --
