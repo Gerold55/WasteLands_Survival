@@ -64,6 +64,7 @@ stairs.register_stair_and_slab(
 	{"ws_thatch.png"},
 	"Thatch Stair",
 	"Thatch Slab",
+	nil,
 	true
 )
 
@@ -74,5 +75,6 @@ stairs.register_stair_and_slab(
 	{"ws_rammed_earth.png"},
 	"Rammed Earth Stair",
 	"Rammed Earth Slab",
+	nil,
 	true
 )
