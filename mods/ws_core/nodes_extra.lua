@@ -96,16 +96,3 @@ stairs.register_stair_and_slab(
 	nil,
 	true
 )
-
-
--- For now kept, so ruin schematics don't break
-stairs.register_stair_and_slab(
-	"wood",
-	"ws_core:planks_old",
-	{choppy = 1},
-	{"ws_planks_old.png"},
-	"Compatibility Stair",
-	"Compatibility Slab",
-	nil,
-	true
-)
