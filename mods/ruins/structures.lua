@@ -6,6 +6,14 @@ local S = minetest.get_translator(minetest.get_current_modname())
 
 ruins.decorationIDs = {}
 
+-- to account for node ids which have changed since the schematics were made
+replacements = {
+	["stairs:slab_wood"] = "stairs:slab_planks_old",
+	["stairs:stair_wood"] = "stairs:stair_planks_old",
+	["stairs:stair_inner_wood"] = "stairs:stair_inner_planks_old",
+	["stairs:stair_outer_wood"] = "stairs:stair_outer_planks_old",
+}
+
 local r
 r = minetest.register_decoration({
 	name = "ruins:ruin",
@@ -26,6 +34,7 @@ r = minetest.register_decoration({
 	schematic = modpath.."/schematics/ruin1.mts",
 	flags = "place_center_x, place_center_z,  force_placement",
 	rotation = "random",
+	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -48,6 +57,7 @@ r = minetest.register_decoration({
 	schematic = modpath.."/schematics/ruin1_sand.mts",
 	flags = "place_center_x, place_center_z,  force_placement",
 	rotation = "random",
+	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -70,6 +80,7 @@ r = minetest.register_decoration({
 	schematic = modpath.."/schematics/ruin_large.mts",
 	flags = "place_center_x, place_center_z",
 	rotation = "random",
+	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -92,6 +103,7 @@ r = minetest.register_decoration({
 	schematic = modpath.."/schematics/ruin_large_sand.mts",
 	flags = "place_center_x, place_center_z",
 	rotation = "random",
+	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -114,5 +126,6 @@ r = minetest.register_decoration({
 	schematic = modpath.."/schematics/ramshackle_shelter.mts",
 	flags = "place_center_x, place_center_z, force_placement",
 	rotation = "random",
+	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)

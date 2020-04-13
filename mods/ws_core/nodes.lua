@@ -81,9 +81,6 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 "ws_core:lantern_floor"
 "ws_core:lantern_ceiling"
 "ws_core:stalactites"
-
-
-"ws_core:mossycobble" - temp
 --]]
 
 
@@ -358,11 +355,11 @@ minetest.register_node("ws_core:planks_balsa", {
 })
 
 -- special planks, only obtainabe from spawned structures
-minetest.register_node("ws_core:planks_structure", {
+minetest.register_node("ws_core:planks_old", {
 	description = "Old Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"ws_planks_structure.png"},
+	tiles = {"ws_planks_old.png"},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 })
@@ -790,15 +787,4 @@ minetest.register_node("ws_core:stalactites", {
 	after_dig_node = function(pos, node, metadata, digger)
 		ws_core.dig_up(pos, node, digger)
 	end,
-})
-
-
--- TODO
---temporary fix for missing node - this needs to be redefined
-minetest.register_node("ws_core:mossycobble", {
-	description = "Sandy Dirt",
-	tiles = {"ws_sandy_dirt.png",
-		{name = "ws_sandy_dirt.png",
-			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1},
 })

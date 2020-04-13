@@ -2,10 +2,6 @@ local modname = "ws_core"
 local modpath = minetest.get_modpath(modname)
 local mg_name = minetest.get_mapgen_setting("mg_name")
 
-minetest.register_on_joinplayer(function(player)
-    player:set_sky("#C4A883", "plain", {"default_cloud.png"}, true)
-end)
-
 --
 -- Aliases for map generators
 --

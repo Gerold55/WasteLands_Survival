@@ -84,7 +84,7 @@ end
 local function update(pos, player)
 	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
-	local last_recipe, item = get_recipe(inv)
+	local last_recipe, item, _ = get_recipe(inv)
 
 	if player and last_recipe then
 		player:get_inventory():add_item("main", item)
@@ -99,7 +99,7 @@ local function update(pos, player)
 				inv:remove_item("addons", last_recipe.inputs[i])
 			end
 		end
-		last_recipe, item = get_recipe(inv)
+		_, item = get_recipe(inv)
 	end
 	meta:set_string("formspec", prog_fs .. get_prog_button(item))
 end
