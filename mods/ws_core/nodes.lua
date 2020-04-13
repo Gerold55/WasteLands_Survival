@@ -775,14 +775,3 @@ minetest.register_node("ws_core:stalactites", {
 		ws_core.dig_up(pos, node, digger)
 	end,
 })
-
-
--- TODO
---temporary fix for missing node - this needs to be redefined
-minetest.register_node("ws_core:mossycobble", {
-	description = "Sandy Dirt",
-	tiles = {"ws_sandy_dirt.png",
-		{name = "ws_sandy_dirt.png",
-			tileable_vertical = false}},
-	groups = {crumbly = 1},
-})
