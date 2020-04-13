@@ -36,17 +36,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	output = 'ws_core:stick 4',
-	recipe = {{'ws_core:planks_dead'},}
-})
-
-minetest.register_craft({
-	output = 'ws_core:stick 4',
-	recipe = {{'ws_core:planks_oak'},}
-})
-
-minetest.register_craft({
-	output = 'ws_core:stick 4',
-	recipe = {{'ws_core:planks_balsa'},}
+	recipe = {{'group:planks'},}
 })
 
 minetest.register_craft({
@@ -75,7 +65,6 @@ minetest.register_craft({
 	recipe = {{'ws_core:clay'},}
 })
 
--- TODO: register bone_shard definition
 minetest.register_craft({
 	output = 'ws_core:bone',
 	recipe = {
@@ -114,9 +103,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'ws_core:barrel',
 	recipe = {
-		{'group:wood', 'group:wood', 'group:wood'},
-		{'group:wood', '', 'group:wood'},
-		{'group:wood', 'group:wood', 'group:wood'},
+		{'group:planks', 'group:planks', 'group:planks'},
+		{'group:planks', '', 'group:planks'},
+		{'group:planks', 'group:planks', 'group:planks'},
 	}
 })
 
@@ -217,7 +206,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "group:wood",
+	recipe = "group:planks",
 	burntime = 7,
 })
 
