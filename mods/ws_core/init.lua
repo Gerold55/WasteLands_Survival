@@ -29,6 +29,7 @@ ws_core.gui_survival_form = "size[8,8.5]"..
 -- Load files
 local ws_core_path = minetest.get_modpath("ws_core")
 
+dofile(ws_core_path.."/skybox.lua")
 dofile(ws_core_path.."/abm.lua")
 dofile(ws_core_path.."/functions.lua")
 dofile(ws_core_path.."/sounds.lua")
