@@ -24,3 +24,15 @@ minetest.register_abm({
 		end
 	end,
 })
+
+
+minetest.register_abm({
+	label = "Grow papyrus",
+	nodenames = {"ws_core:dry_papyrus"},
+	neighbors = {"ws_core:dirt_dry", "ws_core:sandy_dirt", "ws_core:clay_dirt"},
+	interval = 14,
+	chance = 71,
+	action = function(...)
+		ws_core.grow_papyrus(...)
+	end
+})
