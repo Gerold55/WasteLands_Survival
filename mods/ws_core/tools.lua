@@ -6,8 +6,8 @@ minetest.register_item(":", {
 		full_punch_interval = 0.9,
 		max_drop_level = 0,
 		groupcaps = {
-			crumbly = {times={[1]=1.10}, uses=0, maxlevel=0},
-			snappy = {times={[1]=1.00}, uses=0, maxlevel=0},
+			crumbly = {times={[2]=3.00, [3]=0.70}, uses=0, maxlevel=1},
+			snappy = {times={[3]=0.40}, uses=0, maxlevel=1},
 			oddly_breakable_by_hand = {times={[1]=3.50,[2]=2.00,[3]=0.70}, uses=0}
 		},
 		damage_groups = {fleshy=1},
@@ -21,12 +21,10 @@ minetest.register_tool("ws_core:knife_flint", {
 		full_punch_interval = 1.2,
 		max_drop_level=0,
 		groupcaps={
-			snappy = {times={[1]=0.40}, uses=50, maxlevel=0},
-			choppy = {times={[1]=3.00, [2]=4.00}, uses=30, maxlevel=0},
+			cracky = {times={[2]=4.0, [3]=1.25}, uses=15, maxlevel=1},
 		},
 		damage_groups = {fleshy=2},
 	},
-	groups = {knife = 1},
 	sound = {breaks = "default_tool_breaks"},
 	on_place = strip_bark,
 })
@@ -38,7 +36,7 @@ minetest.register_tool("ws_core:hatchet_flint", {
 		full_punch_interval = 1.0,
 		max_drop_level=0,
 		groupcaps={
-			choppy = {times={[1]=1.50, [2]=2.00}, uses=50, maxlevel=0},
+			choppy = {times={[2]=3.00, [3]=1.60}, uses=10, maxlevel=1},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -53,7 +51,7 @@ minetest.register_tool("ws_core:pick_bone", {
 		full_punch_interval = 1.2,
 		max_drop_level=0,
 		groupcaps={
-			cracky = {times={[1]=1.50, [2]=2.50}, uses=50, maxlevel=0},
+			cracky = {times={[2]=4.0, [3]=1.25}, uses=15, maxlevel=1},
 		},
 		damage_groups = {fleshy=2},
 	},
@@ -67,7 +65,7 @@ minetest.register_tool("ws_core:hatchet_bone", {
 		full_punch_interval = 1.0,
 		max_drop_level=0,
 		groupcaps={
-			choppy = {times={[1]=1.50, [2]=2.00}, uses=50, maxlevel=0},
+			choppy = {times={[2]=3.00, [3]=1.60}, uses=10, maxlevel=1},
 		},
 		damage_groups = {fleshy=2},
 	},
