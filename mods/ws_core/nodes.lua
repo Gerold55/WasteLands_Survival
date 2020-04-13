@@ -84,7 +84,7 @@ minetest.register_node("ws_core:dirt_dry", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'ws_core:bone_shard'}, rarity = 13},
+			{items = {'ws_core:bone'}, rarity = 13},
 			{items = {'ws_core:dirt_dry'}}
 		}
 	}
@@ -118,7 +118,7 @@ minetest.register_node("ws_core:dirt_dry_forest", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'ws_core:bone_shard'}, rarity = 13},
+			{items = {'ws_core:bone'}, rarity = 13},
 			{items = {'ws_core:dirt_dry'}}
 		}
 	}
@@ -143,7 +143,7 @@ minetest.register_node("ws_core:clay_dirt", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'ws_core:bone_shard'}, rarity = 13},
+			{items = {'ws_core:bone'}, rarity = 13},
 			{items = {'ws_core:clay_dirt'}}
 		}
 	}

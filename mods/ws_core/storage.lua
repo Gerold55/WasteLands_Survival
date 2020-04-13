@@ -11,7 +11,7 @@ minetest.register_node("ws_core:barrel", {
 		"ws_barrel_top.png" --front
 	},
 	is_ground_content = false,
-	groups = {choppy = 1, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		local inv = meta:get_inventory()
