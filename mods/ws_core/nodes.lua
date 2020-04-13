@@ -81,9 +81,6 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 "ws_core:lantern_floor"
 "ws_core:lantern_ceiling"
 "ws_core:stalactites"
-
-
-"ws_core:mossycobble" - temp
 --]]
 
 
@@ -791,17 +788,3 @@ minetest.register_node("ws_core:stalactites", {
 		ws_core.dig_up(pos, node, digger)
 	end,
 })
-<<<<<<< HEAD
-=======
-
-
--- TODO
---temporary fix for missing node - this needs to be redefined
-minetest.register_node("ws_core:mossycobble", {
-	description = "Sandy Dirt",
-	tiles = {"ws_sandy_dirt.png",
-		{name = "ws_sandy_dirt.png",
-			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1},
-})
->>>>>>> parent of eb1448b... update node groups
