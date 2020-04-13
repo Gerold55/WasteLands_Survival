@@ -75,7 +75,6 @@ minetest.register_craft({
 	recipe = {{'ws_core:clay'},}
 })
 
--- TODO: register bone_shard definition
 minetest.register_craft({
 	output = 'ws_core:bone',
 	recipe = {
