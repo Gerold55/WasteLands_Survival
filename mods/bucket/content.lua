@@ -1,0 +1,86 @@
+minetest.register_craftitem("bucket:bucket_unfired_empty", {
+	description = minetest.colorize("#FFFFFF", "Unfired Clay Bucket\n")..minetest.colorize("#ababab", "An unfired bucket which when cooked will hold water."),
+	inventory_image = "ws_clay_pot_unfired.png",
+	groups = {coal = 1, flammable = 1}
+})
+
+minetest.register_craft({
+	type = "cooking",
+	cooktime = 15,
+	output = "bucket:bucket_clay_empty",
+	recipe = "bucket:bucket_unfired_empty"
+})
+
+if minetest.registered_items["ws_core:clay_lump"] then
+	minetest.register_craft({
+		output = "bucket:bucket_unfired_empty 1",
+		recipe = {
+			{'ws_core:clay_lump', '', 'ws_core:clay_lump'},
+			{'', 'ws_core:clay_lump', ''},
+		}
+	})
+end
+
+-- Clay bucket
+bucket.register_bucket(
+	{ -- empty bucket
+		item_name = "bucket:bucket_clay_empty",
+		description = minetest.colorize("#FFFFFF", "Empty Clay Bucket\n")..minetest.colorize("#ababab", "Use empty bucket to collect toxic water."),
+		inventory_image = "ws_clay_pot.png",
+		groups = {bucket = 1},
+	},
+	{ -- list of full buckets
+		{
+			liquid_source = "ws_core:water_source_toxic",
+			item_name = "bucket:bucket_clay_water_toxic",
+			description = "Toxic Water Bucket (Clay)",
+			inventory_image = "ws_clay_pot_water_toxic.png",
+			groups = {water_bucket = 1},
+			force_renew = false,
+		},
+		{
+			liquid_source = "ws_core:water_source",
+			item_name = "bucket:bucket_clay_water",
+			description = "Water Bucket (Clay)",
+			inventory_image = "ws_clay_pot_water.png",
+			groups = {water_bucket = 1},
+			force_renew = true,
+		},
+	}
+)
+
+-- Metal bucket
+bucket.register_bucket(
+	{
+		item_name = "bucket:bucket_metal_empty",
+		description = minetest.colorize("#FFFFFF", "Empty Metal Bucket\n")..minetest.colorize("#ababab", "Use empty bucket to collect toxic water."),
+		inventory_image = "ws_bucket.png",
+		groups = {bucket = 1},
+	},
+	{
+		{
+			liquid_source = "ws_core:water_source_toxic",
+			item_name = "bucket:bucket_meatl_water_toxic",
+			description = "Toxic Water Bucket (Metal)",
+			inventory_image = "ws_bucket_toxic_water.png",
+			groups = {water_bucket = 1},
+			force_renew = false,
+		},
+		{
+			liquid_source = "ws_core:water_source",
+			item_name = "bucket:bucket_metal_water",
+			description = "Water Bucket (Metal)",
+			inventory_image = "ws_bucket_water.png",
+			groups = {water_bucket = 1},
+			force_renew = true,
+		},
+		{
+			liquid_source = "ws_core:oil_source",
+			item_name = "bucket:bucket_metal_oil",
+			description = "Oil Bucket (Metal)",
+			inventory_image = "ws_bucket_oil.png",
+			groups = {water_bucket = 1},
+			force_renew = true,
+		},
+	}
+)
