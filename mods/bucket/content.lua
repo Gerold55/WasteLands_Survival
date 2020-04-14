@@ -1,5 +1,5 @@
-minetest.register_craftitem("bucket:bucket_unfired_empty", {
-	description = minetest.colorize("#FFFFFF", "Unfired Clay Bucket\n")..minetest.colorize("#ababab", "An unfired bucket which when cooked will hold water."),
+minetest.register_craftitem("bucket:bucket_clay_unfired", {
+	description = minetest.colorize("#FFFFFF", "Unfired Clay Bucket\n")..minetest.colorize("#ababab", "An unfired clay bucket which, when cooked, will hold water."),
 	inventory_image = "bucket_clay_unfired.png",
 	groups = {coal = 1, flammable = 1}
 })
@@ -8,12 +8,12 @@ minetest.register_craft({
 	type = "cooking",
 	cooktime = 15,
 	output = "bucket:bucket_clay_empty",
-	recipe = "bucket:bucket_unfired_empty"
+	recipe = "bucket:bucket_clay_unfired"
 })
 
 if minetest.registered_items["ws_core:clay_lump"] then
 	minetest.register_craft({
-		output = "bucket:bucket_unfired_empty 1",
+		output = "bucket:bucket_clay_unfired 1",
 		recipe = {
 			{'ws_core:clay_lump', '', 'ws_core:clay_lump'},
 			{'', 'ws_core:clay_lump', ''},
