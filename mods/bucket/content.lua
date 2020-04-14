@@ -1,6 +1,6 @@
 minetest.register_craftitem("bucket:bucket_unfired_empty", {
 	description = minetest.colorize("#FFFFFF", "Unfired Clay Bucket\n")..minetest.colorize("#ababab", "An unfired bucket which when cooked will hold water."),
-	inventory_image = "ws_clay_pot_unfired.png",
+	inventory_image = "bucket_clay_unfired.png",
 	groups = {coal = 1, flammable = 1}
 })
 
@@ -26,7 +26,7 @@ bucket.register_bucket(
 	{ -- empty bucket
 		item_name = "bucket:bucket_clay_empty",
 		description = minetest.colorize("#FFFFFF", "Empty Clay Bucket\n")..minetest.colorize("#ababab", "Use empty bucket to collect toxic water."),
-		inventory_image = "ws_clay_pot.png",
+		inventory_image = "bucket_clay_empty.png",
 		groups = {bucket = 1},
 	},
 	{ -- list of full buckets
@@ -34,7 +34,7 @@ bucket.register_bucket(
 			liquid_source = "ws_core:water_source_toxic",
 			item_name = "bucket:bucket_clay_water_toxic",
 			description = "Toxic Water Bucket (Clay)",
-			inventory_image = "ws_clay_pot_water_toxic.png",
+			inventory_image = "bucket_clay_water_toxic.png",
 			groups = {water_bucket = 1},
 			force_renew = false,
 		},
@@ -42,7 +42,7 @@ bucket.register_bucket(
 			liquid_source = "ws_core:water_source",
 			item_name = "bucket:bucket_clay_water",
 			description = "Water Bucket (Clay)",
-			inventory_image = "ws_clay_pot_water.png",
+			inventory_image = "bucket_clay_water.png",
 			groups = {water_bucket = 1},
 			force_renew = true,
 		},
@@ -54,7 +54,7 @@ bucket.register_bucket(
 	{
 		item_name = "bucket:bucket_metal_empty",
 		description = minetest.colorize("#FFFFFF", "Empty Metal Bucket\n")..minetest.colorize("#ababab", "Use empty bucket to collect toxic water."),
-		inventory_image = "ws_bucket.png",
+		inventory_image = "bucket_metal_empty.png",
 		groups = {bucket = 1},
 	},
 	{
@@ -62,7 +62,7 @@ bucket.register_bucket(
 			liquid_source = "ws_core:water_source_toxic",
 			item_name = "bucket:bucket_meatl_water_toxic",
 			description = "Toxic Water Bucket (Metal)",
-			inventory_image = "ws_bucket_toxic_water.png",
+			inventory_image = "bucket_metal_water_toxic.png",
 			groups = {water_bucket = 1},
 			force_renew = false,
 		},
@@ -70,7 +70,7 @@ bucket.register_bucket(
 			liquid_source = "ws_core:water_source",
 			item_name = "bucket:bucket_metal_water",
 			description = "Water Bucket (Metal)",
-			inventory_image = "ws_bucket_water.png",
+			inventory_image = "bucket_metal_water.png",
 			groups = {water_bucket = 1},
 			force_renew = true,
 		},
@@ -78,7 +78,7 @@ bucket.register_bucket(
 			liquid_source = "ws_core:oil_source",
 			item_name = "bucket:bucket_metal_oil",
 			description = "Oil Bucket (Metal)",
-			inventory_image = "ws_bucket_oil.png",
+			inventory_image = "bucket_metal_oil.png",
 			groups = {water_bucket = 1},
 			force_renew = true,
 		},
