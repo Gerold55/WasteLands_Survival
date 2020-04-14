@@ -135,7 +135,7 @@ local function register_bucket_empty(bucket_def, liquids)
 		inventory_image = bucket_def.inventory_image,
 		stack_max = 99,
 		liquids_pointable = true,
-		groups = groups,
+		groups = bucket_def.groups,
 		_bucket = liquids,
 		on_use = on_bucket_use,
 	})
@@ -147,7 +147,7 @@ local function register_bucket_full(bucket_def, bucket_empty)
 		inventory_image = bucket_def.inventory_image,
 		stack_max = 1,
 		liquids_pointable = true,
-		groups = groups,
+		groups = bucket_def.groups,
 		_bucket = {
 			bucket_empty = bucket_empty.item_name,
 			liquid = bucket_def.liquid_source
@@ -158,7 +158,7 @@ end
 
 bucket = {}
 bucket.register_bucket = function(bucket_empty, buckets_full)
-	liquids = {}
+	local liquids = {}
 	for _, v in pairs(buckets_full) do
 		liquids[v.liquid_source] = {
 			bucket_full = v.item_name,
