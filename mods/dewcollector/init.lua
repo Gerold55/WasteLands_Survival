@@ -116,7 +116,7 @@ minetest.register_node("dewcollector:barrel_closed", {
   },
   paramtype = "light",
   groups = {choppy=2,oddly_breakable_by_hand=1},
-  tiles = {"ws_planks_structure.png^ws_woven_mat.png", "ws_planks_structure.png"},
+  tiles = {"ws_planks_old.png^ws_woven_mat.png", "ws_planks_old.png"},
   is_ground_content = false,
   on_punch = function(pos)
     local meta = minetest.get_meta(pos)
@@ -154,7 +154,7 @@ minetest.register_node("dewcollector:barrel_empty", {
 	paramtype = "light",
 	drop = "dewcollector:barrel_closed",
 	groups = {choppy=2,oddly_breakable_by_hand=1,not_in_creative_inventory=1},
-	tiles = {"ws_planks_structure.png"},
+	tiles = {"ws_planks_old.png"},
   on_punch = close_barrel,
   on_construct = function(pos)
     construct_barrel(pos)
@@ -179,7 +179,7 @@ minetest.register_node("dewcollector:barrel_filled", {
   paramtype = "light",
   groups = {choppy=2,oddly_breakable_by_hand=1,not_in_creative_inventory=1},
   drop = "dewcollector:barrel",
-  tiles = {"ws_planks_structure.png^(ws_water.png^[mask:dewcollector_innermask.png)", "ws_planks_structure.png"},
+  tiles = {"ws_planks_old.png^(ws_water.png^[mask:dewcollector_innermask.png)", "ws_planks_old.png"},
   is_ground_content = false,
   on_punch = close_barrel,
   on_construct = function(pos)
