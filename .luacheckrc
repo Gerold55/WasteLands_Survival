@@ -3,6 +3,8 @@ max_line_length = false
 ignore = {
 	--setting a read-only field of a global variable
 	"122",
+	--unused globals
+	"131",
 	--setting and acessing undefined fields of global variables
 	"14.",
 	--unused variables and arguments
@@ -26,10 +28,12 @@ read_globals = {
 	-- mod checks
 	"cmi",
 	"default",
+	"farming",
 	"intllib",
 	"invisibility",
 	"lightning",
 	"lucky_block",
+	"mobs",
 	"sfinv_buttons",
 	"stairsplus",
 	"tnt",
@@ -48,4 +52,7 @@ globals = {
 
 allow_defined_top = true
 
-exclude_files = {"mods/modutil/LuaVenusCompiler/testout/"}
+exclude_files = {
+	-- bad syntax is tested here
+	"mods/modutil/LuaVenusCompiler/testout/",
+}

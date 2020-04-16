@@ -7,11 +7,11 @@ function hbhunger.load_hunger(player)
 end
 
 -- wrapper for minetest.item_eat (this way we make sure other mods can't break this one)
-local org_eat = core.do_item_eat
-core.do_item_eat = function(hp_change, replace_with_item, itemstack, user, pointed_thing)
+local org_eat = minetest.do_item_eat
+minetest.do_item_eat = function(hp_change, replace_with_item, itemstack, user, pointed_thing)
 	local old_itemstack = itemstack
 	itemstack = hbhunger.eat(hp_change, replace_with_item, itemstack, user, pointed_thing)
-	for _, callback in pairs(core.registered_on_item_eats) do
+	for _, callback in pairs(minetest.registered_on_item_eats) do
 		local result = callback(hp_change, replace_with_item, itemstack, user, pointed_thing, old_itemstack)
 		if result then
 			return result
@@ -39,7 +39,7 @@ function hbhunger.eat(hp_change, replace_with_item, itemstack, user, pointed_thi
 		def = {}
 		if type(hp_change) ~= "number" then
 			hp_change = 1
-			core.log("error", "Wrong on_use() definition for item '" .. item .. "'")
+			minetest.log("error", "Wrong on_use() definition for item '" .. item .. "'")
 		end
 		def.saturation = hp_change * 1.3
 		def.replace = replace_with_item
@@ -338,7 +338,7 @@ if minetest.get_modpath("ethereal") then
    hbhunger.register_food("ethereal:hearty_stew", 6, "ethereal:bowl", 3)
    hbhunger.register_food("ethereal:hearty_stew_cooked", 10, "ethereal:bowl")
    if minetest.get_modpath("bucket") then
-  	hbhunger.register_food("ethereal:bucket_cactus", 2, "bucket:bucket_empty")
+     hbhunger.register_food("ethereal:bucket_cactus", 2, "bucket:bucket_empty")
    end
    hbhunger.register_food("ethereal:fish_raw", 2)
    hbhunger.register_food("ethereal:fish_cooked", 5)
@@ -384,8 +384,8 @@ if minetest.get_modpath("kpgmobs") ~= nil then
 	hbhunger.register_food("kpgmobs:meat", 6)
 	hbhunger.register_food("kpgmobs:rat_cooked", 5)
 	hbhunger.register_food("kpgmobs:med_cooked", 4)
-  	if minetest.get_modpath("bucket") then
-	   hbhunger.register_food("kpgmobs:bucket_milk", 4, "bucket:bucket_empty")
+	if minetest.get_modpath("bucket") then
+		hbhunger.register_food("kpgmobs:bucket_milk", 4, "bucket:bucket_empty")
 	end
 end
 
