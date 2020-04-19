@@ -212,6 +212,13 @@ minetest.register_node("ws_core:stone_block", {
 	legacy_mineral = true,
 })
 
+minetest.register_node("ws_core:stonebrick", {
+	description = "Stone Brick",
+	tiles = {"ws_stonebrick.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
 -- ====
 -- ORES
 -- ====

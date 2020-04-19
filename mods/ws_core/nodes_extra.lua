@@ -97,3 +97,14 @@ stairs.register_stair_and_slab(
 	nil,
 	true
 )
+
+stairs.register_stair_and_slab(
+	"stonebrick",
+	"ws_core:stonebrick",
+	{cracky = 3},
+	{"ws_stonebrick.png"},
+	"Stone Brick Stair",
+	"Stone Brick Slab",
+	nil,
+	true
+)
