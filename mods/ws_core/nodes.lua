@@ -93,7 +93,7 @@ minetest.register_node("ws_core:dirt_dry", {
 		{name = "ws_dirt_dry.png",
 			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1},
-	sounds = ws_core.node_sound_dirt_ws_cores(),
+	sounds = ws_core.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
 		items = {
@@ -127,7 +127,7 @@ minetest.register_node("ws_core:dirt_dry_forest", {
 		{name = "ws_dirt_forest_dry.png",
 			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1},
-	sounds = ws_core.node_sound_dirt_ws_cores(),
+	sounds = ws_core.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
 		items = {
@@ -152,7 +152,7 @@ minetest.register_node("ws_core:clay_dirt", {
 		{name = "ws_clay_dirt.png",
 			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1, flammable = 1},
-	sounds = ws_core.node_sound_dirt_ws_cores(),
+	sounds = ws_core.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
 		items = {
@@ -176,7 +176,7 @@ minetest.register_node("ws_core:gravel", {
 		{name = "ws_gravel.png",
 			tileable_vertical = false}},
 	groups = {crumbly = 3, falling_node = 1},
-	sounds = ws_core.node_sound_dirt_ws_cores(),
+	sounds = ws_core.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
 		items = {
@@ -424,7 +424,7 @@ minetest.register_node("ws_core:dry_papyrus", {
 		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.5, 6 / 16},
 	},
 	groups = {snappy = 3, flammable = 2},
-	sounds = ws_core.node_sound_leaves_ws_cores(),
+	sounds = ws_core.node_sound_leaves_defaults(),
 
 	after_dig_node = function(pos, node, metadata, digger)
 		ws_core.dig_up(pos, node, digger)
@@ -476,7 +476,7 @@ minetest.register_node("ws_core:water_source_toxic", {
 	liquid_viscosity = 1,
 	post_effect_color = {a = 103, r = 68, g = 117, b = 34},
 	groups = {water = 3, liquid = 3, cools_lava = 1},
-	sounds = ws_core.node_sound_water_ws_cores(),
+	sounds = ws_core.node_sound_water_defaults(),
 })
 
 minetest.register_node("ws_core:water_flowing_toxic", {
@@ -523,7 +523,7 @@ minetest.register_node("ws_core:water_flowing_toxic", {
 	post_effect_color = {a = 103, r = 68, g = 117, b = 34},
 	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1,
 		cools_lava = 1},
-	sounds = ws_core.node_sound_water_ws_cores(),
+	sounds = ws_core.node_sound_water_defaults(),
 })
 
 minetest.register_node("ws_core:water_source", {
@@ -566,7 +566,7 @@ minetest.register_node("ws_core:water_source", {
 	liquid_viscosity = 1,
 	post_effect_color = {a = 191, r = 37, g = 112, b = 112},
 	groups = {water = 3, liquid = 3, cools_lava = 1},
-	sounds = ws_core.node_sound_water_ws_cores(),
+	sounds = ws_core.node_sound_water_defaults(),
 })
 
 minetest.register_node("ws_core:water_flowing", {
@@ -612,7 +612,7 @@ minetest.register_node("ws_core:water_flowing", {
 	post_effect_color = {a = 191, r = 37, g = 112, b = 112},
 	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1,
 		cools_lava = 1},
-	sounds = ws_core.node_sound_water_ws_cores(),
+	sounds = ws_core.node_sound_water_defaults(),
 })
 
 minetest.register_node("ws_core:oil_source", {
@@ -718,7 +718,7 @@ minetest.register_node("ws_core:bone", {
 	paramtype2 = "facedir",
 	groups = {cracky = 1},
 	on_place = minetest.rotate_node,
-	sounds = ws_core.node_sound_dirt_ws_cores(),
+	sounds = ws_core.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
 		items = {
