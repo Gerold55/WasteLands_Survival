@@ -361,6 +361,15 @@ minetest.register_node("ws_core:planks_balsa", {
 	groups = {choppy = 1, oddly_breakable_by_hand = 1, flammable = 2, wood = 1},
 })
 
+minetest.register_node("ws_core:log_balsa_stripped_dry", {
+	description = "Dry Stripped Balsa Log",
+	tiles = {"ws_log_balsa_stripped_top.png", "ws_log_balsa_stripped_top.png", "ws_log_balsa_stripped_dry.png"},
+	is_ground_content = false,
+	paramtype2 = "facedir",
+	groups = {choppy = 3, wood = 1},
+	on_place = minetest.rotate_node
+})
+
 -- special planks, only obtainabe from spawned structures
 minetest.register_node("ws_core:planks_old", {
 	description = "Old Planks",
