@@ -52,7 +52,7 @@ minetest.register_node("derilict_building:fan_large_plain", {
           {-0.50, -0.5,-0.50, 0.50,  1.5, 1.5},
       }
   },
-  sounds = ws_core and ws_core.node_sound_metal_ws_cores(),
+  sounds = ws_core and ws_core.node_sound_metal_defaults(),
   after_place_node = function(pos, placer, itemstack)
     if checkwall(pos,1,1) then
       minetest.set_node(pos, {name = "air"})
@@ -81,7 +81,7 @@ minetest.register_node("derilict_building:fan_large_rusted", {
           {-0.50, -0.5,-0.50, 0.50,  1.5, 1.5},
       }
   },
-  sounds = ws_core and ws_core.node_sound_metal_ws_cores(),
+  sounds = ws_core and ws_core.node_sound_metal_defaults(),
   after_place_node = function(pos, placer, itemstack)
     if checkwall(pos,1,1) then
       minetest.set_node(pos, {name = "air"})

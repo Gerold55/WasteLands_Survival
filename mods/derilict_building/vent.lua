@@ -29,5 +29,5 @@ minetest.register_node("derilict_building:vent", {
     "derilict_building_steel.png^derilict_building_vent_slits.png" --back
   },
   is_ground_content = false,
-  sounds = ws_core and ws_core.node_sound_metal_ws_cores(),
+  sounds = ws_core and ws_core.node_sound_metal_ws_defaults(),
 })
