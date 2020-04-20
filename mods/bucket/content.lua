@@ -82,5 +82,13 @@ bucket.register_bucket(
 			groups = {water_bucket = 1},
 			force_renew = true,
 		},
+		{
+			liquid_source = "ws_core:lava_source",
+			item_name = "bucket:bucket_lava",
+			description = "Lava Bucket (Metal)",
+			inventory_image = "bucket_metal_lava.png",
+			groups = {lava_bucket = 1},
+			force_renew = true,
+		},
 	}
 )
