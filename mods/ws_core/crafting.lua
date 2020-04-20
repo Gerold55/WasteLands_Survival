@@ -133,37 +133,10 @@ minetest.register_craft({
 -- =====
 
 minetest.register_craft({
-	output = 'ws_core:knife_flint',
+	output = 'ws_core:knife_bone',
 	recipe = {
-		{'', 'ws_core:flint'},
+		{'', 'ws_core:bone_shard'},
 		{'group:stick', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:pick_bone',
-	recipe = {
-		{'ws_core:bone_shard', 'ws_core:bone_shard', 'ws_core:bone_shard'},
-		{'', 'group:stick', ''},
-		{'', 'group:stick', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:hatchet_flint',
-	recipe = {
-	{'ws_core:flint','ws_core:flint', ''},
-	{'ws_core:flint', 'ws_core:stick', ''},
-	{'', 'ws_core:stick', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'ws_core:hatchet_flint',
-	recipe = {
-	{'','ws_core:flint', 'ws_core:flint'},
-	{'', 'ws_core:stick', 'ws_core:flint'},
-	{'', 'ws_core:stick', ''},
 	}
 })
 
