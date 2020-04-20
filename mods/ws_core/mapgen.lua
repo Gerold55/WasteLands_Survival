@@ -392,6 +392,25 @@ function ws_core.register_ores()
 			persist = 0.0
 		},
 	})
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:basalt",
+		wherein         = {"ws_core:lava"},
+		clust_scarcity  = 16 * 16 * 16,
+		clust_size      = 5,
+		y_max           = 200,
+		y_min           = -40,
+		noise_threshold = 0.0,
+		noise_params    = {
+			offset = 0.5,
+			scale = 0.2,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 17676,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
 
 	-- Gravel
 

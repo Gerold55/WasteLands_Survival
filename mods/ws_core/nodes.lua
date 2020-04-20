@@ -219,6 +219,13 @@ minetest.register_node("ws_core:stonebrick", {
 	legacy_mineral = true,
 })
 
+minetest.register_node("ws_core:basalt", {
+	description = "Basalt",
+	tiles = {"ws_basalt.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
 -- ====
 -- ORES
 -- ====
@@ -719,6 +726,97 @@ minetest.register_node("ws_core:oil_flowing", {
 	liquid_alternative_source = "ws_core:oil_source",
 	post_effect_color = {a = 191, r = 1, g = 0, b = 3},
 	groups = {liquid = 2, igniter = 1,
+		not_in_creative_inventory = 1},
+})
+
+minetest.register_node("ws_core:lava_source", {
+	description = "Lava Source",
+	drawtype = "liquid",
+	tiles = {
+		{
+			name = "ws_lava_source_animated.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 3.0,
+			},
+		},
+		{
+			name = "ws_lava_source_animated.png",
+			backface_culling = true,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 3.0,
+			},
+		},
+	},
+	paramtype = "light",
+	light_source = ws_core.LIGHT_MAX - 1,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	is_ground_content = false,
+	drop = "",
+	drowning = 1,
+	liquidtype = "source",
+	liquid_alternative_flowing = "ws_core:lava_flowing",
+	liquid_alternative_source = "ws_core:lava_source",
+	liquid_viscosity = 7,
+	liquid_renewable = false,
+	damage_per_second = 4 * 2,
+	post_effect_color = {a = 191, r = 255, g = 64, b = 0},
+	groups = {lava = 3, liquid = 2, igniter = 1},
+})
+
+minetest.register_node("ws_core:lava_flowing", {
+	description = "Flowing Lava",
+	drawtype = "flowingliquid",
+	tiles = {"ws_core_lava.png"},
+	special_tiles = {
+		{
+			name = "ws_lava_flowing_animated.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 3.3,
+			},
+		},
+		{
+			name = "ws_lava_flowing_animated.png",
+			backface_culling = true,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 3.3,
+			},
+		},
+	},
+	paramtype = "light",
+	paramtype2 = "flowingliquid",
+	light_source = ws_core.LIGHT_MAX - 1,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	is_ground_content = false,
+	drop = "",
+	drowning = 1,
+	liquidtype = "flowing",
+	liquid_alternative_flowing = "ws_core:lava_flowing",
+	liquid_alternative_source = "ws_core:lava_source",
+	liquid_viscosity = 7,
+	liquid_renewable = false,
+	damage_per_second = 4 * 2,
+	post_effect_color = {a = 191, r = 255, g = 64, b = 0},
+	groups = {lava = 3, liquid = 2, igniter = 1,
 		not_in_creative_inventory = 1},
 })
 
