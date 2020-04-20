@@ -30,8 +30,10 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 -Stones
 
 "ws_core:stone"
-"ws_core:stone_block"
 "ws_core:cobble"
+"ws_core:stone_block"
+"ws_core:stonebrick"
+"ws_core:basalt"
 
 -Ores
 
@@ -58,6 +60,8 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 "ws_core:log_balsa_stripped"
 "ws_core:planks_balsa"
 
+"ws_core:log_balsa_stripped_dry"
+
 "ws_core:planks_structure"
 
 -Plants
@@ -74,6 +78,8 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 "ws_core:water_flowing"
 "ws_core:oil_source"
 "ws_core:oil_flowing"
+"ws_core:lava_source"
+"ws_core:lava_flowing"
 
 -Misc
 
