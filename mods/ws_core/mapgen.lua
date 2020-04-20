@@ -746,6 +746,22 @@ function ws_core.register_biomes()
 		y_min = 1,
 		heat_point = 55,
 		humidity_point = 40,
+	})	
+
+	    -- VolcanicZone
+
+	minetest.register_biome({
+		name = "volcaniczone",
+		node_top = "ws_core:basalt",
+		depth_top = 3,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 3,
+		node_riverbed = "ws_core:dirt_dry",
+		depth_riverbed = 4,
+		y_max = 500,
+		y_min = 1,
+		heat_point = 60,
+		humidity_point = 70,
 	})
 end
 
