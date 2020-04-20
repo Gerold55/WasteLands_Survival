@@ -1,19 +1,3 @@
-
--- damage player if he dug wood without the correct tool
-minetest.register_on_dignode(function(pos, oldnode, digger)
-		if minetest.get_item_group(oldnode.name, "tree") ~= 0 or minetest.get_item_group(oldnode.name, "wood") ~= 0 then
-			local wield = digger:get_wielded_item():get_name()
-			if minetest.get_item_group(wield, "hatchet") == 0 and minetest.get_item_group(wield, "axe") == 0 then
-				digger:get_inventory():remove_item('main', oldnode)
-				digger:set_hp(digger:get_hp() -2, "Dug wood without hatchet or axe")
-				minetest.set_node(pos, oldnode)
-			end
-		end
-		return
-	end
-)
-
-
 --[[
 
 -Dirts

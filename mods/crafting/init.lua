@@ -136,7 +136,7 @@ local recipe = api.recipes.add("multiblock_3_3",
 	{"crafting:crafting_table", "ws_core:wood", "crafting:crafting_table",
 	"ws_core:wood", "crafting:crafting_table", "ws_core:wood",
 	"crafting:crafting_table", "ws_core:wood", "crafting:crafting_table"},
-	{"crafting:crafting_table_progressive"}, {h = 0, activator = "ws_core:knife_flint"})
+	{"crafting:crafting_table_progressive"}, {h = 0, activator = "ws_core:knife_bone"})
 
 local removing = {
 	{x = 0, y = 0, z = -1}, {x = 0, y = 0, z = 1},
