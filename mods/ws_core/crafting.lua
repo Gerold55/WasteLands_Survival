@@ -36,17 +36,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	output = 'ws_core:stick 4',
-	recipe = {{'ws_core:planks_dead'},}
-})
-
-minetest.register_craft({
-	output = 'ws_core:stick 4',
-	recipe = {{'ws_core:planks_oak'},}
-})
-
-minetest.register_craft({
-	output = 'ws_core:stick 4',
-	recipe = {{'ws_core:planks_balsa'},}
+	recipe = {{'group:planks'},}
 })
 
 minetest.register_craft({
@@ -132,6 +122,7 @@ minetest.register_craft({
 -- TOOLS
 -- =====
 
+-- Knifes
 minetest.register_craft({
 	output = 'ws_core:knife_bone',
 	recipe = {
@@ -140,6 +131,15 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'ws_core:knife_scrap',
+	recipe = {
+		{'', 'ws_core:scrap'},
+		{'group:stick', ''},
+	}
+})
+
+-- Hatchets
 minetest.register_craft({
 	output = 'ws_core:hatchet_bone',
 	recipe = {
@@ -152,8 +152,46 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'ws_core:hatchet_bone',
 	recipe = {
-	{'','ws_core:bone_shard', 'ws_core:bone_shard'},
-	{'', 'ws_core:stick', 'ws_core:bone_shard'},
+	{'','ws_core:scrap', 'ws_core:scrap'},
+	{'', 'ws_core:stick', 'ws_core:scrap'},
+	{'', 'ws_core:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:hatchet_scrap',
+	recipe = {
+	{'ws_core:scrap','ws_core:scrap', ''},
+	{'ws_core:scrap', 'ws_core:stick', ''},
+	{'', 'ws_core:stick', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:hatchet_scrap',
+	recipe = {
+	{'','ws_core:scrap', 'ws_core:scrap'},
+	{'', 'ws_core:stick', 'ws_core:scrap'},
+	{'', 'ws_core:stick', ''},
+	}
+})
+
+-- Shovels
+minetest.register_craft({
+	output = 'ws_core:shovel_scrap',
+	recipe = {
+	{'','ws_core:scrap', ''},
+	{'', 'ws_core:stick', ''},
+	{'', 'ws_core:stick', ''},
+	}
+})
+
+-- Picks
+minetest.register_craft({
+	output = 'ws_core:pick_scrap',
+	recipe = {
+	{'ws_core:scrap','ws_core:scrap', 'ws_core:scrap'},
+	{'', 'ws_core:stick', ''},
 	{'', 'ws_core:stick', ''},
 	}
 })
