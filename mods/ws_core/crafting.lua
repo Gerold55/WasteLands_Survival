@@ -96,6 +96,15 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'ws_core:gold_ingot',
+	recipe = {
+		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
+		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
+		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
+	}
+})
+
 -- ====
 -- MISC
 -- ====
@@ -213,6 +222,12 @@ minetest.register_craft({
 	type = "cooking",
 	output = "ws_core:stone",
 	recipe = "ws_core:cobble",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "ws_core:gold_nugget",
+	recipe = "ws_core:stone_with_gold",
 })
 
 -- ====
