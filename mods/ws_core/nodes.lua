@@ -216,6 +216,13 @@ minetest.register_node("ws_core:basalt", {
 	legacy_mineral = true,
 })
 
+minetest.register_node("ws_core:stone_scaly", {
+	description = "Scaly Stone",
+	tiles = {"ws_unistone.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
 -- ====
 -- ORES
 -- ====
@@ -354,6 +361,15 @@ minetest.register_node("ws_core:planks_balsa", {
 	paramtype2 = "facedir",
 	place_param2 = 0,
 	tiles = {"ws_planks_balsa.png"},
+	is_ground_content = false,
+	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
+})
+
+minetest.register_node("ws_core:planks_balsa_dry", {
+	description = "Dry Balsa Wood Planks",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"ws_planks_balsa_dry.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
