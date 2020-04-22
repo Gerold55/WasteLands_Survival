@@ -223,6 +223,34 @@ minetest.register_node("ws_core:stone_scaly", {
 	legacy_mineral = true,
 })
 
+minetest.register_node("ws_core:andesite", {
+	description = "Andesite",
+	tiles = {"ws_andesite.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:andesite_polished", {
+	description = "Polished Andesite",
+	tiles = {"ws_andesitepol.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:granite", {
+	description = "Granite",
+	tiles = {"ws_granite.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:diorite", {
+	description = "Diorite",
+	tiles = {"ws_diorite.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
 -- ====
 -- ORES
 -- ====

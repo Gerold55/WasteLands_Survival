@@ -411,6 +411,45 @@ function ws_core.register_ores()
 			persist = 0.0
 		},
 	})
+	
+	-- Granite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:granite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	-- Diorite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:diorite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	-- Andesite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:andesite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
 
 	-- Gravel
 
