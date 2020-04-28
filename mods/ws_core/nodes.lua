@@ -77,6 +77,38 @@
 -- =====
 -- DIRTS
 -- =====
+minetest.register_node("ws_core:grass_block", {
+	description = "Grass Block",
+	tiles = {"ws_grass_top.png",
+		{name = "ws_grass_side.png",
+			tileable_vertical = false}},
+	groups = {crumbly = 3, soil = 1},
+	sounds = ws_core.node_sound_dirt_defaults(),
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:dirt'}}
+		}
+	}
+})
+
+minetest.register_node("ws_core:dirt", {
+	description = "Dirt",
+	tiles = {"ws_dirt.png",
+		{name = "ws_dirt.png",
+			tileable_vertical = false}},
+	groups = {crumbly = 3, soil = 1},
+	sounds = ws_core.node_sound_dirt_defaults(),
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:dirt'}}
+		}
+	}
+})
+
 minetest.register_node("ws_core:dirt_dry", {
 	description = "Dry Dirt",
 	tiles = {"ws_dirt_dry.png",

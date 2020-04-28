@@ -399,7 +399,7 @@ function ws_core.register_ores()
 		wherein         = {"ws_core:lava"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
-		y_max           = 200,
+		y_max           = 31000,
 		y_min           = -40,
 		noise_threshold = 0.0,
 		noise_params    = {
