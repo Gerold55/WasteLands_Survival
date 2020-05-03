@@ -248,9 +248,9 @@ minetest.register_node("ws_core:basalt", {
 	legacy_mineral = true,
 })
 
-minetest.register_node("ws_core:stone_scaly", {
-	description = "Scaly Stone",
-	tiles = {"ws_unistone.png"},
+minetest.register_node("ws_core:slate", {
+	description = "Slate",
+	tiles = {"ws_slate.png"},
 	groups = {cracky = 3, stone = 1},
 	legacy_mineral = true,
 })
@@ -347,28 +347,28 @@ minetest.register_node("ws_core:stone_with_copper_dense", {
 -- WOODS
 -- =====
 
-minetest.register_node("ws_core:log_dead", {
-	description = "Dead Log",
-	tiles = {"ws_log_dead_top.png", "ws_log_dead_top.png", "ws_log_dead.png"},
+minetest.register_node("ws_core:log_oak_dry", {
+	description = "Dry Oak Log",
+	tiles = {"ws_log_oak_dry_top.png", "ws_log_oak_dry_top.png", "ws_log_oak_dry.png"},
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
 	on_place = minetest.rotate_node
 })
 
-minetest.register_node("ws_core:log_dead_stripped", {
-	description = "Stripped Dead Log",
-	tiles = {"ws_log_dead_stripped_top.png", "ws_log_dead_stripped_top.png", "ws_log_dead_stripped.png"},
+minetest.register_node("ws_core:log_oak_stripped_dry", {
+	description = "Dry Stripped Oak Log",
+	tiles = {"ws_log_oak_stripped_dry_top.png", "ws_log_oak_stripped_dry_top.png", "ws_log_oak_stripped_dry.png"},
 	is_ground_content = false,
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
 	on_place = minetest.rotate_node
 })
 
-minetest.register_node("ws_core:planks_dead", {
-	description = "Dead Wood Planks",
+minetest.register_node("ws_core:planks_oak_dry", {
+	description = "Dry Oak Wood Planks",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"ws_planks_dead.png"},
+	tiles = {"ws_planks_oak_dry.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
@@ -425,6 +425,14 @@ minetest.register_node("ws_core:planks_balsa", {
 	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
 
+minetest.register_node("ws_core:log_balsa_dry", {
+	description = "Dry Balsa Log",
+	tiles = {"ws_log_balsa_dry_top.png", "ws_log_balsa_dry_top.png", "ws_log_balsa_dry.png"},
+	paramtype2 = "facedir",
+	groups = {choppy = 2, tree = 1, flammable = 2},
+	on_place = minetest.rotate_node
+})
+
 minetest.register_node("ws_core:planks_balsa_dry", {
 	description = "Dry Balsa Wood Planks",
 	paramtype2 = "facedir",
@@ -443,7 +451,7 @@ minetest.register_node("ws_core:log_balsa_stripped_dry", {
 	on_place = minetest.rotate_node
 })
 
--- special planks, only obtainabe from spawned structures
+-- special planks, only obtainable from spawned structures
 minetest.register_node("ws_core:planks_old", {
 	description = "Old Planks",
 	paramtype2 = "facedir",
