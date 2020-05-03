@@ -392,6 +392,78 @@ function ws_core.register_ores()
 			persist = 0.0
 		},
 	})
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:basalt",
+		wherein         = {"ws_core:lava"},
+		clust_scarcity  = 16 * 16 * 16,
+		clust_size      = 5,
+		y_max           = 31000,
+		y_min           = -40,
+		noise_threshold = 0.0,
+		noise_params    = {
+			offset = 0.5,
+			scale = 0.2,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 17676,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
+	
+	-- Granite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:granite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	-- Diorite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:diorite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	-- Andesite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:andesite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	-- Slate
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:slate",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+		biomes = {"dirtland"},
+	})
 
 	-- Gravel
 
@@ -727,6 +799,22 @@ function ws_core.register_biomes()
 		y_min = 1,
 		heat_point = 55,
 		humidity_point = 40,
+	})	
+
+	    -- VolcanicZone
+
+	minetest.register_biome({
+		name = "volcaniczone",
+		node_top = "ws_core:basalt",
+		depth_top = 3,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 3,
+		node_riverbed = "ws_core:dirt_dry",
+		depth_riverbed = 4,
+		y_max = 500,
+		y_min = 1,
+		heat_point = 60,
+		humidity_point = 70,
 	})
 end
 

@@ -3,12 +3,12 @@ local loot = {
 	{name="ws_core:lantern_floor",mid=1,var=3},
 	--on average 0 picks min 0 max 1
 	--mid value 0.2 increases the chance of getting to 20%
-	{name="ws_core:pick_bone",mid=.2,var=1},
+	{name="ws_core:pick_scrap",mid=.2,var=1},
 	--on average 8 wood min 0 max 16
 	--25% chance to get 0 wood
 	{name="ws_core:planks_dead",mid=8,var=16},
-	{name="ws_core:hatchet_flint",mid=.15,var=1},
-	{name="ws_core:knife_flint",mid=.15,var=1},
+	{name="ws_core:hatchet_bone",mid=.15,var=1},
+	{name="ws_core:knife_bone",mid=.15,var=1},
 }
 
 function load_barrel(pos, node)
