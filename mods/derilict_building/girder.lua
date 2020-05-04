@@ -21,6 +21,13 @@ minetest.register_node("derilict_building:girder", {
   tiles = {"derilict_building_steel_red.png"},
   is_ground_content = false,
   sounds = ws_core and ws_core.node_sound_metal_defaults(),
+  on_place = function(itemstack, placer, pointed_thing)
+    if pointed_thing.type ~= "node" then
+      return itemstack
+    end
+
+    return minetest.rotate_and_place(itemstack, placer, pointed_thing)
+  end,
 })
 
 minetest.register_node("derilict_building:girder_rusty", {
@@ -40,6 +47,13 @@ minetest.register_node("derilict_building:girder_rusty", {
   tiles = {"derilict_building_steel_red_rusty.png"},
   is_ground_content = false,
   sounds = ws_core and ws_core.node_sound_metal_defaults(),
+  on_place = function(itemstack, placer, pointed_thing)
+    if pointed_thing.type ~= "node" then
+      return itemstack
+    end
+
+    return minetest.rotate_and_place(itemstack, placer, pointed_thing)
+  end,
 })
 
 --TODO: craft t-shape out of bars

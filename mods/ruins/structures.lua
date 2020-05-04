@@ -129,3 +129,26 @@ r = minetest.register_decoration({
 	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
+
+r = minetest.register_decoration({
+  name = "ruins:derilict_factory_empty",
+  deco_type = "schematic",
+  place_on = {"ws_core:dirt_dry"},
+  sidelen = 80,
+  noise_params = {
+    offset = 0.00004,
+    scale = 0.0001,
+    spread = {x = 100, y = 100, z = 100},
+    seed = 12,
+    octaves = 2,
+    persist = 0.2
+  },
+  biomes = {"dirtland"},
+  y_min = 2,
+  y_max = 80,
+  schematic = modpath.."/schematics/derilict_factory_empty.mts",
+  flags = "place_center_x, place_center_z, force_placement",
+  rotation = "random",
+  replacements = replacements,
+})
+table.insert(ruins.decorationIDs,r)
