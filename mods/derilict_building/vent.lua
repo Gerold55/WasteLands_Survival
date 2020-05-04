@@ -1,5 +1,5 @@
 local vent_panel = {
-  { -1/2, -1/2, -1/2,  1/2,  1/2,  -3/8},
+  { -1/2, -1/2, -1/8,  1/2,  1/2,  1/8},
 }
 
 minetest.register_node("derilict_building:vent", {
