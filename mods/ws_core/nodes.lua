@@ -173,7 +173,7 @@ minetest.register_node("ws_core:clay_dirt", {
 	tiles = {"ws_clay_dirt.png",
 		{name = "ws_clay_dirt.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 3, soil = 1, flammable = 1},
+	groups = {crumbly = 3, soil = 1},
 	sounds = ws_core.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
@@ -859,7 +859,7 @@ minetest.register_node("ws_core:lava_flowing", {
 				type = "vertical_frames",
 				aspect_w = 16,
 				aspect_h = 16,
-				length = 3.3,
+				length = 6,
 			},
 		},
 		{
@@ -869,7 +869,7 @@ minetest.register_node("ws_core:lava_flowing", {
 				type = "vertical_frames",
 				aspect_w = 16,
 				aspect_h = 16,
-				length = 3.3,
+				length = 6,
 			},
 		},
 	},
@@ -967,10 +967,9 @@ minetest.register_node("ws_core:stalactites", {
 	tiles = {"ws_stalag1.png"},
 	inventory_image = "ws_stalag1.png",
 	wield_image = "ws_stalag1.png",
-	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
-	groups = {snappy = 3, flammable = 2},
+	groups = {snappy = 3},
 
 	after_dig_node = function(pos, node, metadata, digger)
 		ws_core.dig_up(pos, node, digger)

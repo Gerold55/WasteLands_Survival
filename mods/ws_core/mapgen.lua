@@ -14,7 +14,7 @@ if mg_name == "v6" then
 	-- Terrain
 	minetest.register_alias("mapgen_stone", "ws_core:stone")
 	minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
-	minetest.register_alias("mapgen_lava_source", "ws_core:oil_source")
+	minetest.register_alias("mapgen_lava_source", "ws_core:lava_source")
 	minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
 	minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry")
 	minetest.register_alias("mapgen_sand", "ws_core:clay_dirt")
@@ -45,7 +45,7 @@ else
 	minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
 	-- minetest.register_alias("mapgen_river_water_source", filler)
 	-- Fallback
-	minetest.register_alias("mapgen_lava_source", "ws_core:oil_source")
+	minetest.register_alias("mapgen_lava_source", "ws_core:lava_source")
 	minetest.register_alias("mapgen_cobble", "ws_core:cobble")
 end
 --
@@ -502,6 +502,18 @@ function ws_core.register_ores()
 		y_max          = 4,
 		y_min          = -31000,
 	})
+	
+	-- Lava
+
+	minetest.register_ore({
+		ore             = "ws_core:lava_source",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 16 * 16 * 16,
+		clust_num_ores = 10,
+		clust_size     = 3,
+		y_max          = -10000,
+		y_min          = -31000,
+	})
 
 	-- Bones
 
@@ -748,8 +760,8 @@ function ws_core.register_biomes()
 		vertical_blend = 1,
 		y_max = 5,
 		y_min = 4,
-		heat_point = 10,
-		humidity_point = 90,
+		heat_point = 40,
+		humidity_point = 50,
 	})
 
 	minetest.register_biome({
@@ -762,10 +774,26 @@ function ws_core.register_biomes()
 		depth_riverbed = 4,
 		y_max = 500,
 		y_min = -40,
-		heat_point = 10,
-		humidity_point = 90,
+		heat_point = 40,
+		humidity_point = 50,
 	})
 
+
+	-- Spruce Forest
+
+	minetest.register_biome({
+		name = "spruce_forest",
+		node_top = "ws_core:dirt_dry_forest",
+		depth_top = 1,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 4,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		y_max = 500,
+		y_min = -40,
+		heat_point = 10,
+		humidity_point = 50,
+	})
 
 	-- Desert
 
