@@ -34,11 +34,10 @@ api.recipes.add_implementor("furnace", "factory:ind_furnace")
 api.recipes.add_implementor("furnace", "factory:electronic_furnace")
 
 minetest.register_craft({
-	type = "shapeless",
 	output = "crafting:crafting_table",
 	recipe = {
-		"ws_core:planks_dead", "ws_core:planks_dead",
-		"ws_core:planks_dead", "ws_core:planks_dead"
+		{"ws_core:planks_dead", "ws_core:planks_dead"},
+		{"ws_core:planks_dead", "ws_core:planks_dead"}
 	},
 })
 
