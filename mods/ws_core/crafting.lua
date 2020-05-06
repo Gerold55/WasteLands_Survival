@@ -5,32 +5,32 @@
 -- ===========
 
 minetest.register_craft({
-	output = 'ws_core:planks_dead 4',
-	recipe = {{'ws_core:log_dead'},}
+	output = 'ws_core:planks_oak_dry',
+	recipe = {{'ws_core:log_oak_dry'},}
 })
 
 minetest.register_craft({
-	output = 'ws_core:planks_dead 4',
-	recipe = {{'ws_core:log_dead_stripped'},}
+	output = 'ws_core:planks_oak_dry',
+	recipe = {{'ws_core:log_oak_stripped_dry'},}
 })
 
 minetest.register_craft({
-	output = 'ws_core:planks_oak 4',
+	output = 'ws_core:planks_oak',
 	recipe = {{'ws_core:log_oak'},}
 })
 
 minetest.register_craft({
-	output = 'ws_core:planks_oak 4',
+	output = 'ws_core:planks_oak',
 	recipe = {{'ws_core:log_oak_stripped'},}
 })
 
 minetest.register_craft({
-	output = 'ws_core:planks_balsa 4',
+	output = 'ws_core:planks_balsa',
 	recipe = {{'ws_core:log_balsa'},}
 })
 
 minetest.register_craft({
-	output = 'ws_core:planks_balsa 4',
+	output = 'ws_core:planks_balsa',
 	recipe = {{'ws_core:log_balsa_stripped'},}
 })
 
@@ -41,7 +41,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "ws_core:planks_dead",
+	output = "ws_core:planks_oak_dry",
 	recipe = {
 		"ws_core:stick", "ws_core:stick",
 		"ws_core:stick", "ws_core:stick"
@@ -124,6 +124,15 @@ minetest.register_craft({
 		{'group:stone', 'group:stone', 'group:stone'},
 		{'group:stone', '', 'group:stone'},
 		{'group:stone', 'group:stone', 'group:stone'},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:furnace_top',
+	recipe = {
+		{'group:wood', 'group:wood', 'group:wood'},
+		{'group:wood', 'ws_core:coal', 'group:wood'},
+		{'group:wood', 'group:wood', 'group:wood'},
 	}
 })
 

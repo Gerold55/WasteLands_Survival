@@ -179,6 +179,7 @@ minetest.register_node("ws_core:clay_dirt", {
 		max_items = 1,
 		items = {
 			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:clay_lump'}, rarity = 13},
 			{items = {'ws_core:clay_dirt'}}
 		}
 	}

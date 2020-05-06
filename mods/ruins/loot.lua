@@ -6,7 +6,7 @@ local loot = {
 	{name="ws_core:pick_scrap",mid=.2,var=1},
 	--on average 8 wood min 0 max 16
 	--25% chance to get 0 wood
-	{name="ws_core:planks_dead",mid=8,var=16},
+	{name="ws_core:planks_oak_dry",mid=8,var=16},
 	{name="ws_core:hatchet_bone",mid=.15,var=1},
 	{name="ws_core:knife_bone",mid=.15,var=1},
 }
