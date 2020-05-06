@@ -14,7 +14,7 @@ if mg_name == "v6" then
 	-- Terrain
 	minetest.register_alias("mapgen_stone", "ws_core:stone")
 	minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
-	minetest.register_alias("mapgen_lava_source", "ws_core:oil_source")
+	minetest.register_alias("mapgen_lava_source", "ws_core:lava_source")
 	minetest.register_alias("mapgen_dirt", "ws_core:dirt_dry")
 	minetest.register_alias("mapgen_dirt_with_grass", "ws_core:dirt_dry")
 	minetest.register_alias("mapgen_sand", "ws_core:clay_dirt")
@@ -45,7 +45,7 @@ else
 	minetest.register_alias("mapgen_water_source", "ws_core:water_source_toxic")
 	-- minetest.register_alias("mapgen_river_water_source", filler)
 	-- Fallback
-	minetest.register_alias("mapgen_lava_source", "ws_core:oil_source")
+	minetest.register_alias("mapgen_lava_source", "ws_core:lava_source")
 	minetest.register_alias("mapgen_cobble", "ws_core:cobble")
 end
 --
@@ -58,6 +58,27 @@ function ws_core.register_mgv6_ores()
 
 	-- Blob ore
 	-- These first to avoid other ores in blobs
+	--Clay
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:clay",
+		wherein         = {"ws_core:sandy_dirt"},
+		clust_scarcity  = 16 * 16 * 16,
+		clust_size      = 5,
+		y_max           = 2,
+		y_min           = -15,
+		noise_threshold = 0.0,
+		noise_params    = {
+			offset = 0.5,
+			scale = 0.2,
+			spread = {x = 5, y = 5, z = 5},
+			seed = -316,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
+	
 	-- Sand
 
 	minetest.register_ore({
@@ -357,6 +378,25 @@ function ws_core.register_ores()
 
 	minetest.register_ore({
 		ore_type        = "blob",
+		ore             = "ws_core:clay",
+		wherein         = {"ws_core:dirt_dry"},
+		clust_scarcity  = 20 * 20 * 20,
+		clust_size      = 5,
+		y_max           = 200,
+		y_min           = -40,
+		noise_threshold = 0.0,
+		noise_params    = {
+			offset = 0.5,
+			scale = 0.2,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 17676,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
+	
+	minetest.register_ore({
+		ore_type        = "blob",
 		ore             = "ws_core:dirt_coarse",
 		wherein         = {"ws_core:dirt_dry"},
 		clust_scarcity  = 16 * 16 * 16,
@@ -391,6 +431,78 @@ function ws_core.register_ores()
 			octaves = 1,
 			persist = 0.0
 		},
+	})
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:basalt",
+		wherein         = {"ws_core:lava"},
+		clust_scarcity  = 16 * 16 * 16,
+		clust_size      = 5,
+		y_max           = 31000,
+		y_min           = -40,
+		noise_threshold = 0.0,
+		noise_params    = {
+			offset = 0.5,
+			scale = 0.2,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 17676,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
+	
+	-- Granite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:granite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	-- Diorite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:diorite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	-- Andesite
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:andesite",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+	})
+	
+	-- Slate
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:slate",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+		biomes = {"dirtland"},
 	})
 
 	-- Gravel
@@ -428,6 +540,18 @@ function ws_core.register_ores()
 		clust_num_ores = 5,
 		clust_size     = 3,
 		y_max          = 4,
+		y_min          = -31000,
+	})
+	
+	-- Lava
+
+	minetest.register_ore({
+		ore             = "ws_core:lava_source",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 16 * 16 * 16,
+		clust_num_ores = 10,
+		clust_size     = 3,
+		y_max          = -10000,
 		y_min          = -31000,
 	})
 
@@ -676,8 +800,8 @@ function ws_core.register_biomes()
 		vertical_blend = 1,
 		y_max = 5,
 		y_min = 4,
-		heat_point = 10,
-		humidity_point = 90,
+		heat_point = 40,
+		humidity_point = 50,
 	})
 
 	minetest.register_biome({
@@ -690,10 +814,26 @@ function ws_core.register_biomes()
 		depth_riverbed = 4,
 		y_max = 500,
 		y_min = -40,
-		heat_point = 10,
-		humidity_point = 90,
+		heat_point = 40,
+		humidity_point = 50,
 	})
 
+
+	-- Spruce Forest
+
+	minetest.register_biome({
+		name = "spruce_forest",
+		node_top = "ws_core:dirt_dry_forest",
+		depth_top = 1,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 4,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		y_max = 500,
+		y_min = -40,
+		heat_point = 10,
+		humidity_point = 50,
+	})
 
 	-- Desert
 
@@ -727,6 +867,22 @@ function ws_core.register_biomes()
 		y_min = 1,
 		heat_point = 55,
 		humidity_point = 40,
+	})	
+
+	    -- VolcanicZone
+
+	minetest.register_biome({
+		name = "volcaniczone",
+		node_top = "ws_core:basalt",
+		depth_top = 3,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 3,
+		node_riverbed = "ws_core:dirt_dry",
+		depth_riverbed = 4,
+		y_max = 500,
+		y_min = 1,
+		heat_point = 60,
+		humidity_point = 70,
 	})
 end
 

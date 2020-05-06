@@ -1,7 +1,8 @@
 local barks_to_strip = {
-	["ws_core:log_dead"] = "ws_core:log_dead_stripped",
+	["ws_core:log_oak_dry"] = "ws_core:log_oak_stripped_dry",
 	["ws_core:log_oak"] = "ws_core:log_oak_stripped",
 	["ws_core:log_balsa"] = "ws_core:log_balsa_stripped",
+	["ws_core:log_balsa_dry"] = "ws_core:log_balsa_stripped_dry",
 }
 
 -- if pointed_thing.under is a suitable block, replace it with a stripped variant

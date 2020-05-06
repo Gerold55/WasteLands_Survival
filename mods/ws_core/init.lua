@@ -26,6 +26,13 @@ ws_core.gui_survival_form = "size[8,8.5]"..
 			"listring[current_player;craft]"..
 			ws_core.get_hotbar_bg(0,4.25)
 
+if minetest.global_exists("player_api") then
+	minetest.register_on_joinplayer(function(player)
+		--set the players skin
+		player_api.set_textures(player, {"ws_survivor.png"})
+	end)
+end
+
 -- Load files
 local ws_core_path = minetest.get_modpath("ws_core")
 

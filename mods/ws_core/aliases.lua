@@ -16,9 +16,8 @@ minetest.register_alias("wooden_fence", "ws_core:fence_wood")
 minetest.register_alias("rail", "carts:rail")
 
 minetest.register_alias("wood", "ws_core:planks_dead")
+minetest.register_alias("ws_core:log_dead", "ws_core:log_oak_dry")
 minetest.register_alias("cobble", "ws_core:cobble")
-
-minetest.register_alias("WAxe", "ws_core:hatchet_flint")
 
 minetest.register_alias("Stick", "ws_core:stick")
 minetest.register_alias("lump_of_coal", "ws_core:coal")
