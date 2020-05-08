@@ -771,18 +771,66 @@ end
 
 function ws_core.register_biomes()
 
-	-- Grassland
+	-- Dirtland
 
 	minetest.register_biome({
 		name = "dirtland",
 		node_top = "ws_core:dirt_dry",
-		depth_top = 3,
+		depth_top = 1,
 		node_filler = "ws_core:dirt_dry",
 		depth_filler = 3,
 		node_riverbed = "ws_core:sandy_dirt",
-		depth_riverbed = 4,
-		y_max = 200,
-		y_min = -40,
+		depth_riverbed = 2,
+		node_dungeon = "ws_core:cobble",
+		node_dungeon_stair = "stairs:stair_cobble",
+		vertical_blend = 1,
+		y_max = 1000,
+		y_min = 6,
+		heat_point = 50,
+		humidity_point = 35,
+	})
+	
+	minetest.register_biome({
+		name = "dirtland_dunes",
+		node_top = "ws_core:sandy_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:sandy_dirt",
+		depth_filler = 2,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 2,
+		node_dungeon = "ws_core:cobble",
+		node_dungeon_stair = "stairs:stair_cobble",
+		vertical_blend = 1,
+		y_max = 5,
+		y_min = 4,
+		heat_point = 50,
+		humidity_point = 35,
+	})
+
+	minetest.register_biome({
+		name = "dirtland_ocean",
+		node_top = "ws_core:sandy_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:sandy_dirt",
+		depth_filler = 3,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 2,
+		node_cave_liquid = "ws_core:toxic_water_source",
+		node_dungeon = "ws_core:cobble",
+		node_dungeon_stair = "stairs:stair_cobble",
+		y_max = 3,
+		y_min = -255,
+		heat_point = 50,
+		humidity_point = 35,
+	})
+
+	minetest.register_biome({
+		name = "dirtland_under",
+		node_cave_liquid = {"ws_core:toxic_water_source", "ws_core:lava_source"},
+		node_dungeon = "ws_core:cobble",
+		node_dungeon_stair = "stairs:stair_cobble",
+		y_max = -256,
+		y_min = -31000,
 		heat_point = 50,
 		humidity_point = 35,
 	})
@@ -800,8 +848,8 @@ function ws_core.register_biomes()
 		vertical_blend = 1,
 		y_max = 5,
 		y_min = 4,
-		heat_point = 40,
-		humidity_point = 50,
+		heat_point = 45,
+		humidity_point = 70,
 	})
 
 	minetest.register_biome({
@@ -809,15 +857,39 @@ function ws_core.register_biomes()
 		node_top = "ws_core:dirt_dry_forest",
 		depth_top = 1,
 		node_filler = "ws_core:dirt_dry",
-		depth_filler = 4,
+		depth_filler = 3,
 		node_riverbed = "ws_core:sandy_dirt",
-		depth_riverbed = 4,
+		depth_riverbed = 2,
 		y_max = 500,
 		y_min = -40,
 		heat_point = 40,
 		humidity_point = 50,
 	})
 
+	minetest.register_biome({
+		name = "forest_ocean",
+		node_top = "ws_core:sandy_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:sandy_dirt",
+		depth_filler = 3,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 2,
+		y_max = 3,
+		y_min = -255,
+		heat_point = 45,
+		humidity_point = 70,
+	})
+
+	minetest.register_biome({
+		name = "forest_under",
+		node_cave_liquid = {"ws_core:toxic_water_source", "ws_core:lava_source"},
+		node_dungeon = "ws_core:cobble",
+		node_dungeon_stair = "stairs:stair_cobble",
+		y_max = -256,
+		y_min = -31000,
+		heat_point = 45,
+		humidity_point = 70,
+	})
 
 	-- Spruce Forest
 
@@ -833,6 +905,50 @@ function ws_core.register_biomes()
 		y_min = -40,
 		heat_point = 10,
 		humidity_point = 50,
+	})
+	
+	minetest.register_biome({
+		name = "spruce_forest_ocean",
+		node_top = "ws_core:sandy_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:sandy_dirt",
+		depth_filler = 3,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 2,
+		node_cave_liquid = "ws_core:toxic_water_source",
+		node_dungeon = "ws_core:cobble",
+		node_dungeon_stair = "stairs:stair_cobble",
+		y_max = 3,
+		y_min = -255,
+		heat_point = 45,
+		humidity_point = 70,
+	})
+	
+	minetest.register_biome({
+		name = "spruce_forest_dunes",
+		node_top = "ws_core:dirt_dry_forest",
+		depth_top = 3,
+		node_filler = "ws_core:dirt_dry",
+		depth_filler = 3,
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 4,
+		vertical_blend = 1,
+		y_max = 5,
+		y_min = 4,
+		heat_point = 45,
+		humidity_point = 70,
+	})
+
+
+	minetest.register_biome({
+		name = "spruce_forest_under",
+		node_cave_liquid = {"ws_core:toxic_water_source", "ws_core:lava_source"},
+		node_dungeon = "ws_core:cobble",
+		node_dungeon_stair = "stairs:stair_cobble",
+		y_max = -256,
+		y_min = -31000,
+		heat_point = 45,
+		humidity_point = 70,
 	})
 
 	-- Desert
@@ -852,6 +968,35 @@ function ws_core.register_biomes()
 		humidity_point = 16,
 	})
 
+	minetest.register_biome({
+		name = "desert_ocean",
+		node_top = "ws_core:sandy_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:sandy_dirt",
+		depth_filler = 3,
+		node_stone = "ws_core:stone",
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 2,
+		node_cave_liquid = "ws_core:toxic_water_source",
+		node_dungeon = "ws_core:stone",
+		node_dungeon_stair = "stairs:stair_cobble",
+		vertical_blend = 1,
+		y_max = 3,
+		y_min = -255,
+		heat_point = 92,
+		humidity_point = 16,
+	})
+
+	minetest.register_biome({
+		name = "desert_under",
+		node_cave_liquid = {"ws_core:toxic_water_source", "ws_core:lava_source"},
+		node_dungeon = "ws_core:cobble",
+		node_dungeon_stair = "stairs:stair_cobble",
+		y_max = -256,
+		y_min = -31000,
+		heat_point = 92,
+		humidity_point = 16,
+	})
 
 		-- ClayLands
 
@@ -865,8 +1010,8 @@ function ws_core.register_biomes()
 		depth_riverbed = 4,
 		y_max = 500,
 		y_min = 1,
-		heat_point = 55,
-		humidity_point = 40,
+		heat_point = 60,
+		humidity_point = 0,
 	})	
 
 	    -- VolcanicZone
@@ -881,8 +1026,8 @@ function ws_core.register_biomes()
 		depth_riverbed = 4,
 		y_max = 500,
 		y_min = 1,
-		heat_point = 60,
-		humidity_point = 70,
+		heat_point = 90,
+		humidity_point = 0,
 	})
 end
 
