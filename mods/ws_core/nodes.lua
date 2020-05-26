@@ -284,6 +284,22 @@ minetest.register_node("ws_core:diorite", {
 	legacy_mineral = true,
 })
 
+minetest.register_node("ws_core:salt_block", {
+	description = "Salt",
+	tiles = {"ws_salt_block.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'ws_core:salt_block',
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:limestone", {
+	description = "Limestone",
+	tiles = {"ws_limestone.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'ws_core:limestone',
+	legacy_mineral = true,
+})
+
 -- ====
 -- ORES
 -- ====
@@ -353,6 +369,7 @@ minetest.register_node("ws_core:log_oak_dry", {
 	tiles = {"ws_log_oak_dry_top.png", "ws_log_oak_dry_top.png", "ws_log_oak_dry.png"},
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
@@ -362,6 +379,7 @@ minetest.register_node("ws_core:log_oak_stripped_dry", {
 	is_ground_content = false,
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
@@ -372,6 +390,7 @@ minetest.register_node("ws_core:planks_oak_dry", {
 	tiles = {"ws_planks_oak_dry.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 })
 
 minetest.register_node("ws_core:log_oak", {
@@ -379,6 +398,7 @@ minetest.register_node("ws_core:log_oak", {
 	tiles = {"ws_log_oak_top.png", "ws_log_oak_top.png", "ws_log_oak.png"},
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
@@ -398,6 +418,7 @@ minetest.register_node("ws_core:planks_oak", {
 	tiles = {"ws_planks_oak.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 })
 
 minetest.register_node("ws_core:log_balsa", {
@@ -405,6 +426,7 @@ minetest.register_node("ws_core:log_balsa", {
 	tiles = {"ws_log_balsa_top.png", "ws_log_balsa_top.png", "ws_log_balsa.png"},
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
@@ -414,6 +436,7 @@ minetest.register_node("ws_core:log_balsa_stripped", {
 	is_ground_content = false,
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
@@ -424,6 +447,7 @@ minetest.register_node("ws_core:planks_balsa", {
 	tiles = {"ws_planks_balsa.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 })
 
 minetest.register_node("ws_core:log_balsa_dry", {
@@ -431,6 +455,7 @@ minetest.register_node("ws_core:log_balsa_dry", {
 	tiles = {"ws_log_balsa_dry_top.png", "ws_log_balsa_dry_top.png", "ws_log_balsa_dry.png"},
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
@@ -441,6 +466,7 @@ minetest.register_node("ws_core:planks_balsa_dry", {
 	tiles = {"ws_planks_balsa_dry.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 })
 
 minetest.register_node("ws_core:log_balsa_stripped_dry", {
@@ -449,6 +475,7 @@ minetest.register_node("ws_core:log_balsa_stripped_dry", {
 	is_ground_content = false,
 	paramtype2 = "facedir",
 	groups = {choppy = 2, tree = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
@@ -460,6 +487,7 @@ minetest.register_node("ws_core:planks_old", {
 	tiles = {"ws_planks_old.png"},
 	is_ground_content = false,
 	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 })
 
 -- ======

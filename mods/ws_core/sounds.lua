@@ -62,9 +62,9 @@ end
 function ws_core.node_sound_wood_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "ws_core_wood_footstep", gain = 0.3}
+			{name = "ws_tree_break.1", gain = 0.3}
 	table.dug = table.dug or
-			{name = "ws_core_wood_footstep", gain = 1.0}
+			{name = "ws_tree_break.1", gain = 1.0}
 	ws_core.node_sound_defaults(table)
 	return table
 end
