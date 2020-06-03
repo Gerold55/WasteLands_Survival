@@ -128,4 +128,14 @@ minetest.register_abm({
   end,
 })
 
---TODO: needs craft recipe
+local s = "ws_core:scrap" --shoud be iron ingot, does not exist yet
+local b = "bucket:bucket_empty"
+local f = "ws_core:gravel" -- a filtering material
+minetest.register_craft({
+  output="ws_core:filter",
+  recipe={
+    {s,b,s},
+    {s,f,s},
+    {s,b,s},
+  }
+})

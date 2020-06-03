@@ -205,8 +205,8 @@ local c = "" --should be plastic sheeting, does not exist yet
 minetest.register_craft({
   output="dewcollector:barrel_closed",
   recipe={
-    {"group:wood", "", "group:wood"},
-    {"group:wood","","group:wood"},
-    {"group:wood", "group:wood","group:wood"},
+    {w, c, w},
+    {w,"", w},
+    {w, w, w},
   }
 })
