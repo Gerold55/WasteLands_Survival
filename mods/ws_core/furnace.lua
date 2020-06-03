@@ -227,7 +227,7 @@ minetest.register_node("ws_core:furnace_bottom", {
     "ws_cobble.png^ws_furnace_front.png",
     "ws_cobble.png",
   },
-  param2 = "facedir",
+  paramtype2 = "facedir",
   groups = {cracky=2},
   is_ground_content = false,
   on_construct = function(pos)
