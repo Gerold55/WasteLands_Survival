@@ -504,6 +504,20 @@ function ws_core.register_ores()
 		y_min          = -31000,
 		biomes = {"dirtland"},
 	})
+	
+	-- Limestone
+	
+	minetest.register_ore({
+		ore_type        = "blob",
+		ore             = "ws_core:limestone",
+		wherein         = {"ws_core:stone"},
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 8,
+		clust_size     = 3,
+		y_max          = 31000,
+		y_min          = -31000,
+		biomes = {"dirtland"},
+	})
 
 	-- Gravel
 
