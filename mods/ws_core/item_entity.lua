@@ -60,10 +60,7 @@ minetest.register_entity(":__builtin:item", {
 	set_item = function(self, item)
 		local stack = ItemStack(item or self.itemstring)
 		self.itemstring = stack:to_string()
-		
-		
-		
-		local stack = ItemStack(item)
+
 		local flammable = 0
 		if stack then
 			flammable = minetest.get_item_group(stack:get_name(), "flammable")
@@ -213,18 +210,18 @@ minetest.register_entity(":__builtin:item", {
 			if self.ignite_timer > 10 then
 				self.ignite_timer = 0
 
-				local node = minetest.get_node_or_nil(self.object:getpos())
-				if not node then
+				local snode = minetest.get_node_or_nil(self.object:getpos())
+				if not snode then
 					return
 				end
 
 				-- Immediately burn up flammable items in lava
-				if minetest.get_item_group(node.name, "lava") > 0 then
+				if minetest.get_item_group(snode.name, "lava") > 0 then
 					self:burn_up()
 				else
 					--  otherwise there'll be a chance based on its igniter value
 					local burn_chance = self.flammable
-						* minetest.get_item_group(node.name, "igniter")
+						* minetest.get_item_group(snode.name, "igniter")
 					if burn_chance > 0 and math.random(0, burn_chance) ~= 0 then
 						self:burn_up()
 					end
@@ -324,7 +321,7 @@ minetest.register_entity(":__builtin:item", {
 				end
 			end
 		else
-			node = core.get_node_or_nil({
+			node = minetest.get_node_or_nil({
 				x = pos.x,
 				y = pos.y + self.object:get_properties().collisionbox[2] - 0.05,
 				z = pos.z
