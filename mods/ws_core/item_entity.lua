@@ -5,11 +5,11 @@
 -- If item_entity_ttl is not set, enity will have default life time
 -- Setting it to -1 disables the feature
 
-local time_to_live = tonumber(core.settings:get("item_entity_ttl")) or 900
-local gravity = tonumber(core.settings:get("movement_gravity")) or 9.81
+local time_to_live = tonumber(minetest.settings:get("item_entity_ttl")) or 900
+local gravity = tonumber(minetest.settings:get("movement_gravity")) or 9.81
 
 
-core.register_entity(":__builtin:item", {
+minetest.register_entity(":__builtin:item", {
 	initial_properties = {
 		hp_max = 1,
 		physical = true,
@@ -85,7 +85,7 @@ core.register_entity(":__builtin:item", {
 		local count = math.min(stack:get_count(), max_count)
 		local size = 0.2 + 0.1 * (count / max_count) ^ (1 / 3)
 		local coll_height = size * 0.75
-		local def = core.registered_nodes[itemname]
+		local def = minetest.registered_nodes[itemname]
 		local glow = def and math.floor(def.light_source / 2 + 0.5)
 
 		self.object:set_properties({
@@ -103,7 +103,7 @@ core.register_entity(":__builtin:item", {
 	end,
 
 	get_staticdata = function(self)
-		return core.serialize({
+		return minetest.serialize({
 			itemstring = self.itemstring,
 			age = self.age,
 			dropped_by = self.dropped_by
@@ -113,7 +113,7 @@ core.register_entity(":__builtin:item", {
 	on_activate = function(self, staticdata, dtime_s)
 		print("dfjhkadsfhjsafdjhakffsadjkhlfs")
 		if string.sub(staticdata, 1, string.len("return")) == "return" then
-			local data = core.deserialize(staticdata)
+			local data = minetest.deserialize(staticdata)
 			if data and type(data) == "table" then
 				self.itemstring = data.itemstring
 				self.age = (data.age or 0) + dtime_s
@@ -193,7 +193,7 @@ core.register_entity(":__builtin:item", {
 		end
 
 		local pos = self.object:get_pos()
-		local node = core.get_node_or_nil({
+		local node = minetest.get_node_or_nil({
 			x = pos.x,
 			y = pos.y + self.object:get_properties().collisionbox[2] - 0.05,
 			z = pos.z
@@ -255,17 +255,22 @@ core.register_entity(":__builtin:item", {
 			return -- Don't do anything
 		end
 
-		assert(moveresult)
-		if not moveresult.collides then
-			-- future TODO: items should probably decelerate in air
-			return
+		if moveresult then
+			if not moveresult.collides then
+				-- future TODO: items should probably decelerate in air
+				return
+			end
+		else
+			if not minetest.registered_nodes[node.name].walkable then
+				return
+			end
 		end
 
 		-- Push item out when stuck inside solid node
 		local is_stuck = false
-		local snode = core.get_node_or_nil(pos)
+		local snode = minetest.get_node_or_nil(pos)
 		if snode then
-			local sdef = core.registered_nodes[snode.name] or {}
+			local sdef = minetest.registered_nodes[snode.name] or {}
 			is_stuck = (sdef.walkable == nil or sdef.walkable == true)
 				and (sdef.collision_box == nil or sdef.collision_box.type == "regular")
 				and (sdef.node_box == nil or sdef.node_box.type == "regular")
@@ -280,8 +285,8 @@ core.register_entity(":__builtin:item", {
 
 			-- Check which one of the 4 sides is free
 			for o = 1, #order do
-				local cnode = core.get_node(vector.add(pos, order[o])).name
-				local cdef = core.registered_nodes[cnode] or {}
+				local cnode = minetest.get_node(vector.add(pos, order[o])).name
+				local cdef = minetest.registered_nodes[cnode] or {}
 				if cnode ~= "ignore" and cdef.walkable == false then
 					shootdir = order[o]
 					break
@@ -290,7 +295,7 @@ core.register_entity(":__builtin:item", {
 			-- If none of the 4 sides is free, check upwards
 			if not shootdir then
 				shootdir = {x=0, y=1, z=0}
-				local cnode = core.get_node(vector.add(pos, shootdir)).name
+				local cnode = minetest.get_node(vector.add(pos, shootdir)).name
 				if cnode == "ignore" then
 					shootdir = nil -- Do not push into ignore
 				end
@@ -309,21 +314,29 @@ core.register_entity(":__builtin:item", {
 		end
 
 		node = nil -- ground node we're colliding with
-		if moveresult.touching_ground then
-			for _, info in ipairs(moveresult.collisions) do
-				if info.axis == "y" then
-					node = core.get_node(info.node_pos)
-					break
+		if moveresult then
+			if moveresult.touching_ground then
+				for _, info in ipairs(moveresult.collisions) do
+					if info.axis == "y" then
+						node = minetest.get_node(info.node_pos)
+						break
+					end
 				end
 			end
+		else
+			node = core.get_node_or_nil({
+				x = pos.x,
+				y = pos.y + self.object:get_properties().collisionbox[2] - 0.05,
+				z = pos.z
+			})
 		end
 
 		-- Slide on slippery nodes
-		local def = node and core.registered_nodes[node.name]
+		local def = node and minetest.registered_nodes[node.name]
 		local keep_movement = false
 
 		if def then
-			local slippery = core.get_item_group(node.name, "slippery")
+			local slippery = minetest.get_item_group(node.name, "slippery")
 			local vel = self.object:get_velocity()
 			if slippery ~= 0 and (math.abs(vel.x) > 0.1 or math.abs(vel.z) > 0.1) then
 				-- Horizontal deceleration
@@ -356,7 +369,7 @@ core.register_entity(":__builtin:item", {
 		if own_stack:get_free_space() == 0 then
 			return
 		end
-		local objects = core.get_objects_inside_radius(pos, 1.0)
+		local objects = minetest.get_objects_inside_radius(pos, 1.0)
 		for k, obj in pairs(objects) do
 			local entity = obj:get_luaentity()
 			if entity and entity.name == "__builtin:item" then
