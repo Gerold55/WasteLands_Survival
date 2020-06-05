@@ -178,7 +178,7 @@ minetest.register_node("dewcollector:barrel_filled", {
   },
   paramtype = "light",
   groups = {choppy=2,oddly_breakable_by_hand=1,not_in_creative_inventory=1},
-  drop = "dewcollector:barrel",
+  drop = "dewcollector:barrel_closed",
   tiles = {"ws_planks_old.png^(ws_water.png^[mask:dewcollector_innermask.png)", "ws_planks_old.png"},
   is_ground_content = false,
   on_punch = close_barrel,
