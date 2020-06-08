@@ -318,6 +318,13 @@ minetest.register_node("ws_core:stone_with_coal_dense", {
 	drop = 'ws_core:coal 3',
 })
 
+minetest.register_node("ws_core:coal_block", {
+	description = "Coal Block",
+	tiles = {"ws_coal_block.png"},
+	groups = {cracky = 3},
+	drop = 'ws_core:coal_block',
+})
+
 minetest.register_node("ws_core:stone_with_gold", {
 	description = "Gold Ore",
 	tiles = {"ws_stone.png^ws_mineral_gold.png"},

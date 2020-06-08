@@ -130,7 +130,7 @@ minetest.register_abm({
 
 local s = "ws_core:scrap" --shoud be iron ingot, does not exist yet
 local b = "bucket:bucket_empty"
-local f = "ws_core:gravel" -- a filtering material
+local f = "ws_core:coal_block" -- a filtering material
 minetest.register_craft({
   output="ws_core:filter",
   recipe={

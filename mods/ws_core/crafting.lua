@@ -96,12 +96,25 @@ minetest.register_craft({
 	}
 })
 
+-- =========
+-- VALUABLES
+-- =========
+
 minetest.register_craft({
 	output = 'ws_core:gold_ingot',
 	recipe = {
 		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
 		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
 		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:coal_block',
+	recipe = {
+		{'ws_core:coal', 'ws_core:coal', 'ws_core:coal'},
+		{'ws_core:coal', 'ws_core:coal', 'ws_core:coal'},
+		{'ws_core:coal', 'ws_core:coal', 'ws_core:coal'},
 	}
 })
 
