@@ -117,6 +117,50 @@ function ws_core.dig_up(pos, node, digger)
 	end
 end
 
+--
+-- Wall registration
+--
+
+function ws_core.register_wall(name, def)
+	minetest.register_craft({
+		output = name .. " 6",
+		recipe = {
+			{ def.material, def.material, def.material },
+			{ def.material, def.material, def.material },
+		}
+	})
+
+	-- Allow almost everything to be overridden
+	local default_fields = {
+		paramtype = "light",
+		sunlight_propagates = true,
+		is_ground_content = false,
+		groups = {},
+
+		drawtype = "nodebox",
+		node_box = {
+			type = "connected",
+			fixed = 		{-3/16, -1/2, -3/16, 3/16, 1/2, 3/16},
+			connect_front = {-3/16, -1/2, -1/2, 3/16, 1/2, -3/16},
+			connect_left = 	{-1/2, -1/2, -3/16, -3/16, 1/2, 3/16},
+			connect_back = 	{-3/16, -1/2, 3/16, 3/16, 1/2, 1/2},
+			connect_right = {3/16, -1/2, -3/16, 1/2, 1/2, 3/16},
+			-- disconnected_sides = {-4/16, -1/2, -4/16, 4/16, 1/2, 4/16},
+		},
+		connects_to = {"group:wall", "group:cracky", "group:stone"},
+	}
+	for k, v in pairs(default_fields) do
+		if def[k] == nil then
+			def[k] = v
+		end
+	end
+
+	-- Always add to the wall group, even if no group provided
+	def.groups.wall = 1
+	def.material = nil
+
+	minetest.register_node(name, def)
+end
 
 --
 -- Fence registration helper
