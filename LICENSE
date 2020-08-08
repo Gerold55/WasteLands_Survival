@@ -24,8 +24,8 @@ https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
 
 
 MIT License
-Copyright (C)2019: Trilogy Team <trilogyteam09@gmail.com>
-Copyright (C)2015 Wuzzy2015
+Copyright (C) 2019-2020: Trilogy Team <trilogyteam09@gmail.com>
+Copyright (C) 2015 Wuzzy2015
 Copyright (C) 2016-2018 rubenwardy <rubenwardy@gmail.com>
 Copyright (C) 2019 Stuart Jones
 
@@ -33,6 +33,7 @@ Applies to the game itself and to the mods:
 - buildings
 - cmsg
 - crafting
+- dna_analysis
 - hudbars
 - journal_modpack
 - mobs wls
