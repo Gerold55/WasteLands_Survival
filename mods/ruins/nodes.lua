@@ -1,3 +1,40 @@
+
+minetest.register_node("ruins:rammed_earth", {
+	description = "Rammed Earth",
+	tiles = {
+		"ws_rammed_earth.png",
+		"ws_rammed_earth.png",
+		"ws_rammed_earth_side.png",
+	},
+	groups = {crumbly = 3},
+	sounds = ws_core.node_sound_dirt_defaults(),
+})
+
+minetest.register_node("ruins:thatch", {
+	description = "Thatch",
+	tiles = {"ws_thatch.png"},
+	paramtype = "light",
+	groups = {snappy = 3, flammable = 3},
+	sounds = ws_core.node_sound_leaves_defaults(),
+})
+
+minetest.register_node("ruins:mat_woven", {
+	description = "Woven Mat",
+	tiles = {"ws_woven_mat.png"},
+	drawtype = "nodebox",
+	paramtype = "light",
+	groups = {snappy = 3, flammable = 3},
+	node_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5}
+	},
+	sounds = ws_core.node_sound_leaves_defaults(),
+})
+
+--
+-- MESH NODES
+--
+
 --------------------Made by TobyPlowy-----------------------
 minetest.register_node('ruins:old_skeleton', {
 	description = 'Old Skeleton',
@@ -265,4 +302,5 @@ minetest.register_craft({
 		{'default:steel_ingot', 'dye:dark_green', 'default:steel_ingot'},
 		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
 	}
-})]]
+})
+--]]
