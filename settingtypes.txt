@@ -1,2 +1,2 @@
-# This option enables custom skybox for Wastelands Survival game. Minetest 5.2 is required.
+#    This option enables custom skybox for Wastelands Survival game. Minetest 5.2 is required.
 ws_enable_skybox (Enable Custom Skybox) bool true
