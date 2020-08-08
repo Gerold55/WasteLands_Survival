@@ -74,6 +74,34 @@ function ws_core.grow_papyrus(pos, node)
 	return true
 end
 
+--
+-- Moss growth on cobble near water
+--
+
+local moss_correspondences = {
+	["ws_core:cobble"] = "ws_core:mossycobble",
+	["stairs:slab_cobble"] = "stairs:slab_mossycobble",
+	["stairs:stair_cobble"] = "stairs:stair_mossycobble",
+	["stairs:stair_inner_cobble"] = "stairs:stair_inner_mossycobble",
+	["stairs:stair_outer_cobble"] = "stairs:stair_outer_mossycobble",
+	["walls:cobble"] = "walls:mossycobble",
+}
+minetest.register_abm({
+	label = "Moss growth",
+	nodenames = {"ws_core:cobble", "stairs:slab_cobble", "stairs:stair_cobble",
+		"stairs:stair_inner_cobble", "stairs:stair_outer_cobble",
+		"walls:cobble"},
+	neighbors = {"group:water"},
+	interval = 16,
+	chance = 200,
+	catch_up = false,
+	action = function(pos, node)
+		node.name = moss_correspondences[node.name]
+		if node.name then
+			minetest.set_node(pos, node)
+		end
+	end
+})
 
 
 --
@@ -141,51 +169,6 @@ function ws_core.register_fence(name, def)
 	def.groups.fence = 1
 
 	def.texture = nil
-	def.material = nil
-
-	minetest.register_node(name, def)
-end
-
---
--- Wall registration
---
-
-function ws_core.register_wall(name, def)
-	minetest.register_craft({
-		output = name .. " 6",
-		recipe = {
-			{ def.material, def.material, def.material },
-			{ def.material, def.material, def.material },
-		}
-	})
-
-	-- Allow almost everything to be overridden
-	local default_fields = {
-		paramtype = "light",
-		sunlight_propagates = true,
-		is_ground_content = false,
-		groups = {},
-
-		drawtype = "nodebox",
-		node_box = {
-			type = "connected",
-			fixed = 		{-3/16, -1/2, -3/16, 3/16, 1/2, 3/16},
-			connect_front = {-3/16, -1/2, -1/2, 3/16, 1/2, -3/16},
-			connect_left = 	{-1/2, -1/2, -3/16, -3/16, 1/2, 3/16},
-			connect_back = 	{-3/16, -1/2, 3/16, 3/16, 1/2, 1/2},
-			connect_right = {3/16, -1/2, -3/16, 1/2, 1/2, 3/16},
-			-- disconnected_sides = {-4/16, -1/2, -4/16, 4/16, 1/2, 4/16},
-		},
-		connects_to = {"group:wall", "group:cracky", "group:stone"},
-	}
-	for k, v in pairs(default_fields) do
-		if def[k] == nil then
-			def[k] = v
-		end
-	end
-
-	-- Always add to the wall group, even if no group provided
-	def.groups.wall = 1
 	def.material = nil
 
 	minetest.register_node(name, def)
