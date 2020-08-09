@@ -34,25 +34,16 @@ end
 minetest.register_node("ruins:loot_barrel", {
 	description = "Loot Barrel",
 	paramtype2 = "facedir",
-	place_param2 = 0,
 	tiles = {
-		"ws_barrel.png", --top
-		"ws_barrel.png", --bottom
-		"ws_barrel.png^[transformR90", --right
-		"ws_barrel.png^[transformR90", --left
-		"ws_barrel_top.png", --back
-		"ws_barrel_top.png" --front
+		"ws_barrel_top_1.png", --top
+		"ws_barrel_top.png", --bottom
+		"ws_barrel.png", --sides
 	},
 	is_ground_content = false,
-	groups = {}, --not_in_creative_inventory = 1},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-		}
-	},
+	groups = {choppy = 3}, --not_in_creative_inventory = 1},
 	--perhaps also show the formspec on rightclick
-	on_rightclick = load_barrel
+	on_rightclick = load_barrel,
+	on_place = minetest.rotate_node,
 })
 
 minetest.register_lbm {
