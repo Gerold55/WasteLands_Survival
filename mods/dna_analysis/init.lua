@@ -6,7 +6,9 @@ else
   print("[MOD] "..minetest.get_current_modname()..": loading")
 end
 
-dna_analysis = {}
+dna_analysis = {
+  modpath=minetest.get_modpath("dna_analysis")
+}
 
 local modules = {
   init = dna_analysis,
@@ -15,6 +17,8 @@ local modules = {
 }
 
 modutil.require("local_require")(dna_analysis,modules)
+
+dna_analysis.require("flask")
 
 --the time needed for loading
 local time_to_load= os.clock() - init

@@ -23,6 +23,9 @@ function dnapi.register_life_form(name,def)
   end
 end
 
+---
+-- returns the display name of a life form
+-- if the life from is not registered "[unregistered life from]" will be returned
 function dnapi.get_life_form_name(id)
   local rl = registered_life_forms[id]
   if not rl then
@@ -61,6 +64,8 @@ function dnapi.register_dna_deposit(deposit)
   table.insert(registered_dna_deposits,deposit)
 end
 
+---
+-- checks whether the given place_filter matches for the given location 
 function dnapi.can_be_found(pf, nodename, pos, node)
   if pf.everywhere then
     return true
@@ -87,6 +92,8 @@ function dnapi.can_be_found(pf, nodename, pos, node)
   return nodename_found
 end
 
+---
+-- generates one random sample from the given deposit
 function dnapi.get_sample_from(deposit)
   local amount = deposit.average_amount
   if (deposit.amount_variance ~= 0) then
@@ -102,6 +109,8 @@ function dnapi.get_sample_from(deposit)
   return {life_form = deposit.life_form, amount = amount, corruption = corruption}
 end
 
+---
+-- randomly generates a table that represents one taken sample from a certain position
 function dnapi.get_dna_from(nodename,pos,node)
   local sample = {}
   for _,d in pairs(dnapi.registered_dna_deposits) do
@@ -113,10 +122,65 @@ function dnapi.get_dna_from(nodename,pos,node)
 end
 
 ---
--- Makes a life_form cloneable.
+-- makes a life_form cloneable
 function dnapi.register_cloning_recipe(clone_process)
-  -- TODO
-  -- life_form, needed_data_amount, base_nutrients, time, result_item
+  assert(clone_process.life_form, "please give a life_form to register a cloning recipe")
+  if not registered_life_forms[clone_process.life_form] then
+    log.warning("registering a cloning recipe for an unregistered life form " .. clone_process.life_form)
+  end
+  assert(clone_process.data_amount, "please specify the data_amount needed to unlock the cloning recipe")
+  local bnt = type(clone_process.base_nutrients)
+  if bnt == "string" then
+    clone_process.base_nutrients = ItemStack(clone_process.base_nutrients):to_table()
+  elseif bnt == "userdata" then
+    clone_process.base_nutrients = clone_process.base_nutrients:to_table()
+  elseif bnt ~= "table" then
+    error("please provide the base_nutrients for the cloning recipe as table or as string",2)
+  end
+  assert(clone_process.base_nutrients.name,"please provide the name of the base_nutrients")
+  assert(clone_process.base_nutrients.count,"please provide the count of the base_nutrients")
+  assert(clone_process.time, "please specify the time needed to clone the life_form")
+  local rit = type(clone_process.result_item)
+  if rit == "string" or rit == "table" then
+    clone_process.result_item = ItemStack(clone_process.result_item)
+  elseif rit == "userdata" then
+    clone_process.result_item = ItemStack(clone_process.result_item)
+  else
+    error("please provide the result_item for the cloning recipe as table or as string",2)
+  end
+  if not registered_cloning_recipes[clone_process.life_form] then
+    registered_cloning_recipes[clone_process.life_form] = {}
+  end
+  table.insert(registered_cloning_recipes[clone_process.life_form],clone_process)
+end
+
+---
+-- returns all cloning recipes that are available with the given amount of data
+function dnapi.get_researched_recipes(life_form, data_amount)
+  local ret = {}
+  for _,r in pairs(registered_cloning_recipes[life_form]) do
+    if r.data_amount <= data_amount then
+      table.insert(ret,r)
+    end
+  end
+  return ret
+end
+
+---
+-- finds a recipe from the list that can be made with the given items and needs the fewest of them
+function dnapi.find_cheapest_possible_recipe(recipes, item_index)
+  local min_count, best_recipe
+  for _,r in pairs(recipes) do
+    local n = r.base_nutrients
+    local available = item_index[n.name]
+    if available and available >= n.count then
+      if (not min_count) or min_count > available then
+        best_recipe = r
+        min_count = n.count
+      end
+    end
+  end
+  return best_recipe
 end
 
 return dnapi

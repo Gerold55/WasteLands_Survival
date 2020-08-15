@@ -77,6 +77,7 @@ The deposit table has the following keys:
       * for programming convienience it is also possible to give the nodenames as keyless/normal list values
   * if the nodenames match and a predicate is given then both have to match
   * if everywhere is truthy no further checks will be run
+  * the place_filter will be conventred to a table if it is registered with a different type
 * average_amount
   * the amount of DNA/data a player gets on average
   * this also determines the time a player needs to analyse the sample
@@ -96,7 +97,36 @@ The deposit table has the following keys:
 
 ## cloning recipes
 
-(coming soon)
+If the player should be able to clone a life form
+you have to register a cloning recipe.
+
+```lua
+dnapi.register_cloning_recipe({
+  life_form = "mymod:bunny",
+  needed_data_amount = 25,
+  base_nutrients = "mymod:nutrient_solution 10",
+  time = 100,
+  result_item = "mymod:baby_bunny"
+})
+```
+
+The cloning recipe table has the following keys:
+* life_form
+  * the ID of a previously registered life form
+  * the life form that is created
+* needed_data_amount
+  * the amount of data about the life form needed to unlock the recipe
+  * the (amount of) collected data won't be changed by the cloning process
+* base_nutrients
+  * a string, table or ItemStack specifying the nutrient stack needed to clone the life_form
+  * will be converted to a table
+* time
+  * the amount of time needed to clone the life form
+* result_item
+  * a string, table or ItemStack specifying the spawn item the player gets from the cloning process
+  * will be converted to an ItemStack
+  * the spawn item should make it possible for the player to spawn the animal somewhere within the world
+  * could be a spawn egg, an egg that needs to hatch, a baby creature, etc.
 
 # getting data
 
@@ -130,7 +160,28 @@ The first argument is the place_filter the others determine the location in the 
 
 `dnapi.get_sample_from(deposit)`
 generates one random sample from the given deposit
+The sample table has the following keys:
+* life_form
+  * the life form the DNA will provide information about
+* amount
+  * the amount of DNA/data within this sample
+  * it does not nessecarily have to be new to the player
+* corruption
+  * how much of the DNA/data will be useless after analysis
 
 ## cloning life forms
 
-(coming soon)
+`dnapi.get_researched_recipes(life_form, data_amount)`
+returns all cloning recipes that are available with the given amount of data
+
+`dnapi.find_cheapest_possible_recipe(recipes, item_index)`
+Finds a recipe from the list that can be made with the given items and needs the fewest of them.
+If two recipes require the same amount of items the first one will be taken.
+* recipes
+  * a table containing the cloning recipes to choose from
+* item_index
+  * a table with the item names as key and the count as value
+  * you can create such a table from an inventory list using the "count_index" function from the "invutil" module from the "modutil" mod
+
+`registered_cloning_recipes[life_form]`
+gives acess to the raw registered cloning recipes of the life_form
