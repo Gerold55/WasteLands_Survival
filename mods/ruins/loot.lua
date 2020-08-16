@@ -6,13 +6,13 @@ local loot = {
 	{name="ws_core:pick_scrap",mid=.15,var=1},
 	--on average 8 wood min 0 max 16
 	--25% chance to get 0 wood
-	{name="ws_core:planks_oak_dry",mid=8,var=16},
+	{name="ws_core:planks_old",mid=8,var=16},
 	{name="ws_core:hatchet_bone",mid=.1,var=1},
 	{name="ws_core:knife_bone",mid=.1,var=1},
 }
 
 function load_barrel(pos, node)
-	local meta = minetest.env:get_meta(pos)
+	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
 	--inv:set_size('main', 8*4)
 	inv:set_size('storage', 9*3)
@@ -34,25 +34,16 @@ end
 minetest.register_node("ruins:loot_barrel", {
 	description = "Loot Barrel",
 	paramtype2 = "facedir",
-	place_param2 = 0,
 	tiles = {
-		"ws_barrel.png", --top
-		"ws_barrel.png", --bottom
-		"ws_barrel.png^[transformR90", --right
-		"ws_barrel.png^[transformR90", --left
-		"ws_barrel_top.png", --back
-		"ws_barrel_top.png" --front
+		"ws_barrel_top_1.png", --top
+		"ws_barrel_top.png", --bottom
+		"ws_barrel.png", --sides
 	},
 	is_ground_content = false,
-	groups = {}, --not_in_creative_inventory = 1},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-		}
-	},
+	groups = {choppy = 3}, --not_in_creative_inventory = 1},
 	--perhaps also show the formspec on rightclick
-	on_rightclick = load_barrel
+	on_rightclick = load_barrel,
+	on_place = minetest.rotate_node,
 })
 
 minetest.register_lbm {

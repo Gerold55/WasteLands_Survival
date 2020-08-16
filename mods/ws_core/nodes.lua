@@ -18,6 +18,16 @@
 "ws_core:stone_block"
 "ws_core:stonebrick"
 "ws_core:basalt"
+"ws_core:slate"
+"ws_core:andesite"
+"ws_core:andesite_polished"
+"ws_core:granite"
+"ws_core:diorite"
+"ws_core:salt_block"
+"ws_core:limestone"
+"ws_core:lime_cobble"
+"ws_core:lime_brick"
+"ws_core:lime_polished"
 
 -Ores
 
@@ -228,6 +238,13 @@ minetest.register_node("ws_core:cobble", {
 	groups = {cracky = 3, stone = 2},
 })
 
+minetest.register_node("ws_core:mossycobble", {
+	description = ("Mossy Cobblestone"),
+	tiles = {"ws_mossycobble.png"},
+	is_ground_content = false,
+	groups = {cracky = 3, stone = 1},
+})
+
 minetest.register_node("ws_core:stone_block", {
 	description = "Stone Block",
 	tiles = {"ws_stone_block.png"},
@@ -252,6 +269,28 @@ minetest.register_node("ws_core:basalt", {
 minetest.register_node("ws_core:slate", {
 	description = "Slate",
 	tiles = {"ws_slate.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'ws_core:slate_cobble',
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:slate_cobble", {
+	description = "Slate Cobble",
+	tiles = {"ws_slate_cobble.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:slate_polished", {
+	description = "Slate Cobble",
+	tiles = {"ws_slate_polished.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:slate_bricks", {
+	description = "Slate Bricks",
+	tiles = {"ws_slate_bricks.png"},
 	groups = {cracky = 3, stone = 1},
 	legacy_mineral = true,
 })
@@ -288,7 +327,6 @@ minetest.register_node("ws_core:salt_block", {
 	description = "Salt",
 	tiles = {"ws_salt_block.png"},
 	groups = {cracky = 3, stone = 1},
-	drop = 'ws_core:salt_block',
 	legacy_mineral = true,
 })
 
@@ -297,6 +335,38 @@ minetest.register_node("ws_core:limestone", {
 	tiles = {"ws_limestone.png"},
 	groups = {cracky = 3, stone = 1},
 	drop = 'ws_core:limestone',
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:lime_cobble", {
+	description = "Limestone Cobble",
+	tiles = {"ws_lime_cobble.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'ws_core:lime_cobble',
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:lime_brick", {
+	description = "Limestone Bricks",
+	tiles = {"ws_lime_smallbricks.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'ws_core:lime_brick',
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:lime_brick_med", {
+	description = "Limestone Bricks (Medium)",
+	tiles = {"ws_lime_bricks_med.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'ws_core:lime_brick_med',
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:lime_polished", {
+	description = "Polished Limestone",
+	tiles = {"ws_lime_polished.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'ws_core:lime_polished',
 	legacy_mineral = true,
 })
 

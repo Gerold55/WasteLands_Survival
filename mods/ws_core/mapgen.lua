@@ -502,7 +502,7 @@ function ws_core.register_ores()
 		clust_size     = 3,
 		y_max          = 31000,
 		y_min          = -31000,
-		biomes = {"dirtland"},
+		biomes = {"dirtland, desert, volcaniczone, spruce_forest, forest"},
 	})
 	
 	-- Limestone
@@ -516,7 +516,7 @@ function ws_core.register_ores()
 		clust_size     = 3,
 		y_max          = 31000,
 		y_min          = -31000,
-		biomes = {"dirtland"},
+		biomes = {"dirtland, desert, volcaniczone, spruce_forest, forest"},
 	})
 
 	-- Gravel

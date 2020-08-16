@@ -108,3 +108,23 @@ stairs.register_stair_and_slab(
 	nil,
 	true
 )
+
+-- =====
+-- WALLS
+-- =====
+
+ws_core.register_wall("ws_core:wall_cobble", {
+	description = "Cobblestone wall",
+	groups = {cracky = 3},
+
+	material = "ws_core:cobble",
+	tiles = {"ws_cobble.png"},
+})
+
+ws_core.register_wall("ws_core:wall_stonebrick", {
+	description = "Stonebrick wall",
+	groups = {cracky = 3},
+
+	material = "ws_core:stonebrick",
+	tiles = {"ws_stonebrick.png"},
+})

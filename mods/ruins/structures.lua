@@ -8,11 +8,23 @@ ruins.decorationIDs = {}
 
 -- to account for node ids which have changed since the schematics were made
 replacements = {
+	["ws_core:wood"] = "ws_core:planks_old",
 	["stairs:slab_wood"] = "stairs:slab_planks_old",
 	["stairs:stair_wood"] = "stairs:stair_planks_old",
 	["stairs:stair_inner_wood"] = "stairs:stair_inner_planks_old",
 	["stairs:stair_outer_wood"] = "stairs:stair_outer_planks_old",
 }
+minetest.register_alias("ws_core:wood", "ws_core:planks_old")
+minetest.register_alias("stairs:slab_wood", "stairs:slab_planks_old")
+minetest.register_alias("stairs:stair_wood", "stairs:stair_planks_old")
+minetest.register_alias("stairs:stair_inner_wood", "stairs:stair_inner_planks_old")
+minetest.register_alias("stairs:stair_outer_wood", "stairs:stair_outer_planks_old")
+
+minetest.register_alias("buildings:mat_woven", "ruins:mat_woven")
+
+minetest.register_alias("derilict_building:girder_rusty", "ruins:girder_rusty")
+minetest.register_alias("derilict_building:vent", "ruins:vent")
+minetest.register_alias("derilict_building:fan_large_rusted", "ruins:fan_large_rusted")
 
 local r
 r = minetest.register_decoration({

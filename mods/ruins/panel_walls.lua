@@ -11,15 +11,6 @@ local function register_metal_panel(name, description, tiles, sounds, material)
       connect_back =       {-1/8,-1/2, 1/8, 1/8, 1/2, 1/2},
       connect_right =      { 1/8,-1/2,-1/8, 1/2, 1/2, 1/8},
     },
-    collision_box = {
-      type = "connected",
-      fixed =              {-1/8,-1/2,-1/8, 1/8,1/2, 1/8},
-      disconnected_sides = {-1/2,-1/2,-1/8, 1/2,1/2, 1/8},
-      connect_front =      {-1/8,-1/2,-1/2, 1/8,1/2,-1/8},
-      connect_left =       {-1/2,-1/2,-1/8,-1/8,1/2, 1/8},
-      connect_back =       {-1/8,-1/2, 1/8, 1/8,1/2, 1/2},
-      connect_right =      { 1/8,-1/2,-1/8, 1/2,1/2, 1/8},
-    },
     connects_to = { "group:wall", "group:cracky" },
     paramtype = "light",
     is_ground_content = false,
@@ -56,6 +47,6 @@ end
 
 local metal_sounds = ws_core and ws_core.node_sound_metal_defaults()
 
-register_metal_panel("derilict_building:shiny_metal_panel", "shiny metal panel", {"derilict_building_steel.png"}, metal_sounds, nil)
-register_metal_panel("derilict_building:dark_metal_panel", "dark metal panel", {"derilict_building_steel_dark.png"}, metal_sounds, nil)
-register_metal_panel("derilict_building:rusted_metal_panel", "rusty metal panel", {"derilict_building_copper_rusty.png"}, metal_sounds, nil)
+register_metal_panel("ruins:metal_panel_shiny", "Shiny Metal Panel", {"ruins_steel.png"}, metal_sounds, nil)
+register_metal_panel("ruins:metal_panel_dark", "Dark Metal Panel", {"ruins_steel_dark.png"}, metal_sounds, nil)
+register_metal_panel("ruins:metal_panel_rusted", "Rusty Metal Panel", {"ruins_copper_rusty.png"}, metal_sounds, nil)
