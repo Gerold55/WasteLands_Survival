@@ -7,7 +7,8 @@ else
 end
 
 dna_analysis = {
-  modpath=minetest.get_modpath("dna_analysis")
+  modpath=minetest.get_modpath("dna_analysis"),
+  mod_storage=minetest.get_mod_storage()
 }
 
 local modules = {
@@ -18,7 +19,9 @@ local modules = {
 
 modutil.require("local_require")(dna_analysis,modules)
 
-dna_analysis.require("flask")
+-- dna_analysis.require("flask") is loaded in the analyzer
+-- dna_analysis.require("memory") also loaded in the analyzer
+dna_analysis.require("analyzer")
 
 --the time needed for loading
 local time_to_load= os.clock() - init
