@@ -18,6 +18,7 @@
 "ws_core:stone_block"
 "ws_core:stonebrick"
 "ws_core:basalt"
+"ws_core:basalt_cobble"
 "ws_core:slate"
 "ws_core:andesite"
 "ws_core:andesite_polished"
@@ -28,6 +29,9 @@
 "ws_core:lime_cobble"
 "ws_core:lime_brick"
 "ws_core:lime_polished"
+"ws_core:marble"
+"ws_core:marble_cobble"
+"ws_core:stalactites"
 
 -Ores
 
@@ -63,6 +67,8 @@
 "ws_core:gorse"
 "ws_core:dry_shrub"
 "ws_core:dry_papyrus"
+"ws_core:sand_with_cattails"
+"ws_core:cattail_top"
 
 -Liquids
 
@@ -75,14 +81,14 @@
 "ws_core:lava_source"
 "ws_core:lava_flowing"
 
+-- non-natural
+"ws_core:bookshelf"
+
 -Misc
 
 "ws_core:bone"
-"ws_core:lantern_floor"
-"ws_core:lantern_ceiling"
-"ws_core:stalactites"
---]]
 
+--]]
 
 -- =====
 -- DIRTS
@@ -264,6 +270,14 @@ minetest.register_node("ws_core:basalt", {
 	tiles = {"ws_basalt.png"},
 	groups = {cracky = 3, stone = 1},
 	legacy_mineral = true,
+	drop = 'ws_core:basalt_cobble',
+})
+
+minetest.register_node("ws_core:basalt_cobble", {
+	description = "Basalt Cobble",
+	tiles = {"ws_basalt_cobble.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
 })
 
 minetest.register_node("ws_core:slate", {
@@ -369,6 +383,32 @@ minetest.register_node("ws_core:lime_polished", {
 	drop = 'ws_core:lime_polished',
 	legacy_mineral = true,
 })
+
+minetest.register_node("ws_core:marble", {
+	description = "Marble",
+	tiles = {"ws_marble.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+	drop = 'ws_core:marble_cobble',
+})
+
+minetest.register_node("ws_core:marble_cobble", {
+	description = "Marble Cobble",
+	tiles = {"ws_marble_cobble.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:stalactites", {
+	description = "Stalactite",
+	drawtype = "plantlike",
+	tiles = {"ws_stalag1.png"},
+	inventory_image = "ws_stalag1.png",
+	wield_image = "ws_stalag1.png",
+	walkable = false,
+	groups = {cracky = 3, stone = 1},
+})
+
 
 -- ====
 -- ORES
@@ -622,16 +662,110 @@ minetest.register_node("ws_core:dry_papyrus", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.5, 6 / 16},
-	},
 	groups = {snappy = 3, flammable = 2},
 	sounds = ws_core.node_sound_leaves_defaults(),
 
 	after_dig_node = function(pos, node, metadata, digger)
 		ws_core.dig_up(pos, node, digger)
 	end,
+})
+
+minetest.register_node("ws_core:sand_with_cattails", {
+	description = "Cattail",
+	drawtype = "plantlike_rooted",
+	waving = 1,
+	tiles = {"ws_sandy_dirt.png"},
+	special_tiles = {{name = "ws_cattail_bottom.png", tileable_vertical = true}},
+	inventory_image = "ws_cattail_roots.png",
+	wield_image = "ws_cattail_roots.png",
+	paramtype = "light",
+	paramtype2 = "leveled",
+	groups = {snappy = 3},
+	walkable = false,
+	-- instantly replace with sandy dirt
+	node_dig_prediction = "ws_core:sandy_dirt",
+	-- do not place clientside
+	node_placement_prediction = "",
+	sounds = ws_core.node_sound_sand_defaults({
+		dig = {name = "default_dig_snappy", gain = 0.2},
+		dug = {name = "default_grass_footstep", gain = 0.25},
+	}),
+	selection_box = {
+		type = "fixed",
+		fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+				{-4/16, 0.5, -4/16, 4/16, 1.5, 4/16},
+		},
+	},
+
+	on_place = function(itemstack, placer, pointed_thing)
+		-- Call on_rightclick if the pointed node defines it
+		if pointed_thing.type == "node" and placer and
+				not placer:get_player_control().sneak then
+			local node_ptu = minetest.get_node(pointed_thing.under)
+			local def_ptu = minetest.registered_nodes[node_ptu.name]
+			if def_ptu and def_ptu.on_rightclick then
+				return def_ptu.on_rightclick(pointed_thing.under, node_ptu, placer,
+					itemstack, pointed_thing)
+			end
+		end
+
+		-- only place on sandy dirt
+		local pos = pointed_thing.under
+		if minetest.get_node(pos).name ~= "ws_core:sandy_dirt" then
+			return itemstack
+		end
+
+		local pos_top = pointed_thing.above
+		local player_name = placer:get_player_name()
+
+		if not minetest.is_protected(pos, player_name) and
+				not minetest.is_protected(pos_top, player_name) then
+			minetest.set_node(pos, {name = "ws_core:sand_with_cattails",
+                param2 = 16})
+			if not (creative and creative.is_enabled_for
+					and creative.is_enabled_for(player_name)) then
+				itemstack:take_item()
+			end
+		else
+			minetest.chat_send_player(player_name, "Node is protected")
+			minetest.record_protection_violation(pos, player_name)
+		end
+
+		return itemstack
+	end,
+
+	after_destruct  = function(pos, oldnode)
+		-- replace with sandy dirt
+		minetest.set_node(pos, {name = "ws_core:sandy_dirt"})
+	end,
+	on_construct = function(pos)
+		-- give it a top
+		local above = vector.new(pos)
+		above.y = above.y + 2
+		minetest.set_node(above, {name = "ws_core:cattail_top"})
+	end,
+})
+
+minetest.register_node("ws_core:cattail_top", {
+	description = "Cattail",
+	drawtype = "plantlike",
+	waving = 1,
+	paramtype = "light",
+	tiles = {"ws_cattail_top.png"},
+	inventory_image = "ws_cattail.png",
+	groups = {snappy = 3, not_in_creative_inventory = 1},
+	walkable = false,
+	sounds = ws_core.node_sound_stone_defaults({
+		dig = {name = "default_dig_snappy", gain = 0.2},
+		dug = {name = "default_grass_footstep", gain = 0.25},
+	}),
+	selection_box = {
+		type = "fixed",
+		fixed = {
+				{-4/16,-0.5, -4/16, 4/16, 0.5, 4/16},
+		},
+	},
 })
 
 -- =======
@@ -912,7 +1046,8 @@ minetest.register_node("ws_core:oil_flowing", {
 minetest.register_node("ws_core:lava_source", {
 	description = "Lava Source",
 	drawtype = "liquid",
-	tiles = {
+	tiles = {"ws_lava.png"},
+	special_tiles = {
 		{
 			name = "ws_lava_source_animated.png",
 			backface_culling = false,
@@ -956,7 +1091,7 @@ minetest.register_node("ws_core:lava_source", {
 minetest.register_node("ws_core:lava_flowing", {
 	description = "Flowing Lava",
 	drawtype = "flowingliquid",
-	tiles = {"ws_core_lava.png"},
+	tiles = {"ws_lava.png"},
 	special_tiles = {
 		{
 			name = "ws_lava_flowing_animated.png",
@@ -1001,6 +1136,25 @@ minetest.register_node("ws_core:lava_flowing", {
 })
 
 -- ====
+-- NON-NATURAL
+-- ====
+
+minetest.register_node("ws_core:bookshelf", {
+	description = "Bookshelf",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_oak.png",
+		"ws_planks_oak.png",
+		"ws_planks_oak.png",
+		"ws_planks_oak.png",
+		"ws_bookshelf.png",
+		"ws_bookshelf.png"
+	},
+	groups = {choppy = 3, wood = 1, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
+})
+
+-- ====
 -- MISC
 -- ====
 
@@ -1021,63 +1175,3 @@ minetest.register_node("ws_core:bone", {
 	}
 })
 
-minetest.register_node("ws_core:lantern_floor", {
-	description = "Lantern",
-	tiles = {
-		"lantern_floor_top.png",
-		"lantern_bottem.png",
-		"lantern_floor_side.png"
-	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	light_source = 12,
-	groups = {choppy = 2, dig_immediate=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.25, -0.5, -0.25, 0.25, -0.4375, 0.25}, -- NodeBox1
-			{-0.1875, -0.5, -0.1875, 0.1875, 0.0625, 0.1875}, -- NodeBox2
-			{-0.25, 0.0625, -0.25, 0.25, 0.125, 0.25}, -- NodeBox3
-			{-0.125, 0.125, -0.125, 0.125, 0.1875, 0.125}, -- NodeBox4
-		}
-	}
-})
-
-minetest.register_node("ws_core:lantern_ceiling", {
-description = "Lantern",
-	tiles = {
-		"lantern_ceiling_top.png",
-		"lantern_bottem.png",
-		"lantern_ceiling_side.png"
-	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	light_source = 12,
-	groups = {choppy = 2, dig_immediate=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.25, -0.5, -0.25, 0.25, -0.4375, 0.25}, -- NodeBox1
-			{-0.1875, -0.5, -0.1875, 0.1875, 0.0625, 0.1875}, -- NodeBox2
-			{-0.25, 0.0625, -0.25, 0.25, 0.125, 0.25}, -- NodeBox3
-			{-0.125, 0.125, -0.125, 0.125, 0.1875, 0.125}, -- NodeBox4
-			{0, 0.1875, 0, 0.0625, 0.5, 0.0625}, -- NodeBox5
-			{-0.0625, 0.1875, -0.0625, 0, 0.5, 0}, -- NodeBox6
-		}
-	}
-})
-
-minetest.register_node("ws_core:stalactites", {
-	description = "Stalactite",
-	drawtype = "plantlike",
-	tiles = {"ws_stalag1.png"},
-	inventory_image = "ws_stalag1.png",
-	wield_image = "ws_stalag1.png",
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {snappy = 3},
-
-	after_dig_node = function(pos, node, metadata, digger)
-		ws_core.dig_up(pos, node, digger)
-	end,
-})
