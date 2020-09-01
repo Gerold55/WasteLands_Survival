@@ -1,9 +1,9 @@
 local loot = {
 	--on average 1 torches min 0 max 3
-	{name="ws_core:lantern_floor",mid=1,var=2},
+	{name="ws_core:lantern",mid=1,var=2},
 	--on average 0 picks min 0 max 1
-	--mid value 0.15 increases the chance of getting to 15%
-	{name="ws_core:pick_scrap",mid=.15,var=1},
+	--mid value 0.30 increases the chance of getting to 30%
+	{name="ws_core:scrap",mid=.3,var=1},
 	--on average 8 wood min 0 max 16
 	--25% chance to get 0 wood
 	{name="ws_core:planks_old",mid=8,var=16},
