@@ -103,7 +103,7 @@ minetest.register_node("ws_core:grass_block", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:bone_shard'}, rarity = 13},
 			{items = {'ws_core:dirt'}}
 		}
 	}
@@ -119,7 +119,7 @@ minetest.register_node("ws_core:dirt", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:bone_shard'}, rarity = 13},
 			{items = {'ws_core:dirt'}}
 		}
 	}
@@ -135,7 +135,7 @@ minetest.register_node("ws_core:dirt_dry", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:bone_shard'}, rarity = 13},
 			{items = {'ws_core:dirt_dry'}}
 		}
 	}
@@ -169,7 +169,7 @@ minetest.register_node("ws_core:dirt_dry_forest", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:bone_shard'}, rarity = 13},
 			{items = {'ws_core:dirt_dry'}}
 		}
 	}
@@ -194,7 +194,7 @@ minetest.register_node("ws_core:clay_dirt", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'ws_core:bone'}, rarity = 13},
+			{items = {'ws_core:bone_shard'}, rarity = 13},
 			{items = {'ws_core:clay_lump'}, rarity = 13},
 			{items = {'ws_core:clay_dirt'}}
 		}
@@ -1164,14 +1164,7 @@ minetest.register_node("ws_core:bone", {
 		{name = "ws_bone.png",
 			tileable_vertical = false}},
 	paramtype2 = "facedir",
-	groups = {cracky = 1},
+	groups = {cracky = 3},
 	on_place = minetest.rotate_node,
 	sounds = ws_core.node_sound_dirt_defaults(),
-	drop = {
-		max_items = 1,
-		items = {
-			{items = {'ws_core:bone'}}
-		}
-	}
 })
-
