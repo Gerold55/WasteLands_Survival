@@ -67,7 +67,7 @@ local function poisenp(tick, time, time_left, player)
 	if player:get_hp()-1 > 0 then
 		player:set_hp(player:get_hp()-1)
 	end
-	
+
 end
 
 function hbhunger.item_eat(hunger_change, replace_with_item, poisen, heal, sound)
@@ -79,7 +79,7 @@ function hbhunger.item_eat(hunger_change, replace_with_item, poisen, heal, sound
 			if h == nil or hp == nil then
 				return
 			end
-			minetest.sound_play({name = sound or "hbhunger_eat_generic", gain = 1}, {pos=user:getpos(), max_hear_distance = 16})
+			minetest.sound_play({name = sound or "hbhunger_eat_generic", gain = 1}, {pos=user:get_pos(), max_hear_distance = 16})
 
 			-- Saturation
 			if h < 30 and hunger_change then
@@ -109,7 +109,7 @@ function hbhunger.item_eat(hunger_change, replace_with_item, poisen, heal, sound
 				if inv:room_for_item("main", replace_with_item) then
 					inv:add_item("main", replace_with_item)
 				else
-					minetest.add_item(user:getpos(), replace_with_item)
+					minetest.add_item(user:get_pos(), replace_with_item)
 				end
 			end
 		end
@@ -140,7 +140,7 @@ if minetest.get_modpath("mobs") ~= nil then
 		hbhunger.register_food("mobs:chicken_cooked", 6)
 		hbhunger.register_food("mobs:chicken_raw", 2, "", 3)
 		hbhunger.register_food("mobs:chicken_egg_fried", 2)
-		if minetest.get_modpath("bucket") then 
+		if minetest.get_modpath("bucket") then
 			hbhunger.register_food("mobs:bucket_milk", 3, "bucket:bucket_empty")
 		end
 	else
