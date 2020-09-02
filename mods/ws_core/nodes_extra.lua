@@ -109,6 +109,28 @@ stairs.register_stair_and_slab(
 	true
 )
 
+stairs.register_stair_and_slab(
+	"shingle_brown",
+	"ws_core:shingle_brown",
+	{cracky = 3},
+	{"ws_shingles_brown.png"},
+	"Brown Shingle Stair",
+	"Brown Shingle Slab",
+	nil,
+	true
+)
+
+stairs.register_stair_and_slab(
+	"shingle_gray",
+	"ws_core:shingle_gray",
+	{cracky = 3},
+	{"ws_shingles_gray.png"},
+	"Gray Shingle Stair",
+	"Gray Shingle Slab",
+	nil,
+	true
+)
+
 -- =====
 -- WALLS
 -- =====

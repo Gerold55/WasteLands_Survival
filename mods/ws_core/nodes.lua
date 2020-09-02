@@ -88,6 +88,13 @@
 
 "ws_core:bone"
 
+-House Mats
+
+"ws_core:plaster"
+"ws_core:plaster_square"
+"ws_core:plaster_straight"
+"ws_core:plaster_cross"
+
 --]]
 
 -- =====
@@ -1154,6 +1161,126 @@ minetest.register_node("ws_core:bookshelf", {
 	sounds = ws_core.node_sound_wood_defaults(),
 })
 
+minetest.register_node("ws_core:glass", {
+	description = "Glass",
+	drawtype = "glasslike_framed_optional",
+	tiles = {"ws_glass.png", "ws_glass_detail.png"},
+	paramtype = "light",
+	paramtype2 = "glasslikeliquidlevel",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = ws_core.node_sound_glass_defaults(),
+})
+
+minetest.register_node("ws_core:shingle_brown", {
+	description = "Brown Shingles",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_shingles_brown.png"
+	},
+	groups = {cracky = 3, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
+})
+
+minetest.register_node("ws_core:shingle_brown_slope", {
+	description = "Brown Shingles",
+	drawtype = "mesh",
+	mesh = 'homedecor_slope.obj',
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_shingles_brown.png"
+	},
+	groups = {cracky = 3, flammable = 2},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_wood_defaults(),
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, -0.3125, 0.5}, -- NodeBox1
+			{-0.5, -0.5, -0.5, 0.5, -0.125, 0.3125}, -- NodeBox2
+			{-0.5, -0.125, -0.5, 0.5, 0.0625, 0.125}, -- NodeBox3
+			{-0.5, 0.0625, -0.5, 0.5, 0.25, -0.0625}, -- NodeBox4
+			{-0.5, 0.25, -0.5, 0.5, 0.5, -0.25}, -- NodeBox5
+		}
+	}
+})
+
+minetest.register_node("ws_core:shingle_brown_slope2", {
+	description = "Brown Shingles (Inner Corner)",
+	drawtype = "mesh",
+	mesh = 'homedecor_slope_inner_corner.obj',
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_shingles_brown.png"
+	},
+	groups = {cracky = 3, flammable = 2},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_wood_defaults(),
+})
+
+minetest.register_node("ws_core:shingle_brown_slope3", {
+	description = "Brown Shingles (Outer Corner)",
+	drawtype = "mesh",
+	mesh = 'homedecor_slope_outer_corner.obj',
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_shingles_brown.png"
+	},
+	groups = {cracky = 3, flammable = 2},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_wood_defaults(),
+})
+
+minetest.register_node("ws_core:shingle_gray_slope", {
+	description = "Gray Shingles",
+	drawtype = "mesh",
+	mesh = 'homedecor_slope.obj',
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_shingles_gray.png"
+	},
+	groups = {cracky = 3, flammable = 2},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_wood_defaults(),
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, -0.3125, 0.5}, -- NodeBox1
+			{-0.5, -0.5, -0.5, 0.5, -0.125, 0.3125}, -- NodeBox2
+			{-0.5, -0.125, -0.5, 0.5, 0.0625, 0.125}, -- NodeBox3
+			{-0.5, 0.0625, -0.5, 0.5, 0.25, -0.0625}, -- NodeBox4
+			{-0.5, 0.25, -0.5, 0.5, 0.5, -0.25}, -- NodeBox5
+		}
+	}
+})
+
+minetest.register_node("ws_core:shingle_gray_slope2", {
+	description = "Gray Shingles (Inner Corner)",
+	drawtype = "mesh",
+	mesh = 'homedecor_slope_inner_corner.obj',
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_shingles_gray.png"
+	},
+	groups = {cracky = 3, flammable = 2},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_wood_defaults(),
+})
+
+minetest.register_node("ws_core:shingle_gray_slope3", {
+	description = "Gray Shingles (Outer Corner)",
+	drawtype = "mesh",
+	mesh = 'homedecor_slope_outer_corner.obj',
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_shingles_gray.png"
+	},
+	groups = {cracky = 3, flammable = 2},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_wood_defaults(),
+})
+
 -- ====
 -- MISC
 -- ====
@@ -1168,3 +1295,60 @@ minetest.register_node("ws_core:bone", {
 	on_place = minetest.rotate_node,
 	sounds = ws_core.node_sound_dirt_defaults(),
 })
+
+-- ====
+-- Housing Mats
+-- ====
+
+minetest.register_node("ws_core:plaster", {
+	description = "Plaster",
+	tiles = {
+		"ws_plaster.png"
+	},
+	groups = {cracky = 1},
+	sounds = ws_core.node_sound_stone_defaults(),
+})
+
+minetest.register_node("ws_core:plaster_square", {
+	description = "Square Framed Plaster",
+	tiles = {
+		"ws_plaster_frame_square.png"
+	},
+	paramtype2 = "facedir",
+	groups = {cracky = 1},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_stone_defaults(),
+})
+
+minetest.register_node("ws_core:plaster_straight", {
+	description = "Straight Framed Plaster",
+	tiles = {
+		"ws_plaster_frame_square.png",
+		"ws_plaster_frame_square.png",
+		"ws_plaster_frame_straight.png",
+		"ws_plaster_frame_straight.png",
+		"ws_plaster_frame_straight.png",
+		"ws_plaster_frame_straight.png"
+	},
+	paramtype2 = "facedir",
+	groups = {cracky = 1},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_stone_defaults(),
+})
+
+minetest.register_node("ws_core:plaster_cross", {
+	description = "Diagonal Framed Plaster",
+	tiles = {
+		"ws_plaster_frame_square.png",
+		"ws_plaster_frame_square.png",
+		"ws_plaster_frame_cross.png",
+		"ws_plaster_frame_cross.png",
+		"ws_plaster_frame_cross.png",
+		"ws_plaster_frame_cross.png"
+	},
+	paramtype2 = "facedir",
+	groups = {cracky = 1},
+	on_place = minetest.rotate_node,
+	sounds = ws_core.node_sound_stone_defaults(),
+})
+
