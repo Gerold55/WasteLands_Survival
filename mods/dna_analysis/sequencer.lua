@@ -3,13 +3,14 @@ local flask = dna_analysis.require("flask")
 local memory = dna_analysis.require("memory")
 
 -- TODO: add settings for these
-local max_analyzer_jobs = 6
+local max_analyze_jobs = 6
 -- pre and post analysis work amount
 local analyze_extra_work = 5
 
+--TODO: api for a formspec that only shows the job progress
 --TODO: add jobs to UI
 
-local function construct_analyzer(pos)
+local function construct_sequencer(pos)
   local meta = minetest.get_meta(pos)
   meta:set_string("formspec",
             "size[8,9]"..
@@ -23,17 +24,14 @@ local function construct_analyzer(pos)
   inv:set_size("ext_mem", 1)
 end
 
-minetest.register_node("dna_analysis:analyzer", {
-  description = "DNA analyzer",
-  groups = {
-    oddly_breakable_by_hand = 1, -- you want to pick it up if you want to take it
-    heavy = 1, -- why ever I added this custom group
-  },
+minetest.register_node("dna_analysis:sequencer", {
+  description = "DNA sequencer",
+  groups = dna_analysis.default_machine_groups,
   tiles = {"dna_analysis_analyzer_top.png", "dna_analysis_analyzer_bottom.png",
     "dna_analysis_analyzer_sides.png", "dna_analysis_analyzer_sides.png",
     "dna_analysis_analyzer_back.png", "dna_analysis_analyzer_front.png"},
   paramtype2 = "facedir",
-  on_construct = construct_analyzer, --caution: this is not called by bulk placement
+  on_construct = construct_sequencer, --caution: this is not called by bulk placement
   allow_metadata_inventory_put = function(pos, listname, index, stack, player)
     if listname == "main" then
       if stack:get_name() == "dna_analysis:flask_filled" then
@@ -51,7 +49,7 @@ minetest.register_node("dna_analysis:analyzer", {
     if listname == "main" then
       -- increment running jobs
       local running_jobs = meta:get_int("running_jobs")
-      if running_jobs >= max_analyzer_jobs then return end
+      if running_jobs >= max_analyze_jobs then return end
       running_jobs = running_jobs + 1
       
       -- start new job
@@ -90,6 +88,8 @@ minetest.register_node("dna_analysis:analyzer", {
     end
   end,
 })
+
+minetest.register_alias("dna_analysis:analyzer", "dna_analysis:sequencer")
 
 local function analyze_progress(meta,job_id)
   local progress = meta:get_int(job_id.."_progress")
@@ -134,12 +134,12 @@ end
 
 minetest.register_abm({
   label = "DNA analysis",
-  nodenames = {"dna_analysis:analyzer"},
+  nodenames = {"dna_analysis:sequencer"},
   interval = 5,
   chance = 1,
   action = function(pos)
     local meta = minetest.get_meta(pos)
-    for j = 1, max_analyzer_jobs do
+    for j = 1, max_analyze_jobs do
       analyze_progress(meta, "job_"..j)
     end
     --TODO: update UI
