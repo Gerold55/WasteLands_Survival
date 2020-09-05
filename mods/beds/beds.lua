@@ -46,6 +46,47 @@ beds.register_bed("beds:fancy_bed", {
 	},
 })
 
+beds.register_bed("beds:straw_bed", {
+	description = S("Straw Bed"),
+	inventory_image = "ws_bed_inv.png",
+	wield_image = "ws_bed_inv.png",
+	tiles = {
+		bottom = {
+			"ws_bed_straw_top_bottom.png",
+			"ws_planks_dead.png",
+			"ws_bed_straw_side_bottom.png",
+			"ws_bed_straw_side_bottom.png^[transformFX",
+			"ws_planks_dead.png",
+			"ws_bed_straw_foot.png"
+		},
+		top = {
+			"ws_bed_straw_top.png",
+			"ws_planks_dead.png",
+			"ws_bed_straw_side_top.png",
+			"ws_bed_straw_side_top.png^[transformFX",
+			"colored_beds_fancybed_top_head.png",
+			"ws_planks_dead.png"
+		}
+	},
+	nodebox = {
+		bottom = {
+			{0.375, -0.5, -0.5, 0.5, -0.375, -0.375},
+		 {-0.5, -0.5, -0.5, -0.375, -0.375, -0.375},
+		 {-0.5, -0.375, -0.5, 0.5, 0, 0.5}, -- NodeBox3
+		},
+		top = {
+			 {-0.5, -0.5, 0.375, -0.375, -0.375, 0.5},
+		 {0.375, -0.5, 0.375, 0.5, -0.375, 0.5},
+		 {-0.5, -0.375, -0.5, 0.5, 0, 0.5},
+		}
+	},
+	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.06, 1.5},
+	recipe = {
+		{"", "", ""},
+		{"ws_core:straw", "ws_core:straw", "ws_core:straw"}
+	},
+})
+
 -- Fuel
 
 minetest.register_craft({

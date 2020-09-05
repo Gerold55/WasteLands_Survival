@@ -210,7 +210,7 @@ minetest.register_entity(":__builtin:item", {
 			if self.ignite_timer > 10 then
 				self.ignite_timer = 0
 
-				local snode = minetest.get_node_or_nil(self.object:getpos())
+				local snode = minetest.get_node_or_nil(self.object:get_pos())
 				if not snode then
 					return
 				end
