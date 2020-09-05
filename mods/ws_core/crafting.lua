@@ -1,7 +1,7 @@
 -- mods/ws_core/crafting.lua
 
 -- ===========
--- WOOD WOKING
+-- WOOD WORKING
 -- ===========
 
 minetest.register_craft({
@@ -46,6 +46,15 @@ minetest.register_craft({
 		"ws_core:stick", "ws_core:stick",
 		"ws_core:stick", "ws_core:stick"
 	},
+})
+
+minetest.register_craft({
+	output = 'ws_core:ladder_wood',
+	recipe = {
+		{'ws_core:stick', '', 'ws_core:stick'},
+		{'ws_core:stick', 'ws_core:stick', 'ws_core:stick'},
+		{'ws_core:stick', '', 'ws_core:stick'},
+	}
 })
 
 -- =========

@@ -53,3 +53,28 @@ minetest.register_lbm {
 	run_at_every_load = true,
 	action = load_barrel
 }
+
+minetest.register_node("ruins:clay_pot", {
+	description = "Clay Pot",
+	drawtype = "nodebox",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_clay_pot_top_closed.png",
+		"ws_clay_pot_bottom.png",
+		"ws_clay_pot_cracked.png",
+		"ws_clay_pot_cracked.png",
+		"ws_clay_pot_cracked.png",
+		"ws_clay_pot_cracked.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.375, 0.375, -0.4375, 0.375}, -- NodeBox1
+			{-0.4375, -0.4375, -0.4375, 0.4375, 0.3125, 0.4375}, -- NodeBox2
+			{-0.375, 0.3125, -0.375, 0.375, 0.375, 0.375}, -- NodeBox3
+			{-0.4375, 0.375, -0.4375, 0.4375, 0.5, 0.4375}, -- NodeBox4
+		}
+	}
+})

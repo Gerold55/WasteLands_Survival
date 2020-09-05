@@ -1,7 +1,7 @@
 -- mods/ws_core/item_entity.lua
---
---
---
+-- 
+-- 
+-- 
 -- If item_entity_ttl is not set, enity will have default life time
 -- Setting it to -1 disables the feature
 
@@ -31,7 +31,7 @@ minetest.register_entity(":__builtin:item", {
 	-- Pushing item out of solid nodes
 	force_out = nil,
 	force_out_start = nil,
-
+	
 	burn_up = function(self)
 		-- disappear in a smoke puff
 		local p = self.object:get_pos()
@@ -68,7 +68,7 @@ minetest.register_entity(":__builtin:item", {
 		if stack and flammable > 0 then
 			self.flammable = flammable
 		end
-
+		
 		if self.itemstring == "" then
 			-- item not yet known
 			return
@@ -210,7 +210,7 @@ minetest.register_entity(":__builtin:item", {
 			if self.ignite_timer > 10 then
 				self.ignite_timer = 0
 
-				local snode = minetest.get_node_or_nil(self.object:get_pos())
+				local snode = minetest.get_node_or_nil(self.object:getpos())
 				if not snode then
 					return
 				end
@@ -228,7 +228,7 @@ minetest.register_entity(":__builtin:item", {
 				end
 			end
 		end
-
+		
 		if self.force_out then
 			-- This code runs after the entity got a push from the is_stuck code.
 			-- It makes sure the entity is entirely outside the solid node

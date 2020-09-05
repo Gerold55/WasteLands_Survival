@@ -53,7 +53,7 @@ minetest.register_decoration({
 	biomes = {"forest"},
 	y_min = 2,
 	y_max = 80,
-	decoration = "ws_core:log_balsa",
+	decoration = "ws_core:log_balsa_dry",
 	height = 4,
 	height_max = 7,
 })
@@ -65,7 +65,7 @@ minetest.register_decoration({
 	biomes = {"claylands"},
 	y_min = 2,
 	y_max = 80,
-	decoration = "ws_core:log_oak",
+	decoration = "ws_core:log_oak_dry",
 	height = 4,
 	height_max = 5,
 })

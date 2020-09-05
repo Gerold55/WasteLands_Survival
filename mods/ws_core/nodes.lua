@@ -61,6 +61,7 @@
 "ws_core:log_balsa_stripped_dry"
 
 "ws_core:planks_structure"
+"ws_core:ladder"
 
 -Plants
 
@@ -87,13 +88,6 @@
 -Misc
 
 "ws_core:bone"
-
--House Mats
-
-"ws_core:plaster"
-"ws_core:plaster_square"
-"ws_core:plaster_straight"
-"ws_core:plaster_cross"
 
 --]]
 
@@ -603,6 +597,29 @@ minetest.register_node("ws_core:log_balsa_stripped_dry", {
 	on_place = minetest.rotate_node
 })
 
+minetest.register_node("ws_core:ladder_wood", {
+	description = "Ladder",
+	drawtype = "signlike",
+	tiles = {"ws_ladder.png"},
+	inventory_image = "ws_ladder.png",
+	wield_image = "ws_ladder.png",
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
+	walkable = false,
+	climbable = true,
+	is_ground_content = false,
+	selection_box = {
+		type = "wallmounted",
+		--wall_top = = <default>
+		--wall_bottom = = <default>
+		--wall_side = = <default>
+	},
+	groups = {choppy = 2, oddly_breakable_by_hand = 3, flammable = 2},
+	legacy_wallmounted = true,
+	sounds = ws_core.node_sound_wood_defaults(),
+})
+
 -- special planks, only obtainable from spawned structures
 minetest.register_node("ws_core:planks_old", {
 	description = "Old Planks",
@@ -773,6 +790,138 @@ minetest.register_node("ws_core:cattail_top", {
 				{-4/16,-0.5, -4/16, 4/16, 0.5, 4/16},
 		},
 	},
+})
+
+minetest.register_node("ws_core:sand_with_spoison", {
+	description = "Spoison",
+	drawtype = "plantlike_rooted",
+	waving = 1,
+	tiles = {"ws_sandy_dirt.png"},
+	special_tiles = {{name = "ws_spoison_splant.png", tileable_vertical = true}},
+	inventory_image = "ws_spoison_splant.png",
+	paramtype = "light",
+	paramtype2 = "leveled",
+	groups = {snappy = 3},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+				{-4/16, 0.5, -4/16, 4/16, 1.5, 4/16},
+		},
+	},
+	node_dig_prediction = "ws_core:sandy_dirt",
+	node_placement_prediction = "",
+	sounds = ws_core.node_sound_sand_defaults({
+		dig = {name = "default_dig_snappy", gain = 0.2},
+		dug = {name = "default_grass_footstep", gain = 0.25},
+	}),
+
+	on_place = function(itemstack, placer, pointed_thing)
+		-- Call on_rightclick if the pointed node defines it
+		if pointed_thing.type == "node" and placer and
+				not placer:get_player_control().sneak then
+			local node_ptu = minetest.get_node(pointed_thing.under)
+			local def_ptu = minetest.registered_nodes[node_ptu.name]
+			if def_ptu and def_ptu.on_rightclick then
+				return def_ptu.on_rightclick(pointed_thing.under, node_ptu, placer,
+					itemstack, pointed_thing)
+			end
+		end
+
+		-- only place on sandy dirt
+		local pos = pointed_thing.under
+		if minetest.get_node(pos).name ~= "ws_core:sandy_dirt" then
+			return itemstack
+		end
+
+		local pos_top = pointed_thing.above
+		local player_name = placer:get_player_name()
+
+		if not minetest.is_protected(pos, player_name) and
+				not minetest.is_protected(pos_top, player_name) then
+			minetest.set_node(pos, {name = "ws_core:sand_with_spoison",
+                param2 = 16})
+			if not (creative and creative.is_enabled_for
+					and creative.is_enabled_for(player_name)) then
+				itemstack:take_item()
+			end
+		else
+			minetest.chat_send_player(player_name, "Node is protected")
+			minetest.record_protection_violation(pos, player_name)
+		end
+
+		return itemstack
+	end,
+
+	after_destruct  = function(pos, oldnode)
+		minetest.set_node(pos, {name = "ws_core:sandy_dirt"})
+	end
+})
+
+-- Brain Skeleton (originally from XOcean)
+
+minetest.register_node("ws_core:brain_skeleton", {
+	description = "Brain Coral Skeleton Block",
+	tiles = {"xocean_coral_brain_skeleton.png"},
+	groups = {cracky = 3},
+	sounds = ws_core.node_sound_stone_defaults(),
+})
+
+minetest.register_node("ws_core:skeleton_brain", {
+	description = "Brain Coral Skeleton",
+	drawtype = "plantlike_rooted",
+	waving = 1,
+	paramtype = "light",
+	tiles = {"xocean_coral_brain_skeleton.png"},
+	special_tiles = {{name = "xocean_brain_skeleton.png", tileable_vertical = true}},
+	inventory_image = "xocean_brain_skeleton.png",
+	groups = {snappy = 3},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+				{-4/16, 0.5, -4/16, 4/16, 1.5, 4/16},
+		},
+	},
+	node_dig_prediction = "ws_core:brain_skeleton",
+	node_placement_prediction = "",
+	sounds = ws_core.node_sound_stone_defaults({
+		dig = {name = "default_dig_snappy", gain = 0.2},
+		dug = {name = "default_grass_footstep", gain = 0.25},
+	}),
+
+	on_place = function(itemstack, placer, pointed_thing)
+		if pointed_thing.type ~= "node" or not placer then
+			return itemstack
+		end
+
+		local player_name = placer:get_player_name()
+		local pos_under = pointed_thing.under
+		local pos_above = pointed_thing.above
+
+		if minetest.get_node(pos_under).name ~= "ws_core:brain_skeleton" or
+				minetest.get_node(pos_above).name ~= "ws_core:toxic_water_source" then
+			return itemstack
+		end
+
+		if minetest.is_protected(pos_under, player_name) or
+				minetest.is_protected(pos_above, player_name) then
+			minetest.chat_send_player(player_name, "Node is protected")
+			minetest.record_protection_violation(pos_under, player_name)
+			return itemstack
+		end
+
+		minetest.set_node(pos_under, {name = "ws_core:skeleton_brain"})
+		if not (creative and creative.is_enabled_for(player_name)) then
+			itemstack:take_item()
+		end
+
+		return itemstack
+	end,
+
+	after_destruct  = function(pos, oldnode)
+		minetest.set_node(pos, {name = "ws_core:brain_skeleton"})
+	end,
 })
 
 -- =======
@@ -1161,6 +1310,19 @@ minetest.register_node("ws_core:bookshelf", {
 	sounds = ws_core.node_sound_wood_defaults(),
 })
 
+minetest.register_node("ws_core:carpet1", {
+	description = "Diamond Carpet",
+	tiles = {"ws_carpet_diamond.png"},
+	drawtype = "nodebox",
+	paramtype = "light",
+	groups = {snappy = 3, flammable = 3},
+	node_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+	},
+	sounds = ws_core.node_sound_leaves_defaults(),
+})
+
 minetest.register_node("ws_core:glass", {
 	description = "Glass",
 	drawtype = "glasslike_framed_optional",
@@ -1281,6 +1443,7 @@ minetest.register_node("ws_core:shingle_gray_slope3", {
 	sounds = ws_core.node_sound_wood_defaults(),
 })
 
+
 -- ====
 -- MISC
 -- ====
@@ -1294,6 +1457,16 @@ minetest.register_node("ws_core:bone", {
 	groups = {cracky = 3},
 	on_place = minetest.rotate_node,
 	sounds = ws_core.node_sound_dirt_defaults(),
+})
+
+minetest.register_node("ws_core:straw", {
+	description = "Straw",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"ws_straw.png"},
+	is_ground_content = false,
+	groups = {choppy = 3, flammable = 2},
+	sounds = ws_core.node_sound_wood_defaults(),
 })
 
 -- ====
@@ -1351,4 +1524,3 @@ minetest.register_node("ws_core:plaster_cross", {
 	on_place = minetest.rotate_node,
 	sounds = ws_core.node_sound_stone_defaults(),
 })
-

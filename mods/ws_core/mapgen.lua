@@ -967,6 +967,22 @@ function ws_core.register_biomes()
 		heat_point = 60,
 		humidity_point = 0,
 	})	
+	
+	minetest.register_biome({
+		name = "claylands_ocean",
+		node_top = "ws_core:sandy_dirt",
+		depth_top = 1,
+		node_filler = "ws_core:sandy_dirt",
+		depth_filler = 3,
+		node_stone = "ws_core:stone",
+		node_riverbed = "ws_core:sandy_dirt",
+		depth_riverbed = 2,
+		vertical_blend = 1,
+		y_max = 3,
+		y_min = -255,
+		heat_point = 64,
+		humidity_point = 0,
+	})
 
 	    -- VolcanicZone
 
@@ -1052,6 +1068,68 @@ function ws_core.register_decorations()
 		y_max = 31000,
 		y_min = 0,
 		decoration = "ws_core:gorse",
+		param2 = 4,
+	})
+	
+	-- Cattails
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"ws_core:sandy_dirt",
+			"ws_core:sandy_dirt"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.02,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		biomes = {"dirtland_ocean, claylands_ocean, spruce_forest_ocean, desert_ocean"},
+		y_max = 0,
+		y_min = -1,
+		decoration = "ws_core:sand_with_cattails",
+		param2 = 4,
+	})
+	
+	-- Spoison
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"ws_core:sandy_dirt",
+			"ws_core:sandy_dirt"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.02,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		biomes = {"dirtland_ocean, claylands_ocean, spruce_forest_ocean, desert_ocean"},
+		y_max = -0,
+		y_min = -255,
+		decoration = "ws_core:sand_with_spoison",
+		param2 = 4,
+	})
+	
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"ws_core:dirt_dry_forest",
+			"ws_core:dirt_dry_forest"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.02,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 329,
+			octaves = 3,
+			persist = 0.6
+		},
+		biomes = {"dirtland_ocean, claylands_ocean, spruce_forest_ocean, desert_ocean"},
+		y_max = -0,
+		y_min = -255,
+		decoration = "ws_core:sand_with_spoison",
 		param2 = 4,
 	})
 

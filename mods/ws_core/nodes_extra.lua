@@ -85,7 +85,9 @@ ws_core.register_fence("ws_core:fence_old", {
 
 
 
--- ============================
+-- =====================
+-- STONE SLABS AND STAIRS
+-- =====================
 
 stairs.register_stair_and_slab(
 	"cobble",
