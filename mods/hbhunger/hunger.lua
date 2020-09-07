@@ -109,7 +109,7 @@ function hbhunger.item_eat(hunger_change, replace_with_item, poisen, heal, sound
 				if inv:room_for_item("main", replace_with_item) then
 					inv:add_item("main", replace_with_item)
 				else
-					minetest.add_item(user:getpos(), replace_with_item)
+					minetest.add_item(user:get_pos(), replace_with_item)
 				end
 			end
 		end
