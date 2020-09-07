@@ -31,6 +31,7 @@
 "ws_core:lime_polished"
 "ws_core:marble"
 "ws_core:marble_cobble"
+"ws_core:path_stone"
 "ws_core:stalactites"
 
 -Ores
@@ -46,9 +47,9 @@
 
 -Woods
 
-"ws_core:log_dead"
-"ws_core:log_dead_stripped"
-"ws_core:planks_dead"
+"ws_core:log_oak_dry"
+"ws_core:log_oak_stripped_dry"
+"ws_core:planks_oak_dry"
 
 "ws_core:log_oak"
 "ws_core:log_oak_stripped"
@@ -58,10 +59,12 @@
 "ws_core:log_balsa_stripped"
 "ws_core:planks_balsa"
 
+"ws_core:log_balsa_dry"
+"ws_core:planks_balsa_dry"
 "ws_core:log_balsa_stripped_dry"
 
-"ws_core:planks_structure"
-"ws_core:ladder"
+"ws_core:ladder_wood"
+"ws_core:planks_old"
 
 -Plants
 
