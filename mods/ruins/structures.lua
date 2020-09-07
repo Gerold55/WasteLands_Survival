@@ -1,8 +1,5 @@
 local modname = "ruins"
 local modpath = minetest.get_modpath(modname)
-local mg_name = minetest.get_mapgen_setting("mg_name")
--- internationalization boilerplate
-local S = minetest.get_translator(minetest.get_current_modname())
 
 ruins.decorationIDs = {}
 
@@ -142,5 +139,19 @@ r = minetest.register_decoration({
   flags = "place_center_x, place_center_z, force_placement",
   rotation = "random",
   replacements = replacements,
+})
+table.insert(ruins.decorationIDs,r)
+
+r = minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"ws_core:clay_dirt", "ws_core:sandy_dirt"},
+	fill_ratio = 0.0001,
+	biomes = {"claylands", "dirtlands"},
+	y_min = 2,
+	y_max = 80,
+	place_offset_y = -7,
+	schematic = modpath.."/schematics/ruin_build.mts",
+	flags = "place_center_x, place_center_z,  force_placement",
+	rotation = "random",
 })
 table.insert(ruins.decorationIDs,r)
