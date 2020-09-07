@@ -1088,6 +1088,8 @@ function ws_core.register_decorations()
 		biomes = {"dirtland_ocean, claylands_ocean, spruce_forest_ocean, desert_ocean"},
 		y_max = 0,
 		y_min = -1,
+		place_offset_y = -1,
+		flags = "force_placement",
 		decoration = "ws_core:sand_with_cattails",
 		param2 = 4,
 	})
@@ -1107,8 +1109,10 @@ function ws_core.register_decorations()
 			persist = 0.6
 		},
 		biomes = {"dirtland_ocean, claylands_ocean, spruce_forest_ocean, desert_ocean"},
-		y_max = -0,
+		y_max = -2,
 		y_min = -255,
+		place_offset_y = -1,
+		flags = "force_placement",
 		decoration = "ws_core:sand_with_spoison",
 		param2 = 4,
 	})
@@ -1127,8 +1131,10 @@ function ws_core.register_decorations()
 			persist = 0.6
 		},
 		biomes = {"dirtland_ocean, claylands_ocean, spruce_forest_ocean, desert_ocean"},
-		y_max = -0,
+		y_max = -2,
 		y_min = -255,
+		place_offset_y = -1,
+		flags = "force_placement",
 		decoration = "ws_core:sand_with_spoison",
 		param2 = 4,
 	})

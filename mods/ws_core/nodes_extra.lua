@@ -101,6 +101,17 @@ stairs.register_stair_and_slab(
 )
 
 stairs.register_stair_and_slab(
+	"mossycobble",
+	"ws_core:mossycobble",
+	{cracky = 3},
+	{"ws_mossycobble.png"},
+	"Mossy Cobblestone Stair",
+	"Mossy Cobblestone Slab",
+	nil,
+	true
+)
+
+stairs.register_stair_and_slab(
 	"stonebrick",
 	"ws_core:stonebrick",
 	{cracky = 3},
@@ -138,15 +149,23 @@ stairs.register_stair_and_slab(
 -- =====
 
 ws_core.register_wall("ws_core:wall_cobble", {
-	description = "Cobblestone wall",
+	description = "Cobblestone Wall",
 	groups = {cracky = 3},
 
 	material = "ws_core:cobble",
 	tiles = {"ws_cobble.png"},
 })
 
+ws_core.register_wall("ws_core:wall_mossycobble", {
+	description = "Mossy Cobblestone Wall",
+	groups = {cracky = 3},
+
+	material = "ws_core:mossycobble",
+	tiles = {"ws_mossycobble.png"},
+})
+
 ws_core.register_wall("ws_core:wall_stonebrick", {
-	description = "Stonebrick wall",
+	description = "Stonebrick Wall",
 	groups = {cracky = 3},
 
 	material = "ws_core:stonebrick",

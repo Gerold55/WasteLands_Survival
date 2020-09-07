@@ -48,8 +48,8 @@ beds.register_bed("beds:fancy_bed", {
 
 beds.register_bed("beds:straw_bed", {
 	description = S("Straw Bed"),
-	inventory_image = "ws_bed_inv.png",
-	wield_image = "ws_bed_inv.png",
+	inventory_image = "ws_bed_straw_inv.png",
+	wield_image = "ws_bed_straw_inv.png",
 	tiles = {
 		bottom = {
 			"ws_bed_straw_top_bottom.png",

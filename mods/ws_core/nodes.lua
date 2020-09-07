@@ -178,8 +178,26 @@ minetest.register_node("ws_core:dirt_dry_forest", {
 
 minetest.register_node("ws_core:clay", {
 	description = "Clay",
-	tiles = {"ws_clay.png",
-		{name = "ws_clay.png",
+	tiles = {"ws_clay2.png",
+		{name = "ws_clay2.png",
+			tileable_vertical = false}},
+	groups = {crumbly = 3},
+	drop = "ws_core:clay_lump 4",
+})
+
+minetest.register_node("ws_core:clay_blue", {
+	description = "Blue Clay",
+	tiles = {"ws_clay_blue.png",
+		{name = "ws_clay_blue.png",
+			tileable_vertical = false}},
+	groups = {crumbly = 3},
+	drop = "ws_core:clay_lump 4",
+})
+
+minetest.register_node("ws_core:clay_red", {
+	description = "Red Clay",
+	tiles = {"ws_clay_red.png",
+		{name = "ws_clay_red.png",
 			tileable_vertical = false}},
 	groups = {crumbly = 3},
 	drop = "ws_core:clay_lump 4",
@@ -262,6 +280,13 @@ minetest.register_node("ws_core:stone_block", {
 minetest.register_node("ws_core:stonebrick", {
 	description = "Stone Brick",
 	tiles = {"ws_stonebrick.png"},
+	groups = {cracky = 3, stone = 1},
+	legacy_mineral = true,
+})
+
+minetest.register_node("ws_core:stonebrick_cracked", {
+	description = "Cracked Stone Brick",
+	tiles = {"ws_stonebrick_cracked.png"},
 	groups = {cracky = 3, stone = 1},
 	legacy_mineral = true,
 })
@@ -399,6 +424,20 @@ minetest.register_node("ws_core:marble_cobble", {
 	groups = {cracky = 3, stone = 1},
 	legacy_mineral = true,
 })
+
+minetest.register_node("ws_core:path_stone", {
+	description = "Stone Path",
+	tiles = {"ws_stone_path.png"},
+	drawtype = "nodebox",
+	groups = {cracky = 3, stone = 1},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.4375, 0.5}, -- NodeBox9
+		}
+	}
+})
+
 
 minetest.register_node("ws_core:stalactites", {
 	description = "Stalactite",
@@ -1149,7 +1188,7 @@ minetest.register_node("ws_core:oil_source", {
 	liquid_alternative_flowing = "ws_core:oil_flowing",
 	liquid_alternative_source = "ws_core:oil_source",
 	post_effect_color = {a = 191, r = 1, g = 0, b = 3},
-	groups = {liquid = 2, igniter = 1},
+	groups = {liquid = 2},
 })
 
 minetest.register_node("ws_core:oil_flowing", {
@@ -1195,7 +1234,7 @@ minetest.register_node("ws_core:oil_flowing", {
 	liquid_alternative_flowing = "ws_core:oil_flowing",
 	liquid_alternative_source = "ws_core:oil_source",
 	post_effect_color = {a = 191, r = 1, g = 0, b = 3},
-	groups = {liquid = 2, igniter = 1,
+	groups = {liquid = 2,
 		not_in_creative_inventory = 1},
 })
 

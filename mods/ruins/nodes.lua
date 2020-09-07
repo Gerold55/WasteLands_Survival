@@ -229,6 +229,66 @@ minetest.register_node("ruins:wallpaper_3", {
 	},
 })
 
+minetest.register_node("ruins:wallpaper_1_rip", {
+	description = "Ripped Striped Wallpaper",
+	drawtype = "nodebox",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png^ruins_wallpaper_1_rip.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	node_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+	},
+})
+
+minetest.register_node("ruins:wallpaper_2_rip", {
+	description = "Ripped Diamond Wallpaper",
+	drawtype = "nodebox",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png^ruins_wallpaper_2_rip.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	node_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+	},
+})
+
+minetest.register_node("ruins:wallpaper_3_rip", {
+	description = "Ripped Flower Wallpaper",
+	drawtype = "nodebox",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png^ruins_wallpaper_3_rip.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	node_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+	},
+})
+
 --------------------Made by TobyPlowy-----------------------
 minetest.register_node('ruins:old_skeleton', {
 	description = 'Old Skeleton',
