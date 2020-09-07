@@ -3,18 +3,6 @@
 -- =====================
 
 stairs.register_stair_and_slab(
-	"planks_dead",				-- part of node id
-	"ws_core:planks_dead",		-- crafting component
-								-- groups (automaticaly gets slab/stair group)
-	{choppy = 3, flammable = 2},
-	{"ws_planks_dead.png"},		-- {tile definition 1, def2, def3, def4, def5, def6}
-	"Dead Wood Stair",			-- stairs name
-	"Dead Wood Slab",			-- slab name
-	nil,						-- sound specification
-	true						-- world alignment
-)
-
-stairs.register_stair_and_slab(
 	"planks_oak",
 	"ws_core:planks_oak",
 	{choppy = 3, flammable = 2},
@@ -50,14 +38,6 @@ stairs.register_stair_and_slab(
 -- ===========
 -- WOOD FENCES
 -- ===========
-
-ws_core.register_fence("ws_core:fence_dead", {
-	description = "Dead Wood Fence",
-	groups = {choppy = 3, flammable = 2},
-
-	material = "ws_core:planks_dead",
-	texture = "ws_planks_dead.png",
-})
 
 ws_core.register_fence("ws_core:fence_oak", {
 	description = "Oak Wood Fence",

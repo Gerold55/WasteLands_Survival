@@ -106,7 +106,7 @@ minetest.register_lbm({
 minetest.register_craft({
 	output = "ws_core:torch 4",
 	recipe = {
-		{"ws_core:coal_lump"},
+		{"ws_core:coal"},
 		{"group:stick"},
 	}
 })

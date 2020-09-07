@@ -1,30 +1,7 @@
 local modname = "ruins"
 local modpath = minetest.get_modpath(modname)
-local mg_name = minetest.get_mapgen_setting("mg_name")
--- internationalization boilerplate
-local S = minetest.get_translator(minetest.get_current_modname())
 
 ruins.decorationIDs = {}
-
--- to account for node ids which have changed since the schematics were made
-replacements = {
-	["ws_core:wood"] = "ws_core:planks_old",
-	["stairs:slab_wood"] = "stairs:slab_planks_old",
-	["stairs:stair_wood"] = "stairs:stair_planks_old",
-	["stairs:stair_inner_wood"] = "stairs:stair_inner_planks_old",
-	["stairs:stair_outer_wood"] = "stairs:stair_outer_planks_old",
-}
-minetest.register_alias("ws_core:wood", "ws_core:planks_old")
-minetest.register_alias("stairs:slab_wood", "stairs:slab_planks_old")
-minetest.register_alias("stairs:stair_wood", "stairs:stair_planks_old")
-minetest.register_alias("stairs:stair_inner_wood", "stairs:stair_inner_planks_old")
-minetest.register_alias("stairs:stair_outer_wood", "stairs:stair_outer_planks_old")
-
-minetest.register_alias("buildings:mat_woven", "ruins:mat_woven")
-
-minetest.register_alias("derilict_building:girder_rusty", "ruins:girder_rusty")
-minetest.register_alias("derilict_building:vent", "ruins:vent")
-minetest.register_alias("derilict_building:fan_large_rusted", "ruins:fan_large_rusted")
 
 local r
 r = minetest.register_decoration({
@@ -162,5 +139,19 @@ r = minetest.register_decoration({
   flags = "place_center_x, place_center_z, force_placement",
   rotation = "random",
   replacements = replacements,
+})
+table.insert(ruins.decorationIDs,r)
+
+r = minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"ws_core:clay_dirt", "ws_core:sandy_dirt"},
+	fill_ratio = 0.0001,
+	biomes = {"claylands", "dirtlands"},
+	y_min = 2,
+	y_max = 80,
+	place_offset_y = -7,
+	schematic = modpath.."/schematics/ruin_build.mts",
+	flags = "place_center_x, place_center_z,  force_placement",
+	rotation = "random",
 })
 table.insert(ruins.decorationIDs,r)

@@ -472,7 +472,7 @@ doors.register("door_wood_screen", {
 		groups = {node = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
 		recipe = {
 			{"group:wood", "group:wood"},
-			{"group:wood", "group:wood"},
+			{"group:stick", "group:wood"},
 			{"group:wood", "group:wood"},
 		}
 })
