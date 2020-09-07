@@ -14,18 +14,18 @@ local loot = {
 function load_barrel(pos, node)
 	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
-	--inv:set_size('main', 8*4)
-	inv:set_size('storage', 9*3)
+	inv:set_size('main', 8*3)
 	meta:set_string('formspec',
-		'size [9,9]'..
+		'size [8,8]'..
 		'bgcolor[#080808BB;false]'..
-		'list[current_name;storage;0,0.2;9,3;]'..
-		'list[current_player;main;0.5,5;8,4;]')
+		'list[context;main;0,0.2;8,3;]'..
+		'list[current_player;main;0,4;8,4;]'..
+		'listring[]')
 	for _,l in pairs(loot) do
 		local amount = math.random(-l.var,l.var) + l.mid
 		amount = math.floor(amount+.5)
 		if amount > 0 then
-			inv:add_item("storage", l.name.." "..amount)
+			inv:add_item("main", l.name.." "..amount)
 		end
 	end
 	minetest.swap_node(pos, {name = "ws_core:barrel", param2 = node.param2})
