@@ -171,7 +171,6 @@ minetest.register_node("ruins:copper_pipe_rusty", {
 
 minetest.register_node("ruins:wallpaper_1", {
 	description = "Striped Wallpaper",
-	drawtype = "nodebox",
 	paramtype2 = "facedir",
 	tiles = {
 		"ws_planks_old.png",
@@ -183,15 +182,10 @@ minetest.register_node("ruins:wallpaper_1", {
 	},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
-	node_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	},
 })
 
 minetest.register_node("ruins:wallpaper_2", {
 	description = "Diamond Wallpaper",
-	drawtype = "nodebox",
 	paramtype2 = "facedir",
 	tiles = {
 		"ws_planks_old.png",
@@ -203,15 +197,10 @@ minetest.register_node("ruins:wallpaper_2", {
 	},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
-	node_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	},
 })
 
 minetest.register_node("ruins:wallpaper_3", {
 	description = "Flower Wallpaper",
-	drawtype = "nodebox",
 	paramtype2 = "facedir",
 	tiles = {
 		"ws_planks_old.png",
@@ -223,15 +212,10 @@ minetest.register_node("ruins:wallpaper_3", {
 	},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
-	node_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	},
 })
 
 minetest.register_node("ruins:wallpaper_1_rip", {
 	description = "Ripped Striped Wallpaper",
-	drawtype = "nodebox",
 	paramtype2 = "facedir",
 	tiles = {
 		"ws_planks_old.png",
@@ -243,15 +227,10 @@ minetest.register_node("ruins:wallpaper_1_rip", {
 	},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
-	node_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	},
 })
 
 minetest.register_node("ruins:wallpaper_2_rip", {
 	description = "Ripped Diamond Wallpaper",
-	drawtype = "nodebox",
 	paramtype2 = "facedir",
 	tiles = {
 		"ws_planks_old.png",
@@ -263,15 +242,10 @@ minetest.register_node("ruins:wallpaper_2_rip", {
 	},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
-	node_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	},
 })
 
 minetest.register_node("ruins:wallpaper_3_rip", {
 	description = "Ripped Flower Wallpaper",
-	drawtype = "nodebox",
 	paramtype2 = "facedir",
 	tiles = {
 		"ws_planks_old.png",
@@ -283,10 +257,6 @@ minetest.register_node("ruins:wallpaper_3_rip", {
 	},
 	is_ground_content = false,
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
-	node_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	},
 })
 
 --------------------Made by TobyPlowy-----------------------
