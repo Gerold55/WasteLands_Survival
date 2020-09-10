@@ -23,7 +23,6 @@ r = minetest.register_decoration({
 	schematic = modpath.."/schematics/ruin1.mts",
 	flags = "place_center_x, place_center_z,  force_placement",
 	rotation = "random",
-	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -46,7 +45,6 @@ r = minetest.register_decoration({
 	schematic = modpath.."/schematics/ruin1_sand.mts",
 	flags = "place_center_x, place_center_z,  force_placement",
 	rotation = "random",
-	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -67,9 +65,8 @@ r = minetest.register_decoration({
 	y_min = 2,
 	y_max = 80,
 	schematic = modpath.."/schematics/ruin_large.mts",
-	flags = "place_center_x, place_center_z",
+	flags = "place_center_x, place_center_z,  force_placement",
 	rotation = "random",
-	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -90,9 +87,8 @@ r = minetest.register_decoration({
 	y_min = 2,
 	y_max = 80,
 	schematic = modpath.."/schematics/ruin_large_sand.mts",
-	flags = "place_center_x, place_center_z",
+	flags = "place_center_x, place_center_z,  force_placement",
 	rotation = "random",
-	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -115,7 +111,6 @@ r = minetest.register_decoration({
 	schematic = modpath.."/schematics/ramshackle_shelter.mts",
 	flags = "place_center_x, place_center_z, force_placement",
 	rotation = "random",
-	replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 
@@ -138,7 +133,6 @@ r = minetest.register_decoration({
   schematic = modpath.."/schematics/derilict_factory_empty.mts",
   flags = "place_center_x, place_center_z, force_placement",
   rotation = "random",
-  replacements = replacements,
 })
 table.insert(ruins.decorationIDs,r)
 

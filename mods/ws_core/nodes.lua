@@ -432,6 +432,7 @@ minetest.register_node("ws_core:path_stone", {
 	description = "Stone Path",
 	tiles = {"ws_stone_path.png"},
 	drawtype = "nodebox",
+	paramtype = "light",
 	groups = {cracky = 3, stone = 1},
 	node_box = {
 		type = "fixed",
