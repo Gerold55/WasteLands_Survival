@@ -13,6 +13,7 @@ minetest.register_node('ws_core:lantern', {
 	groups = {cracky=2, oddly_breakable_by_hand=5},
 	paramtype = 'light',
 	light_source = 14,
+	groups = {oddly_breakable_by_hand = 2},
 	node_box = {
 		type = "fixed",
 		fixed = {

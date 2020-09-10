@@ -332,3 +332,9 @@ minetest.register_craft({
 	recipe = "group:stick",
 	burntime = 1,
 })
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ws_core:bark",
+	burntime = 5,
+})
