@@ -285,12 +285,14 @@ minetest.register_craft({
 	type = "cooking",
 	output = "ws_core:stone",
 	recipe = "ws_core:cobble",
+	cooktime = 20,
 })
 
 minetest.register_craft({
 	type = "cooking",
 	output = "ws_core:gold_nugget",
 	recipe = "ws_core:stone_with_gold",
+	cooktime = 15,
 })
 
 -- ====
