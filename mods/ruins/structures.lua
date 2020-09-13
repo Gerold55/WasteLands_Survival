@@ -65,7 +65,7 @@ r = minetest.register_decoration({
 	y_min = 2,
 	y_max = 80,
 	schematic = modpath.."/schematics/ruin_large.mts",
-	flags = "place_center_x, place_center_z,  force_placement",
+	flags = "place_center_x, place_center_z",
 	rotation = "random",
 })
 table.insert(ruins.decorationIDs,r)
@@ -87,7 +87,7 @@ r = minetest.register_decoration({
 	y_min = 2,
 	y_max = 80,
 	schematic = modpath.."/schematics/ruin_large_sand.mts",
-	flags = "place_center_x, place_center_z,  force_placement",
+	flags = "place_center_x, place_center_z",
 	rotation = "random",
 })
 table.insert(ruins.decorationIDs,r)

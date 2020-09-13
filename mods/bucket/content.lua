@@ -35,7 +35,7 @@ bucket.register_bucket(
 			item_name = "bucket:bucket_clay_water_toxic",
 			description = "Toxic Water Bucket (Clay)",
 			inventory_image = "bucket_clay_water_toxic.png",
-			groups = {water_bucket = 1},
+			groups = {water_bucket = 1, toxic_water_bucket = 1},
 			force_renew = false,
 		},
 		{
@@ -43,7 +43,15 @@ bucket.register_bucket(
 			item_name = "bucket:bucket_clay_water",
 			description = "Water Bucket (Clay)",
 			inventory_image = "bucket_clay_water.png",
-			groups = {water_bucket = 1},
+			groups = {water_bucket = 1, clean_water_bucket = 1},
+			force_renew = true,
+		},
+		{
+			liquid_source = "ws_core:oil_source",
+			item_name = "bucket:bucket_clay_oil",
+			description = "Oil Bucket (Clay)",
+			inventory_image = "bucket_clay_oil.png",
+			groups = {oil_bucket = 1},
 			force_renew = true,
 		},
 	}
@@ -63,7 +71,7 @@ bucket.register_bucket(
 			item_name = "bucket:bucket_water_toxic",
 			description = "Toxic Water Bucket (Metal)",
 			inventory_image = "bucket_metal_water_toxic.png",
-			groups = {water_bucket = 1},
+			groups = {water_bucket = 1, toxic_water_bucket = 1},
 			force_renew = false,
 		},
 		{
@@ -71,7 +79,7 @@ bucket.register_bucket(
 			item_name = "bucket:bucket_water",
 			description = "Water Bucket (Metal)",
 			inventory_image = "bucket_metal_water.png",
-			groups = {water_bucket = 1},
+			groups = {water_bucket = 1, clean_water_bucket = 1},
 			force_renew = true,
 		},
 		{
@@ -79,7 +87,7 @@ bucket.register_bucket(
 			item_name = "bucket:bucket_oil",
 			description = "Oil Bucket (Metal)",
 			inventory_image = "bucket_metal_oil.png",
-			groups = {water_bucket = 1},
+			groups = {oil_bucket = 1},
 			force_renew = true,
 		},
 		{
