@@ -169,6 +169,95 @@ minetest.register_node("ruins:copper_pipe_rusty", {
 	sounds = ws_core and ws_core.node_sound_metal_defaults(),
 })
 
+minetest.register_node("ruins:wallpaper_1", {
+	description = "Striped Wallpaper",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ruins_wallpaper_1.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+})
+
+minetest.register_node("ruins:wallpaper_2", {
+	description = "Diamond Wallpaper",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ruins_wallpaper_2.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+})
+
+minetest.register_node("ruins:wallpaper_3", {
+	description = "Flower Wallpaper",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ruins_wallpaper_3.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+})
+
+minetest.register_node("ruins:wallpaper_1_rip", {
+	description = "Ripped Striped Wallpaper",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png^ruins_wallpaper_1_rip.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+})
+
+minetest.register_node("ruins:wallpaper_2_rip", {
+	description = "Ripped Diamond Wallpaper",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png^ruins_wallpaper_2_rip.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+})
+
+minetest.register_node("ruins:wallpaper_3_rip", {
+	description = "Ripped Flower Wallpaper",
+	paramtype2 = "facedir",
+	tiles = {
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png",
+		"ws_planks_old.png^ruins_wallpaper_3_rip.png"
+	},
+	is_ground_content = false,
+	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+})
 
 --------------------Made by TobyPlowy-----------------------
 minetest.register_node('ruins:old_skeleton', {

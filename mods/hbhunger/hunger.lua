@@ -67,7 +67,7 @@ local function poisenp(tick, time, time_left, player)
 	if player:get_hp()-1 > 0 then
 		player:set_hp(player:get_hp()-1)
 	end
-
+	
 end
 
 function hbhunger.item_eat(hunger_change, replace_with_item, poisen, heal, sound)
@@ -140,7 +140,7 @@ if minetest.get_modpath("mobs") ~= nil then
 		hbhunger.register_food("mobs:chicken_cooked", 6)
 		hbhunger.register_food("mobs:chicken_raw", 2, "", 3)
 		hbhunger.register_food("mobs:chicken_egg_fried", 2)
-		if minetest.get_modpath("bucket") then
+		if minetest.get_modpath("bucket") then 
 			hbhunger.register_food("mobs:bucket_milk", 3, "bucket:bucket_empty")
 		end
 	else

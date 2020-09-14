@@ -1,7 +1,7 @@
 -- mods/ws_core/crafting.lua
 
 -- ===========
--- WOOD WOKING
+-- WOOD WORKING
 -- ===========
 
 minetest.register_craft({
@@ -35,6 +35,16 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'ws_core:planks_balsa_dry',
+	recipe = {{'ws_core:log_balsa_dry'},}
+})
+
+minetest.register_craft({
+	output = 'ws_core:planks_balsa_dry',
+	recipe = {{'ws_core:log_balsa_stripped_dry'},}
+})
+
+minetest.register_craft({
 	output = 'ws_core:stick 4',
 	recipe = {{'group:planks'},}
 })
@@ -46,6 +56,15 @@ minetest.register_craft({
 		"ws_core:stick", "ws_core:stick",
 		"ws_core:stick", "ws_core:stick"
 	},
+})
+
+minetest.register_craft({
+	output = 'ws_core:ladder_wood',
+	recipe = {
+		{'ws_core:stick', '', 'ws_core:stick'},
+		{'ws_core:stick', 'ws_core:stick', 'ws_core:stick'},
+		{'ws_core:stick', '', 'ws_core:stick'},
+	}
 })
 
 -- =========
@@ -80,11 +99,26 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'ws_core:stonebrick 4',
+	recipe = {
+		{'ws_core:stone', 'ws_core:stone'},
+		{'ws_core:stone', 'ws_core:stone'},
+	}
+})
+
+minetest.register_craft({
 	output = 'ws_core:stone_block 9',
 	recipe = {
 		{'ws_core:stone', 'ws_core:stone', 'ws_core:stone'},
 		{'ws_core:stone', 'ws_core:stone', 'ws_core:stone'},
 		{'ws_core:stone', 'ws_core:stone', 'ws_core:stone'},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:path_stone 3',
+	recipe = {
+		{'ws_core:cobble', 'ws_core:gravel', 'ws_core:cobble'},
 	}
 })
 
@@ -106,6 +140,13 @@ minetest.register_craft({
 		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
 		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
 		{'ws_core:gold_nugget', 'ws_core:gold_nugget', 'ws_core:gold_nugget'},
+	}
+})
+
+minetest.register_craft({
+	output = 'ws_core:coal 9',
+	recipe = {
+		{'ws_core:coal_block'},
 	}
 })
 
@@ -183,8 +224,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'ws_core:hatchet_bone',
 	recipe = {
-	{'','ws_core:scrap', 'ws_core:scrap'},
-	{'', 'ws_core:stick', 'ws_core:scrap'},
+	{'','ws_core:bone_shard', 'ws_core:bone_shard'},
+	{'', 'ws_core:stick', 'ws_core:bone_shard'},
 	{'', 'ws_core:stick', ''},
 	}
 })
@@ -244,12 +285,14 @@ minetest.register_craft({
 	type = "cooking",
 	output = "ws_core:stone",
 	recipe = "ws_core:cobble",
+	cooktime = 20,
 })
 
 minetest.register_craft({
 	type = "cooking",
 	output = "ws_core:gold_nugget",
 	recipe = "ws_core:stone_with_gold",
+	cooktime = 15,
 })
 
 -- ====
@@ -290,4 +333,10 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "group:stick",
 	burntime = 1,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ws_core:bark",
+	burntime = 5,
 })
