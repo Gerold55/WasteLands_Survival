@@ -447,7 +447,8 @@ minetest.register_node("ruins:dumpster", {
 		oddly_breakable_by_hand = 1,
 	},
 
-	sounds = default and default.node_sound_metal_defaults(),
+	sounds = (default and default.node_sound_metal_defaults()) or
+		(ws_core and ws_core.node_sound_metal_defaults()),
 
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
