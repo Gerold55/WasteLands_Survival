@@ -1,5 +1,5 @@
 minetest.register_craftitem("bucket:bucket_clay_unfired", {
-	description = minetest.colorize("#FFFFFF", "Unfired Clay Bucket\n")..minetest.colorize("#ababab", "An unfired clay bucket which, when cooked, will hold water."),
+	description = minetest.colorize("#FFFFFF", "Unfired Clay Bucket\n")..minetest.colorize("#ababab", "An unfired clay bucket which, when cooked, will hold liquids."),
 	inventory_image = "bucket_clay_unfired.png",
 	groups = {coal = 1, flammable = 1}
 })
@@ -25,7 +25,7 @@ end
 bucket.register_bucket(
 	{ -- empty bucket
 		item_name = "bucket:bucket_clay_empty",
-		description = minetest.colorize("#FFFFFF", "Empty Clay Bucket\n")..minetest.colorize("#ababab", "Use empty bucket to collect toxic water."),
+		description = minetest.colorize("#FFFFFF", "Empty Clay Bucket\n")..minetest.colorize("#ababab", "Use empty bucket to collect liquids."),
 		inventory_image = "bucket_clay_empty.png",
 		groups = {bucket = 1},
 	},
@@ -61,7 +61,7 @@ bucket.register_bucket(
 bucket.register_bucket(
 	{
 		item_name = "bucket:bucket_empty",
-		description = minetest.colorize("#FFFFFF", "Empty Metal Bucket\n")..minetest.colorize("#ababab", "Use empty bucket to collect toxic water."),
+		description = minetest.colorize("#FFFFFF", "Empty Metal Bucket\n")..minetest.colorize("#ababab", "Use empty bucket to collect liquids."),
 		inventory_image = "bucket_metal_empty.png",
 		groups = {bucket = 1},
 	},

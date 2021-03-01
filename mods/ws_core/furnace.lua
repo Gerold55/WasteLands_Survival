@@ -49,7 +49,7 @@ minetest.register_node("ws_core:furnace_top", {
         aspect_h = 16,
         length = 2.0,
       },
-    }, "ws_barrel_top.png", "ws_barrel.png"},
+  }, "ws_pot_bottom.png", "ws_pot.png"},
   groups = {oddly_breakable_by_hand = 2},
   is_ground_content = false,
   on_construct = function(pos)
@@ -104,18 +104,10 @@ minetest.register_node("ws_core:furnace_top_active", {
         aspect_h = 16,
         length = 2.0,
       },
-    }, "ws_barrel_top.png", "ws_barrel.png"},
+  }, "ws_pot_bottom.png", "ws_pot.png"},
   drop = "ws_core:furnace_top",
-  groups = {oddly_breakable_by_hand = 2, not_in_creative_inventory=1, hot=1},
+  groups = {oddly_breakable_by_hand = 2, not_in_creative_inventory=1},
   is_ground_content = false,
-  on_construct = function(pos)
-    local meta = minetest.get_meta(pos)
-    meta:set_string("formspec", furnace_top_formspec())
-    meta:set_string("infotext", "pot")
-    local inv = meta:get_inventory()
-    inv:set_size("src", 1)
-    inv:set_size("dst", 4)
-  end,
   can_dig = function(pos)
     local meta = minetest.get_meta(pos);
     local inv = meta:get_inventory()
@@ -223,9 +215,11 @@ minetest.register_node("ws_core:furnace_bottom", {
   description = "furnace bottom",
   tiles = {
     "ws_cobble.png^ws_hole.png",
+	"ws_cobble.png",
     "ws_cobble.png",
-    "ws_cobble.png^ws_furnace_front.png",
-    "ws_cobble.png",
+	"ws_cobble.png",
+	"ws_cobble.png",
+	"ws_cobble.png^ws_furnace_front.png",
   },
   paramtype2 = "facedir",
   groups = {cracky=2},
@@ -285,6 +279,9 @@ minetest.register_node("ws_core:furnace_bottom_active", {
       },
     },
     "ws_cobble.png",
+	"ws_cobble.png",
+	"ws_cobble.png",
+	"ws_cobble.png",
     {
       name = "ws_furnace_burning.png",
       backface_culling = false,
@@ -295,20 +292,12 @@ minetest.register_node("ws_core:furnace_bottom_active", {
         length = 4.0,
       },
     },
-    "ws_cobble.png",
   },
-  param2 = "facedir",
+  paramtype2 = "facedir",
   light_source = 14,
   groups = {cracky=2, not_in_creative_inventory=1, hot=1},
   drop = "ws_core:furnace_bottom",
   is_ground_content = false,
-  on_construct = function(pos)
-    local meta = minetest.get_meta(pos)
-    meta:set_string("formspec", furnace_bottom_formspec())
-    meta:set_string("infotext", "furnace bottom");
-    local inv = meta:get_inventory()
-    inv:set_size("fuel", 1)
-  end,
   can_dig = function(pos)
     local meta = minetest.get_meta(pos);
     local inv = meta:get_inventory()
@@ -375,7 +364,7 @@ minetest.register_abm({
     local fuel = nil
     local afterfuel
     local fuellist = inv:get_list("fuel")
-    
+
     if fuellist then
       fuel, afterfuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuellist})
     end

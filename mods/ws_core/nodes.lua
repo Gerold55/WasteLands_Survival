@@ -2,11 +2,15 @@
 
 -Dirts
 
+"ws_core:grass_block"
+"ws_core:dirt"
 "ws_core:dirt_dry"
 "ws_core:dirt_coarse"
 "ws_core:dirt_rocky"
 "ws_core:dirt_dry_forest"
 "ws_core:clay"
+"ws_core:clay_blue"
+"ws_core:clay_red"
 "ws_core:clay_dirt"
 "ws_core:sandy_dirt"
 "ws_core:gravel"
@@ -15,11 +19,16 @@
 
 "ws_core:stone"
 "ws_core:cobble"
+"ws_core:mossycobble"
 "ws_core:stone_block"
 "ws_core:stonebrick"
+"ws_core:stonebrick_cracked"
 "ws_core:basalt"
 "ws_core:basalt_cobble"
 "ws_core:slate"
+"ws_core:slate_cobble"
+"ws_core:slate_polished"
+"ws_core:slate_bricks"
 "ws_core:andesite"
 "ws_core:andesite_polished"
 "ws_core:granite"
@@ -38,6 +47,7 @@
 
 "ws_core:stone_with_coal"
 "ws_core:stone_with_coal_dense"
+"ws_core:coal_block"
 "ws_core:stone_with_gold"
 "ws_core:stone_with_gold_dense"
 "ws_core:stone_with_iron"
@@ -73,6 +83,10 @@
 "ws_core:dry_papyrus"
 "ws_core:sand_with_cattails"
 "ws_core:cattail_top"
+"ws_core:sand_with_spoison"
+
+"ws_core:brain_skeleton"
+"ws_core:skeleton_brain"
 
 -Liquids
 
@@ -87,10 +101,25 @@
 
 -- non-natural
 "ws_core:bookshelf"
+"ws_core:carpet1"
+"ws_core:glass"
+"ws_core:shingle_brown"
+"ws_core:shingle_brown_slope"
+"ws_core:shingle_brown_slope2"
+"ws_core:shingle_brown_slope3"
+"ws_core:shingle_gray_slope"
+"ws_core:shingle_gray_slope2"
+"ws_core:shingle_gray_slope3"
 
 -Misc
 
 "ws_core:bone"
+"ws_core:straw"
+
+"ws_core:plaster"
+"ws_core:plaster_square"
+"ws_core:plaster_straight"
+"ws_core:plaster_cross"
 
 --]]
 
@@ -842,6 +871,7 @@ minetest.register_node("ws_core:sand_with_spoison", {
 	tiles = {"ws_sandy_dirt.png"},
 	special_tiles = {{name = "ws_spoison_splant.png", tileable_vertical = true}},
 	inventory_image = "ws_spoison_splant.png",
+	wield_image = "ws_spoison_splant.png",
 	paramtype = "light",
 	paramtype2 = "leveled",
 	groups = {snappy = 3},
