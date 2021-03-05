@@ -14,6 +14,13 @@
 "ruins:copper_pipe"
 "ruins:copper_pipe_rusty"
 
+"ruins:wallpaper_1"
+"ruins:wallpaper_2"
+"ruins:wallpaper_3"
+"ruins:wallpaper_1_rip"
+"ruins:wallpaper_2_rip"
+"ruins:wallpaper_3_rip"
+
 "ruins:old_skeleton"
 "ruins:old_skeleton2"
 "ruins:human_skull"
@@ -181,7 +188,7 @@ minetest.register_node("ruins:wallpaper_1", {
 		"ruins_wallpaper_1.png"
 	},
 	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
 
 minetest.register_node("ruins:wallpaper_2", {
@@ -196,7 +203,7 @@ minetest.register_node("ruins:wallpaper_2", {
 		"ruins_wallpaper_2.png"
 	},
 	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
 
 minetest.register_node("ruins:wallpaper_3", {
@@ -211,7 +218,7 @@ minetest.register_node("ruins:wallpaper_3", {
 		"ruins_wallpaper_3.png"
 	},
 	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
 
 minetest.register_node("ruins:wallpaper_1_rip", {
@@ -226,7 +233,7 @@ minetest.register_node("ruins:wallpaper_1_rip", {
 		"ws_planks_old.png^ruins_wallpaper_1_rip.png"
 	},
 	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
 
 minetest.register_node("ruins:wallpaper_2_rip", {
@@ -241,7 +248,7 @@ minetest.register_node("ruins:wallpaper_2_rip", {
 		"ws_planks_old.png^ruins_wallpaper_2_rip.png"
 	},
 	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
 
 minetest.register_node("ruins:wallpaper_3_rip", {
@@ -256,7 +263,7 @@ minetest.register_node("ruins:wallpaper_3_rip", {
 		"ws_planks_old.png^ruins_wallpaper_3_rip.png"
 	},
 	is_ground_content = false,
-	groups = {choppy = 2, oddly_breakable_by_hand = 2},
+	groups = {choppy = 3, planks = 1, wood = 1, flammable = 2},
 })
 
 --------------------Made by TobyPlowy-----------------------

@@ -39,7 +39,7 @@ beds.register_bed("beds:fancy_bed", {
 		 {-0.5, -0.375, -0.5, 0.5, 0, 0.5},
 		}
 	},
-	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.06, 1.5},
+	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.0, 1.5},
 	recipe = {
 		{"wool:white", "wool:white", "wool:white"},
 		{"group:wood", "group:wood", "group:wood"}
@@ -80,7 +80,7 @@ beds.register_bed("beds:straw_bed", {
 		 {-0.5, -0.375, -0.5, 0.5, 0, 0.5},
 		}
 	},
-	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.06, 1.5},
+	selectionbox = {-0.5, -0.5, -0.5, 0.5, 0.0, 1.5},
 	recipe = {
 		{"", "", ""},
 		{"ws_core:straw", "ws_core:straw", "ws_core:straw"}
