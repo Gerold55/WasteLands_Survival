@@ -26,6 +26,7 @@ read_globals = {
 	math = { fields = {"sign"} },
 	table = { fields = {"copy"} },
 	-- mod checks
+	"climate_api",
 	"cmi",
 	"default",
 	"farming",
@@ -35,6 +36,7 @@ read_globals = {
 	"lucky_block",
 	"mobs",
 	"sfinv_buttons",
+	"skylayer",
 	"stairsplus",
 	"tnt",
 	"toolranks",
