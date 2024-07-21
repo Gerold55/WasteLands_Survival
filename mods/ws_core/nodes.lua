@@ -707,26 +707,31 @@ minetest.register_node("ws_core:planks_old", {
 -- PLANTS
 -- ======
 
+-- Register nodes
 minetest.register_node("ws_core:gorse", {
-	description = "Gorse",
-	drawtype = "plantlike",
-	waving = 1,
-	tiles = {"flowers_gorse.png"},
-	inventory_image = "flowers_gorse.png",
-	wield_image = "flowers_gorse.png",
-	paramtype = "light",
-	paramtype2 = "meshoptions",
-	place_param2 = 4,
-	drop = "ws_core:stick",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	groups = {snappy = 3, flammable = 3, attached_node = 1},
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
-	},
+    description = "Gorse",
+    drawtype = "plantlike",
+    tiles = {"flowers_gorse.png"}, -- Path to the texture
+    inventory_image = "flowers_gorse.png",
+    wield_image = "flowers_gorse.png",
+    paramtype = "light",
+    sunlight_propagates = true,
+    walkable = false,
+    groups = {snappy=3, flammable=2},
+
+    -- Define the drop function
+    on_drop = function(itemstack, dropper, pos)
+        local drops = {"ws_core:stick 2"} -- Drop 2 sticks by default
+
+        -- Chance to drop a gorse flower
+        if math.random() < 0.05 then -- 5% chance
+            table.insert(drops, "ws_core:gorse_flower")
+        end
+
+        return drops
+    end,
 })
+
 
 minetest.register_node("ws_core:dry_shrub", {
 	description = "Dry Shrub",
@@ -767,102 +772,81 @@ minetest.register_node("ws_core:dry_papyrus", {
 })
 
 minetest.register_node("ws_core:sand_with_cattails", {
-	description = "Cattail",
-	drawtype = "plantlike_rooted",
-	waving = 1,
-	tiles = {"ws_sandy_dirt.png"},
-	special_tiles = {{name = "ws_cattail_bottom.png", tileable_vertical = true}},
-	inventory_image = "ws_cattail_roots.png",
-	wield_image = "ws_cattail_roots.png",
-	paramtype = "light",
-	paramtype2 = "leveled",
-	groups = {snappy = 3},
-	walkable = false,
-	-- instantly replace with sandy dirt
-	node_dig_prediction = "ws_core:sandy_dirt",
-	-- do not place clientside
-	node_placement_prediction = "",
-	sounds = ws_core.node_sound_sand_defaults({
-		dig = {name = "default_dig_snappy", gain = 0.2},
-		dug = {name = "default_grass_footstep", gain = 0.25},
-	}),
-	selection_box = {
-		type = "fixed",
-		fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-				{-4/16, 0.5, -4/16, 4/16, 1.5, 4/16},
-		},
-	},
+    description = "Cattail",
+    drawtype = "plantlike_rooted",
+    waving = 1,
+    tiles = {"ws_sandy_dirt.png"},
+    special_tiles = {
+        {name = "ws_cattail_bottom.png", tileable_vertical = true}
+    },
+    inventory_image = "ws_cattail_roots.png",
+    wield_image = "ws_cattail_roots.png",
+    paramtype = "light",
+    paramtype2 = "leveled",
+    groups = {snappy = 3},
+    walkable = false,
+    node_dig_prediction = "ws_core:sandy_dirt",
+    node_placement_prediction = "",
+    sounds = ws_core.node_sound_sand_defaults({
+        dig = {name = "default_dig_snappy", gain = 0.2},
+        dug = {name = "default_grass_footstep", gain = 0.25},
+    }),
+    selection_box = {
+        type = "fixed",
+        fixed = {
+            {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+            {-4/16, 0.5, -4/16, 4/16, 1.5, 4/16},
+        },
+    },
+    on_place = function(itemstack, placer, pointed_thing)
+        if pointed_thing.type == "node" and placer and not placer:get_player_control().sneak then
+            local node_ptu = minetest.get_node(pointed_thing.under)
+            if node_ptu.name == "ws_core:sandy_dirt" then
+                local pos = pointed_thing.under
+                local pos_top = pointed_thing.above
+                local player_name = placer:get_player_name()
 
-	on_place = function(itemstack, placer, pointed_thing)
-		-- Call on_rightclick if the pointed node defines it
-		if pointed_thing.type == "node" and placer and
-				not placer:get_player_control().sneak then
-			local node_ptu = minetest.get_node(pointed_thing.under)
-			local def_ptu = minetest.registered_nodes[node_ptu.name]
-			if def_ptu and def_ptu.on_rightclick then
-				return def_ptu.on_rightclick(pointed_thing.under, node_ptu, placer,
-					itemstack, pointed_thing)
-			end
-		end
-
-		-- only place on sandy dirt
-		local pos = pointed_thing.under
-		if minetest.get_node(pos).name ~= "ws_core:sandy_dirt" then
-			return itemstack
-		end
-
-		local pos_top = pointed_thing.above
-		local player_name = placer:get_player_name()
-
-		if not minetest.is_protected(pos, player_name) and
-				not minetest.is_protected(pos_top, player_name) then
-			minetest.set_node(pos, {name = "ws_core:sand_with_cattails",
-                param2 = 16})
-			if not (creative and creative.is_enabled_for
-					and creative.is_enabled_for(player_name)) then
-				itemstack:take_item()
-			end
-		else
-			minetest.chat_send_player(player_name, "Node is protected")
-			minetest.record_protection_violation(pos, player_name)
-		end
-
-		return itemstack
-	end,
-
-	after_destruct  = function(pos, oldnode)
-		-- replace with sandy dirt
-		minetest.set_node(pos, {name = "ws_core:sandy_dirt"})
-	end,
-	on_construct = function(pos)
-		-- give it a top
-		local above = vector.new(pos)
-		above.y = above.y + 2
-		minetest.set_node(above, {name = "ws_core:cattail_top"})
-	end,
+                if not minetest.is_protected(pos, player_name) and
+                   not minetest.is_protected(pos_top, player_name) then
+                    minetest.set_node(pos, {name = "ws_core:sand_with_cattails", param2 = 16})
+                    minetest.set_node(pos_top, {name = "ws_core:cattail_top"})
+                    if not (creative and creative.is_enabled_for and creative.is_enabled_for(player_name)) then
+                        itemstack:take_item()
+                    end
+                else
+                    minetest.chat_send_player(player_name, "Node is protected")
+                    minetest.record_protection_violation(pos, player_name)
+                end
+            end
+        end
+        return itemstack
+    end,
+    after_destruct = function(pos, oldnode)
+        minetest.set_node(pos, {name = "ws_core:sandy_dirt"})
+    end,
 })
 
 minetest.register_node("ws_core:cattail_top", {
-	description = "Cattail",
-	drawtype = "plantlike",
-	waving = 1,
-	paramtype = "light",
-	tiles = {"ws_cattail_top.png"},
-	inventory_image = "ws_cattail.png",
-	groups = {snappy = 3, not_in_creative_inventory = 1},
-	walkable = false,
-	sounds = ws_core.node_sound_stone_defaults({
-		dig = {name = "default_dig_snappy", gain = 0.2},
-		dug = {name = "default_grass_footstep", gain = 0.25},
-	}),
-	selection_box = {
-		type = "fixed",
-		fixed = {
-				{-4/16,-0.5, -4/16, 4/16, 0.5, 4/16},
-		},
-	},
+    description = "Cattail Top",
+    drawtype = "plantlike",
+    waving = 1,
+    paramtype = "light",
+    tiles = {"ws_cattail_top.png"},
+    inventory_image = "ws_cattail.png",
+    groups = {snappy = 3, not_in_creative_inventory = 1},
+    walkable = false,
+    sounds = ws_core.node_sound_stone_defaults({
+        dig = {name = "default_dig_snappy", gain = 0.2},
+        dug = {name = "default_grass_footstep", gain = 0.25},
+    }),
+    selection_box = {
+        type = "fixed",
+        fixed = {
+            {-4/16, -0.5, -4/16, 4/16, 0.5, 4/16},
+        },
+    },
 })
+
 
 minetest.register_node("ws_core:sand_with_spoison", {
 	description = "Spoison",
