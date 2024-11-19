@@ -262,3 +262,33 @@ function ws_core.can_interact_with_node(player, pos)
 
 	return false
 end
+
+-- Function to generate cattails
+local function place_cattails(x, y, z)
+    local node_below = minetest.get_node({x = x, y = y - 1, z = z})
+    local node_here = minetest.get_node({x = x, y = y, z = z})
+
+    if node_below.name == "ws_core:water_source" and node_here.name == "air" then
+        -- Place the cattails node at the specified position
+        minetest.set_node({x = x, y = y, z = z}, {name = "ws_core:cattails"})
+    end
+end
+
+-- Add Cattails to world generation
+minetest.register_on_generated(function(minp, maxp, seed)
+    local mapgen_area = {x = minp.x, y = minp.y, z = minp.z}
+    local mapgen_size = {x = maxp.x - minp.x, y = maxp.y - minp.y, z = maxp.z - minp.z}
+    
+    for x = mapgen_area.x, mapgen_area.x + mapgen_size.x, 1 do
+        for y = mapgen_area.y, mapgen_area.y + mapgen_size.y, 1 do
+            for z = mapgen_area.z, mapgen_area.z + mapgen_size.z, 1 do
+                -- Check if this position is near water
+                local node_above = minetest.get_node({x = x, y = y + 1, z = z})
+                if node_above.name == "ws_core:water_source" then
+                    -- Place cattails
+                    place_cattails(x, y, z)
+                end
+            end
+        end
+    end
+end)

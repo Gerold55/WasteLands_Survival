@@ -1,151 +1,179 @@
 local modname = "ruins"
 local modpath = minetest.get_modpath(modname)
 
-ruins.decorationIDs = {}
+-- Clear existing decorations if needed
+-- minetest.clear_registered_decorations() -- Uncomment if required
 
-local r
-r = minetest.register_decoration({
-	name = "ruins:ruin",
-	deco_type = "schematic",
-	place_on = {"ws_core:dirt_dry"},
-	sidelen = 36,
-	noise_params = {
-		offset = 0.0001,
-		scale = 0.0008,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 2,
-		octaves = 3,
-		persist = 0.6
-	},
-	biomes = {"dirtland","forest"},
-	y_min = 2,
-	y_max = 80,
-	schematic = modpath.."/schematics/ruin1.mts",
-	flags = "place_center_x, place_center_z,  force_placement",
-	rotation = "random",
-})
-table.insert(ruins.decorationIDs,r)
+-- Store Ruins Decorations IDs
+local ruins = {
+    decorationIDs = {}
+}
 
-r = minetest.register_decoration({
-	name = "ruins:ruin1",
-	deco_type = "schematic",
-	place_on = {"ws_core:sandy_dirt"},
-	sidelen = 46,
-	noise_params = {
-		offset = 0.0001,
-		scale = 0.001,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 2,
-		octaves = 3,
-		persist = 0.6
-	},
-	biomes = {"desert"},
-	y_min = 2,
-	y_max = 16,
-	schematic = modpath.."/schematics/ruin1_sand.mts",
-	flags = "place_center_x, place_center_z,  force_placement",
-	rotation = "random",
-})
-table.insert(ruins.decorationIDs,r)
+-- Utility function to register a ruin
+local function register_ruin(name, place_on, sidelen, noise_params, biomes, y_min, y_max, schematic, flags, rotation)
+    local decoration = minetest.register_decoration({
+        name = name,
+        deco_type = "schematic",
+        place_on = place_on,
+        sidelen = sidelen,
+        noise_params = noise_params,
+        biomes = biomes,
+        y_min = y_min,
+        y_max = y_max,
+        schematic = schematic,
+        flags = flags,
+        rotation = rotation,
+    })
+    table.insert(ruins.decorationIDs, decoration)
+end
 
-r = minetest.register_decoration({
-	name = "ruins:ruin_large",
-	deco_type = "schematic",
-	place_on = {"ws_core:dirt_dry"},
-	sidelen = 80,
-	noise_params = {
-		offset = 0.00004,
-		scale = 0.0004,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 8,
-		octaves = 2,
-		persist = 0.8
-	},
-	biomes = {"dirtland","forest"},
-	y_min = 2,
-	y_max = 80,
-	schematic = modpath.."/schematics/ruin_large.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
-table.insert(ruins.decorationIDs,r)
-
-r = minetest.register_decoration({
-	name = "ruins:ruin_large_sand",
-	deco_type = "schematic",
-	place_on = {"ws_core:sandy_dirt"},
-	sidelen = 80,
-	noise_params = {
-		offset = 0.00004,
-		scale = 0.0008,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 8,
-		octaves = 2,
-		persist = 0.8
-	},
-	biomes = {"desert"},
-	y_min = 2,
-	y_max = 80,
-	schematic = modpath.."/schematics/ruin_large_sand.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
-table.insert(ruins.decorationIDs,r)
-
-r = minetest.register_decoration({
-	name = "ruins:ramshackle_shelter",
-	deco_type = "schematic",
-	place_on = {"ws_core:dirt_dry"},
-	sidelen = 80,
-	noise_params = {
-		offset = 0.00004,
-		scale = 0.0001,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 12,
-		octaves = 2,
-		persist = 0.2
-	},
-	biomes = {"dirtland","forest"},
-	y_min = 2,
-	y_max = 80,
-	schematic = modpath.."/schematics/ramshackle_shelter.mts",
-	flags = "place_center_x, place_center_z, force_placement",
-	rotation = "random",
-})
-table.insert(ruins.decorationIDs,r)
-
-r = minetest.register_decoration({
-  name = "ruins:derilict_factory_empty",
-  deco_type = "schematic",
-  place_on = {"ws_core:dirt_dry"},
-  sidelen = 80,
-  noise_params = {
-    offset = 0.00004,
-    scale = 0.0001,
+-- Define noise parameters for reuse
+local noise_defaults = {
     spread = {x = 100, y = 100, z = 100},
-    seed = 12,
     octaves = 2,
-    persist = 0.2
-  },
-  biomes = {"dirtland"},
-  y_min = 2,
-  y_max = 80,
-  schematic = modpath.."/schematics/derilict_factory_empty.mts",
-  flags = "place_center_x, place_center_z, force_placement",
-  rotation = "random",
-})
-table.insert(ruins.decorationIDs,r)
+    persist = 0.6
+}
 
-r = minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = {"ws_core:clay_dirt", "ws_core:sandy_dirt"},
-	fill_ratio = 0.0001,
-	biomes = {"claylands", "dirtlands"},
-	y_min = 2,
-	y_max = 80,
-	place_offset_y = -7,
-	schematic = modpath.."/schematics/ruin_build.mts",
-	flags = "place_center_x, place_center_z,  force_placement",
-	rotation = "random",
-})
-table.insert(ruins.decorationIDs,r)
+-- Register various ruins
+
+-- Small Ruin (Dryland)
+register_ruin(
+    "ruins:ruin",
+    {"ws_core:dirt_dry"},
+    36,
+    {
+        offset = 0.0001,
+        scale = 0.0008,
+        seed = 2,
+        spread = noise_defaults.spread,
+        octaves = 3,
+        persist = 0.6
+    },
+    {"dryland", "dry_forest"},
+    2,
+    80,
+    modpath.."/schematics/ruin1.mts",
+    "place_center_x, place_center_z, force_placement",
+    "random"
+)
+
+-- Small Ruin (Sandland)
+register_ruin(
+    "ruins:ruin1",
+    {"ws_core:sandy_dirt"},
+    46,
+    {
+        offset = 0.0001,
+        scale = 0.001,
+        seed = 2,
+        spread = noise_defaults.spread,
+        octaves = 3,
+        persist = 0.6
+    },
+    {"sandland"},
+    2,
+    16,
+    modpath.."/schematics/ruin1_sand.mts",
+    "place_center_x, place_center_z, force_placement",
+    "random"
+)
+
+-- Large Ruin (Dryland)
+register_ruin(
+    "ruins:ruin_large",
+    {"ws_core:dirt_dry"},
+    80,
+    {
+        offset = 0.00004,
+        scale = 0.0004,
+        seed = 8,
+        spread = noise_defaults.spread,
+        persist = 0.8
+    },
+    {"dryland", "dry_forest"},
+    2,
+    80,
+    modpath.."/schematics/ruin_large.mts",
+    "place_center_x, place_center_z",
+    "random"
+)
+
+-- Large Ruin (Sandland)
+register_ruin(
+    "ruins:ruin_large_sand",
+    {"ws_core:sandy_dirt"},
+    80,
+    {
+        offset = 0.00004,
+        scale = 0.0008,
+        seed = 8,
+        spread = noise_defaults.spread,
+        persist = 0.8
+    },
+    {"sandland"},
+    2,
+    80,
+    modpath.."/schematics/ruin_large_sand.mts",
+    "place_center_x, place_center_z",
+    "random"
+)
+
+-- Ramshackle Shelter
+register_ruin(
+    "ruins:ramshackle_shelter",
+    {"ws_core:dirt_dry"},
+    80,
+    {
+        offset = 0.00004,
+        scale = 0.0001,
+        seed = 12,
+        spread = noise_defaults.spread,
+        persist = 0.2
+    },
+    {"dryland", "dry_forest"},
+    2,
+    80,
+    modpath.."/schematics/ramshackle_shelter.mts",
+    "place_center_x, place_center_z, force_placement",
+    "random"
+)
+
+-- Derelict Factory (Empty)
+register_ruin(
+    "ruins:derelict_factory_empty",
+    {"ws_core:dirt_dry"},
+    80,
+    {
+        offset = 0.00004,
+        scale = 0.0001,
+        seed = 12,
+        spread = noise_defaults.spread,
+        persist = 0.2
+    },
+    {"dryland"},
+    2,
+    80,
+    modpath.."/schematics/derelict_factory_empty.mts",
+    "place_center_x, place_center_z, force_placement",
+    "random"
+)
+
+-- Ruin Build
+register_ruin(
+    "ruins:ruin_build",
+    {"ws_core:clay_dirt", "ws_core:sandy_dirt"},
+    80,
+    {
+        offset = 0.00004,
+        scale = 0.0001,
+        seed = 12,
+        spread = noise_defaults.spread,
+        persist = 0.2
+    },
+    {"claylands", "dryland"},
+    2,
+    80,
+    modpath.."/schematics/ruin_build.mts",
+    "place_center_x, place_center_z, force_placement",
+    "random"
+)

@@ -1,118 +1,65 @@
--- default/torch.lua
+-- Table to track temporary light nodes
+local temporary_lights = {}
 
--- support for MT game translation.
+-- Update light emission when carrying the torch
+minetest.register_globalstep(function(dtime)
+    local new_temporary_lights = {}
 
-local function on_flood(pos, oldnode, newnode)
-	minetest.add_item(pos, ItemStack("ws_core:torch 1"))
-	-- Play flame-extinguish sound if liquid is not an 'igniter'
-	local nodedef = minetest.registered_items[newnode.name]
-	if not (nodedef and nodedef.groups and
-			nodedef.groups.igniter and nodedef.groups.igniter > 0) then
-		minetest.sound_play(
-			"default_cool_lava",
-			{pos = pos, max_hear_distance = 16, gain = 0.1},
-			true
-		)
-	end
-	-- Remove the torch node
-	return false
-end
+    for _, player in ipairs(minetest.get_connected_players()) do
+        local wielded_item = player:get_wielded_item():get_name()
+        local player_name = player:get_player_name()
+        local pos = player:get_pos()
 
-minetest.register_node("ws_core:torch", {
-	description = "Torch",
-	drawtype = "mesh",
-	mesh = "torch_floor.obj",
-	inventory_image = "ws_torch.png",
-	wield_image = "ws_torch.png",
-	tiles = {"ws_torch.png"},
-	paramtype = "light",
-	paramtype2 = "wallmounted",
-	sunlight_propagates = true,
-	walkable = false,
-	liquids_pointable = false,
-	light_source = 10,
-	groups = {choppy=2, dig_immediate=3, flammable=1, attached_node=1, torch=1},
-	drop = "ws_core:torch",
-	selection_box = {
-		type = "wallmounted",
-		wall_bottom = {-1/8, -1/2, -1/8, 1/8, 2/16, 1/8},
-	},
-	sounds = ws_core.node_sound_wood_defaults(),
-	on_place = function(itemstack, placer, pointed_thing)
-		local under = pointed_thing.under
-		local node = minetest.get_node(under)
-		local def = minetest.registered_nodes[node.name]
-		if def and def.on_rightclick and
-			not (placer and placer:is_player() and
-			placer:get_player_control().sneak) then
-			return def.on_rightclick(under, node, placer, itemstack,
-				pointed_thing) or itemstack
-		end
+        -- Remove existing light node if no torch is being wielded
+        if temporary_lights[player_name] and wielded_item ~= "ws_core:torch" then
+            local old_pos = temporary_lights[player_name]
+            if old_pos then
+                minetest.remove_node(old_pos)
+            end
+            temporary_lights[player_name] = nil
+        end
 
-		local above = pointed_thing.above
-		local wdir = minetest.dir_to_wallmounted(vector.subtract(under, above))
-		local fakestack = itemstack
-		if wdir == 1 then
-			fakestack:set_name("ws_core:torch")
-		else
-			fakestack:set_name("ws_core:torch_wall")
-		end
+        -- Add a light node if the player is wielding a torch
+        if wielded_item == "ws_core:torch" and pos then
+            -- Round position to prevent excessive node updates
+            local light_pos = vector.round({x = pos.x, y = pos.y + 1, z = pos.z})
 
-		itemstack = minetest.item_place(fakestack, placer, pointed_thing, wdir)
-		itemstack:set_name("ws_core:torch")
+            -- Only place a new light node if the position has changed
+            if temporary_lights[player_name] ~= light_pos then
+                -- Remove the old light node
+                if temporary_lights[player_name] then
+                    minetest.remove_node(temporary_lights[player_name])
+                end
 
-		return itemstack
-	end,
-	floodable = true,
-	on_flood = on_flood,
-	on_rotate = false
-})
+                -- Place the new light node
+                minetest.set_node(light_pos, {name = "ws_core:temporary_light"})
+                temporary_lights[player_name] = light_pos
+                new_temporary_lights[light_pos] = true
+            end
+        end
+    end
 
-minetest.register_node("ws_core:torch_wall", {
-	drawtype = "mesh",
-	mesh = "torch_wall.obj",
-	tiles = {"ws_torch.png"},
-	paramtype = "light",
-	paramtype2 = "wallmounted",
-	sunlight_propagates = true,
-	walkable = false,
-	light_source = 10,
-	groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1},
-	drop = "ws_core:torch",
-	selection_box = {
-		type = "wallmounted",
-		wall_side = {-1/2, -1/2, -1/8, -1/8, 1/8, 1/8},
-	},
-	sounds = ws_core.node_sound_wood_defaults(),
-	floodable = true,
-	on_flood = on_flood,
-	on_rotate = false
-})
+    -- Clean up any leftover temporary light nodes
+    for pos, _ in pairs(temporary_lights) do
+        if not new_temporary_lights[pos] then
+            minetest.remove_node(pos)
+        end
+    end
 
-minetest.register_lbm({
-	name = "ws_core:3dtorch",
-	nodenames = {"ws_core:torch", "torches:floor", "torches:wall"},
-	action = function(pos, node)
-		if node.param2 == 1 then
-			minetest.set_node(pos, {name = "ws_core:torch",
-				param2 = node.param2})
-		else
-			minetest.set_node(pos, {name = "ws_core:torch_wall",
-				param2 = node.param2})
-		end
-	end
-})
+    -- Update the tracking table
+    temporary_lights = new_temporary_lights
+end)
 
-minetest.register_craft({
-	output = "ws_core:torch 4",
-	recipe = {
-		{"ws_core:coal"},
-		{"group:stick"},
-	}
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "ws_core:torch",
-	burntime = 4,
+-- Register the temporary light node
+minetest.register_node("ws_core:temporary_light", {
+    description = "Temporary Light",
+    drawtype = "airlike",
+    paramtype = "light",
+    sunlight_propagates = true,
+    light_source = 10,
+    walkable = false,
+    pointable = false,
+    diggable = false,
+    buildable_to = true,
+    groups = {not_in_creative_inventory = 1},
 })
