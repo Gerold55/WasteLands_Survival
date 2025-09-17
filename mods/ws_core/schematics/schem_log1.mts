@@ -1,0 +1,1 @@
+5:local _={};_[1]="ws_core:log_oak_dry";return {{x=0,y=0,z=0,param2=2,name=_[1]},{x=0,y=1,z=0,param2=2,name=_[1]},{x=0,y=2,z=0,param2=2,name=_[1]}}
