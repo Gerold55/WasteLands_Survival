@@ -1,0 +1,42 @@
+#Enable the registration of miners.
+#Miners require fans in the crafting recipe. It is recommended to enable fans if miners are enabled.
+factory_enableMiner (Enable miner) bool true
+
+#Enable the registration of fans.
+#Miners require fans in the crafting recipe. It is recommended to enable fans if miners are enabled.
+factory_enableFan (Enable fan) bool true
+
+#Enable the registration of vaccums.
+#Vacuums pull in items from distance.
+factory_enableVacuum (Enable vaccum) bool true
+
+#Enable the registration and utilities of electronics.
+#Electronic components help against having to distribute fuels to every machine.
+factory_enableElectronics (Enable electronics) bool true
+
+#Enable the spawning of droppings.
+#Fertilizer can be harvested directly. It is used to fertilize saplings in the STP.
+factory_fertilizerGeneration (Enable fertilizer generation) bool true
+
+#Eanble the crafting recipe for the Sapling Treatment Plant.
+#The Sapling Treatment Plant uses saplings and fertilizer to produce wood, leaves and new saplings.
+#This unbalances the game because it provides trees quickly without having to grow and chop them.
+factory_enableStpCraft (Enable STP craft recipe) bool true
+
+#Limit the digging depth of the miners.
+#The upgraded miners will only dig to the given depth. Normal miners dig to half this depth.
+factory_minerDigLimit (Miner dig limit) int 512 0
+
+#Enable belts moving players using their abm's.
+#Conveyor belts will move players if this option is enabled.
+#The abm's will be used to apply velocity to the players resulting in a staggering movement.
+factory_enableabmBeltvelocity (Enable abm belt velocity) bool true
+
+#Enable belts moving players using globalsteps.
+#Conveyor belts will move players if this option is enabled.
+#A globalstep registration will be used to apply velocity to the players this is smooth but may cost performance.
+factory_enablestepBeltvelocity (Enable step belt velocity) bool true
+
+#Enable fans moving players.
+#Fans will move players if this option is enabled.
+factory_enableFanmove (Enable fan move) bool false

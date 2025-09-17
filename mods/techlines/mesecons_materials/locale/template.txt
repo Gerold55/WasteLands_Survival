@@ -1,6 +1,0 @@
-# textdomain: mesecons_materials
-
-### init.lua ###
-Glue=
-Fiber=
-Silicon=

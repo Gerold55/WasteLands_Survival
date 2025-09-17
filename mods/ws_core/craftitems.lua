@@ -22,13 +22,6 @@ minetest.register_craftitem('ws_core:scrap', {
 	inventory_image = 'ws_scrap.png'
 })
 
-minetest.register_craftitem("ws_core:pebble", {
-	description = "Pebble",
-	inventory_image = "ws_pebble.png",
-	stack_max = 99,  -- Maximum number of pebbles in one inventory slot
-	groups = {flint = 1}  -- You can add custom group properties if needed
-})
-
 minetest.register_craftitem("ws_core:coal", {
 	description = "".. minetest.colorize("#FFFFFF", "Coal\n")..minetest.colorize("#ababab", "Coal is found mainly in underground deposits and widely used as fuel."),
 	inventory_image = "ws_coal.png",

@@ -160,64 +160,37 @@ minetest.register_node("ws_core:dirt", {
 
 minetest.register_node("ws_core:dirt_dry", {
 	description = "Dry Dirt",
-	tiles = {
-		"ws_dirt_dry.png",
-		{
-			name = "ws_dirt_dry.png",
-			tileable_vertical = false
-		}
-	},
+	tiles = {"ws_dirt_dry.png",
+		{name = "ws_dirt_dry.png",
+			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1},
 	sounds = ws_core.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
 		items = {
 			{items = {'ws_core:bone_shard'}, rarity = 13},
-			{items = {'ws_core:scrap'}, rarity = 25},  -- Very low chance to get scrap
 			{items = {'ws_core:dirt_dry'}}
 		}
 	}
 })
 
-
 minetest.register_node("ws_core:dirt_coarse", {
 	description = "Coarse Dirt",
-	tiles = {
-		"ws_coarse_dry.png",
-		{
-			name = "ws_coarse_dry.png",
-			tileable_vertical = false
-		}
-	},
+	tiles = {"ws_coarse_dry.png",
+		{name = "ws_coarse_dry.png",
+			tileable_vertical = false}},
 	groups = {crumbly = 3},
-	drop = {
-		max_items = 1,
-		items = {
-			{items = {'ws_core:pebble'}, rarity = 15},  -- Small chance to get pebbles
-			{items = {'ws_core:dirt_coarse'}}
-		}
-	}
+	drop = "ws_core:dirt_coarse",
 })
 
 minetest.register_node("ws_core:dirt_rocky", {
 	description = "Rocky Dirt",
-	tiles = {
-		"ws_rocky_dirt.png",
-		{
-			name = "ws_rocky_dirt.png",
-			tileable_vertical = false
-		}
-	},
+	tiles = {"ws_rocky_dirt.png",
+		{name = "ws_rocky_dirt.png",
+			tileable_vertical = false}},
 	groups = {crumbly = 3},
-	drop = {
-		max_items = 1,
-		items = {
-			{items = {'ws_core:pebble'}, rarity = 10},  -- Small chance to get pebbles
-			{items = {'ws_core:dirt_rocky'}}
-		}
-	}
+	drop = "ws_core:dirt_rocky",
 })
-
 
 minetest.register_node("ws_core:dirt_dry_forest", {
 	description = "Dry Forest Dirt",

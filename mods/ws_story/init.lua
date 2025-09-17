@@ -5,22 +5,12 @@ entries.register_page("ws_story:survivor", "Survivor's Log", "A tale of the last
 
 -- Function to check if creative mode is enabled for the player
 local function is_creative_enabled_for(player_name)
-    -- Ensure creative mod is loaded
     if minetest.get_modpath("creative") then
-        -- Check if the function 'is_enabled_for' exists within the creative mod
-        if creative and creative.is_enabled_for then
-            return creative.is_enabled_for(player_name)
-        else
-            -- Log an error if the function is not found
-            minetest.log("error", "creative mod is loaded, but 'is_enabled_for' function not found.")
-            return false  -- Return false if function is missing
-        end
+        return creative.is_enabled_for(player_name)
     else
-        -- Return false if the creative mod is not loaded
         return false
     end
 end
-
 
 -- Creative mode trigger
 triggers.register_on_join({
